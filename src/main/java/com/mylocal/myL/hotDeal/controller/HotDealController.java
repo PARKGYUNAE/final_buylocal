@@ -11,4 +11,9 @@ public class HotDealController {
 		return "hotDeal/hotDealMain";
 	}
 	
+	@RequestMapping("hotDealDetail.do")
+	public String hotDealDetail() {
+		return "hotDeal/hotDealDetail";
+	}
+	
 }

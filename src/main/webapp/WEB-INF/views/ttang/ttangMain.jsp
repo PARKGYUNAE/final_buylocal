@@ -25,7 +25,7 @@
 			<div class="container-fluid no-left-padding no-right-padding page-content">
 				<!-- container -->	
 				<div align="center">
-				<h1>핫딜</h1><br>
+				<h1>땡처리</h1>
 				<h5><a style="margin-left:40%">한식</a></h5><h5><a style="margin-left:5%">중식</a></h5>
 				<h5><a style="margin-left:5%">양식</a></h5><h5><a style="margin-left:5%">일식</a></h5>
 				</div>
@@ -55,8 +55,8 @@
 							<div class="type-post">
 								<div class="entry-cover">
 									<div class="post-meta">
-										<c:url var="hotDealDetail" value="hotDealDetail.do"/>
-										<span class="byline"><a href="${hotDealDetail }" title="Indesign">상세정보보기</a></span>
+										<c:url var="ttangDetail" value="ttangDetail.do"/>
+										<span class="byline"><a href="${ttangDetail }" title="Indesign">상세정보보기</a></span>
 										<span class="post-date"><a href="#">구매하기</a></span>
 									</div>
 									<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
