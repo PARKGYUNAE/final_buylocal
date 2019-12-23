@@ -11,6 +11,16 @@
 		cursor:pointer;
 		float:left;
 	}
+	.detailBtn2{
+		margin-left: 2%;
+		width: 30%;
+		cursor:pointer;
+	}
+	.detailBtn{
+		margin-left: 7%;
+		width: 25%;
+		cursor: pointer;
+	}
 </style>
 </head>
 <body>
@@ -25,9 +35,11 @@
 			<div class="container-fluid no-left-padding no-right-padding page-content">
 				<!-- container -->	
 				<div align="center">
+				<h1>핫딜</h1>
+				</div>
+				<hr>
 				<h5><a style="margin-left:40%">한식</a></h5><h5><a style="margin-left:5%">중식</a></h5>
 				<h5><a style="margin-left:5%">양식</a></h5><h5><a style="margin-left:5%">일식</a></h5>
-				</div>
 				<br>
 				<hr><br>
 					<div class="container">
@@ -62,21 +74,36 @@
 						<!-- Content Area -->
 						<div class="col-xl-8 col-lg-8 col-md-6 col-12 content-area">
 							<article class="type-post">
-								<div class="entry-cover">
-									<img src="http://placehold.it/770x513" alt="Post" />
+								<div class="entry-cover" style="float:left">
+									<img src="http://placehold.it/370x247" alt="Post" />
 								</div>
+								<br>
+								<div class="infoMation" style="float:left; width:50%">
+									<h6 style="margin-left:20%; margin-bottom:10%">물품명 : </h6>
+									<h6 style="margin-left:20%; margin-bottom:10%">할인전 가격 : </h6>
+									<h6 style="margin-left:20%; margin-bottom:10%">할인 후 가격 : </h6>
+									<h6 style="margin-left:20%; margin-bottom:10%">total : </h6>
+									
+									<button class="detailBtn">관심상품</button>
+									<button class="detailBtn">장바구니</button>
+									<button class="detailBtn">구매하기</button>
+								</div>
+								<br><br>
+								
 								<div class="entry-content">
 									<div class="entry-header">	
 									<aside class="widget widget_social">
 									<ul>
-									<li><a href="#" title=""><i class="ion-social-facebook-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-twitter-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-instagram-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-googleplus-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-pinterest-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-vimeo-outline"></i></a></li>
-								</ul>
-								</aside>
+										<li><a href="#" title=""><i class="ion-social-facebook-outline"></i></a></li>
+										<li><a href="#" title=""><i class="ion-social-twitter-outline"></i></a></li>
+										<li><a href="#" title=""><i class="ion-social-instagram-outline"></i></a></li>
+										<li><a href="#" title=""><i class="ion-social-googleplus-outline"></i></a></li>
+										<li><a href="#" title=""><i class="ion-social-pinterest-outline"></i></a></li>
+										<li><a href="#" title=""><i class="ion-social-vimeo-outline"></i></a></li>
+									</ul>
+									</aside>
+										<button class="detailBtn2">상품정보</button> <button class="detailBtn2">판매자정보</button> 
+										<button class="detailBtn2">상품문의</button>
 										<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
 										<h3 class="entry-title">Trendy Summer Fashion</h3>
 										<div class="post-meta">
@@ -175,9 +202,6 @@
 											<div class="comment-content">
 												<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure.</p>
 											</div>
-											<div class="reply">
-												<a rel="nofollow" class="comment-reply-link" href="#" title="Reply">Reply</a>
-											</div>
 										</div>
 										<ol class="children">
 											<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent">
@@ -193,9 +217,6 @@
 													</footer>
 													<div class="comment-content">
 														<p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves.</p>
-													</div>
-													<div class="reply">
-														<a rel="nofollow" class="comment-reply-link" href="#" title="Reply">Reply</a>
 													</div>
 												</div>
 											</li>
@@ -215,33 +236,10 @@
 											<div class="comment-content">
 												<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
 											</div>
-											<div class="reply">
-												<a rel="nofollow" class="comment-reply-link" href="#" title="Reply">Reply</a>
-											</div>
 										</div>
 									</li>
 								</ol><!-- comment-list /- -->
-								<!-- Comment Form -->
-								<div class="comment-respond">
-									<h2 class="comment-reply-title">Leave a Reply</h2>
-									<form method="post" class="comment-form">
-										<p class="comment-form-author">
-											<input id="author" name="author" placeholder="Name" size="30" maxlength="245" required="required" type="text"/>
-										</p>
-										<p class="comment-form-email">
-											<input id="email" name="email" placeholder="Email" required="required" type="email"/>
-										</p>
-										<p class="comment-form-url">
-											<input id="url" name="url" placeholder="Website" required="required" type="url"/>
-										</p>
-										<p class="comment-form-comment">
-											<textarea id="comment" name="comment" placeholder="Enter your comment here..." rows="8" required="required"></textarea>
-										</p>
-										<p class="form-submit">
-											<input name="submit" class="submit" value="Post Comment" type="submit"/>
-										</p>
-									</form>
-								</div><!-- Comment Form /- -->
+								
 							</div><!-- Comment Area /- -->
 						</div><!-- Content Area /- -->
 						<!-- Widget Area -->

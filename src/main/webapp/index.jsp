@@ -116,7 +116,8 @@
 							</li>
 							<li class="dropdown" id="asdf">
 								<i class="ddl-switch fa fa-angle-down"></i>
-								<a class="nav-link dropdown-toggle" title="Posts" href="#">떙처리!</a>
+								<c:url var="ttang" value="ttangMain.do"/>
+								<a class="nav-link dropdown-toggle" title="Posts" href="${ttang }">떙처리!</a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="index-12.html" title="Home Food">Home Food</a></li>
 									<li><a class="dropdown-item" href="index-13.html" title="Home Technology">Home Technology</a></li>
@@ -362,14 +363,14 @@
 												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
 												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
 											</div>
-											<a href="#"><img src="http://placehold.it/370x493" alt="Post" /></a>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
 										</div>
 										<div class="entry-content">
 											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="Travel">Travel</a></span>
-												<h3 class="entry-title"><a href="#" title="Charming Evening Field">Charming Evening Field</a></h3>
-											</div>								
-											<p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely...</p>
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
+											</div>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
 											<a href="#" title="Read More">Read More</a>
 										</div>
 									</div>
@@ -400,51 +401,14 @@
 												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
 												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
 											</div>
-											<a href="#"><img src="http://placehold.it/370x399" alt="Post" /></a>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
 										</div>
 										<div class="entry-content">
 											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
-												<h3 class="entry-title"><a href="#" title="Furniture Layout">Furniture Layout</a></h3>
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
 											</div>
-											<p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses...</p>
-											<a href="#" title="Read More">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-sm-6 blog-masonry-box">
-									<div class="type-post post-position">
-										<div class="entry-cover">
-											<div class="post-meta">
-												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
-											</div>
-											<a href="#"><img src="http://placehold.it/370x479" alt="Post" /></a>
-										</div>
-										<div class="entry-content">
-											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="Nature">Nature</a></span>
-												<h3 class="entry-title"><a href="#" title="White Sand of The Desert Discovery">White Sand of The Desert Discovery</a></h3>
-											</div>
-											<a href="#" title="Read More">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-sm-6 blog-masonry-box">
-									<div class="type-post">
-										<div class="entry-cover">
-											<div class="post-meta">
-												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
-											</div>
-											<a href="#"><img src="http://placehold.it/370x494" alt="Post" /></a>
-										</div>
-										<div class="entry-content">
-											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="Technology">Technology</a></span>
-												<h3 class="entry-title"><a href="#" title="Lighthouse Technology">Lighthouse Technology</a></h3>
-											</div>
-											<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him.</p>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
 											<a href="#" title="Read More">Read More</a>
 										</div>
 									</div>
@@ -460,65 +424,8 @@
 										</div>
 										<div class="entry-content">
 											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
-												<h3 class="entry-title"><a href="#" title="Trendy Summer Fashion">Trendy Summer Fashion</a></h3>
-											</div>
-											<p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses...</p>
-											<a href="#" title="Read More">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-sm-6 blog-masonry-box">
-									<div class="type-post">
-										<div class="entry-cover">
-											<div class="post-meta">
-												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
-											</div>
-											<a href="#"><img src="http://placehold.it/370x370" alt="Post" /></a>
-										</div>
-										<div class="entry-content">
-											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="TRAVEL">TRAVEL</a></span>
-												<h3 class="entry-title"><a href="#" title="Beautiful Rio de Janeiro">Beautiful Rio de Janeiro </a></h3>
-											</div>
-											<p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely...</p>
-											<a href="#" title="Read More">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-sm-6 blog-masonry-box">
-									<div class="type-post">
-										<div class="entry-cover">
-											<div class="post-meta">
-												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
-											</div>
-											<a href="#"><img src="http://placehold.it/370x370" alt="Post" /></a>
-										</div>
-										<div class="entry-content">
-											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="LIFESTYLE">LIFESTYLE</a></span>
-												<h3 class="entry-title"><a href="#" title="New Fashion Outfits">New Fashion Outfits</a></h3>
-											</div>
-											<p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses...</p>
-											<a href="#" title="Read More">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-sm-6 blog-masonry-box">
-									<div class="type-post">
-										<div class="entry-cover">
-											<div class="post-meta">
-												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
-											</div>
-											<a href="#"><img src="http://placehold.it/370x555" alt="Post" /></a>
-										</div>
-										<div class="entry-content">
-											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="TECHNOLOGY">TECHNOLOGY</a></span>
-												<h3 class="entry-title"><a href="#" title="Traffic Jams Solved">Traffic Jams Solved</a></h3>
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
 											</div>
 											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
 											<a href="#" title="Read More">Read More</a>
@@ -526,19 +433,20 @@
 									</div>
 								</div>
 								<div class="col-lg-4 col-sm-6 blog-masonry-box">
-									<div class="type-post post-position">
+									<div class="type-post">
 										<div class="entry-cover">
 											<div class="post-meta">
 												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
 												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
 											</div>
-											<a href="#"><img src="http://placehold.it/370x370" alt="Post" /></a>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
 										</div>
 										<div class="entry-content">
 											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
-												<h3 class="entry-title"><a href="#" title="Eat More Healthy and Live Longer Life">Eat More Healthy and Live Longer Life</a></h3>
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
 											</div>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
 											<a href="#" title="Read More">Read More</a>
 										</div>
 									</div>
@@ -550,14 +458,14 @@
 												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
 												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
 											</div>
-											<a href="#"><img src="http://placehold.it/370x555" alt="Post" /></a>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
 										</div>
 										<div class="entry-content">
 											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="TRAVEL">TRAVEL</a></span>
-												<h3 class="entry-title"><a href="#" title="Hammock Camping Tips">Hammock Camping Tips</a></h3>
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
 											</div>
-											<p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely...</p>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
 											<a href="#" title="Read More">Read More</a>
 										</div>
 									</div>
@@ -569,14 +477,14 @@
 												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
 												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
 											</div>
-											<a href="#"><img src="http://placehold.it/370x370" alt="Post" /></a>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
 										</div>
 										<div class="entry-content">
 											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="TRAVEL">TRAVEL</a></span>
-												<h3 class="entry-title"><a href="#" title="Winter Outdoor">Winter Outdoor</a></h3>
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
 											</div>
-											<p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses...</p>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
 											<a href="#" title="Read More">Read More</a>
 										</div>
 									</div>
@@ -588,19 +496,110 @@
 												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
 												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
 											</div>
-											<a href="#"><img src="http://placehold.it/370x241" alt="Post" /></a>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
 										</div>
 										<div class="entry-content">
 											<div class="entry-header">	
-												<span class="post-category"><a href="#" title="LIFESTYLE">LIFESTYLE</a></span>
-												<h3 class="entry-title"><a href="#" title="Furniture Layout">Furniture Layout</a></h3>
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
 											</div>
-											<p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses...</p>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
+											<a href="#" title="Read More">Read More</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-sm-6 blog-masonry-box">
+									<div class="type-post">
+										<div class="entry-cover">
+											<div class="post-meta">
+												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
+												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
+											</div>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
+										</div>
+										<div class="entry-content">
+											<div class="entry-header">	
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
+											</div>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
+											<a href="#" title="Read More">Read More</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-sm-6 blog-masonry-box">
+									<div class="type-post">
+										<div class="entry-cover">
+											<div class="post-meta">
+												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
+												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
+											</div>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
+										</div>
+										<div class="entry-content">
+											<div class="entry-header">	
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
+											</div>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
+											<a href="#" title="Read More">Read More</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-sm-6 blog-masonry-box">
+									<div class="type-post">
+										<div class="entry-cover">
+											<div class="post-meta">
+												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
+												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
+											</div>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
+										</div>
+										<div class="entry-content">
+											<div class="entry-header">	
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
+											</div>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
+											<a href="#" title="Read More">Read More</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-sm-6 blog-masonry-box">
+									<div class="type-post">
+										<div class="entry-cover">
+											<div class="post-meta">
+												<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
+												<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
+											</div>
+											<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
+										</div>
+										<div class="entry-content">
+											<div class="entry-header">	
+												<span class="post-category"><a href="#" title="NATURE">NATURE</a></span>
+												<h3 class="entry-title"><a href="#" title="Cliff Sunset Sea View">Cliff Sunset Sea View</a></h3>
+											</div>
+											<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings...</p>
 											<a href="#" title="Read More">Read More</a>
 										</div>
 									</div>
 								</div>
 							</div><!-- Row /- -->
+							<h3>나눔 게시판</h3><h3>공지사항이였나...</h3>
+							<div class="col-6" style="border:1px solid red; float:left" >
+								나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판
+								나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판
+								나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판
+								나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판나눔 게시판
+							</div>
+							
+							<div class="col-6" style="border:1px solid red; float:left" >
+								여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?
+								여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?
+								여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?
+								여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?여기는뭐죠?
+							</div>
+							<br>
 							<!-- Pagination -->
 							<nav class="navigation pagination">
 								<h2 class="screen-reader-text">Posts navigation</h2>

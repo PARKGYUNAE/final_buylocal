@@ -25,10 +25,11 @@
 			<div class="container-fluid no-left-padding no-right-padding page-content">
 				<!-- container -->	
 				<div align="center">
-				<h1>핫딜</h1><br>
+				<h1>핫딜</h1>
+				</div>
+				<hr>
 				<h5><a style="margin-left:40%">한식</a></h5><h5><a style="margin-left:5%">중식</a></h5>
 				<h5><a style="margin-left:5%">양식</a></h5><h5><a style="margin-left:5%">일식</a></h5>
-				</div>
 				<br>
 				<hr><br>
 				
@@ -227,6 +228,21 @@
 								</div>
 							</div>
 						</div>
+						<!-- Pagination -->
+						<nav class="navigation pagination">
+							<h2 class="screen-reader-text">Posts navigation</h2>
+							<div class="nav-links">
+								<a class="prev page-numbers" href="#">Previous</a>
+								<span class="page-numbers current">
+									<span class="meta-nav screen-reader-text">Page </span>1
+								</span>
+								<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>2</a>
+								<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>3</a>
+								<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>...</a>
+								<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>6</a>
+								<a class="next page-numbers" href="#">Next</a>
+							</div>
+						</nav><!-- Pagination /- -->
 					</div><!-- Row /- -->
 				</div><!-- container /- -->
 			</div><!-- Aboute-me Section /- -->

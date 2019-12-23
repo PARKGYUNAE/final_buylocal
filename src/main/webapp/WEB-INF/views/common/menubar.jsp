@@ -104,11 +104,74 @@
 						<ul class="navbar-nav">							
 							<c:url var="hotDealMenu" value="hotDealMenu.do"/>
 							<c:url var="main" value="main.do"/>
-							<li style="float:left; margin-top:14px; margin-left:14px"><a class="nav-link" title="Features" href="index.jsp"><h5>전체보기</h5></a></li>
-							<li style="float:left; margin-top:14px; margin-left:14px"><a class="nav-link" title="Archives" href="#"><h5>떙처리</h5></a></li>
-							<li style="float:left; margin-top:14px; margin-left:14px"><a class="nav-link" title="Archives" href="${hotDealMenu}"><h5>핫딜</h5></a></li>
-							<li style="float:left; margin-top:14px; margin-left:14px"><a class="nav-link" title="Archives" href="#"><h5>나눔게시판</h5></a></li>
-							<li style="float:left; margin-top:14px; margin-left:14px"><a class="nav-link" title="Archives" href="#"><h5>고객센터</h5></a></li>
+							<li class="dropdown" id="all">
+								<i class="ddl-switch fa fa-angle-down"></i>
+								<a class="nav-link dropdown-toggle" title="Home" href="index.jsp">전체보기</a>
+								<ul class="dropdown-menu">
+								</ul>
+							</li>
+							<li class="dropdown" id="asdf">
+								<i class="ddl-switch fa fa-angle-down"></i>
+								<c:url var="ttang" value="ttangMain.do"/>
+								<a class="nav-link dropdown-toggle" title="Posts" href="${ttang }">떙처리!</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="index-12.html" title="Home Food">Home Food</a></li>
+									<li><a class="dropdown-item" href="index-13.html" title="Home Technology">Home Technology</a></li>
+									<li><a class="dropdown-item" href="index-14.html" title="Home Beauty">Home Beauty</a></li>
+									<li><a class="dropdown-item" href="index-15.html" title="Home Fashion">Home Fashion</a></li>
+									<li><a class="dropdown-item" href="index-16.html" title="Home Travel">Home Travel</a></li>
+									<li><a class="dropdown-item" href="index-17.html" title="Home Industrial">Home Industrial</a></li>
+									<li><a class="dropdown-item" href="index-18.html" title="Home Business">Home Business</a></li>
+									<li><a class="dropdown-item" href="index-19.html" title="Home Fitness">Home Fitness</a></li>
+									<li><a class="dropdown-item" href="index-20.html" title="Home Architecture">Home Architecture</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<i class="ddl-switch fa fa-angle-down"></i>
+								<c:url var="hotDeal" value="hotDealMenu.do"/>
+								<a class="nav-link dropdown-toggle" title="Posts" href="${hotDeal }">핫딜</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="index-12.html" title="Home Food">Home Food</a></li>
+									<li><a class="dropdown-item" href="index-13.html" title="Home Technology">Home Technology</a></li>
+									<li><a class="dropdown-item" href="index-14.html" title="Home Beauty">Home Beauty</a></li>
+									<li><a class="dropdown-item" href="index-15.html" title="Home Fashion">Home Fashion</a></li>
+									<li><a class="dropdown-item" href="index-16.html" title="Home Travel">Home Travel</a></li>
+									<li><a class="dropdown-item" href="index-17.html" title="Home Industrial">Home Industrial</a></li>
+									<li><a class="dropdown-item" href="index-18.html" title="Home Business">Home Business</a></li>
+									<li><a class="dropdown-item" href="index-19.html" title="Home Fitness">Home Fitness</a></li>
+									<li><a class="dropdown-item" href="index-20.html" title="Home Architecture">Home Architecture</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<i class="ddl-switch fa fa-angle-down"></i>
+								<a class="nav-link dropdown-toggle" title="Posts" href="#">나눔게시판</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="index-12.html" title="Home Food">Home Food</a></li>
+									<li><a class="dropdown-item" href="index-13.html" title="Home Technology">Home Technology</a></li>
+									<li><a class="dropdown-item" href="index-14.html" title="Home Beauty">Home Beauty</a></li>
+									<li><a class="dropdown-item" href="index-15.html" title="Home Fashion">Home Fashion</a></li>
+									<li><a class="dropdown-item" href="index-16.html" title="Home Travel">Home Travel</a></li>
+									<li><a class="dropdown-item" href="index-17.html" title="Home Industrial">Home Industrial</a></li>
+									<li><a class="dropdown-item" href="index-18.html" title="Home Business">Home Business</a></li>
+									<li><a class="dropdown-item" href="index-19.html" title="Home Fitness">Home Fitness</a></li>
+									<li><a class="dropdown-item" href="index-20.html" title="Home Architecture">Home Architecture</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<i class="ddl-switch fa fa-angle-down"></i>
+								<a class="nav-link dropdown-toggle" title="Posts" href="#">고객센터</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="index-12.html" title="Home Food">Home Food</a></li>
+									<li><a class="dropdown-item" href="index-13.html" title="Home Technology">Home Technology</a></li>
+									<li><a class="dropdown-item" href="index-14.html" title="Home Beauty">Home Beauty</a></li>
+									<li><a class="dropdown-item" href="index-15.html" title="Home Fashion">Home Fashion</a></li>
+									<li><a class="dropdown-item" href="index-16.html" title="Home Travel">Home Travel</a></li>
+									<li><a class="dropdown-item" href="index-17.html" title="Home Industrial">Home Industrial</a></li>
+									<li><a class="dropdown-item" href="index-18.html" title="Home Business">Home Business</a></li>
+									<li><a class="dropdown-item" href="index-19.html" title="Home Fitness">Home Fitness</a></li>
+									<li><a class="dropdown-item" href="index-20.html" title="Home Architecture">Home Architecture</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 					<div id="loginpanel-1" class="desktop-hide">

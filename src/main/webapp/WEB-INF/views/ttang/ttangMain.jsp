@@ -25,10 +25,12 @@
 			<div class="container-fluid no-left-padding no-right-padding page-content">
 				<!-- container -->	
 				<div align="center">
-				<h1>땡처리</h1>
+				<h1>떙처리</h1>
+				</div>
+				<hr>
+				
 				<h5><a style="margin-left:40%">한식</a></h5><h5><a style="margin-left:5%">중식</a></h5>
 				<h5><a style="margin-left:5%">양식</a></h5><h5><a style="margin-left:5%">일식</a></h5>
-				</div>
 				<br>
 				<hr><br>
 				
