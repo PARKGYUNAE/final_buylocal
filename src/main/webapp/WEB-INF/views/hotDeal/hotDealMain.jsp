@@ -11,6 +11,15 @@
 		cursor:pointer;
 		float:left;
 	}
+	#insertBtn{
+		border-radius:10px; 
+		width:30%; 
+		margin-left:40%;
+		cursor:pointer;
+	}
+	#insertBtn:hover{
+		background: gray;
+	}
 </style>
 </head>
 <body>
@@ -229,6 +238,10 @@
 							</div>
 						</div>
 						<!-- Pagination -->
+						<c:url var="insertHotDeal" value="insertHotDeal.do"/>
+						<button onclick="location.href='${insertHotDeal}'" id="insertBtn">게시글 등록</button>
+						
+						
 						<nav class="navigation pagination">
 							<h2 class="screen-reader-text">Posts navigation</h2>
 							<div class="nav-links">

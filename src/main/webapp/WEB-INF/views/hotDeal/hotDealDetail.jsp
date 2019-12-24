@@ -102,8 +102,9 @@
 										<li><a href="#" title=""><i class="ion-social-vimeo-outline"></i></a></li>
 									</ul>
 									</aside>
+										<c:url var="hotDealQnA" value="hotDealQnA.do"/>
 										<button class="detailBtn2">상품정보</button> <button class="detailBtn2">판매자정보</button> 
-										<button class="detailBtn2">상품문의</button>
+										<button class="detailBtn2" onclick="location.href='${hotDealQnA}'">상품문의</button>
 										<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
 										<h3 class="entry-title">Trendy Summer Fashion</h3>
 										<div class="post-meta">

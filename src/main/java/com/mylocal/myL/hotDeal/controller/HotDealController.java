@@ -16,4 +16,13 @@ public class HotDealController {
 		return "hotDeal/hotDealDetail";
 	}
 	
+	@RequestMapping("insertHotDeal.do")
+	public String insertHotDeal() {
+		return "hotDeal/insertHotDealForm";
+	}
+	
+	@RequestMapping("hotDealQnA.do")
+	public String hotDealQnA() {
+		return "hotDeal/hotDealQnA";
+	}
 }
