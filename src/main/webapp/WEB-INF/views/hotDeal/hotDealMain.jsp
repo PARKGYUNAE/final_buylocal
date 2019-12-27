@@ -257,7 +257,7 @@
 							</div>
 						</nav><!-- Pagination /- -->
 					</div><!-- Row /- -->
-				</div><!-- container /- -->
+				</div>container /-
 			</div><!-- Aboute-me Section /- -->
 		</main>
 

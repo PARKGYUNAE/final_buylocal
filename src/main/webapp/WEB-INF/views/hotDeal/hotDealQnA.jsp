@@ -19,7 +19,6 @@
 	}
 	#insertTable tr{
 		height:100px;
-		border-bottom: 1px solid black;
 	}
 </style>
 </head>
