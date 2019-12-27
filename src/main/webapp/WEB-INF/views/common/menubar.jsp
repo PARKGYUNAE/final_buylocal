@@ -47,7 +47,7 @@
                                 <div class="header__main-inner">
                                     <div class="header__main-left">
                                         <div class="logo">
-                                            <a href="index.html" class="logo--normal">
+                                            <a href="<%=request.getContextPath() %>" class="logo--normal">
                                                 <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
@@ -355,21 +355,7 @@
             </div>
         </header>
         <!-- Header End -->
-         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h1 class="page-title">Shop Left Sidebar</h1>
-                        <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>Shop Left Sidebar</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Breadcrumb area End -->
+        
         <!-- ************************* JS Files ************************* -->
 
 	    <!-- jQuery JS -->
