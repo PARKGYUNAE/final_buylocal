@@ -146,11 +146,11 @@
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
                                                     <a href="" class="mainmenu__link">
-                                                    <c:url var="ttang" value="ttangMain.do"/>	
                                                         <span class="mm-text">땡처리</span>
                                                     </a>
                                                     <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
+                                            	            <c:url var="ttang" value="ttangMain.do"/>	
                                                             <a title="ttang" href="${ttang}">
                                                                 <span class="mm-text">식품류</span>
                                                             </a>
@@ -296,7 +296,82 @@
             </div>
         </header>
         <!-- Header End -->
-
+        
+          <!-- Mini Cart Start -->
+        <aside class="mini-cart" id="miniCart">
+            <div class="mini-cart-wrapper">
+                <div class="mini-cart__close">
+                    <a href="#" class="btn-close"><i class="la la-remove"></i></a>
+                </div>
+                <div class="mini-cart-inner">
+                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
+                    <div class="mini-cart__content">
+                        <ul class="mini-cart__list">
+                            <li class="mini-cart__product">
+                                <a href="#" class="mini-cart__product-remove">
+                                    <i class="la la-remove"></i>
+                                </a>
+                                <div class="mini-cart__product-image">
+                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
+                                </div>
+                                <div class="mini-cart__product-content">
+                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
+                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
+                                </div>
+                            </li>
+                            <li class="mini-cart__product">
+                                <a href="#" class="mini-cart__product-remove">
+                                    <i class="la la-remove"></i>
+                                </a>
+                                <div class="mini-cart__product-image">
+                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
+                                </div>
+                                <div class="mini-cart__product-content">
+                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
+                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
+                                </div>
+                            </li>
+                            <li class="mini-cart__product">
+                                <a href="#" class="mini-cart__product-remove">
+                                    <i class="la la-remove"></i>
+                                </a>
+                                <div class="mini-cart__product-image">
+                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
+                                </div>
+                                <div class="mini-cart__product-content">
+                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
+                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mini-cart__total">
+                            <span>Subtotal</span>
+                            <span class="ammount">$98.00</span>
+                        </div>
+                        <div class="mini-cart__buttons">
+                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
+                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Mini Cart End -->
+        
+        
+        <!-- Searchform Popup Start -->
+        <div class="searchform__popup" id="searchForm">
+            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
+            <div class="searchform__body">
+                <p>검색어를 입력하세요</p>
+                <form class="searchform">
+                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="지역, 상품, 업체 등 을 검색해보세요">
+                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
+                </form>
+            </div>
+        </div>
+        
+	</div>
 	
 </body>
 </html>

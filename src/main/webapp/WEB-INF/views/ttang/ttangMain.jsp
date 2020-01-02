@@ -44,10 +44,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Shop Left Sidebar</h1>
+                        <h1 class="page-title">땡처리게시판</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>Shop Left Sidebar</span></li>
+                            <li class="current"><span>식품류</span></li>
+                            <li class="current"><span>기타</span></li>
                         </ul>
                     </div>
                 </div>
@@ -67,19 +68,19 @@
                                         <div class="shop-toolbar__left">
                                             <div class="product-ordering">
                                                 <select class="product-ordering__select nice-select">
-                                                    <option value="0">Default Sorting</option>
-                                                    <option value="1">Relevance</option>
-                                                    <option value="2">Name, A to Z</option>
-                                                    <option value="3">Name, Z to A</option>
-                                                    <option value="4">Price, low to high</option>
-                                                    <option value="5">Price, high to low</option>
+                                                    <option value="0">기본정렬순</option>
+                                                    <option value="1">관련순</option>
+                                                    <option value="2">이름순, ㄱ-ㅎ</option>
+                                                    <option value="3">이름순, ㅎ-ㄱ</option>
+                                                    <option value="4">낮은가격순</option>
+                                                    <option value="5">높은가격순</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
-                                            <p class="product-pages">Showing Result  08 Among  72</p>
+                                            <p class="product-pages">총 888개의 상품이 있습니다.</p>
                                             <div class="product-view-mode ml--50 ml-xs--0">
                                                 <a class="active" href="#" data-target="grid">
                                                     <img src="assets/img/icons/grid.png" alt="Grid">
@@ -99,9 +100,10 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                        <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
                                                     </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
+                                                    <c:url var="ttangD" value="ttangDetail.do"/>
+                                                    <a href="${ttangD}" class="product-overlay"></a>
                                                     <div class="product-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn">
                                                             <i class="la la-eye"></i>
@@ -116,16 +118,16 @@
                                                 </div>
                                                 <div class="product-info">
                                                     <div class="product-category">
-                                                        <a href="product-details.html">Chair</a>
+                                                        <a href="${ttangD}">맛있는 제주감귤 10KG</a>
                                                     </div>
-                                                    <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                    <h3 class="product-title"><a href="${ttangD}">제주도 남쪽 해안에서 자란 건강하고 맛있는 귤!</a></h3>
                                                     <div class="product-info-bottom">
                                                         <div class="product-price-wrapper">
-                                                            <span class="money">$150</span>
+                                                            <span class="money">9,900원</span>
                                                         </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
+                                                        <a href="#" class="add-to-cart pr--15">
                                                             <i class="la la-plus"></i>
-                                                            <span>Add To Cart</span>
+                                                            <span>장바구니</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -135,7 +137,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-04-270x300.jpg" alt="Products">
+                                                        <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -145,10 +147,11 @@
                                                 </figure>
                                                 <div class="product-info">
                                                     <h3 class="product-title mb--25">
-                                                        <a href="product-details.html">Long Cartigen</a>
+                                                        <a href="${ttangD}">맛있는 제주감귤 10KG</a>
                                                     </h3>
                                                     <div class="ft-product-action-list mb--20">
-                                                        <div class="product-size mb--25">
+                                                    	<!-- 옵션 -->
+                                                       <!--  <div class="product-size mb--25">
                                                             <div class="product-size-swatch">
                                                                 <span class="product-size-swatch-btn variation-btn">
                                                                     XL
@@ -179,18 +182,17 @@
                                                                     Old Rose
                                                                 </span>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <div class="product-price-wrapper mb--15 mb-sm--10">
-                                                        <span class="money">$80</span>
-                                                        <span class="money-separator">-</span>
-                                                        <span class="money">$200</span>
+                                                        <span class="money" style="text-decoration:line-through;">12,000원</span>
+                                                        <span class="money">9,900원</span>
                                                     </div>
                                                     <p class="product-short-description mb--20">
-                                                        Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra
-                                                    </p>  
+농가의 환경은 감율의 당도에 큰 영향을 미쳐요. 귤은 일정한 일조량은 물론, 건강한 토양, 그리고 바다와 가까울수록 산도가 적절히 빠져 최고의 맛을 낼 수 있는데요, 우리 감귤은 제주도 남쪽 해안가에 위치하여 이 모든 조건을 만족하는 건강한 환경에서 자라난 귤이랍니다!                                                   
+													 </p>  
                                                     <div class="ft-product-action-list d-flex align-items-center">
-                                                        <a href="cart.html" class="btn btn-size-md">Add To Cart</a>
+                                                        <a href="cart.html" class="btn btn-size-md">장바구니</a>
                                                         <a href="wishlist.html" class="ml--20 action-btn">
                                                             <i class="la la-heart-o"></i>
                                                         </a>
@@ -1086,49 +1088,44 @@
                                     <ul class="widget-list category-list">
                                         <li>
                                             <a href="shop.html">
-                                                <span class="category-title">Winter Collection</span>
+                                                <span class="category-title">한식</span>
                                                 <i class="fa fa-angle-double-right"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="shop.html">
-                                                <span class="category-title">Women’s Clothes</span>
+                                                <span class="category-title">중식</span>
                                                 <i class="fa fa-angle-double-right"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="shop.html">
-                                                <span class="category-title">Men’s Clothes</span>
+                                                <span class="category-title">일식</span>
                                                 <i class="fa fa-angle-double-right"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="shop.html">
-                                                <span class="category-title">Kid’s Clothes</span>
+                                                <span class="category-title">양식</span>
                                                 <i class="fa fa-angle-double-right"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="shop.html">
-                                                <span class="category-title">Uncategorized</span>
+                                                <span class="category-title">커피/제과</span>
                                                 <i class="fa fa-angle-double-right"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="shop.html">
-                                                <span class="category-title">Accessories</span>
-                                                <i class="fa fa-angle-double-right"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="category-title">New Arrival</span>
+                                                <span class="category-title">기타</span>
                                                 <i class="fa fa-angle-double-right"></i>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="shop-widget mb--40">
+                                <!-- 컬러별 카테고라이징 -->
+                                <!-- <div class="shop-widget mb--40">
                                     <h3 class="widget-title mb--30">Color</h3>
                                     <div class="widget-color">
                                         <a href="shop.html" class="red">Red</a>
@@ -1140,8 +1137,9 @@
                                         <a href="shop.html" class="copper">copper</a>
                                         <a href="shop.html" class="gray">grey</a>
                                     </div>
-                                </div>
-                                <div class="shop-widget mb--40">
+                                </div> -->
+                                <!-- 가격순 카테고라이징 -->
+                                <!-- <div class="shop-widget mb--40">
                                     <h3 class="widget-title mb--25">Price</h3>
                                     <ul class="widget-list price-list">
                                         <li>
@@ -1163,8 +1161,9 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="shop-widget mb--40">
+                                </div> -->
+                                <!-- 브랜드별 카테고라이징 -->
+                               <!--  <div class="shop-widget mb--40">
                                     <h3 class="widget-title mb--25">Brand</h3>
                                     <ul class="widget-list brand-list">
                                         <li>
@@ -1192,21 +1191,18 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <div class="shop-widget">
-                                    <h3 class="widget-title mb--25">Tag</h3>
+                                    <h3 class="widget-title mb--25">태그</h3>
                                     <div class="tagcloud">
-                                        <a href="shop.html">Cloth</a>
-                                        <a href="shop.html">Blazer</a>
-                                        <a href="shop.html">Jacket</a>
-                                        <a href="shop.html">Polo Shirt</a>
-                                        <a href="shop.html">T-Shirt</a>
-                                        <a href="shop.html">Shoes</a>
-                                        <a href="shop.html">Pant</a>
-                                        <a href="shop.html">Party Dress</a>
-                                        <a href="shop.html">Coktail Dress</a>
-                                        <a href="shop.html">Sweater</a>
-                                        <a href="shop.html">Jeans</a>
+                                    	<!-- 클릭시, 검색 가능하게 -->
+                                        <a href="#">제철과일</a>
+                                        <a href="#">단품식사</a>
+                                        <a href="#">혼밥</a>
+                                        <a href="#">가성비</a>
+                                        <a href="#">집밥</a>
+                                        <a href="#">다이어트</a>
+                                        <a href="#">야식</a>
                                     </div>
                                 </div>
                             </aside>
@@ -1217,305 +1213,11 @@
         </div>
         <!-- Main Content Wrapper Start -->
 
-        <!-- Footer Start-->
-        <footer class="footer bg-color" data-bg-color="#f4f8fa">
-            <div class="footer-top">
-                <div class="container-fluid">
-                    <div class="row border-bottom pt--70 pb--70">
-                        <div class="col-lg-3 col-sm-6 offset-md-1 offset-lg-0 mb-md--45">
-                            <div class="footer-widget">
-                                <div class="textwidget">
-                                    <figure class="footer-logo mb--30">
-                                        <img src="assets/img/logo/logo.png" alt="Logo">
-                                    </figure>
-                                    <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-3 offset-lg-1 offset-sm-2 mb-md--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Company</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="index.html">About Us</a></li>
-                                        <li><a href="blog.html">Blogs</a></li>
-                                        <li><a href="#">Careers</a></li>
-                                        <li><a href="contact-us.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 offset-md-1 offset-lg-0 mb-xs--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Product</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Customers</a></li>
-                                        <li><a href="#">Demos</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 mb-xs--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Helps</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Introduction</a></li>
-                                        <li><a href="#">Feedback</a></li>
-                                        <li><a href="#">Referals</a></li>
-                                        <li><a href="#">Network Status</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Social Network</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Facebook</a></li>
-                                        <li><a href="#">Twitter</a></li>
-                                        <li><a href="#">Linkedin</a></li>
-                                        <li><a href="#">Google +</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-middle ptb--40">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-11">
-                            <div class="footer-widget">
-                                <div class="taglist">
-                                    <span>Tags:</span>
-                                    <a href="#">Minimal eCommerce</a>
-                                    <a href="#">Marketing</a>
-                                    <a href="#">User Exprience</a>
-                                    <a href="#">Ali Express</a>
-                                    <a href="#">Web</a>
-                                    <a href="#">Digital Expo</a>
-                                    <a href="#">Web Search</a>
-                                    <a href="#">Affiliate</a>
-                                    <a href="#">UCWeb</a>
-                                    <a href="#">Support</a>
-                                    <a href="#">Template</a>
-                                    <a href="#">Best Queality</a>
-                                    <a href="#">Mobile</a>
-                                    <a href="#">24 Support</a>
-                                    <a href="#">Ali Express</a>
-                                    <a href="#">Web</a>
-                                    <a href="#">Laptop</a>
-                                    <a href="#">Web Search</a>
-                                    <a href="#">Affiliate</a>
-                                    <a href="#">Photoshop</a>
-                                    <a href="#">Support</a>
-                                    <a href="#">Template</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="container-fluid">
-                    <div class="row border-top ptb--20">
-                        <div class="col-12 text-center">
-                            <p class="copyright-text">Beck &copy; 2019 all rights reserved</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Footer End-->
+    <c:import url="../common/footer.jsp"/>
 
-        <!-- OffCanvas Menu Start -->
-        <div class="offcanvas-menu-wrapper" id="offcanvasMenu">
-            <div class="offcanvas-menu-inner">
-                <a href="" class="btn-close">
-                    <i class="la la-remove"></i>
-                </a>
-                <nav class="offcanvas-navigation">
-                    <ul class="offcanvas-menu">
-                        <li class="menu-item-has-children active">
-                            <a href="#">Home</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="index.html">Homepage 01</a>
-                                </li>
-                                <li>
-                                    <a href="index-02.html">Homepage 02</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="shop.html">Shop</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">
-                                        <span class="mm-text">Shop Grid</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="shop-fullwidth.html">Full Width</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-right-sidebar.html">Right Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-three-columns.html">Three Columns</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-four-columns.html">Four Columns</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Shop List</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="shop-list.html">Full Width</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-sidebar.html">Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-right-sidebar.html">Right Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Product Details</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="product-details.html">Tab Style 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-tab-style-2.html">Tab Style 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-tab-style-3.html">Tab Style 3</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-gallery-left.html">Gallery Left</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-gallery-right.html">Gallery Right</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-sticky-left.html">Sticky Left</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-sticky-right.html">Sticky Right</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-slider-box.html">Slider Box</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-slider-full-width.html">Slider Box Full Width</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-affiliate.html">Affiliate Proudct</a>
-                                        </li>                                                    
-                                        <li>
-                                            <a href="product-details-variable.html">Variable Proudct</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-group.html">Group Product</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="blog.html">Blog</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog.html">Blog Right Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-01-column.html">Blog 01 column</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-02-columns.html">Blog 02 columns</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-03-columns.html">Blog 03 columns</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog Details</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="blog-details-audio.html">Audio Blog Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details-gallery.html">Gallery Blog Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details-image.html">image Blog Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details-video.html">Video Blog Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="my-account.html">My Account</a>
-                                </li>
-                                <li>
-                                    <a href="checkout.html">Checkout</a>
-                                </li>
-                                <li>
-                                    <a href="cart.html">Cart</a>
-                                </li>
-                                <li>
-                                    <a href="compare.html">Compare</a>
-                                </li>
-                                <li>
-                                    <a href="order-tracking.html">Track Order</a>
-                                </li>
-                                <li>
-                                    <a href="wishlist.html">Wishlist</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="contact-us.html">Contact Us</a>
-                        </li>
-                    </ul>
-                    <div class="site-info vertical">
-                        <div class="site-info__item">
-                            <a href="tel:+01223566678"><strong>+01 2235 666 78</strong></a>
-                            <a href="mailto:Support@contixs.com">Support@furtrate.com</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- OffCanvas Menu End -->
+ 
 
-        <!-- Mini Cart Start -->
+<!--         Mini Cart Start
         <aside class="mini-cart" id="miniCart">
             <div class="mini-cart-wrapper">
                 <div class="mini-cart__close">
@@ -1574,22 +1276,13 @@
                 </div>
             </div>
         </aside>
-        <!-- Mini Cart End -->
+        Mini Cart End -->
 
-        <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-            <div class="searchform__body">
-                <p>Start typing and press Enter to search</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
-                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
-                </form>
-            </div>
-        </div>
+        
         <!-- Searchform Popup End -->
 
-        <!-- Qicuk View Modal Start -->
+		<!-- 미리보기(퀵모달) -->
+       <%--  <!-- Qicuk View Modal Start -->
         <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1610,8 +1303,8 @@
                         >
                             <div class="product-image">
                                 <div class="product-image--holder">
-                                    <a href="product-details.html">
-                                        <img src="assets/img/products/prod-01.jpg" alt="Product Image" class="primary-image">
+                                    <a href="${ttangD}">
+                                        <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤" class="primary-image">
                                     </a>
                                 </div>
                                 <span class="product-badge sale">sale</span>
@@ -1723,7 +1416,7 @@
             </div>
           </div>
         </div>
-        <!-- Qicuk View Modal End -->
+        <!-- Qicuk View Modal End --> --%>
 
         <!-- Global Overlay Start -->
         <div class="global-overlay"></div>

@@ -25,7 +25,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900|Abril+Fatface' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+	
     <!-- Preloader Start -->
     <div class="ft-preloader active">
         <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
@@ -37,8 +37,8 @@
     <!-- Preloader End -->
  
     <!-- Main Wrapper Start -->
-    <div class="wrapper">
-        <!-- Header Start -->
+   <div class="wrapper">
+        Header Start
         <header class="header">
             <div class="header__inner fixed-header">
                 <div class="header__main">
@@ -79,9 +79,9 @@
                                                     </a>
                                                     <ul class="megamenu">
                                                         <li>
-                                                           <!--  <a class="megamenu-title" href="#">
+                                                            <a class="megamenu-title" href="#">
                                                                 <span class="mm-text">카테고리1</span>
-                                                            </a> -->
+                                                            </a>
                                                             <ul>
                                                                 <li>
                                                                     <a href="#">
@@ -111,9 +111,9 @@
                                                             </ul>
                                                         </li>
                                                         <li>
-                                                            <!-- <a class="megamenu-title" href="#">
+                                                            <a class="megamenu-title" href="#">
                                                               <span class="mm-text">카테고리2</span> 
-                                                            </a> -->
+                                                            </a>
                                                             <ul> 
                                                                 <li>
                                                                     <a href="#">
@@ -150,7 +150,8 @@
                                                     </a>
                                                     <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
-                                                            <a href="#">
+                                                        	<c:url var="ttang" value="ttangMain.do"/>
+                                                            <a title="ttang" href="${ttang}">
                                                                 <span class="mm-text">식품류</span>
                                                             </a>
                                                             <ul class="sub-menu">
@@ -293,7 +294,7 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> 
         <!-- Header End -->
 
         <!-- Main Content Wrapper Start -->
