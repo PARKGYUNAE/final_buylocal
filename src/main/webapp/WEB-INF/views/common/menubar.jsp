@@ -354,6 +354,7 @@
                 </div>
             </div>
         </header>
+        </div>
         <!-- Header End -->
         
         <!-- ************************* JS Files ************************* -->
@@ -363,6 +364,5 @@
 	
 	    <!-- Main JS -->
 	    <script src="resources/assets/js/main.js"></script>
-	</div>
 </body>
 </html>

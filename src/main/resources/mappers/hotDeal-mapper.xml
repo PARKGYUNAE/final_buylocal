@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hotDealMapper">
+	<resultMap id="hotDealSet" type="hotDeal">
+		<id property="hNo" column="H_NO"/>
+		<result property="hTitle" column="H_TITLE"/>
+		<result property="sNo" column="S_NO"/>
+		<result property="pNo" column="P_NO"/>
+		<result property="hDate" column="H_DATE"/>
+		<result property="lCode" column="L_CODE"/>
+		<result property="hStatus" column="H_STATUS"/>
+		<result property="cgName" column="CNAME"/>
+		<result property="pOriginalPrice" column="P_ORIGINALPRICE"/>
+		<result property="pFinalPrice" column="P_FINALPRICE"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="pAmount" column="P_AMOUNT"/>
+	</resultMap>
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM HOTDEAL
+		WHERE H_STATUS='Y'
+	</select>
+	<select id="selectList" resultMap="hotDealSet">
+		SELECT * 
+		FROM HOTDEAL JOIN PRODUCT USING(P_NO)
+		WHERE H_STATUS='Y'
+		ORDER BY H_NO DESC
+	</select>
+	
+	
+</mapper>

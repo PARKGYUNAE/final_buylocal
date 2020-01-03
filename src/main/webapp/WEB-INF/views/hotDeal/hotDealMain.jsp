@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 </head>
 <body>
 	<c:import url="../common/menubar.jsp" />
-	<br>
+
 	<!-- Breadcrumb area Start -->
 	<section class="page-title-area bg-image ptb--80"
 		data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
@@ -31,6 +33,9 @@
 		<div class="shop-page-wrapper ptb--80">
 			<div class="container">
 				<div class="row">
+				<c:url var="hotDealWishList" value="hotDealWishList.do"/>
+				<c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
+				<c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/>
 					<div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
 						<div class="shop-toolbar mb--50">
 							<div class="row align-items-center">
@@ -38,7 +43,7 @@
 									<div class="shop-toolbar__left">
 										<div class="product-ordering">
 											<select class="product-ordering__select nice-select">
-												<option value="0">Default Sorting</option>
+												<option value="0">정렬 기준</option>
 												<option value="1">Relevance</option>
 												<option value="2">Name, A to Z</option>
 												<option value="3">Name, Z to A</option>
@@ -49,54 +54,50 @@
 									</div>
 								</div>
 								<div class="col-md-7">
-									<div
-										class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
-										<p class="product-pages">Showing Result 08 Among 72</p>
+									<div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
 										<div class="product-view-mode ml--50 ml-xs--0">
-											<a class="active" href="#" data-target="grid"> <img
-												src="assets/img/icons/grid.png" alt="Grid">
-											</a> <a href="#" data-target="list"> <img
-												src="assets/img/icons/list.png" alt="Grid">
-											</a>
+											<a class="active" href="${hotDealInsertForm }" data-target="grid">상품등록하기</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="shop-products">
-							<div class="row">
+							<div class="row">	
+								<!-- 여기부터 -->
+								<c:forEach var="hot" items="${list }">
 								<div class="col-xl-4 col-sm-6 mb--50">
 									<div class="ft-product">
 										<div class="product-inner">
 											<div class="product-image">
 												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-04-270x300.jpg"
+													<img src="resources/assets/img/products/prod-02-270x300.jpg"
 														alt="Product">
 												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
+												<c:url var="hotDealDetail" value="hotDealDetail.do" />
+												<a href="${hotDealDetail }" class="product-overlay"></a>
 												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
+													<a href="${hotDealWishList }" class="action-btn"> <i
 														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
+													</a> 
 												</div>
 											</div>
 											<div class="product-info">
 												<div class="product-category">
-													<a href="product-details.html">Chair</a>
+													<a href="product-details.html">${hot.pName }</a>
 												</div>
 												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
+													<a href="product-details.html">${hot.hTitle }</a>
 												</h3>
-												<div class="product-info-bottom">
+												<div class="product-title">
 													<div class="product-price-wrapper">
-														<span class="money">$150</span>
+														<span class="money">할인 전 가격 : ${hot.pOriginalPrice }</span>
 													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
+													<div class="product-price-wrapper">
+														<span class="money">할인 후 가격 : ${hot.pFinalPrice }</span>
+													</div>
+													<a href="${hotDealBuyForm }" class="add-to-cart pr--15"> <i
+														class="la la-plus"></i> <span>장바구니</span>
 													</a>
 												</div>
 											</div>
@@ -106,7 +107,7 @@
 										<div class="product-inner">
 											<figure class="product-image">
 												<a href="product-details.html"> <img
-													src="assets/img/products/prod-04-270x300.jpg"
+													src="resources/assets/img/products/prod-02-270x300.jpg"
 													alt="Products">
 												</a>
 												<div class="product-thumbnail-action">
@@ -152,887 +153,91 @@
 													egestas magna molestie a. Proin ac ex maximus, ultrices
 													justo eget, sodales orci. Aliquam egestas libero ac turpis
 													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
+												<div class="ft-product-action-list d-flex align-items-center">
+													
+													<a href="${hotDealBuyForm}" class="btn btn-size-md">Add To Cart</a>
+													<a href="${hotDealWishList}" class="ml--20 action-btn"> <i
 														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
+													</a> <a href="${hotDealWishList}" class="ml--20 action-btn"> <i
 														class="la la-repeat"></i>
 													</a>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-01-270x300.jpg"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-01-270x300.jpg"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-02-270x300.jpg"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-02-270x300.jpg"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-03-270x300.jpg"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-03-270x300.jpg"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-05-270x300.jpg"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-05-270x300.jpg"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-06-270x300.jpg"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-06-270x300.jpg"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-08-270x300.png"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-08-270x300.png"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-09-270x300.png"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-09-270x300.png"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xl-4 col-sm-6 mb--50">
-									<div class="ft-product">
-										<div class="product-inner">
-											<div class="product-image">
-												<figure class="product-image--holder">
-													<img src="assets/img/products/prod-10-270x300.png"
-														alt="Product">
-												</figure>
-												<a href="product-details.html" class="product-overlay"></a>
-												<div class="product-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn"> <i class="la la-eye"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-info">
-												<div class="product-category">
-													<a href="product-details.html">Chair</a>
-												</div>
-												<h3 class="product-title">
-													<a href="product-details.html">Golden Easy Spot Chair.</a>
-												</h3>
-												<div class="product-info-bottom">
-													<div class="product-price-wrapper">
-														<span class="money">$150</span>
-													</div>
-													<a href="cart.html" class="add-to-cart pr--15"> <i
-														class="la la-plus"></i> <span>Add To Cart</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="ft-product-list">
-										<div class="product-inner">
-											<figure class="product-image">
-												<a href="product-details.html"> <img
-													src="assets/img/products/prod-10-270x300.png"
-													alt="Products">
-												</a>
-												<div class="product-thumbnail-action">
-													<a data-toggle="modal" data-target="#productModal"
-														class="action-btn quick-view"> <i class="la la-eye"></i>
-													</a>
-												</div>
-											</figure>
-											<div class="product-info">
-												<h3 class="product-title mb--25">
-													<a href="product-details.html">Long Cartigen</a>
-												</h3>
-												<div class="ft-product-action-list mb--20">
-													<div class="product-size mb--25">
-														<div class="product-size-swatch">
-															<span class="product-size-swatch-btn variation-btn">
-																XL </span> <span class="product-size-swatch-btn variation-btn">
-																L </span> <span class="product-size-swatch-btn variation-btn">
-																M </span> <span class="product-size-swatch-btn variation-btn">
-																S </span>
-														</div>
-													</div>
-													<div class="product-color">
-														<div class="product-color-swatch">
-															<span
-																class="product-color-swatch-btn variation-btn abbey">
-																Abbey </span> <span
-																class="product-color-swatch-btn variation-btn blue">
-																Blue </span> <span
-																class="product-color-swatch-btn variation-btn copper">
-																Copper </span> <span
-																class="product-color-swatch-btn variation-btn old-rose">
-																Old Rose </span>
-														</div>
-													</div>
-												</div>
-												<div class="product-price-wrapper mb--15 mb-sm--10">
-													<span class="money">$80</span> <span
-														class="money-separator">-</span> <span class="money">$200</span>
-												</div>
-												<p class="product-short-description mb--20">Donec
-													accumsan auctor iaculis. Sed suscipit arcu ligula, at
-													egestas magna molestie a. Proin ac ex maximus, ultrices
-													justo eget, sodales orci. Aliquam egestas libero ac turpis
-													pharetra</p>
-												<div
-													class="ft-product-action-list d-flex align-items-center">
-													<a href="cart.html" class="btn btn-size-md">Add To Cart</a>
-													<a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-heart-o"></i>
-													</a> <a href="wishlist.html" class="ml--20 action-btn"> <i
-														class="la la-repeat"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								</div> <!-- 여기까지가 한개의 상품 리스트 아래 부분은 미리보기 기능임 -->
+								</c:forEach>
 							</div>
 						</div>
 						<nav class="pagination-wrap">
 							<ul class="pagination">
-								<li><span class="page-number current">1</span></li>
-								<li><a href="#" class="page-number">2</a></li>
-								<li><span class="dot"></span></li>
-								<li><span class="dot"></span></li>
-								<li><span class="dot"></span></li>
-								<li><a href="#" class="page-number">16</a></li>
+								<c:if test="${pi.currentPage <=1 }">
+									<li><span class="page-number current">&lt;&lt;</span></li>
+								</c:if>
+								<c:if test="${pi.currentPage > 1 }">
+									<c:url var="before" value="${hotDeal }">
+										<c:param name="page" value="${pi.currentPage-1 }"/>
+									</c:url>
+									<li><a class="page-number" href="${before }">&lt;&lt;</a></li>
+								</c:if>
+								<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+									<c:if test="${p eq pi.currentPage }">
+										<li><span class="page-number current">${p }</span></li>
+									</c:if>
+									<c:if test="${p ne pi.currentPage }">
+										<c:url var="pagination" value="${hotDeal }">
+											<c:param name="page" value="${p }"/>
+										</c:url>
+										<li><a href="${pagination }" class="page-number">${p }</a></li>
+									</c:if>
+								</c:forEach>
+								<!-- [다음] -->
+								<c:if test="${pi.currentPage >= pi.maxPage}">
+									<li><span class="page-number current">&gt;&gt;</span></li>
+								</c:if>
+								<c:if test="${pi.currentPage < pi.maxPage }">
+									<c:url var="after" value="${hotDeal }">
+										<c:param name="page" value="${pi.currentPage + 1 }"/>
+									</c:url>
+									<li><a class="page-number" href="${after }">&gt;&gt;</a></li>
+								</c:if> 
 							</ul>
 						</nav>
 					</div>
 					<div class="col-xl-3 col-lg-4 order-lg-1">
 						<aside class="shop-sidebar">
 							<div class="shop-widget mb--40">
-								<h3 class="widget-title mb--25">Category</h3>
+								<h3 class="widget-title mb--25">카테고리</h3>
 								<ul class="widget-list category-list">
-									<li><a href="shop.html"> <span class="category-title">Winter
-												Collection</span> <i class="fa fa-angle-double-right"></i>
-									</a></li>
-									<li><a href="shop.html"> <span class="category-title">Women’s
-												Clothes</span> <i class="fa fa-angle-double-right"></i>
-									</a></li>
-									<li><a href="shop.html"> <span class="category-title">Men’s
-												Clothes</span> <i class="fa fa-angle-double-right"></i>
-									</a></li>
-									<li><a href="shop.html"> <span class="category-title">Kid’s
-												Clothes</span> <i class="fa fa-angle-double-right"></i>
-									</a></li>
-									<li><a href="shop.html"> <span class="category-title">Uncategorized</span>
-											<i class="fa fa-angle-double-right"></i>
-									</a></li>
-									<li><a href="shop.html"> <span class="category-title">Accessories</span>
-											<i class="fa fa-angle-double-right"></i>
-									</a></li>
-									<li><a href="shop.html"> <span class="category-title">New
-												Arrival</span> <i class="fa fa-angle-double-right"></i>
-									</a></li>
+									<li><a href="shop.html"> <span class="category-title">디지털/가전</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">의류/패션잡화</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">뷰티/미용</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">스포츠/레져</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">도서/티켓/음반</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">가구/인테리어</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">신선/가공식품</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">게임/취미</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">반려동물용품</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="shop.html"> <span class="category-title">기타</span> <i class="fa fa-angle-double-right"></i></a></li>
 								</ul>
 							</div>
+							
 							<div class="shop-widget mb--40">
-								<h3 class="widget-title mb--30">Color</h3>
-								<div class="widget-color">
-									<a href="shop.html" class="red">Red</a> <a href="shop.html"
-										class="pink">Pink</a> <a href="shop.html" class="black">black</a>
-									<a href="shop.html" class="brown">brown</a> <a href="shop.html"
-										class="blue">blue</a> <a href="shop.html" class="cholate">cholate</a>
-									<a href="shop.html" class="copper">copper</a> <a
-										href="shop.html" class="gray">grey</a>
-								</div>
-							</div>
-							<div class="shop-widget mb--40">
-								<h3 class="widget-title mb--25">Price</h3>
+								<h3 class="widget-title mb--25">가격</h3>
 								<ul class="widget-list price-list">
 									<li><a href="shop.html"> <span>Low - Medium</span> <strong
-											class="font-weight-medium">$10.00 - $45.00</strong>
+											class="font-weight-medium">10만원 이하</strong>
 									</a></li>
 									<li><a href="shop.html"> <span>Medium - High</span> <strong
-											class="font-weight-medium">$45.00 - $60.00</strong>
+											class="font-weight-medium">10 ~ 30만원이하</strong>
 									</a></li>
 									<li><a href="shop.html"> <span>High - Avobe</span> <strong
-											class="font-weight-medium">$60.00 - $200</strong>
+											class="font-weight-medium">30만원 초과</strong>
 									</a></li>
 								</ul>
 							</div>
 							<div class="shop-widget mb--40">
-								<h3 class="widget-title mb--25">Brand</h3>
+								<h3 class="widget-title mb--25">판매처	</h3>
 								<ul class="widget-list brand-list">
 									<li><a href="shop.html"> <span>Walmart</span> <strong
 											class="color--red font-weight-medium">10</strong>
@@ -1049,7 +254,7 @@
 								</ul>
 							</div>
 							<div class="shop-widget">
-								<h3 class="widget-title mb--25">Tag</h3>
+								<h3 class="widget-title mb--25">태그</h3>
 								<div class="tagcloud">
 									<a href="shop.html">Cloth</a> <a href="shop.html">Blazer</a> <a
 										href="shop.html">Jacket</a> <a href="shop.html">Polo Shirt</a>
@@ -1259,10 +464,10 @@
 						<ul class="sub-menu">
 							<li><a href="my-account.html">My Account</a></li>
 							<li><a href="checkout.html">Checkout</a></li>
-							<li><a href="cart.html">Cart</a></li>
+							<li><a href="${hotDealBuyForm}">Cart</a></li>
 							<li><a href="compare.html">Compare</a></li>
 							<li><a href="order-tracking.html">Track Order</a></li>
-							<li><a href="wishlist.html">Wishlist</a></li>
+							<li><a href="${hotDealWishList}">hotDealWishList</a></li>
 						</ul></li>
 					<li><a href="contact-us.html">Contact Us</a></li>
 				</ul>
@@ -1328,7 +533,7 @@
 						<span>Subtotal</span> <span class="ammount">$98.00</span>
 					</div>
 					<div class="mini-cart__buttons">
-						<a href="cart.html"
+						<a href="${hotDealBuyForm}"
 							class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a> <a
 							href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
 					</div>
@@ -1493,7 +698,7 @@
 										</div>
 									</div>
 									<button type="button" class="btn btn-size-sm btn-shape-square"
-										onclick="window.location.href='cart.html'">Add To
+										onclick="window.location.href='${hotDealBuyForm}'">Add To
 										Cart</button>
 								</div>
 								<div class="product-footer-meta">
@@ -1519,7 +724,6 @@
 	<!-- Global Overlay Start -->
 	<a class="scroll-to-top" href=""><i class="la la-angle-double-up"></i></a>
 	<!-- Global Overlay End -->
-	</div>
 	<!-- Main Wrapper End -->
 
 

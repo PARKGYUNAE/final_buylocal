@@ -6,21 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	#insertTable{
-		margin-left: 10%;
-		width: 80%;
-	}
-	#insertTable td{
-		padding-left: 10%;
-	}
-	#insertTable input{
-		width: 100%;
-	}
-	#insertTable tr{
-		height:100px;
-	}
-</style>
 </head>
 <body>
 	<c:import url="../common/menubar.jsp" />
