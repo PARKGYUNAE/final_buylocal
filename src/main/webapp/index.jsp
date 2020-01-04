@@ -10,16 +10,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/img/icon.png">
+    <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="resources/assets/css/vendor.css">
 
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="resources/assets/css/main.css">
 
     <!--All Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900|Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -49,7 +49,7 @@
                                     <div class="header__main-left">
                                         <div class="logo">
                                             <a href="#" class="logo--normal">
-                                                <img src="assets/img/logo/logo.png" alt="Logo">
+                                                <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
                                     </div>
@@ -82,7 +82,8 @@
                                                     </ul>
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children megamenu-holder">
-                                                    <a href="shop.html" class="mainmenu__link">
+                                                    <c:url var="hotDeal" value="hotDealMenu.do"/>
+                                                    <a href="${hotDeal}" class="mainmenu__link">
                                                         <span class="mm-text">핫딜</span>
                                                     </a>
                                                     <ul class="megamenu">
@@ -263,7 +264,7 @@
                                         <div class="row align-items-center no-gutters w-100">
                                             <div class="col-xl-7 col-md-6 mb-sm--50">
                                                 <figure data-animation="fadeInUp" data-duration=".3s" data-delay=".3s" class="plr--15">
-                                                    <img src="assets/img/slider/slider-01-img-01.png" alt="Slider O1 image" class="mx-auto">
+                                                    <img src="resources/assets/img/slider/slider-01-img-01.png" alt="Slider O1 image" class="mx-auto">
                                                 </figure>
                                             </div>
                                             <div class="col-md-6 col-lg-5 offset-lg-1 offset-xl-0">
@@ -286,7 +287,7 @@
                                         <div class="row align-items-center no-gutters w-100">
                                             <div class="col-xl-6 col-md-6 mb-sm--50 order-md-2">
                                                 <figure data-animation="fadeInUp" data-duration=".3s" data-delay=".3s" class="pl-15 pr--60">
-                                                    <img src="assets/img/slider/slider-02-img-01.png" alt="Slider O1 image" class="mx-auto">
+                                                    <img src="resources/assets/img/slider/slider-02-img-01.png" alt="Slider O1 image" class="mx-auto">
                                                 </figure>
                                             </div>
                                             <div class="col-md-5 col-lg-5 offset-md-1 order-md-1">
@@ -335,7 +336,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-01.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-01.jpg" alt="Product">
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
@@ -370,7 +371,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-02.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-02.jpg" alt="Product">
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
@@ -405,7 +406,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-03.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-03.jpg" alt="Product">
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
@@ -456,7 +457,7 @@
                                     </div>
                                     <figure class="feature-product__image mb-sm--30">
                                         <a href="product-details.html">
-                                            <img src="assets/img/products/feature-product-01.png" alt="Feature Product">
+                                            <img src="resources/assets/img/products/feature-product-01.png" alt="Feature Product">
                                         </a>
                                     </figure>
                                 </div>
@@ -503,7 +504,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -541,7 +542,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-05-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -584,7 +585,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-06-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -622,7 +623,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-09-270x300.png" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-09-270x300.png" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -664,7 +665,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-05-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -702,7 +703,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-01-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -740,7 +741,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -778,7 +779,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-06-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -820,7 +821,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-02-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -858,7 +859,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-01-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -896,7 +897,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-05-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -934,7 +935,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-03-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -976,7 +977,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-03-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -1014,7 +1015,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-10-270x300.png" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-10-270x300.png" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -1052,7 +1053,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -1090,7 +1091,7 @@
                                                 <div class="product-inner">
                                                     <div class="product-image">
                                                         <figure class="product-image--holder">
-                                                            <img src="assets/img/products/prod-03-270x300.jpg" alt="Product">
+                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
                                                         </figure>
                                                         <a href="product-details.html" class="product-overlay"></a>
                                                         <div class="product-action">
@@ -1151,27 +1152,27 @@
                                 ]'>
                                     <div class="item">
                                         <figure>
-                                            <img src="assets/img/brand/brand-01.png" alt="Brand" class="mx-auto">
+                                            <img src="resources/assets/img/brand/brand-01.png" alt="Brand" class="mx-auto">
                                         </figure>
                                     </div>
                                     <div class="item">
                                         <figure>
-                                            <img src="assets/img/brand/brand-02.png" alt="Brand" class="mx-auto">
+                                            <img src="resources/assets/img/brand/brand-02.png" alt="Brand" class="mx-auto">
                                         </figure>
                                     </div>
                                     <div class="item">
                                         <figure>
-                                            <img src="assets/img/brand/brand-03.png" alt="Brand" class="mx-auto">
+                                            <img src="resources/assets/img/brand/brand-03.png" alt="Brand" class="mx-auto">
                                         </figure>
                                     </div>
                                     <div class="item">
                                         <figure>
-                                            <img src="assets/img/brand/brand-04.png" alt="Brand" class="mx-auto">
+                                            <img src="resources/assets/img/brand/brand-04.png" alt="Brand" class="mx-auto">
                                         </figure>
                                     </div>
                                     <div class="item">
                                         <figure>
-                                            <img src="assets/img/brand/brand-05.png" alt="Brand" class="mx-auto">
+                                            <img src="resources/assets/img/brand/brand-05.png" alt="Brand" class="mx-auto">
                                         </figure>
                                     </div>
                                 </div>
@@ -1191,7 +1192,7 @@
                                 <div class="best-sale-product__inner bg-color" data-bg-color="#ffffff">
                                     <figure class="best-sale-product__img">
                                         <a href="product-details.html">
-                                            <img src="assets/img/products/best-product-01.png" alt="Best Sale Product">
+                                            <img src="resources/assets/img/products/best-product-01.png" alt="Best Sale Product">
                                         </a>
                                     </figure>
                                     <div class="best-sale-product__info">
@@ -1204,7 +1205,7 @@
                                     </div>
                                 </div>
                                 <figure class="best-sale-product__top-image">
-                                    <img src="assets/img/others/1.png" alt="bg image">
+                                    <img src="resources/assets/img/others/1.png" alt="bg image">
                                 </figure>
                             </div>
                         </div>
@@ -1237,7 +1238,7 @@
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/blog-01.jpg" alt="Blog" class="w-100">
+                                                    <img src="resources/assets/img/blog/blog-01.jpg" alt="Blog" class="w-100">
                                                     <a href="blog-details-image.html" class="item-overlay"></a>
                                                 </figure>
                                             </div>
@@ -1252,7 +1253,7 @@
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/blog-02.jpg" alt="Blog" class="w-100">
+                                                    <img src="resources/assets/img/blog/blog-02.jpg" alt="Blog" class="w-100">
                                                     <a href="blog-details-image.html" class="item-overlay"></a>
                                                 </figure>
                                             </div>
@@ -1267,7 +1268,7 @@
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/blog-03.jpg" alt="Blog" class="w-100">
+                                                    <img src="resources/assets/img/blog/blog-03.jpg" alt="Blog" class="w-100">
                                                     <a href="blog-details-image.html" class="item-overlay"></a>
                                                 </figure>
                                             </div>
@@ -1295,7 +1296,7 @@
                             <div class="footer-widget">
                                 <div class="textwidget">
                                     <figure class="footer-logo mb--30">
-                                        <img src="assets/img/logo/logo.png" alt="Logo">
+                                        <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                     </figure>
                                     <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms. </p>
                                 </div>
@@ -1608,7 +1609,7 @@
                                     <i class="la la-remove"></i>
                                 </a>
                                 <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
+                                    <img src="resources/assets/img/products/prod-01-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
                                     <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
@@ -1620,7 +1621,7 @@
                                     <i class="la la-remove"></i>
                                 </a>
                                 <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
+                                    <img src="resources/assets/img/products/prod-02-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
                                     <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
@@ -1632,7 +1633,7 @@
                                     <i class="la la-remove"></i>
                                 </a>
                                 <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
+                                    <img src="resources/assets/img/products/prod-03-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
                                     <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
@@ -1689,7 +1690,7 @@
                             <div class="product-image">
                                 <div class="product-image--holder">
                                     <a href="product-details.html">
-                                        <img src="assets/img/products/prod-01.jpg" alt="Product Image" class="primary-image">
+                                        <img src="resources/assets/img/products/prod-01.jpg" alt="Product Image" class="primary-image">
                                     </a>
                                 </div>
                                 <span class="product-badge sale">sale</span>
@@ -1697,7 +1698,7 @@
                             <div class="product-image">
                                 <div class="product-image--holder">
                                     <a href="product-details.html">
-                                        <img src="assets/img/products/prod-02.jpg" alt="Product Image" class="primary-image">
+                                        <img src="resources/assets/img/products/prod-02.jpg" alt="Product Image" class="primary-image">
                                     </a>
                                 </div>
                                 <span class="product-badge sale">sale</span>
@@ -1817,10 +1818,10 @@
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
-    <script src="assets/js/vendor.js"></script>
+    <script src="resources/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="resources/assets/js/main.js"></script>
 </body>
 
 </html>"text/javascript" src="resources/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>

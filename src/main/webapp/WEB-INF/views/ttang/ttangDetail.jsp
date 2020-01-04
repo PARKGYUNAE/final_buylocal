@@ -10,16 +10,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/img/icon.png">
+    <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="resources/assets/css/vendor.css">
 
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="resources/assets/css/main.css">
     
     
     <style>
@@ -54,7 +54,7 @@
 	<c:import url="../common/menubar.jsp"/>	
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -88,28 +88,28 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-700x778.jpg" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/jeju_tangerine/th2_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th2_jeju_tang-700x778.jpg" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/jeju_tangerine/th3_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th3_jeju_tang-700x778.jpg" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/jeju_tangerine/th4_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th4_jeju_tang-700x778.jpg" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
@@ -173,16 +173,16 @@
                                             }
                                         ]'>
                                             <!-- <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-170x195.jpg" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/jeju_tangerine/th2_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th2_jeju_tang-170x195.jpg" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/jeju_tangerine/th3_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th3_jeju_tang-170x195.jpg" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/jeju_tangerine/th4_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th4_jeju_tang-170x195.jpg" alt="Products">
                                             </figure> -->
                                         </div>
                                     </div>
@@ -285,10 +285,10 @@
                                         	<p>* 땡처리 게시판은 별도의 상품문의 페이지가 제공되지 않습니다. <br>
                                         	기타 문의사항은 사업자 연락처를 통해 주시기 바랍니다.</p>
                                             <!-- 그림 삽입 -->
-                                            <img src="assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
-                                            <img src="assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
-                                            <img src="assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
-                                            <img src="assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
                                         </div>
                                     </div>
                                  <!-- 추가 정보 -->   
@@ -357,7 +357,7 @@
                                             <ul class="review__list">
                                                 <li class="review__item">
                                                     <div class="review__container">
-                                                        <img src="assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
+                                                        <img src="resources/assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
                                                         <div class="review__text">
                                                             <div class="d-flex flex-sm-row flex-column justify-content-between">
                                                                 <div class="review__meta">
@@ -455,7 +455,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
@@ -493,7 +493,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-01-270x300.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
@@ -531,7 +531,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-02-270x300.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
@@ -569,7 +569,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="assets/img/products/prod-03-270x300.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
@@ -631,10 +631,10 @@
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
-    <script src="assets/js/vendor.js"></script>
+    <script src="resources/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="resources/assets/js/main.js"></script>
 </body>
 
 </html>

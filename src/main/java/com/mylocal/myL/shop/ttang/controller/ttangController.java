@@ -1,4 +1,4 @@
-package com.mylocal.myL.ttang.controller;
+package com.mylocal.myL.shop.ttang.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

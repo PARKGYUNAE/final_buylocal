@@ -10,37 +10,27 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/img/icon.png">
+    <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="resources/assets/css/vendor.css">
 
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="resources/assets/css/main.css">
 </head>
 
 <body>
 	<c:import url="../common/menubar.jsp"/>
-
-    <!-- Preloader Start -->
-    <div class="ft-preloader active">
-        <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
-            <div class="ft-child ft-bounce1"></div>
-            <div class="ft-child ft-bounce2"></div>
-            <div class="ft-child ft-bounce3"></div>
-        </div>
-    </div>
-    <!-- Preloader End -->
 
     <!-- Main Wrapper Start -->
     <div class="wrapper">
      
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -61,6 +51,7 @@
             <div class="shop-page-wrapper ptb--80">
                 <div class="container">
                     <div class="row">
+                    	<%-- <c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/> --%>
                         <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
                             <div class="shop-toolbar mb--50">
                                 <div class="row align-items-center">
@@ -80,26 +71,28 @@
                                     </div>
                                     <div class="col-md-7">
                                         <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
-                                            <button>글 작성하기</button>
+                                            <div class="product-view-mode ml--50 ml-xs--0">
+											<%-- <a class="active" href="${hotDealInsertForm }" data-target="grid">상품등록하기</a>--%>										</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="shop-products">
                                 <div class="row">
+									<%-- <c:forEach var="hot" items="${list}"> --%>
                                     <div class="col-xl-4 col-sm-6 mb--50">
                                         <div class="ft-product">
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
+                                                        <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
                                                     </figure>
                                                     <!-- 디테일페이지 url -->
                                                     <c:url var="ttangD" value="ttangDetail.do"/>
                                                     <!-- 디테일페이지 url -->
                                                     <a href="${ttangD}" class="product-overlay"></a>
                                                     <div class="product-action">
-                                                        <a href="wishlist.html" class="action-btn">
+                                                        <a href="#" class="action-btn">
                                                             <i class="la la-heart-o"></i>
                                                         </a>
                                                     </div>
@@ -125,7 +118,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
+                                                        <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -197,7 +190,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-01-270x300.jpg" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -233,7 +226,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-01-270x300.jpg" alt="Products">
+                                                        <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Products">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -305,7 +298,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-02-270x300.jpg" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -341,7 +334,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-02-270x300.jpg" alt="Products">
+                                                        <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Products">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -413,7 +406,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-03-270x300.jpg" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -449,7 +442,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-03-270x300.jpg" alt="Products">
+                                                        <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Products">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -521,7 +514,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-05-270x300.jpg" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -557,7 +550,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-05-270x300.jpg" alt="Products">
+                                                        <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Products">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -629,7 +622,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-06-270x300.jpg" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -665,7 +658,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-06-270x300.jpg" alt="Products">
+                                                        <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Products">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -737,7 +730,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-08-270x300.png" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-08-270x300.png" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -773,7 +766,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-08-270x300.png" alt="Products">
+                                                        <img src="resources/assets/img/products/prod-08-270x300.png" alt="Products">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -845,7 +838,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-09-270x300.png" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-09-270x300.png" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -884,7 +877,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="assets/img/products/prod-10-270x300.png" alt="Product">
+                                                        <img src="resources/assets/img/products/prod-10-270x300.png" alt="Product">
                                                     </figure>
                                                     <a href="product-details.html" class="product-overlay"></a>
                                                     <div class="product-action">
@@ -920,7 +913,7 @@
                                             <div class="product-inner">
                                                 <figure class="product-image">
                                                     <a href="product-details.html">
-                                                        <img src="assets/img/products/prod-10-270x300.png" alt="Products">
+                                                        <img src="resources/assets/img/products/prod-10-270x300.png" alt="Products">
                                                     </a>
                                                     <div class="product-thumbnail-action">
                                                         <a data-toggle="modal" data-target="#productModal" class="action-btn quick-view">
@@ -1087,10 +1080,10 @@
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
-    <script src="assets/js/vendor.js"></script>
+    <script src="resources/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="resources/assets/js/main.js"></script>
 </body>
 
 </html>

@@ -10,16 +10,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/img/icon.png">
+    <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="resources/assets/css/vendor.css">
 
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="resources/assets/css/main.css">
 
     <!--All Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900|Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -48,8 +48,8 @@
                                 <div class="header__main-inner">
                                     <div class="header__main-left">
                                         <div class="logo">
-                                            <a href="#" class="logo--normal">
-                                                <img src="assets/img/logo/logo.png" alt="Logo">
+                                            <a href="<%=request.getContextPath() %>" class="logo--normal">
+                                                <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
                                     </div>
@@ -82,7 +82,8 @@
                                                     </ul>
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children megamenu-holder">
-                                                    <a href="shop.html" class="mainmenu__link">
+                                                	<c:url var="hotDeal" value="hotDealMenu.do"/>
+                                                    <a href="${hotDeal}" class="mainmenu__link">
                                                         <span class="mm-text">핫딜</span>
                                                     </a>
                                                     <ul class="megamenu">
@@ -260,7 +261,7 @@
                                     <i class="la la-remove"></i>
                                 </a>
                                 <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
+                                    <img src="resources/assets/img/products/prod-01-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
                                     <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
@@ -272,7 +273,7 @@
                                     <i class="la la-remove"></i>
                                 </a>
                                 <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
+                                    <img src="resources/assets/img/products/prod-02-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
                                     <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
@@ -284,7 +285,7 @@
                                     <i class="la la-remove"></i>
                                 </a>
                                 <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
+                                    <img src="resources/assets/img/products/prod-03-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
                                     <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
