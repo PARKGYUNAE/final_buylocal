@@ -92,7 +92,6 @@
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                       <!--  <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a> -->
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
@@ -100,7 +99,6 @@
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                        <!-- <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a> -->
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
@@ -108,7 +106,6 @@
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                        <!-- <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a> -->
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
@@ -122,6 +119,8 @@
                                             </div>
                                         </div>
                                     </div>
+                         
+                                    
                                     <div class="product-gallery__nav-image">
                                         <div class="element-carousel nav-slider product-slide-nav slick-center-bottom" 
                                         data-slick-options='{
@@ -173,7 +172,7 @@
                                                 } 
                                             }
                                         ]'>
-                                            <figure class="product-gallery__nav-image--single">
+                                            <!-- <figure class="product-gallery__nav-image--single">
                                                 <img src="assets/img/products/jeju_tangerine/th1_jeju_tang-170x195.jpg" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
@@ -184,7 +183,7 @@
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
                                                 <img src="assets/img/products/jeju_tangerine/th4_jeju_tang-170x195.jpg" alt="Products">
-                                            </figure>
+                                            </figure> -->
                                         </div>
                                     </div>
                                 </div>
@@ -301,10 +300,10 @@
 												<h5>필수 표기정보</h5>
                                                 <tbody>
                                                     <tr>
-                                                        <th cols="1">용량/수량/크기</th>
-                                                        <td cols="1">10 kg (박스포함)</td>
-                                                        <th cols="1">생산자(수입자)</th>
-                                                        <td cols="1">제주담은</td>
+                                                        <th >용량/수량/크기</th>
+                                                        <td >10 kg (박스포함)</td>
+                                                        <th >생산자(수입자)</th>
+                                                        <td >제주담은</td>
                                                     </tr>
                                                     <tr>
                                                         <th cols="1">원산지</th>
@@ -314,9 +313,8 @@
                                                         	제조연월일:발송일 전 일주일 전후</td>
                                                     </tr>
                                                     <tr>
-                                                    	<!-- 이거왜안되냐.... -->
-                                                        <th cols="1">취급방법</th>
-                                                        <td cols="3">상온에 보관해주세요. (장기보관 시, 개별포장하여 보관해주세요)</td>
+                                                        <th colspan="1">취급방법</th>
+                                                        <td colspan="3">상온에 보관해주세요. (장기보관 시, 개별포장하여 보관해주세요)</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -341,8 +339,8 @@
                                                         <td cols="1">064-749-8675</td>
                                                     </tr>
                                                     <tr>
-                                                        <th cols="1">사업장 소재지</th>
-                                                        <td cols="3">제주특별자치도 제주시 돈내길 46 203호(이도일동, 고덕쉐르빌아파트)
+                                                        <th colspan="1">사업장 소재지</th>
+                                                        <td colspan="3">제주특별자치도 제주시 돈내길 46 203호(이도일동, 고덕쉐르빌아파트)<br>
                                                         <img src="#" alt="사업장지도">
                                                         </td>
                                                         

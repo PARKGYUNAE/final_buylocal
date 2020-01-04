@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Beck - Furniture eCommerce Bootstrap 4 Template</title>
+    <title>바이로컬</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -48,7 +48,7 @@
                                 <div class="header__main-inner">
                                     <div class="header__main-left">
                                         <div class="logo">
-                                            <a href="index.html" class="logo--normal">
+                                            <a href="#" class="logo--normal">
                                                 <img src="assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
@@ -57,18 +57,26 @@
                                         <nav class="main-navigation text-center d-none d-lg-block">
                                             <ul class="mainmenu">
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="index.html" class="mainmenu__link">
+                                                	<c:url var="introduction" value="introduction.do"/>
+                                                	<c:url var="holymoly" value="holymoly.do"/>
+                                                 	<c:url var="noticeM" value="noticeMain.do"/>
+                                                    <a href="${introduction}" class="mainmenu__link">
                                                         <span class="mm-text">바이로컬</span>
                                                     </a>
                                                     <ul class="sub-menu">
                                                         <li>
-                                                            <a href="index.html">
+                                                            <a href="${introduction}">
                                                                 <span class="mm-text">사이트 소개</span>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="index-02.html">
+                                                            <a href="${holymoly}">
                                                                 <span class="mm-text">홀리몰리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="${noticeM}">
+                                                                <span class="mm-text">공지사항</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -79,9 +87,6 @@
                                                     </a>
                                                     <ul class="megamenu">
                                                         <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">카테고리1</span>
-                                                            </a>
                                                             <ul>
                                                                 <li>
                                                                     <a href="#">
@@ -111,9 +116,6 @@
                                                             </ul>
                                                         </li>
                                                         <li>
-                                                            <a class="megamenu-title" href="#">
-                                                              <span class="mm-text">카테고리2</span> 
-                                                            </a>
                                                             <ul> 
                                                                 <li>
                                                                     <a href="#">
@@ -145,115 +147,59 @@
                                                     </ul>
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="blog.html" class="mainmenu__link">
+                                                    <c:url var="ttangM" value="ttangMain.do"/>
+                                                    <a href="${ttangM}" class="mainmenu__link">
                                                         <span class="mm-text">땡처리</span>
                                                     </a>
-                                                    <ul class="sub-menu">
+                                                  <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
-                                                        	<c:url var="ttang" value="ttangMain.do"/>
-                                                            <a title="ttang" href="${ttang}">
-                                                                <span class="mm-text">식품류</span>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">한식</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">중식</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">일식</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">양식</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">커피/제과</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">기타</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href=""><span class="mm-text">비식품류</span></a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">비식품1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">비식품2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">비식품3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">
-                                                                        <span class="mm-text">기타</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="#" class="mainmenu__link">
-                                                        <span class="mm-text">Pages</span>
+                                                            <li>
+                                                                <a title="한식" href="${ttangM}">
+                                                                    <span class="mm-text">한식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="중식" href="${ttangM}">
+                                                                    <span class="mm-text">중식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="일식" href="${ttangM}">
+                                                                    <span class="mm-text">일식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="양식" href="${ttangM}">
+                                                                    <span class="mm-text">양식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="커피/제과" href="${ttangM}">
+                                                                    <span class="mm-text">커피/제과</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="기타" href="${ttangM}">
+                                                                    <span class="mm-text">기타</span>
+                                                                </a>
+                                                            </li></ul> 
+                                                       </li>
+                                                 <li class="mainmenu__item">
+													<c:url var="shareboard" value="shareboard.do"/>
+                                                    <a href="${sharboard}" class="mainmenu__link">
+                                                        <span class="mm-text">나눔게시판</span>
                                                     </a>
-                                                    <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="my-account.html">
-                                                                <span class="mm-text">My Account</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="checkout.html">
-                                                                <span class="mm-text">Checkout</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="cart.html">
-                                                                <span class="mm-text">Cart</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="compare.html">
-                                                                <span class="mm-text">Compare</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="order-tracking.html">
-                                                                <span class="mm-text">Track Order</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="wishlist.html">
-                                                                <span class="mm-text">Wishlist</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
                                                 </li>
                                                 <li class="mainmenu__item">
-                                                    <a href="contact-us.html" class="mainmenu__link">
-                                                        <span class="mm-text">Contact Us</span>
+						                       	<c:url var="advertisement" value="advertisement.do"/>
+						                           <a href="${advertisement}" class="mainmenu__link">
+						                               <span class="mm-text">이벤트&광고</span>
+						                           </a>
+						                       </li>
+                                                <li class="mainmenu__item">
+                                               	<c:url var="contactUs" value="contactUs.do"/> 
+                                                    <a href="${contactUs}" class="mainmenu__link">
+                                                        <span class="mm-text">고객센터</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -1600,7 +1546,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children">
+                        <!-- <li class="menu-item-has-children">
                             <a href="#">Pages</a>
                             <ul class="sub-menu">
                                 <li>
@@ -1622,10 +1568,19 @@
                                     <a href="wishlist.html">Wishlist</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="contact-us.html">Contact Us</a>
-                        </li>
+                        </li> -->
+                        <li class="mainmenu__item">
+                       	<c:url var="advertisement" value="advertisement.do"/>
+                           <a href="${advertisement}" class="mainmenu__link">
+                               <span class="mm-text">이벤트&광고</span>
+                           </a>
+                       </li>
+                        <li class="mainmenu__item">
+                       	<c:url var="contactUs" value="contactUs.do"/> 
+                           <a href="${contactUs}" class="mainmenu__link">
+                               <span class="mm-text">고객센터</span>
+                           </a>
+                       </li>
                     </ul>
                     <div class="site-info vertical">
                         <div class="site-info__item">
