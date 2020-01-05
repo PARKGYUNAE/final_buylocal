@@ -1,4 +1,4 @@
-package com.mylocal.myL.shop.ttang.model.dao;
+package com.mylocal.myL.shop.hotDeal.model.dao;
 
 import java.util.ArrayList;
 
@@ -8,22 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mylocal.myL.common.PageInfo;
-import com.mylocal.myL.shop.ttang.model.vo.Ttang;
+import com.mylocal.myL.shop.hotDeal.model.vo.HotDeal;
 
-@Repository("ttangDao")
-public class ttangDao {
+@Repository("hotDealDao")
+public class hotDealDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
 	public int getListCount() {
-		return sqlSession.selectOne("ttangMapper.getListCount"); 
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("hotDealMapper.getListCount");
 	}
 	
-	public ArrayList<Ttang> selectList(PageInfo pi){
+	public ArrayList<HotDeal> selectList(PageInfo pi) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
 		
-		return (ArrayList)sqlSession.selectList("ttangMapper.selectList", null, rowbounds);
+		return (ArrayList)sqlSession.selectList("hotDealMapper.selectList", null, rowbounds);
 	}
+
 	
 }

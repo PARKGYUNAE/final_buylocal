@@ -10,37 +10,28 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/img/icon.png">
+    <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="resources/assets/css/vendor.css">
 
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="resources/assets/css/main.css">
 </head>
 
 <body>
 	<c:import url="common/menubar.jsp"/>
-	
-    <!-- Preloader Start -->
-    <div class="ft-preloader active">
-        <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
-            <div class="ft-child ft-bounce1"></div>
-            <div class="ft-child ft-bounce2"></div>
-            <div class="ft-child ft-bounce3"></div>
-        </div>
-    </div>
-    <!-- Preloader End -->
+
 
    <!-- Main Wrapper Start -->
     <div class="wrapper">
                  
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -327,16 +318,16 @@
                 position: new google.maps.LatLng(40.740610, -73.935242),
                 map: map,
                 title: 'Contixs',
-                icon: "assets/img/icons/marker.png",
+                icon: "resources/assets/img/icons/marker.png",
                 animation: google.maps.Animation.BOUNCE
             });
         }
     </script>
     <!-- jQuery JS -->
-    <script src="assets/js/vendor.js"></script>
+    <script src="resources/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="resources/assets/js/main.js"></script>
 </body>
 
 </html>

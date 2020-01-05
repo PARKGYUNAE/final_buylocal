@@ -9,7 +9,7 @@ public class Ttang {
 	private int pNo; // 상품고유번호
 	private Date tDate; // 등록일자
 	private String lCode; // 지역코드
-	private String tCgCode; // 카테고리코드
+	private String ttCgCode; // 카테고리코드
 	private String tStatus; // 상태
 	private int pOriginalPrice; // 할인전 가격
 	private int pFinalPrice; // 최종 가격
@@ -39,7 +39,7 @@ public class Ttang {
 
 
 
-	public Ttang(int tNo, String tTitle, int sNo, int pNo, Date tDate, String lCode, String tCgCode, String tStatus,
+	public Ttang(int tNo, String tTitle, int sNo, int pNo, Date tDate, String lCode, String ttCgCode, String tStatus,
 			int pOriginalPrice, int pFinalPrice, String pName, int pAmount) {
 		super();
 		this.tNo = tNo;
@@ -48,7 +48,7 @@ public class Ttang {
 		this.pNo = pNo;
 		this.tDate = tDate;
 		this.lCode = lCode;
-		this.tCgCode = tCgCode;
+		this.ttCgCode = ttCgCode;
 		this.tStatus = tStatus;
 		this.pOriginalPrice = pOriginalPrice;
 		this.pFinalPrice = pFinalPrice;
@@ -130,14 +130,14 @@ public class Ttang {
 
 
 
-	public String gettCgCode() {
-		return tCgCode;
+	public String getttCgCode() {
+		return ttCgCode;
 	}
 
 
 
-	public void settCgCode(String tCgCode) {
-		this.tCgCode = tCgCode;
+	public void setttCgCode(String ttCgCode) {
+		this.ttCgCode = ttCgCode;
 	}
 
 
@@ -205,7 +205,7 @@ public class Ttang {
 	@Override
 	public String toString() {
 		return "Ttang [tNo=" + tNo + ", tTitle=" + tTitle + ", sNo=" + sNo + ", pNo=" + pNo + ", tDate=" + tDate
-				+ ", lCode=" + lCode + ", tCgCode=" + tCgCode + ", tStatus=" + tStatus + ", pOriginalPrice="
+				+ ", lCode=" + lCode + ", ttCgCode=" + ttCgCode + ", tStatus=" + tStatus + ", pOriginalPrice="
 				+ pOriginalPrice + ", pFinalPrice=" + pFinalPrice + ", pName=" + pName + ", pAmount=" + pAmount + "]";
 	}
 

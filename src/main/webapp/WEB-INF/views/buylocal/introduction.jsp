@@ -10,35 +10,26 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/img/icon.png">
+    <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="resources/assets/css/vendor.css">
 
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="resources/assets/css/main.css">
 </head>
 
 <body>
 	<c:import url="../common/menubar.jsp"/>
 	
-	
-    <!-- Preloader Start -->
-    <div class="ft-preloader active">
-        <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
-            <div class="ft-child ft-bounce1"></div>
-            <div class="ft-child ft-bounce2"></div>
-            <div class="ft-child ft-bounce3"></div>
-        </div>
-    </div>
-    <!-- Preloader End -->
+
 
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -66,7 +57,7 @@
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/buylocal1.jpg" alt="로고" class="w-100">
+                                                    <img src="resources/assets/img/blog/buylocal1.jpg" alt="로고" class="w-100">
                                                     <a href="#" class="item-overlay"></a>
                                                 </figure>
                                             </div>
@@ -91,15 +82,15 @@
                                                     "autoplaySpeed": 1500
                                                 }'>
                                                     <div class="item">
-                                                        <img src="assets/img/blog/introduction1-800x561.jpg" alt="소개" class="w-100">
+                                                        <img src="resources/assets/img/blog/introduction1-800x561.jpg" alt="소개" class="w-100">
                                                         <a href="#" class="item-overlay"></a>
                                                     </div> 
                                                     <div class="item">
-                                                        <img src="assets/img/blog/introduction2-800x561.jpg" alt="소개" class="w-100">
+                                                        <img src="resources/assets/img/blog/introduction2-800x561.jpg" alt="소개" class="w-100">
                                                         <a href="#" class="item-overlay"></a>
                                                     </div> 
                                                     <div class="item">
-                                                        <img src="assets/img/blog/introduction3-800x561.jpg" alt="소개" class="w-100">
+                                                        <img src="resources/assets/img/blog/introduction3-800x561.jpg" alt="소개" class="w-100">
                                                         <a href="#" class="item-overlay"></a>
                                                     </div>                 
                                                 </div>
@@ -123,11 +114,11 @@
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/reference1-800x561.jpg" alt="유사사이트분석" class="w-100">
+                                                    <img src="resources/assets/img/blog/reference1-800x561.jpg" alt="유사사이트분석" class="w-100">
                                                     <a href="#" class="item-overlay"></a>
                                                 </figure>
                                                 <figure class="image">
-                                                    <img src="assets/img/blog/reference2-800x561.jpg" alt="유사사이트분석" class="w-100">
+                                                    <img src="resources/assets/img/blog/reference2-800x561.jpg" alt="유사사이트분석" class="w-100">
                                                     <a href="#" class="item-overlay"></a>
                                                 </figure>
                                             </div>
@@ -154,7 +145,7 @@
                                 <div class="bl-widget author">
                                     <div class="inner">
                                         <div class="thumb">
-                                            <img src="assets/img/others/team-04.jpg" alt="Author Images">
+                                            <img src="resources/assets/img/others/team-04.jpg" alt="Author Images">
                                         </div>
                                         <div class="info">
                                             <h5 class="mb--5">Ayo Burion</h5>
@@ -250,10 +241,10 @@
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
-    <script src="assets/js/vendor.js"></script>
+    <script src="resources/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="resources/assets/js/main.js"></script>
 </body>
 
 </html>
