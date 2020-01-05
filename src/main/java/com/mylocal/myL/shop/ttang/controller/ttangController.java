@@ -41,6 +41,10 @@ public class ttangController {
 		return "ttang/ttangDetail";
 	}
 	
-	
+	// 땡처리 상품등록
+	@RequestMapping("ttangInsertForm.do")
+	public String ttangInsert() {
+		return "ttang/ttangInsertForm";
+	}
 
 }

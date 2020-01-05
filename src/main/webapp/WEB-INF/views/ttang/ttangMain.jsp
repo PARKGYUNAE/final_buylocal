@@ -47,7 +47,9 @@
             <div class="shop-page-wrapper ptb--80">
                 <div class="container">
                     <div class="row">
-                    	<%-- <c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/> --%>
+                    	<c:url var="wishList" value="wishList.do"/>
+						<c:url var="buyForm" value="buyForm.do"/>
+                    	<c:url var="ttangInsertForm" value="ttangInsertForm.do"/>
                         <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
                             <div class="shop-toolbar mb--50">
                                 <div class="row align-items-center">
@@ -68,7 +70,7 @@
                                     <div class="col-md-7">
                                         <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
                                             <div class="product-view-mode ml--50 ml-xs--0">
-											<a class="active" href="#" data-target="grid">상품등록하기</a>										
+											<a class="active" href="${ttangInsertForm}" data-target="grid">상품등록하기</a>										
                                         	</div>
                                         </div>
                                     </div>
@@ -88,12 +90,10 @@
                                                     <figure class="product-image--holder">
                                                         <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
                                                     </figure>
-                                                    <!-- 디테일페이지 url -->
                                                     <c:url var="ttangD" value="ttangDetail.do"/>
-                                                    <!-- 디테일페이지 url -->
                                                     <a href="${ttangD}" class="product-overlay"></a>
                                                     <div class="product-action">
-                                                        <a href="#" class="action-btn">
+                                                        <a href="${wishList}" class="action-btn">
                                                             <i class="la la-heart-o"></i>
                                                         </a>
                                                     </div>
@@ -110,7 +110,7 @@
                                                         <div class="product-price-wrapper">
                                                             <span class="money">${ttang.pFinalPrice}원</span>
                                                         </div>
-                                                        <a href="#" class="add-to-cart pr--15">
+                                                        <a href="${buyForm}" class="add-to-cart pr--15">
                                                             <i class="la la-plus"></i>
                                                             <span>장바구니</span>
                                                         </a>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>핫딜 상품 등록 페이지</title>
+<title>땡처리 상품 등록 페이지</title>
 <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
 </head>
@@ -18,10 +18,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 text-center">
-					<h1 class="page-title">핫딜</h1>
+					<h1 class="page-title">땡처리</h1>
 					<ul class="breadcrumb">
 						<li><a href="index.html">Home</a></li>
-						<li class="current"><span>핫딜 게시판</span></li>
+						<li class="current"><span>땡처리 게시판</span></li>
 						<li class="current"><span>상품 등록하기</span></li>
 					</ul>
 				</div>

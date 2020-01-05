@@ -31,30 +31,18 @@ public class HotDealController {
 		return "hotDeal/hotDealDetail";
 	}
 	
-	@RequestMapping("insertHotDeal.do")
+	/*@RequestMapping("insertHotDeal.do")
 	public String insertHotDeal() {
 		return "hotDeal/insertHotDealForm";
 	}
+	*/
+	
 	
 	@RequestMapping("hotDealQnA.do")
 	public String hotDealQnA() {
 		return "hotDeal/hotDealQnA";
 	}
 	
-	@RequestMapping("hotDealBuyForm.do")
-	public String hotDealBuyForm() {
-		return "hotDeal/hotDealBuyForm";
-	}
-	
-	@RequestMapping("hotDealCheckOutForm.do")
-	public String hotDealCheckOutForm() {
-		return "hotDeal/hotDealCheckOutForm";
-	}
-	
-	@RequestMapping("hotDealWishList.do")
-	public String hotDealWishList() {
-		return "hotDeal/hotDealWishList";
-	}
 	
 	@RequestMapping("hotDealInsertForm.do")
 	public String hotDealInsert() {

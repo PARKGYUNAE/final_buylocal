@@ -30,13 +30,14 @@
 		</div>
 	</section>
 	<!-- Breadcrumb area End -->
+	
 	<!-- Main Content Wrapper Start -->
 	<div class="main-content-wrapper">
 		<div class="shop-page-wrapper ptb--80">
 			<div class="container">
 				<div class="row">
-				<c:url var="hotDealWishList" value="hotDealWishList.do"/>
-				<c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
+				<c:url var="wishList" value="wishList.do"/>
+				<c:url var="buyForm" value="buyForm.do"/>
 				<c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/>
 					<div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
 						<div class="shop-toolbar mb--50">
@@ -77,9 +78,9 @@
 														alt="Product">
 												</figure>
 												<c:url var="hotDealDetail" value="hotDealDetail.do" />
-												<a href="${hotDealDetail }" class="product-overlay"></a>
+												<a href="${hotDealDetail}" class="product-overlay"></a>
 												<div class="product-action">
-													<a href="${hotDealWishList }" class="action-btn"> <i
+													<a href="${wishList}" class="action-btn"> <i
 														class="la la-heart-o"></i>
 													</a> 
 												</div>
@@ -98,7 +99,7 @@
 													<div class="product-price-wrapper">
 														<span class="money">할인 후 가격 : ${hot.pFinalPrice }</span>
 													</div>
-													<a href="${hotDealBuyForm }" class="add-to-cart pr--15"> <i
+													<a href="${buyForm }" class="add-to-cart pr--15"> <i
 														class="la la-plus"></i> <span>장바구니</span>
 													</a>
 												</div>
@@ -157,10 +158,10 @@
 													pharetra</p>
 												<div class="ft-product-action-list d-flex align-items-center">
 													
-													<a href="${hotDealBuyForm}" class="btn btn-size-md">Add To Cart</a>
-													<a href="${hotDealWishList}" class="ml--20 action-btn"> <i
+													<a href="${buyForm}" class="btn btn-size-md">Add To Cart</a>
+													<a href="${wishList}" class="ml--20 action-btn"> <i
 														class="la la-heart-o"></i>
-													</a> <a href="${hotDealWishList}" class="ml--20 action-btn"> <i
+													</a> <a href="${wishList}" class="ml--20 action-btn"> <i
 														class="la la-repeat"></i>
 													</a>
 												</div>

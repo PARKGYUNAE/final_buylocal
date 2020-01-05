@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>땡처리게시판 - 상세(제주감귤)</title>
+    <title>땡처리게시판 - 상세</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -61,7 +61,8 @@
                         <h1 class="page-title">땡처리 상품상세 페이지</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>Product Details</span></li>
+                            <li class="current"><span>땡처리게시판</span></li>
+                            <li class="current"><span>상품상세페이지</span></li>
                         </ul>
                     </div>
                 </div>
@@ -73,10 +74,14 @@
         <div class="main-content-wrapper">
             <div class="page-content-inner pt--80 pt-md--60">
                 <div class="container">
+                <c:url var="wishList" value="wishList.do"/>
+						<c:url var="buyForm" value="buyForm.do"/>
                     <div class="row no-gutters mb--80 mb-md--57">
                         <div class="col-lg-7 product-main-image">
                             <div class="product-image">
                                 <div class="product-gallery vertical-slide-nav">
+                                
+                                
                                     <div class="product-gallery__large-image mb-sm--30">
                                         <div class="product-gallery__wrapper">
                                             <div class="element-carousel main-slider image-popup"
@@ -172,7 +177,7 @@
                                                 } 
                                             }
                                         ]'>
-                                            <!-- <figure class="product-gallery__nav-image--single">
+                                            <figure class="product-gallery__nav-image--single">
                                                 <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-170x195.jpg" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
@@ -183,7 +188,7 @@
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
                                                 <img src="resources/assets/img/products/jeju_tangerine/th4_jeju_tang-170x195.jpg" alt="Products">
-                                            </figure> -->
+                                            </figure>
                                         </div>
                                     </div>
                                 </div>
@@ -200,11 +205,12 @@
                                         <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                     </div>
                                 </div>
-                                <h3 class="product-title mb--20">맛있는 제주감귤 10KG</h3>
+
+                                <h3 class="product-title mb--20">제주감귤10kg</h3>
                                 <p class="product-short-description mb--20">농가의 환경은 감율의 당도에 큰 영향을 미쳐요. 귤은 일정한 일조량은 물론, 건강한 토양, 그리고 바다와 가까울수록 산도가 적절히 빠져 최고의 맛을 낼 수 있는데요, 우리 감귤은 제주도 남쪽 해안가에 위치하여 이 모든 조건을 만족하는 건강한 환경에서 자라난 귤이랍니다!</p>
                                 <div class="product-price-wrapper mb--25">
                                     <span class="money" style="text-decoration:line-through;">12,000원</span>
-                                    <span class="money" style="color:red;">9,900원</span>
+                                    <span class="money" style="color:red;">9,000원</span>
                                 </div>
                                 <!-- 옵션 -->
                                 <!-- <form action="#" class="variation-form mb--20">
@@ -237,15 +243,15 @@
                                 </form>
                                 <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                     <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                        <label class="quantity-label" for="qty">Quantity:</label>
+                                        <label class="quantity-label" for="qty">수량:</label>
                                         <div class="quantity">
                                             <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='#'">
+                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${wishList}'">
                                         	찜
                                     </button>
-                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='#'">
+                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${buyForm}'">
                                         장바구니
                                     </button>                                    
                                 </div>  
@@ -308,7 +314,7 @@
                                                     <tr>
                                                         <th cols="1">원산지</th>
                                                         <td cols="1">제주도서귀포</td>
-                                                        <th cols="1">제조연월일/유통기한</th>
+                                                        <th cols="1">제조연월일</th>
                                                         <td cols="1">생산년도:2019<br>
                                                         	제조연월일:발송일 전 일주일 전후</td>
                                                     </tr>
@@ -385,10 +391,10 @@
                                         	<p>신고 절차
 											지식재산권 침해 상품, 불법 혹은 부적격 상품, 부적절한 광고 내용 등 안전거래를 저해하는 상품이 확인될 경우, 신고하여 주시기 바랍니다. 신고 건은 아래의 절차에 따라 진행되며, 처리결과에 다소 시간이 걸릴 수 있습니다.
 											
-											
+											<br><br>
 											신고 접수 > 내용 심사 > 판매자 소명 요청 > 처리</p>
 											
-											
+											<br><br>
                                             <form action="#" class="form pr--30">
                                                     <div class="form__group mb--10">
                                                         <label class="form__label d-block" for="title">상품명<span class="required">*</span></label>
@@ -418,7 +424,7 @@
                                                     <div class="form__group">
                                                         <div class="form-row">
                                                             <div class="col-12">
-                                                                <input type="submit" value="Submit Now" class="btn btn-size-md">
+                                                                <input type="submit" value="제출하기" class="btn btn-size-md">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -459,15 +465,11 @@
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
+                                                    
                                                     <a href="wishlist.html" class="action-btn">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -497,15 +499,11 @@
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
+                                                    
                                                     <a href="wishlist.html" class="action-btn">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -535,15 +533,11 @@
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
+                                                    
                                                     <a href="wishlist.html" class="action-btn">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -573,15 +567,11 @@
                                                 </figure>
                                                 <a href="product-details.html" class="product-overlay"></a>
                                                 <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
+                                                    
                                                     <a href="wishlist.html" class="action-btn">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
+
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -612,9 +602,6 @@
 
      <c:import url="../common/footer.jsp"/>
 
-  
-
-      
 
 
         <!-- Global Overlay Start -->
