@@ -44,8 +44,8 @@ public class HotDealController {
 	}
 	
 	
-	@RequestMapping("hotDealInsertForm.do")
+	/*@RequestMapping("hotDealInsertForm.do")
 	public String hotDealInsert() {
 		return "hotDeal/hotDealInsertForm";
-	}
+	}*/
 }

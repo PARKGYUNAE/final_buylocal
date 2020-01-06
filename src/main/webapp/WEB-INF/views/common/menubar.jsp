@@ -193,12 +193,32 @@
                                                         <span class="mm-text">나눔게시판</span>
                                                     </a>
                                                 </li>
-                                                <li class="mainmenu__item">
+                                                <%-- <li class="mainmenu__item">
 						                       	<c:url var="advertisement" value="advertisement.do"/>
 						                           <a href="${advertisement}" class="mainmenu__link">
 						                               <span class="mm-text">이벤트&광고</span>
 						                           </a>
-						                       </li>
+						                       </li> --%>
+						                       <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="advertisement" value="advertisement.do"/>
+                                                    <c:url var="insertProduct" value="insertProduct.do"/>
+                                                    <a href="${advertisement}" class="mainmenu__link">
+                                                        <span class="mm-text">신청하기</span>
+                                                    </a>
+                                                  <ul class="sub-menu">
+                                                        <li class="menu-item-has-children">
+                                                            <li>
+                                                                <a title="한식" href="${advertisement}">
+                                                                    <span class="mm-text">이벤트/광고 신청</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="중식" href="${insertProduct}">
+                                                                    <span class="mm-text">상품 신청</span>
+                                                                </a>
+                                                            </li>
+                                                   </ul>
+                                                 </li>
                                                 <li class="mainmenu__item">
                                                	<c:url var="contactUs" value="contactUs.do"/> 
                                                     <a href="${contactUs}" class="mainmenu__link">

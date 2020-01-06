@@ -23,32 +23,22 @@ public class etcController {
 		return "contactUs";
 	}
 	
+	
 	// 이벤트&광고
 	@RequestMapping("advertisement.do")
 	public String advertisement() {
-		return "advertisement";
+		return "application/advertisement";
+	}
+	
+	// 상품등록하기
+	@RequestMapping("insertProduct.do")
+	public String insertProduct() {
+		return "application/insertProductForm";
 	}
 	
 	
-	// 장바구니, 결제, 찜 페이지는 핫딜, 땡처리 게시판 모두 사용하는 페이지라서 여기로 옮겨둠. -> mypage로 추후 이동 예정
-	// [view] - [mypage]에는 이미 옮겨둠!
-
-	// 장바구니 - 경로 및 jsp파일명 수정
-	@RequestMapping("buyForm.do")
-	public String buyForm() {
-		return "mypage/buyForm";
-	}
 	
-	// 결제하기 - 경로 및 jsp파일명 수정
-	@RequestMapping("checkOutForm.do")
-	public String checkOutForm() {
-		return "mypage/checkOutForm";
-	}
 	
-	// 찜 목록 - 경로 및 jsp파일명 수정
-	@RequestMapping("wishList.do")
-	public String wishList() {
-		return "mypage/wishList";
-	}
 	
+		
 }

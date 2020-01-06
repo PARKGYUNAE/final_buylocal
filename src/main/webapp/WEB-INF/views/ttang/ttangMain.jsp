@@ -49,7 +49,7 @@
                     <div class="row">
                     	<c:url var="wishList" value="wishList.do"/>
 						<c:url var="buyForm" value="buyForm.do"/>
-                    	<c:url var="ttangInsertForm" value="ttangInsertForm.do"/>
+                    	<%-- <c:url var="ttangInsertForm" value="ttangInsertForm.do"/> --%>
                         <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
                             <div class="shop-toolbar mb--50">
                                 <div class="row align-items-center">
@@ -70,7 +70,7 @@
                                     <div class="col-md-7">
                                         <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
                                             <div class="product-view-mode ml--50 ml-xs--0">
-											<a class="active" href="${ttangInsertForm}" data-target="grid">상품등록하기</a>										
+											<%-- <a class="active" href="${ttangInsertForm}" data-target="grid">상품등록하기</a>	 --%>									
                                         	</div>
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@
 									<li><span class="page-number current">&lt;&lt;</span></li>
 								</c:if>
 								<c:if test="${pi.currentPage > 1 }">
-									<c:url var="before" value="${hotDeal }">
+									<c:url var="before" value="${ttang }">
 										<c:param name="page" value="${pi.currentPage-1 }"/>
 									</c:url>
 									<li><a class="page-number" href="${before }">&lt;&lt;</a></li>
@@ -203,7 +203,7 @@
 										<li><span class="page-number current">${p }</span></li>
 									</c:if>
 									<c:if test="${p ne pi.currentPage }">
-										<c:url var="pagination" value="${hotDeal }">
+										<c:url var="pagination" value="${ttang }">
 											<c:param name="page" value="${p }"/>
 										</c:url>
 										<li><a href="${pagination }" class="page-number">${p }</a></li>
@@ -214,7 +214,7 @@
 									<li><span class="page-number current">&gt;&gt;</span></li>
 								</c:if>
 								<c:if test="${pi.currentPage < pi.maxPage }">
-									<c:url var="after" value="${hotDeal }">
+									<c:url var="after" value="${ttang }">
 										<c:param name="page" value="${pi.currentPage + 1 }"/>
 									</c:url>
 									<li><a class="page-number" href="${after }">&gt;&gt;</a></li>

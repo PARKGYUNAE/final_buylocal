@@ -38,7 +38,7 @@
 				<div class="row">
 				<c:url var="wishList" value="wishList.do"/>
 				<c:url var="buyForm" value="buyForm.do"/>
-				<c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/>
+				<%-- <c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/> --%>
 					<div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
 						<div class="shop-toolbar mb--50">
 							<div class="row align-items-center">
@@ -59,7 +59,7 @@
 								<div class="col-md-7">
 									<div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
 										<div class="product-view-mode ml--50 ml-xs--0">
-											<a class="active" href="${hotDealInsertForm }" data-target="grid">상품등록하기</a>
+											<%-- <a class="active" href="${hotDealInsertForm }" data-target="grid">상품등록하기</a> --%>
 										</div>
 									</div>
 								</div>
