@@ -1286,7 +1286,22 @@ a, button, .item-overlay, .global-overlay, .pagination li .page-number, .scroll-
     -ms-flex-align: center;
     -webkit-align-items: center;
     -moz-align-items: center;
-    align-items: center; }
+    align-items: center; 
+    /* 툴바 아이콘(카트) 간격 수정 (소망) */
+    margin-left: 20px;}
+    /* 툴바 아이콘 간격(하트 유저) 수정 (소망) ==> class명 변경함 */
+    .header-toolbar--minicart-btn .toolbar-btn1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center; 
+    margin-left: 20px;}
     .header-toolbar--minicart-btn .toolbar-btn span {
       display: inline-block;
       width: 25px;
