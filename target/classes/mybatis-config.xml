@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.HotDeal" alias="HotDeal"/>
+		<typeAlias type="com.mylocal.myL.share.model.vo.ShareBoard" alias="ShareBoard"/>
+		<typeAlias type="com.mylocal.myL.share.model.vo.Reply" alias="Reply"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappers/hotDeal-mapper.xml"/>
+		<mapper resource="mappers/share-mapper.xml"/>
+		<mapper resource="mappers/reply-mapper.xml"/>
+	</mappers>
+</configuration>

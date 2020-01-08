@@ -23,6 +23,7 @@ public class HotDealController {
 		ArrayList<HotDeal> list = hotdealService. selectList(currentPage);
 		model.addAttribute("list", list);
 		model.addAttribute("pi", Pagination.getPageInfo());
+		
 		return "hotDeal/hotDealMain";
 	}
 	
@@ -31,21 +32,33 @@ public class HotDealController {
 		return "hotDeal/hotDealDetail";
 	}
 	
-	/*@RequestMapping("insertHotDeal.do")
+	@RequestMapping("insertHotDeal.do")
 	public String insertHotDeal() {
 		return "hotDeal/insertHotDealForm";
 	}
-	*/
-	
 	
 	@RequestMapping("hotDealQnA.do")
 	public String hotDealQnA() {
 		return "hotDeal/hotDealQnA";
 	}
 	
+	@RequestMapping("hotDealBuyForm.do")
+	public String hotDealBuyForm() {
+		return "hotDeal/hotDealBuyForm";
+	}
 	
-	/*@RequestMapping("hotDealInsertForm.do")
+	@RequestMapping("hotDealCheckOutForm.do")
+	public String hotDealCheckOutForm() {
+		return "hotDeal/hotDealCheckOutForm";
+	}
+	
+	@RequestMapping("hotDealWishList.do")
+	public String hotDealWishList() {
+		return "hotDeal/hotDealWishList";
+	}
+	
+	@RequestMapping("hotDealInsertForm.do")
 	public String hotDealInsert() {
 		return "hotDeal/hotDealInsertForm";
-	}*/
+	}
 }
