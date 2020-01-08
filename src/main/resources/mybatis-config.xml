@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Product" alias="product"/>
+		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Review" alias="review"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.Advertise" alias="Advertise"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.Product" alias="ProductAdmin"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.Seller" alias="Seller"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappers/hotDeal-mapper.xml"/>
+		<mapper resource="mappers/admin/admin-mapper.xml"/>
+		<mapper resource="mappers/admin/adContent-mapper.xml"/>
+		<mapper resource="mappers/admin/adAdvertise-mapper.xml"/>
+		<mapper resource="mappers/admin/adUser-mapper.xml"/>
+	</mappers>
+</configuration>

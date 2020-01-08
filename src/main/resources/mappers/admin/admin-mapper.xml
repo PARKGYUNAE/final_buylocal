@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminMapper">
+	
+	<resultMap id="AdvertiseResultSet" type="Advertise">
+		<id property="a_no" column="NID"/>
+		<result property="a_title" column="NTITLE"/>
+		<result property="l_code" column="NWRITER"/>
+		<result property="s_no" column="NCONTENT"/>
+		<result property="a_date" column="N_CREATE_DATE"/>
+		<result property="s_name" column="N_MODIFY_DATE"/>
+		<result property="l_name" column="FILE_PATH"/>
+	</resultMap>
+
+	
+	
+	
+	<select id="NoticeSelectList" resultMap="AdvertiseResultSet">
+		SELECT * FROM ADVERTISE
+	</select>
+	
+		
+	<select id="NoticeSelectOne" resultMap="AdvertiseResultSet">
+		SELECT * FROM ADVERTISE
+	</select>
+	
+	
+	
+
+</mapper>

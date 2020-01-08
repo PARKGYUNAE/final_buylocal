@@ -5,37 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>핫딜 상품 등록 페이지</title>
-<link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
+
+<title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../common/menubar.jsp" />
-	
-	<!-- Breadcrumb area Start -->
-	<section class="page-title-area bg-image ptb--80"
-		data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 text-center">
-					<h1 class="page-title">핫딜</h1>
-					<ul class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
-						<li class="current"><span>핫딜 게시판</span></li>
-						<li class="current"><span>상품 등록하기</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Breadcrumb area End -->
-	
+	<br>
+
 	<div class="main-container">
 		<main class="site-main">	
 			<div class="container-fluid no-left-padding no-right-padding page-content">
 				<div class="container">
-				
-					<br><br>
+
+
 					<h1>상품 등록하기</h1>
 					<h5>상품 등록 방법에 대한 자세한 설명은 공지사항을 확인 해 주세요.</h5>
 					<br><br><br>
@@ -83,19 +65,7 @@
 			</div>
 		</main>
 	</div>
-	
-	<c:import url="../common/footer.jsp"/>
 
 
-	<!-- Global Overlay Start -->
-	<div class="global-overlay"></div>
-	<!-- Global Overlay End -->
-
-	<!-- Global Overlay Start -->
-	<a class="scroll-to-top" href=""><i class="la la-angle-double-up"></i></a>
-	<!-- Global Overlay End -->
-	<!-- Main Wrapper End -->
-	
-	
 </body>
 </html>
