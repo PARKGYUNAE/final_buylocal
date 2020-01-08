@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userMapper">
+	<resultMap id="customerResultSet" type="Customer">
+		<id property="cNo" column="C_NO"/>
+		<result property="cName" column="C_NAME"/>
+		<result property="cId" column="C_ID"/>
+		<result property="cPwd" column="C_PWD"/>
+		<result property="cEmail" column="C_EMAIL"/>
+		<result property="cAddress" column="C_ADDRESS"/>
+		<result property="cStatus" column="C_STATUS"/>
+		<result property="cPhone" column="C_PHONE"/>
+		<result property="cEnrollDate" column="C_ENROLLDATE"/>
+	</resultMap>
+	
+	<insert id="insertCustomer" parameterType="Customer">
+		INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, #{cName}, #{cId}, #{cPwd}, #{cEmail}, #{cAddress}, DEFAULT, #{cPhone}, SYSDATE)
+	</insert>
+	
+	<select id="selectOneCustomer" parameterType="Customer" resultMap="customerResultSet">
+		SELECT *
+		FROM CUSTOMER
+		WHERE C_ID=#{cId}
+		AND C_STATUS='Y'
+	</select>
+	
+
+
+</mapper>

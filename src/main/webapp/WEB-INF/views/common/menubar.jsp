@@ -47,7 +47,7 @@
                                 <div class="header__main-inner">
                                     <div class="header__main-left">
                                         <div class="logo">
-                                            <a href="<%=request.getContextPath() %>" class="logo--normal">
+                                            <a href="<%= request.getContextPath() %>" class="logo--normal">
                                                 <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
@@ -326,12 +326,42 @@
                                                         <i class="la la-search"></i>
                                                     </a>
                                                 </div>
+                                                <!-- 메뉴바 아이콘 추가 (소망) -->
+                                                <div class="header-toolbar__item header-toolbar--minicart-btn">
+                                                	<c:if test="${ loginUser.cId eq 'admin' }">
+                                                    <a href="#" class="header-toolbar__btn toolbar-btn1">
+                                                        <i class="la la-gears"></i>
+                                                    </a>
+                                                    </c:if>
+                                                </div>
+                                                <div class="header-toolbar__item header-toolbar--minicart-btn">
+                                                    <a href="#miniCart" class="header-toolbar__btn toolbar-btn1">
+                                                        <i class="la la-heart-o"></i>
+                                                    </a>
+                                                </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                     <a href="#miniCart" class="header-toolbar__btn toolbar-btn">
                                                         <i class="la la-shopping-cart"></i>
-                                                        <span>01</span>
                                                     </a>
                                                 </div>
+                                                <div class="header-toolbar__item header-toolbar--minicart-btn">
+                                                    <!-- 로그인 페이지 이동 처리 추가 (소망) -->
+                                                    <!-- 로그인 유저가 있을 시 같은 버튼을 누르면 회원 프로필 페이지로 이동 -->
+                                                    <c:choose>
+                                                        <c:when test="${ empty sessionScope.loginUser }">
+                                                        	<c:url var="userLogin" value="userlogin.do"/>	                                                    <c:url var="userLogin" value="userLogin.do"/>
+		                                                    <a href="${ userLogin }" class="header-toolbar__btn toolbar-btn1">
+		                                                        <i class="la la-user"></i>
+		                                                    </a>	
+		                                                </c:when>
+		                                                <c:otherwise>
+		                                                	<c:url var="myProfile" value="myProfile.do"/>	
+		                                                	<a href="${ myProfile }" class="header-toolbar__btn toolbar-btn1">
+		                                                        <i class="la la-user"></i>
+		                                                    </a>
+		                                                </c:otherwise>
+	                                              	</c:choose>
+	                                               </div>                                                </div>
                                                 <div class="header-toolbar__item d-block d-lg-none">
                                                     <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                         <div class="hamburger-icon">
@@ -345,6 +375,10 @@
                                                     </a>
                                                 </div>
                                             </div>
+                                            <c:if test="${ !empty sessionScope.loginUser }">
+                                            	<c:url var="logout" value="logout.do"/>
+	                                         	<a href="${ logout }">로그아웃</a>
+	                                         </c:if>
                                         </div>
                                     </div>
                                 </div>
