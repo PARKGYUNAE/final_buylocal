@@ -37,6 +37,7 @@
  	<c:url var="hotDealWishList" value="hotDealWishList.do"/>
 	<c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
 	<c:url var="hotDealDetail" value="hotDealDetail.do" />
+	<c:url var="admin" value="goAdmin.do"/>
     <!-- Main Wrapper Start -->
     <div class="wrapper">
         <!-- Header Start -->
@@ -58,7 +59,7 @@
                                         <nav class="main-navigation text-center d-none d-lg-block">
                                             <ul class="mainmenu">
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="index.html" class="mainmenu__link">
+                                                    <a href="${admin }" class="mainmenu__link">
                                                         <span class="mm-text">Home</span>
                                                     </a>
                                                     <ul class="sub-menu">

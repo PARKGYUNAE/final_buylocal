@@ -25,6 +25,11 @@ import com.mylocal.myL.shop.hotDeal.model.vo.Review;
 public class HotDealController {
 	@Autowired
 	private hotDealService hotdealService;
+	
+	@RequestMapping("goAdmin.do")
+	public String goAdmin() {
+		return "admin/main";
+	}
 
 	@RequestMapping("hotDealMenu.do")
 	public String hotDealMenu(Model model, @RequestParam(value = "page", required = false) Integer page) {

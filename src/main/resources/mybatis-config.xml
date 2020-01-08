@@ -10,9 +10,16 @@
 	<typeAliases>
 		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Product" alias="product"/>
 		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Review" alias="review"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.Advertise" alias="Advertise"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.Product" alias="ProductAdmin"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.Seller" alias="Seller"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/hotDeal-mapper.xml"/>
+		<mapper resource="mappers/admin/admin-mapper.xml"/>
+		<mapper resource="mappers/admin/adContent-mapper.xml"/>
+		<mapper resource="mappers/admin/adAdvertise-mapper.xml"/>
+		<mapper resource="mappers/admin/adUser-mapper.xml"/>
 	</mappers>
 </configuration>
