@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ttangMapper">
+	<resultMap id="ttangSet" type="ttang">
+		<id property="tNo" column="T_NO"/>
+		<result property="tTitle" column="T_TITLE"/>
+		<result property="sNo" column="S_NO"/>
+		<result property="pNo" column="P_NO"/>
+		<result property="tDate" column="T_DATE"/>
+		<result property="lCode" column="L_CODE"/>
+		<result property="ttCgCode" column="TT_CG_CODE"/>
+		<result property="tStatus" column="T_STATUS"/>
+		<result property="pOriginalPrice" column="P_ORIGINALPRICE"/>
+		<result property="pFinalPrice" column="P_FINALPRICE"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="pAmount" column="P_AMOUNT"/>
+	</resultMap>
+	
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM TTANG
+		WHERE T_STATUS='Y'
+	</select>
+	
+	<select id="selectList" resultMap="ttangSet">
+		SELECT *
+		FROM TTANG JOIN PRODUCT USING (P_NO)
+		WHERE T_STATUS='Y'
+		ORDER BY S_NO DESC		
+	</select>
+</mapper>

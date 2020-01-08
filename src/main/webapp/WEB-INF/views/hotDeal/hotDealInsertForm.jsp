@@ -5,15 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../common/menubar.jsp" />
 	<br>
+
 	<div class="main-container">
 		<main class="site-main">	
 			<div class="container-fluid no-left-padding no-right-padding page-content">
 				<div class="container">
+
+
 					<h1>상품 등록하기</h1>
 					<h5>상품 등록 방법에 대한 자세한 설명은 공지사항을 확인 해 주세요.</h5>
 					<br><br><br>
@@ -61,5 +65,7 @@
 			</div>
 		</main>
 	</div>
+
+
 </body>
 </html>

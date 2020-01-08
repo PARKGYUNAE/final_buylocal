@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
+
 </head>
 <body>
 	<c:import url="../common/menubar.jsp" />
@@ -20,6 +22,7 @@
 				<div class="col-12 text-center">
 					<h1 class="page-title">핫딜</h1>
 					<ul class="breadcrumb">
+
 						<li class="current"><span>Shop Left Sidebar</span></li>
 					</ul>
 				</div>
@@ -27,14 +30,17 @@
 		</div>
 	</section>
 	<!-- Breadcrumb area End -->
+
 	<!-- Main Content Wrapper Start -->
 	<div class="main-content-wrapper">
 		<div class="shop-page-wrapper ptb--80">
 			<div class="container">
 				<div class="row">
+
 				<c:url var="hotDealWishList" value="hotDealWishList.do"/>
 				<c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
 				<c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/>
+
 					<div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
 						<div class="shop-toolbar mb--50">
 							<div class="row align-items-center">
@@ -55,7 +61,9 @@
 								<div class="col-md-7">
 									<div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
 										<div class="product-view-mode ml--50 ml-xs--0">
+
 											<a class="active" href="${hotDealInsertForm }" data-target="grid">상품등록하기</a>
+
 										</div>
 									</div>
 								</div>
@@ -73,22 +81,26 @@
 													<img src="resources/assets/img/products/prod-02-270x300.jpg"
 														alt="Product">
 												</figure>
+
 												<c:url var="hotDealDetail" value="hotDealDetail.do" >
 													<c:param name="pNo" value="${hot.pNo }"/>
 												</c:url>
 												<a href="${hotDealDetail }" class="product-overlay"></a>
 												<div class="product-action">
 													<a href="${hotDealWishList }" class="action-btn"> <i
+
 														class="la la-heart-o"></i>
 													</a> 
 												</div>
 											</div>
 											<div class="product-info">
 												<div class="product-category">
+
 													<a href="product-details.html">${hot.pTitle }</a>
 												</div>
 												<h3 class="product-title">
 													<a href="product-details.html">${hot.pName }</a>
+
 												</h3>
 												<div class="product-title">
 													<div class="product-price-wrapper">
@@ -97,7 +109,9 @@
 													<div class="product-price-wrapper">
 														<span class="money">할인 후 가격 : ${hot.pFinalPrice }</span>
 													</div>
+
 													<a href="${hotDealBuyForm }" class="add-to-cart pr--15"> <i
+
 														class="la la-plus"></i> <span>장바구니</span>
 													</a>
 												</div>
@@ -156,10 +170,12 @@
 													pharetra</p>
 												<div class="ft-product-action-list d-flex align-items-center">
 													
+
 													<a href="${hotDealBuyForm}" class="btn btn-size-md">Add To Cart</a>
 													<a href="${hotDealWishList}" class="ml--20 action-btn"> <i
 														class="la la-heart-o"></i>
 													</a> <a href="${hotDealWishList}" class="ml--20 action-btn"> <i
+
 														class="la la-repeat"></i>
 													</a>
 												</div>
@@ -168,6 +184,7 @@
 									</div>
 								</div> <!-- 여기까지가 한개의 상품 리스트 아래 부분은 미리보기 기능임 -->
 								</c:forEach>
+
 							</div>
 						</div>
 						<nav class="pagination-wrap">
@@ -711,12 +728,15 @@
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<!-- Qicuk View Modal End -->
+
 
 	<!-- Global Overlay Start -->
 	<div class="global-overlay"></div>

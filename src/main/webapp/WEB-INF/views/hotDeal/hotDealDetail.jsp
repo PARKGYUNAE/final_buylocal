@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
  
@@ -176,6 +178,7 @@
                                         <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                     </div>
                                 </div>
+
                                 
                                 <h3 class="product-title mb--20">${hotdealDetail.pTitle }</h3>
                                 <p class="product-short-description mb--20">${hotdealDetail.pInfoText }</p>
@@ -183,6 +186,7 @@
                                     <span class="money">할인 전 가격 : ${hotdealDetail.pOriginalPrice }원</span>
                                     <span class="money">할인 후 가격 : ${hotdealDetail.pFinalPrice }원</span>
                                     <div>판매 수량 : ${hotdealDetail.pAmount }</div>
+
                                 </div>
                                 <form action="#" class="variation-form mb--20">
                                     <div class="product-size-variations d-flex align-items-center mb--15">
@@ -210,21 +214,25 @@
                                             </div>
                                         </div>                                 
                                     </div>
+
                                 </form>
                                 <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                     <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                         <label class="quantity-label" for="qty">수량:</label>
+
                                         <div class="quantity">
                                             <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                         </div>
                                     </div>
                                     <c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
                                     <button type="button" class="btn btn-shape-square btn-size-sm" onclick="location.href='${hotDealBuyForm}'">
+
                                      	장바구니 담기
                                     </button>
                                 </div>  
                                 <div class="product-footer-meta">
                                     <p><span>카테고리:</span> 
+
                                         <a href="shop.html">Full Sweater</a>,
                                         <a href="shop.html">SweatShirt</a>,
                                         <a href="shop.html">Jacket</a>,
@@ -239,6 +247,7 @@
                             <div class="tab-style-2">
                                 <div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
                                     <a class="nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true"> 
+
                                         <span>상품 정보</span>
                                     </a>
                                     <a class="nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
@@ -246,6 +255,7 @@
                                     </a>
                                     <a class="nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
                                         <span>리뷰</span>
+
                                     </a>
                                     <a class="nav-link" id="nav-report-tab" data-toggle="tab" href="#nav-report" role="tab" aria-selected="true">
                                     	<span>신고하기</span>
@@ -254,15 +264,18 @@
                                 <div class="tab-content" id="product-tabContent">
                                     <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                         <div class="product-description">
+
                                             <p>${hotdealDetail.pInfoText }</p>
 											<p>${hotdealDetail.pInfoImage }
                                             
+
                                             
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
                                         <div class="table-content table-responsive">
                                             <table class="table shop_attributes">
+
                                             	<thead>
                                             		<h3 align="center">판매자 정보</h3>
                                             	</thead>
@@ -290,12 +303,14 @@
                                                     <tr>
                                                         <th>원산지</th>
                                                         <td>${hotdealDetail.pOrigin}</td>
+
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+
                                         <div class="product-reviews" id="product-reviews">
                                             <h3 class="review__title">이 상품에 대해 ${fn:length(review)}개의 리뷰</h3>
                                             
@@ -430,6 +445,7 @@
                                             		});
                                             	});
                                             </script>
+
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
@@ -439,11 +455,13 @@
 	                                                <tbody>
 	                                                    <tr>
 	                                                        <th>글제목 : </th>
+
 	                                                        <td>${hotdealDetail.pTitle }</td>
 	                                                    </tr>
 	                                                    <tr>
 	                                                    	<th>상품명 : </th>
 	                                                    	<td>${hotdealDetail.pName }</td>
+
 	                                                    </tr>
 	                                                    <tr>
 	                                                    	<th>신고 유형 : </th>
@@ -648,6 +666,7 @@
             </div>
         </div>
         <!-- Main Content Wrapper End -->
+
 
         <!-- Footer Start-->
         <footer class="footer bg-color" data-bg-color="#f4f8fa">
@@ -1167,6 +1186,7 @@
           </div>
         </div>
         <!-- Qicuk View Modal End -->
+
 
         <!-- Global Overlay Start -->
         <div class="global-overlay"></div>

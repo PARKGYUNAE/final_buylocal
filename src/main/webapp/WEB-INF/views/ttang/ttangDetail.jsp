@@ -1,254 +1,627 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-	h5>a{
-		cursor:pointer;
-		float:left;
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>땡처리게시판 - 상세</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
+
+    <!-- ************************* CSS Files ************************* -->
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="resources/assets/css/vendor.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="resources/assets/css/main.css">
+    
+    
+    <style>
+    
+    table.type04 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+	  margin : 20px 10px;
 	}
-</style>
+	table.type04 th {
+	    width: 150px;
+	    padding: 10px;
+	    font-weight: bold;
+	    vertical-align: top;
+	    border-bottom: 1px solid #ccc;
+	}
+	table.type04 td {
+	    width: 350px;
+	    padding: 10px;
+	    vertical-align: top;
+	    border-bottom: 1px solid #ccc;
+	}
+    
+    </style>
+    
 </head>
+
 <body>
-	<c:import url="../common/menubar.jsp"/>
-	<br>
-	
-	<div class="main-container">
-		
-		<main class="site-main">	
-		
-			<!-- Page Content -->
-			<div class="container-fluid no-left-padding no-right-padding page-content">
-				<!-- container -->	
-				<div align="center">
-				<h5><a style="margin-left:40%">한식</a></h5><h5><a style="margin-left:5%">중식</a></h5>
-				<h5><a style="margin-left:5%">양식</a></h5><h5><a style="margin-left:5%">일식</a></h5>
-				</div>
-				<br>
-				<hr><br>
-					<div class="container">
-					<!-- Row -->
-					<div class="row">
-					<!-- Widget Area -->
-						<div class="col-xs-6 col-sm-3 widget-area" >
-							
-							<!-- Widget : Categories -->
-							<aside class="widget widget_categories text-center" >
-								<h3 class="widget-title">Categories</h3>
-								<ul>
-									<li><a href="#" title="Nature">전체보기</a></li>
-									<li><a href="#" title="Nature">식품류</a></li>
-									<li><a href="#" title="Technology">비식품류</a></li>
-									<li><a href="#" title="Travel">기타</a></li>
-								</ul>
-							</aside><!-- Widget : Categories /- -->
-							<aside class="widget widget_tags_cloud">
-								<h3 class="widget-title">Tags</h3>
-								<div class="tagcloud">
-									<a href="#" title="Fashion">#맛집</a>
-									<a href="#" title="Travel">#신선함</a>
-									<a href="#" title="Nature">#육류</a>
-									<a href="#" title="Technology">#존맛</a>
-								</div>
-							</aside><!-- Widget : Tags /- -->
-						</div><!-- Widget Area /- -->
-						
-						<!-- Page Content -->
-					
-						<!-- Content Area -->
-						<div class="col-xl-8 col-lg-8 col-md-6 col-12 content-area">
-							<article class="type-post">
-								<div class="entry-cover">
-									<img src="http://placehold.it/770x513" alt="Post" />
-								</div>
-								<div class="entry-content">
-									<div class="entry-header">	
-									<aside class="widget widget_social">
-									<ul>
-									<li><a href="#" title=""><i class="ion-social-facebook-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-twitter-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-instagram-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-googleplus-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-pinterest-outline"></i></a></li>
-									<li><a href="#" title=""><i class="ion-social-vimeo-outline"></i></a></li>
-								</ul>
-								</aside>
-										<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
-										<h3 class="entry-title">Trendy Summer Fashion</h3>
-										<div class="post-meta">
-											<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-											<span class="post-date">MARCH 17, 2017</span>
-										</div>
-									</div>								
-									<p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection. But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
-									<blockquote>
-										<p>“To live is the rarest thing in the world. Most people exist, that is all.”</p>
-										<span>Oscar Wilde</span>
-									</blockquote>
-									<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth.</p>
-									<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself.</p>
-									<h4>More into summer fashion</h4>
-									<p>Denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
-									<figure>
-										<img src="http://placehold.it/770x450" alt="Post Image" />
-										<figcaption>Summer heat</figcaption>
-									</figure>
-									<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.</p>
-									<ul>
-										<li>Which is the same as saying through shrinking from toil and pain.</li>
-										<li>But in certain circumstances and owing to the claims of duty or the obligations of business it will.</li>
-										<li>The wise man therefore always holds in these matters to this principle of selection.</li>
-									</ul>
-									<p>Because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise.</p>
-									<div class="entry-footer">
-										<div class="tags">
-											<a href="#" title="Fashion"># Fashion</a>
-											<a href="#" title="Travel"># Travel</a>
-											<a href="#" title="Nature"># Nature</a>
-										</div>
-										<ul class="social">
-											<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</article>
-							<!-- About Author -->
-							<div class="about-author-box">
-								<div class="author">
-									<i><img src="http://placehold.it/170x170" alt="Author" /></i>
-									<h4>David Wilde</h4>
-									<p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences.</p>
-									<ul>
-										<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-									</ul>
-								</div>
-							</div><!-- About Author /- -->
-							<!-- Related Post -->
-							<div class="related-post">
-								<h3>You May Also Like</h3>
-								<div class="related-post-block">
-									<div class="related-post-box">
-										<a href="#"><img src="http://placehold.it/170x113" alt="Post" /></a>
-										<span><a href="#" title="Travel">Travel</a></span>
-										<h3><a href="#" title="Traffic Jams Solved">Traffic Jams Solved</a></h3>
-									</div>
-									<div class="related-post-box">
-										<a href="#"><img src="http://placehold.it/170x113" alt="Post" /></a>
-										<span><a href="#" title="Science">Science</a></span>
-										<h3><a href="#" title="How Astronauts Live">How Astronauts Live</a></h3>
-									</div>
-									<div class="related-post-box">
-										<a href="#"><img src="http://placehold.it/170x113" alt="Post" /></a>
-										<span><a href="#" title="Nature">Nature</a></span>
-										<h3><a href="#" title="White Sand">White Sand</a></h3>
-									</div>
-									<div class="related-post-box">
-										<a href="#"><img src="http://placehold.it/170x113" alt="Post" /></a>
-										<span><a href="#" title="Lifestyle">Lifestyle</a></span>
-										<h3><a href="#" title="Sunset at Beach">Sunset at Beach</a></h3>
-									</div>
-								</div>
-							</div><!-- Related Post /- -->
-							<!-- Comment Area -->
-							<div class="comments-area">
-								<h2 class="comments-title">3 Comments</h2>
-								<ol class="comment-list">
-									<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 parent">
-										<div class="comment-body">
-											<footer class="comment-meta">
-												<div class="comment-author vcard">
-													<img alt="img" src="http://placehold.it/70x70" class="avatar avatar-72 photo"/>
-													<b class="fn">Alice Chaptman</b>
-												</div>
-												<div class="comment-metadata">
-													<a href="#">10 hours ago</a>											
-												</div>
-											</footer>
-											<div class="comment-content">
-												<p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure.</p>
-											</div>
-											<div class="reply">
-												<a rel="nofollow" class="comment-reply-link" href="#" title="Reply">Reply</a>
-											</div>
-										</div>
-										<ol class="children">
-											<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent">
-												<div class="comment-body">
-													<footer class="comment-meta">
-														<div class="comment-author vcard">
-															<img alt="img" src="http://placehold.it/70x70" class="avatar avatar-72 photo"/>
-															<b class="fn">Droid Vader</b>
-														</div>
-														<div class="comment-metadata">
-															<a href="#">8 hours ago</a>											
-														</div>
-													</footer>
-													<div class="comment-content">
-														<p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves.</p>
-													</div>
-													<div class="reply">
-														<a rel="nofollow" class="comment-reply-link" href="#" title="Reply">Reply</a>
-													</div>
-												</div>
-											</li>
-										</ol>
-									</li>
-									<li class="comment byuser comment-author-admin bypostauthor even thread-odd thread-alt depth-1">
-										<div class="comment-body">
-											<footer class="comment-meta">
-												<div class="comment-author vcard">
-													<img alt="img" src="http://placehold.it/70x70" class="avatar avatar-72 photo"/>
-													<b class="fn">Giana Blankard</b>
-												</div>
-												<div class="comment-metadata">
-													<a href="#">16 hours ago</a>											
-												</div>
-											</footer>
-											<div class="comment-content">
-												<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-											</div>
-											<div class="reply">
-												<a rel="nofollow" class="comment-reply-link" href="#" title="Reply">Reply</a>
-											</div>
-										</div>
-									</li>
-								</ol><!-- comment-list /- -->
-								<!-- Comment Form -->
-								<div class="comment-respond">
-									<h2 class="comment-reply-title">Leave a Reply</h2>
-									<form method="post" class="comment-form">
-										<p class="comment-form-author">
-											<input id="author" name="author" placeholder="Name" size="30" maxlength="245" required="required" type="text"/>
-										</p>
-										<p class="comment-form-email">
-											<input id="email" name="email" placeholder="Email" required="required" type="email"/>
-										</p>
-										<p class="comment-form-url">
-											<input id="url" name="url" placeholder="Website" required="required" type="url"/>
-										</p>
-										<p class="comment-form-comment">
-											<textarea id="comment" name="comment" placeholder="Enter your comment here..." rows="8" required="required"></textarea>
-										</p>
-										<p class="form-submit">
-											<input name="submit" class="submit" value="Post Comment" type="submit"/>
-										</p>
-									</form>
-								</div><!-- Comment Form /- -->
-							</div><!-- Comment Area /- -->
-						</div><!-- Content Area /- -->
-						<!-- Widget Area -->
-					</div>
-				</div>
-			</div>
-		</main>
-	</div>
+	<c:import url="../common/menubar.jsp"/>	
+
+        <!-- Breadcrumb area Start -->
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="page-title">땡처리 상품상세 페이지</h1>
+                        <ul class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="current"><span>땡처리게시판</span></li>
+                            <li class="current"><span>상품상세페이지</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Breadcrumb area End -->
+
+        <!-- Main Content Wrapper Start -->
+        <div class="main-content-wrapper">
+            <div class="page-content-inner pt--80 pt-md--60">
+                <div class="container">
+                <c:url var="wishList" value="wishList.do"/>
+						<c:url var="buyForm" value="buyForm.do"/>
+                    <div class="row no-gutters mb--80 mb-md--57">
+                        <div class="col-lg-7 product-main-image">
+                            <div class="product-image">
+                                <div class="product-gallery vertical-slide-nav">
+                                
+                                
+                                    <div class="product-gallery__large-image mb-sm--30">
+                                        <div class="product-gallery__wrapper">
+                                            <div class="element-carousel main-slider image-popup"
+                                            data-slick-options='{
+                                                "slidesToShow": 1,
+                                                "slidesToScroll": 1,
+                                                "infinite": true,
+                                                "arrows": false, 
+                                                "asNavFor": ".nav-slider"
+                                            }'>
+                                                <figure class="product-gallery__image zoom">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-700x778.jpg" alt="Product">
+                                                    <span class="product-badge sale">Sale</span>
+                                                    <div class="product-gallery__actions">
+                                                        <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                    </div>
+                                                </figure>
+                                                <figure class="product-gallery__image zoom">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th2_jeju_tang-700x778.jpg" alt="Product">
+                                                    <span class="product-badge sale">Sale</span>
+                                                    <div class="product-gallery__actions">
+                                                        <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                    </div>
+                                                </figure>
+                                                <figure class="product-gallery__image zoom">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th3_jeju_tang-700x778.jpg" alt="Product">
+                                                    <span class="product-badge sale">Sale</span>
+                                                    <div class="product-gallery__actions">
+                                                        <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                    </div>
+                                                </figure>
+                                                <figure class="product-gallery__image zoom">
+                                                    <img src="resources/assets/img/products/jeju_tangerine/th4_jeju_tang-700x778.jpg" alt="Product">
+                                                    <span class="product-badge sale">Sale</span>
+                                                    <div class="product-gallery__actions">
+                                                        <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                        <!-- <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a> -->
+                                                    </div>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    </div>
+                         
+                                    
+                                    <div class="product-gallery__nav-image">
+                                        <div class="element-carousel nav-slider product-slide-nav slick-center-bottom" 
+                                        data-slick-options='{
+                                            "spaceBetween": 10,
+                                            "slidesToShow": 3,
+                                            "slidesToScroll": 1,
+                                            "vertical": true,
+                                            "swipe": true,
+                                            "verticalSwiping": true,
+                                            "infinite": true,
+                                            "focusOnSelect": true,
+                                            "asNavFor": ".main-slider",
+                                            "arrows": true, 
+                                            "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-up" },
+                                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-down" }
+                                        }'
+                                        data-slick-responsive='[
+                                            {
+                                                "breakpoint":1200, 
+                                                "settings": {
+                                                    "slidesToShow": 2
+                                                } 
+                                            },
+                                            {
+                                                "breakpoint":992, 
+                                                "settings": {
+                                                    "slidesToShow": 3
+                                                } 
+                                            },
+                                            {
+                                                "breakpoint":767, 
+                                                "settings": {
+                                                    "slidesToShow": 4,
+                                                    "vertical": false
+                                                } 
+                                            },
+                                            {
+                                                "breakpoint":575, 
+                                                "settings": {
+                                                    "slidesToShow": 3,
+                                                    "vertical": false
+                                                } 
+                                            },
+                                            {
+                                                "breakpoint":480, 
+                                                "settings": {
+                                                    "slidesToShow": 2,
+                                                    "vertical": false
+                                                } 
+                                            }
+                                        ]'>
+                                            <figure class="product-gallery__nav-image--single">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-170x195.jpg" alt="Products">
+                                            </figure>
+                                            <figure class="product-gallery__nav-image--single">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th2_jeju_tang-170x195.jpg" alt="Products">
+                                            </figure>
+                                            <figure class="product-gallery__nav-image--single">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th3_jeju_tang-170x195.jpg" alt="Products">
+                                            </figure>
+                                            <figure class="product-gallery__nav-image--single">
+                                                <img src="resources/assets/img/products/jeju_tangerine/th4_jeju_tang-170x195.jpg" alt="Products">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
+                            <div class="product-summary pl-lg--30 pl-md--0">
+                                <div class="product-navigation text-right mb--20">
+                                    <a href="#" class="prev"><i class="la la-angle-double-left"></i></a>
+                                    <a href="#" class="next"><i class="la la-angle-double-right"></i></a>
+                                </div>
+                                <div class="product-rating d-flex mb--20">
+                                    <div class="star-rating star-four">
+                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                    </div>
+                                </div>
+
+                                <h3 class="product-title mb--20">제주감귤10kg</h3>
+                                <p class="product-short-description mb--20">농가의 환경은 감율의 당도에 큰 영향을 미쳐요. 귤은 일정한 일조량은 물론, 건강한 토양, 그리고 바다와 가까울수록 산도가 적절히 빠져 최고의 맛을 낼 수 있는데요, 우리 감귤은 제주도 남쪽 해안가에 위치하여 이 모든 조건을 만족하는 건강한 환경에서 자라난 귤이랍니다!</p>
+                                <div class="product-price-wrapper mb--25">
+                                    <span class="money" style="text-decoration:line-through;">12,000원</span>
+                                    <span class="money" style="color:red;">9,000원</span>
+                                </div>
+                                <!-- 옵션 -->
+                                <!-- <form action="#" class="variation-form mb--20">
+                                    <div class="product-size-variations d-flex align-items-center mb--15">
+                                        <p class="variation-label">Size:</p>   
+                                        <div class="product-size-variation variation-wrapper">
+                                            <div class="variation">
+                                                <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
+                                                    <span class="product-size-variation-label">S</span>
+                                                </a>
+                                            </div>
+                                            <div class="variation">
+                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
+                                                    <span class="product-size-variation-label">M</span>
+                                                </a>
+                                            </div>
+                                            <div class="variation">
+                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
+                                                    <span class="product-size-variation-label">L</span>
+                                                </a>
+                                            </div>
+                                            <div class="variation">
+                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
+                                                    <span class="product-size-variation-label">XL</span>
+                                                </a>
+                                            </div>
+                                        </div>                                 
+                                    </div> -->
+                                    <a href="" class="reset_variations">Clear</a>
+                                </form>
+                                <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
+                                    <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+                                        <label class="quantity-label" for="qty">수량:</label>
+                                        <div class="quantity">
+                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${wishList}'">
+                                        	찜
+                                    </button>
+                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${buyForm}'">
+                                        장바구니
+                                    </button>                                    
+                                </div>  
+                                <div class="product-footer-meta">
+                                    <p><span>Category:</span> 
+                                    <!-- 카테고리 키워드 클릭 시, 검색하기 기능으로 연결 -->
+                                        <a href="#">#감귤</a>,
+                                        <a href="#">#한라봉</a>,
+                                        <a href="#">#제철과일</a>   
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb--77 mb-md--57">
+                        <div class="col-12">
+                            <div class="tab-style-2">
+                                <div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
+                                    <a class="nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true"> 
+                                        <span>상품상세</span>
+                                    </a>
+                                    <a class="nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
+                                        <span>추가정보</span>
+                                    </a>
+                                    <!-- <a class="nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
+                                        <span>상품평(1)</span>
+                                    </a> -->
+                                    <a class="nav-link" id="nav-report-tab" data-toggle="tab" href="#nav-report" role="tab" aria-selected="true">
+                                    	<span>신고하기</span>
+                                    </a>
+                                </div>
+                                <!-- 상품 상세 -->
+                                <div class="tab-content" id="product-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                                        <div class="product-description">
+                                        	<h5>상품 상세</h5>
+                                        	<p>* 땡처리 게시판은 별도의 상품문의 페이지가 제공되지 않습니다. <br>
+                                        	기타 문의사항은 사업자 연락처를 통해 주시기 바랍니다.</p>
+                                            <!-- 그림 삽입 -->
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                        </div>
+                                    </div>
+                                 <!-- 추가 정보 -->   
+                                 <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+                                        <div class="table-content table-responsive">
+                                        	
+                                        	
+                                            <table class="type04" style="font-size:14px;">
+												<h5>필수 표기정보</h5>
+                                                <tbody>
+                                                    <tr>
+                                                        <th >용량/수량/크기</th>
+                                                        <td >10 kg (박스포함)</td>
+                                                        <th >생산자(수입자)</th>
+                                                        <td >제주담은</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th cols="1">원산지</th>
+                                                        <td cols="1">제주도서귀포</td>
+                                                        <th cols="1">제조연월일</th>
+                                                        <td cols="1">생산년도:2019<br>
+                                                        	제조연월일:발송일 전 일주일 전후</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="1">취급방법</th>
+                                                        <td colspan="3">상온에 보관해주세요. (장기보관 시, 개별포장하여 보관해주세요)</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        	
+                                            
+                                            <br><br><br><br>                      
+                                        
+                                        	
+                                        	<h5>판매자 정보</h5>
+											<table class="type04" style="font-size:14px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <th cols="1">상호/대표자</th>
+                                                        <td cols="1">제주담음/김지혜</td>
+                                                        <th cols="1">사업자번호</th>
+                                                        <td cols="1">460-95-00421</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th cols="1">e-mail</th>
+                                                        <td cols="1">inhane1010@naver.com</td>
+                                                        <th cols="1">연락처</th>
+                                                        <td cols="1">064-749-8675</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="1">사업장 소재지</th>
+                                                        <td colspan="3">제주특별자치도 제주시 돈내길 46 203호(이도일동, 고덕쉐르빌아파트)<br>
+                                                        <img src="#" alt="사업장지도">
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                </tbody>
+                                            </table>                 
+                                        
+                                        </div>
+                                    </div>
+                                    <!-- 상품평(땡처리는 상품평x) -->
+                                   <!--  <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+                                        <div class="product-reviews">
+                                            <h3 class="review__title"><a>1</a>개의 상품평 </h3>
+                                            <ul class="review__list">
+                                                <li class="review__item">
+                                                    <div class="review__container">
+                                                        <img src="resources/assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
+                                                        <div class="review__text">
+                                                            <div class="d-flex flex-sm-row flex-column justify-content-between">
+                                                                <div class="review__meta">
+                                                                    <strong class="review__author">우별림 </strong>
+                                                                    <span class="review__dash">-</span>
+                                                                    <span class="review__published-date">December 31, 2019</span>
+                                                                </div>
+                                                                <div class="product-rating">
+                                                                    <div class="star-rating star-five">
+                                                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="review__description">아주 맛이 기가 막히네요. 많이 파세요. ^-^b</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            
+                                        </div>
+                                    </div> -->
+                                     <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
+                                        <div class="table-content table-responsive">
+                                        
+                                        	<p>신고 절차
+											지식재산권 침해 상품, 불법 혹은 부적격 상품, 부적절한 광고 내용 등 안전거래를 저해하는 상품이 확인될 경우, 신고하여 주시기 바랍니다. 신고 건은 아래의 절차에 따라 진행되며, 처리결과에 다소 시간이 걸릴 수 있습니다.
+											
+											<br><br>
+											신고 접수 > 내용 심사 > 판매자 소명 요청 > 처리</p>
+											
+											<br><br>
+                                            <form action="#" class="form pr--30">
+                                                    <div class="form__group mb--10">
+                                                        <label class="form__label d-block" for="title">상품명<span class="required">*</span></label>
+                                                        <input type="text" name="title" id="title" class="form__input" readonly>
+                                                    </div>
+                                                    <div class="form__group mb--20">
+                                                        <label class="form__label d-block" for="name">신고 유형<span class="required">*</span></label>
+                                                        <select>
+                                                        	<option>선택하세요</option>
+                                                        	<option>지적재산권 침해</option>
+                                                        	<option>허위과장광고</option>
+                                                        	<option>미인증 등 관련법위반</option>
+                                                        	<option>기타 불법물</option>
+                                                        	<option>중복 상품</option>
+                                                        	<option>상품정보 오류</option>
+														</select>
+                                                    </div>
+                                                    <div class="form__group mb--10">
+                                                        <label class="form__label d-block" for="title">신고 제목<span class="required">*</span></label>
+                                                        <input type="text" name="title" id="title" class="form__input">
+                                                    </div>
+                                                    <div class="form__group mb--20">
+                                                        <label class="form__label d-block" for="content">신고 내용<span class="required">*</span></label>
+                                                        <input type="text" name="content" id="content" class="form__input">
+                                                    </div>
+                                   
+                                                    <div class="form__group">
+                                                        <div class="form-row">
+                                                            <div class="col-12">
+                                                                <input type="submit" value="제출하기" class="btn btn-size-md">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                           </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb--75 mb-md--55">
+                        <div class="col-12">
+                            <div class="element-carousel slick-vertical-center" data-slick-options='{
+                                "spaceBetween": 30,
+                                "slidesToShow": 4,
+                                "slidesToScroll": 1,
+                                "arrows": true,
+                                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-double-left" },
+                                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-double-right" }
+                            }'
+                            data-slick-responsive= '[
+                                {"breakpoint":1199, "settings": {
+                                    "slidesToShow": 3
+                                }},
+                                {"breakpoint":991, "settings": {
+                                    "slidesToShow": 2
+                                }},
+                                {"breakpoint":575, "settings": {
+                                    "slidesToShow": 1
+                                }}
+                            ]'>
+                                <div class="item">
+                                    <div class="ft-product">
+                                        <div class="product-inner">
+                                            <div class="product-image">
+                                                <figure class="product-image--holder">
+                                                    <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                </figure>
+                                                <a href="product-details.html" class="product-overlay"></a>
+                                                <div class="product-action">
+                                                    
+                                                    <a href="wishlist.html" class="action-btn">
+                                                        <i class="la la-heart-o"></i>
+                                                    </a>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-category">
+                                                    <a href="product-details.html">Chair</a>
+                                                </div>
+                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                <div class="product-info-bottom">
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money">$150</span>
+                                                    </div>
+                                                    <a href="cart.html" class="add-to-cart pr--15">
+                                                        <i class="la la-plus"></i>
+                                                        <span>Add To Cart</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="ft-product">
+                                        <div class="product-inner">
+                                            <div class="product-image">
+                                                <figure class="product-image--holder">
+                                                    <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
+                                                </figure>
+                                                <a href="product-details.html" class="product-overlay"></a>
+                                                <div class="product-action">
+                                                    
+                                                    <a href="wishlist.html" class="action-btn">
+                                                        <i class="la la-heart-o"></i>
+                                                    </a>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-category">
+                                                    <a href="product-details.html">Chair</a>
+                                                </div>
+                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                <div class="product-info-bottom">
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money">$150</span>
+                                                    </div>
+                                                    <a href="cart.html" class="add-to-cart pr--15">
+                                                        <i class="la la-plus"></i>
+                                                        <span>Add To Cart</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="ft-product">
+                                        <div class="product-inner">
+                                            <div class="product-image">
+                                                <figure class="product-image--holder">
+                                                    <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
+                                                </figure>
+                                                <a href="product-details.html" class="product-overlay"></a>
+                                                <div class="product-action">
+                                                    
+                                                    <a href="wishlist.html" class="action-btn">
+                                                        <i class="la la-heart-o"></i>
+                                                    </a>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-category">
+                                                    <a href="product-details.html">Chair</a>
+                                                </div>
+                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                <div class="product-info-bottom">
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money">$150</span>
+                                                    </div>
+                                                    <a href="cart.html" class="add-to-cart pr--15">
+                                                        <i class="la la-plus"></i>
+                                                        <span>Add To Cart</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="ft-product">
+                                        <div class="product-inner">
+                                            <div class="product-image">
+                                                <figure class="product-image--holder">
+                                                    <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
+                                                </figure>
+                                                <a href="product-details.html" class="product-overlay"></a>
+                                                <div class="product-action">
+                                                    
+                                                    <a href="wishlist.html" class="action-btn">
+                                                        <i class="la la-heart-o"></i>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="product-category">
+                                                    <a href="product-details.html">Chair</a>
+                                                </div>
+                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
+                                                <div class="product-info-bottom">
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money">$150</span>
+                                                    </div>
+                                                    <a href="cart.html" class="add-to-cart pr--15">
+                                                        <i class="la la-plus"></i>
+                                                        <span>Add To Cart</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content Wrapper End -->
+
+     <c:import url="../common/footer.jsp"/>
+
+
+
+        <!-- Global Overlay Start -->
+        <div class="global-overlay"></div>
+        <!-- Global Overlay End -->
+
+        <!-- Global Overlay Start -->
+        <a class="scroll-to-top" href=""><i class="la la-angle-double-up"></i></a>
+        <!-- Global Overlay End -->
+    </div>
+    <!-- Main Wrapper End -->
+ 
+
+    <!-- ************************* JS Files ************************* -->
+
+    <!-- jQuery JS -->
+    <script src="resources/assets/js/vendor.js"></script>
+
+    <!-- Main JS -->
+    <script src="resources/assets/js/main.js"></script>
 </body>
+
 </html>
