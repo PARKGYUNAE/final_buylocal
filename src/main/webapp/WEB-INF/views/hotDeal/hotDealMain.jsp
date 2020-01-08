@@ -20,7 +20,6 @@
 				<div class="col-12 text-center">
 					<h1 class="page-title">핫딜</h1>
 					<ul class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
 						<li class="current"><span>Shop Left Sidebar</span></li>
 					</ul>
 				</div>
@@ -74,7 +73,9 @@
 													<img src="resources/assets/img/products/prod-02-270x300.jpg"
 														alt="Product">
 												</figure>
-												<c:url var="hotDealDetail" value="hotDealDetail.do" />
+												<c:url var="hotDealDetail" value="hotDealDetail.do" >
+													<c:param name="pNo" value="${hot.pNo }"/>
+												</c:url>
 												<a href="${hotDealDetail }" class="product-overlay"></a>
 												<div class="product-action">
 													<a href="${hotDealWishList }" class="action-btn"> <i
@@ -84,10 +85,10 @@
 											</div>
 											<div class="product-info">
 												<div class="product-category">
-													<a href="product-details.html">${hot.pName }</a>
+													<a href="product-details.html">${hot.pTitle }</a>
 												</div>
 												<h3 class="product-title">
-													<a href="product-details.html">${hot.hTitle }</a>
+													<a href="product-details.html">${hot.pName }</a>
 												</h3>
 												<div class="product-title">
 													<div class="product-price-wrapper">

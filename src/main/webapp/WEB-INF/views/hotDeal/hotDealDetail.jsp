@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
  
@@ -175,12 +176,13 @@
                                         <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                     </div>
                                 </div>
-                                <h3 class="product-title mb--20">Golden Easy Spot Chair.</h3>
-                                <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
+                                
+                                <h3 class="product-title mb--20">${hotdealDetail.pTitle }</h3>
+                                <p class="product-short-description mb--20">${hotdealDetail.pInfoText }</p>
                                 <div class="product-price-wrapper mb--25">
-                                    <span class="money">$200.00</span>
-                                    <span class="price-separator">-</span>
-                                    <span class="money">$400.00</span>
+                                    <span class="money">할인 전 가격 : ${hotdealDetail.pOriginalPrice }원</span>
+                                    <span class="money">할인 후 가격 : ${hotdealDetail.pFinalPrice }원</span>
+                                    <div>판매 수량 : ${hotdealDetail.pAmount }</div>
                                 </div>
                                 <form action="#" class="variation-form mb--20">
                                     <div class="product-size-variations d-flex align-items-center mb--15">
@@ -208,22 +210,21 @@
                                             </div>
                                         </div>                                 
                                     </div>
-                                    <a href="" class="reset_variations">Clear</a>
                                 </form>
                                 <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                     <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                        <label class="quantity-label" for="qty">Quantity:</label>
+                                        <label class="quantity-label" for="qty">수량:</label>
                                         <div class="quantity">
                                             <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                         </div>
                                     </div>
                                     <c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
                                     <button type="button" class="btn btn-shape-square btn-size-sm" onclick="location.href='${hotDealBuyForm}'">
-                                        Add To Cart
+                                     	장바구니 담기
                                     </button>
                                 </div>  
                                 <div class="product-footer-meta">
-                                    <p><span>Category:</span> 
+                                    <p><span>카테고리:</span> 
                                         <a href="shop.html">Full Sweater</a>,
                                         <a href="shop.html">SweatShirt</a>,
                                         <a href="shop.html">Jacket</a>,
@@ -238,13 +239,13 @@
                             <div class="tab-style-2">
                                 <div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
                                     <a class="nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true"> 
-                                        <span>Description</span>
+                                        <span>상품 정보</span>
                                     </a>
                                     <a class="nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
-                                        <span>Additional Information</span>
+                                        <span>추가 정보</span>
                                     </a>
                                     <a class="nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
-                                        <span>Reviews(1)</span>
+                                        <span>리뷰</span>
                                     </a>
                                     <a class="nav-link" id="nav-report-tab" data-toggle="tab" href="#nav-report" role="tab" aria-selected="true">
                                     	<span>신고하기</span>
@@ -253,111 +254,182 @@
                                 <div class="tab-content" id="product-tabContent">
                                     <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                         <div class="product-description">
-                                            <p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniaLo ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. iatis unde omnis iste natus error sit voluptatem accusantium </p>
-
-                                            <p>Lorem ipsum dolor sit amet, consec do eiusmod tincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniaLo ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                            <p>${hotdealDetail.pInfoText }</p>
+											<p>${hotdealDetail.pInfoImage }
                                             
-                                            <h5 class="product-description__heading">Characteristics :</h5>
-                                            <ul>
-                                                <li><i class="la la-arrow-right"></i><span>Rsit amet, consectetur adipisicing elit, sed do eiusmod tempor inc.</span></li>
-                                                <li><i class="la la-arrow-right"></i><span>sunt in culpa qui officia deserunt mollit anim id est laborum. </span></li>
-                                                <li><i class="la la-arrow-right"></i><span>Lorem ipsum dolor sit amet, consec do eiusmod tincididu. </span></li>
-                                            </ul>
                                             
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
                                         <div class="table-content table-responsive">
                                             <table class="table shop_attributes">
+                                            	<thead>
+                                            		<h3 align="center">판매자 정보</h3>
+                                            	</thead>
                                                 <tbody>
                                                     <tr>
-                                                        <th>Weight</th>
-                                                        <td>57 kg</td>
+                                                        <th>판매자</th>
+                                                        <td>${hotdealDetail.bOwner}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Dimensions</th>
-                                                        <td>160 × 152 × 110 cm</td>
+                                                        <th>연락처</th>
+                                                        <td>${hotdealDetail.cPhone }</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Color</th>
-                                                        <td>
-                                                            <a href="shop.html">Black</a>,
-                                                            <a href="shop.html">Gray</a>,
-                                                            <a href="shop.html">Red</a>,
-                                                            <a href="shop.html">Violet</a>,
-                                                            <a href="shop.html">Yellow</a>
-                                                        </td>
+                                                        <th>주소</th>
+                                                        <td>${hotdealDetail.bShopAddress }</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br><br>
+                                            <table class="table shop_attributes">
+                                            	<thead>
+                                            		<h3 align="center">상세 정보</h3>
+                                            	</thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>원산지</th>
+                                                        <td>${hotdealDetail.pOrigin}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
-                                        <div class="product-reviews">
-                                            <h3 class="review__title">1 review for Black Blazer</h3>
-                                            <ul class="review__list">
-                                                <li class="review__item">
-                                                    <div class="review__container">
-                                                        <img src="resources/assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
-                                                        <div class="review__text">
-                                                            <div class="d-flex flex-sm-row flex-column justify-content-between">
-                                                                <div class="review__meta">
-                                                                    <strong class="review__author">John Snow </strong>
-                                                                    <span class="review__dash">-</span>
-                                                                    <span class="review__published-date">November 20, 2018</span>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div class="star-rating star-five">
-                                                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="review__description">Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="review-form-wrapper">
-                                                <div class="row">
-                                                    <div class="col-lg-8">
-                                                        <span class="reply-title">Add a review</span>
-                                                        <form action="#" class="form pr--30">
-                                                            <div class="form-notes mb--20">
-                                                                <p>Your email address will not be published. Required fields are marked <span class="required">*</span></p>
-                                                            </div>
-                                                            <div class="form__group mb--10 pb--1">
-                                                                <label class="form__label d-block" >Your Ratings</label>
-                                                                <div class="rating">
-                                                                    <span><i class="la la-star"></i></span>
-                                                                    <span><i class="la la-star"></i></span>
-                                                                    <span><i class="la la-star"></i></span>
-                                                                    <span><i class="la la-star"></i></span>
-                                                                    <span><i class="la la-star"></i></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form__group mb--10">
-                                                                <label class="form__label d-block" for="email">Your Review<span class="required">*</span></label>
-                                                                <textarea name="review" id="review" class="form__input form__input--textarea"></textarea>
-                                                            </div>
-                                                            <div class="form__group mb--20">
-                                                                <label class="form__label d-block" for="name">Name<span class="required">*</span></label>
-                                                                <input type="text" name="name" id="name" class="form__input">
-                                                            </div>
-                                                            <div class="form__group mb--20">
-                                                                <label class="form__label d-block" for="email">Email<span class="required">*</span></label>
-                                                                <input type="email" name="email" id="email" class="form__input">
-                                                            </div>
-                                                            <div class="form__group">
-                                                                <div class="form-row">
-                                                                    <div class="col-12">
-                                                                        <input type="submit" value="Submit Now" class="btn btn-size-md">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="product-reviews" id="product-reviews">
+                                            <h3 class="review__title">이 상품에 대해 ${fn:length(review)}개의 리뷰</h3>
+                                            
+	                                            <ul class="review__list">
+	                                            <c:forEach var="review" items="${review }" end="2">
+	                                                <li class="review__item">
+	                                                    <div class="review__container" >
+	                                                        <img src="resources/assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
+	                                                        <div class="review__text">
+	                                                            <div class="d-flex flex-sm-row flex-column justify-content-between">
+	                                                                <div class="review__meta">
+	                                                                    <strong class="review__author">${review.cName } </strong>
+	                                                                    <span class="review__dash">-</span>
+	                                                                    <span class="review__published-date">November 20, 2018</span>
+	                                                                </div>
+	                                                                <div class="product-rating">
+	                                                                	<c:choose>
+	                                                                		<c:when test="${review.rvStarRate == 5}">
+		                                                                		<div class="star-rating star-five">
+		                                                                        	<span>Rated <strong class="rating">${review.rvStarRate }</strong> out of 5</span>
+		                                                                    	</div>
+	                                                                    	</c:when>
+	                                                                    	<c:when test="${review.rvStarRate == 4}">
+		                                                                		<div class="star-rating star-four">
+		                                                                        	<span>Rated <strong class="rating">${review.rvStarRate }</strong> out of 5</span>
+		                                                                    	</div>
+	                                                                    	</c:when>
+	                                                                    	<c:when test="${review.rvStarRate == 3}">
+		                                                                		<div class="star-rating star-three">
+		                                                                        	<span>Rated <strong class="rating">${review.rvStarRate }</strong> out of 5</span>
+		                                                                    	</div>
+	                                                                    	</c:when>
+	                                                                    	<c:when test="${review.rvStarRate == 2}">
+		                                                                		<div class="star-rating star-two">
+		                                                                        	<span>Rated <strong class="rating">${review.rvStarRate }</strong> out of 5</span>
+		                                                                    	</div>
+	                                                                    	</c:when>
+	                                                                    	<c:otherwise>
+	                                                                    		<div class="star-rating star-one">
+		                                                                        	<span>Rated <strong class="rating">${review.rvStarRate }</strong> out of 5</span>
+		                                                                    	</div>
+	                                                                    	</c:otherwise>
+	                                                                	</c:choose>
+	                                                                </div>
+	                                                            </div>
+	                                                            <p class="review__description">${review.rvContent }</p>
+	                                                        </div>
+	                                                    </div>
+	                                                </li>
+	                                                </c:forEach>
+	                                            </ul>
+                                            
+                                            <c:if test="${fn:length(review) > 3}">
+	                                            <div style="height:5%; width:100%;">
+	                                            	<button style="width:100%" id="showMore">더보기</button>
+	                                            </div>
+                                            </c:if>
+                                            <script>
+                                            	$("#showMore").click(function(){
+                                            		$(this).css("display", "none");
+                                            		var data = ${hotdealDetail.pNo};
+                                            		var currentpage = ${currentPage};
+                                            		$.ajax({
+                                            			url: "hotDealDetail.do",
+                                            			data: {pNo:data, page:currentpage, divide:"notnull"},
+                                            			type: 'get',
+                                            			dataType:"json",
+                                            			success : function(result){
+                          
+                                            				$div = $("#product-reviews");
+                                            				$div.html("");
+                                            				$h3 = $("<h3 class='review__title'>").text("이 상품에 대해 " + result.review.length + "개의 리뷰");
+                 	                                        $ul = $("<ul class='review__list'>");
+                 	                                       
+                 	                                        for(var i = 0; i < result.review.length; i++){
+	                                            				$li = $("<li class='review__item' style='padding-bottom:20px'>");
+	                                            				$div2 = $("<div class='review__container'>");
+	                                            				$img = $("<img src='resources/assets/img/others/comment-1.jpg' alt='Review Avatar' class='review__avatar'>");
+	                                            				$div3 = $("<div class='review__text'>");
+	                                            				$div4 = $("<div class='d-flex flex-sm-row flex-column justify-content-between'>");
+	                                            				$div5 = $("<div class='review__meta'>");
+	                                            				$strong = $("<strong class='review__author'>").text(result.review[i].cName);
+	                                            				$span1 = $("<span class='review__dash'>").text("-");
+	                                            				$span2 = $("<span class='review__published-date'>").text("November 20, 2018");
+	                                            				$div6 = $("<div class='product-rating'>");
+	                                            				switch(result.review[i].rvStarRate){
+	                                            				case 1: 
+	                                            					$div7 = $("<div class='star-rating star-one'>");
+	                                            					break;
+	                                            				case 2:
+	                                            					$div7 = $("<div class='star-rating star-two'>");
+	                                            					break;
+	                                            				case 3:
+	                                            					$div7 = $("<div class='star-rating star-three'>");
+	                                            					break;
+	                                            				case 4:
+	                                            					$div7 = $("<div class='star-rating star-four'>");
+	                                            					break;
+	                                            				case 5:
+	                                            					$div7 = $("<div class='star-rating star-five'>");
+	                                            					break;
+	                                            					
+	                                            				}
+	                                            				$span3 = $("<span>");
+	                                            				$strong2 = $("<strong class='rating'>").text(result.review[i].rvStarRate);
+	                                            				$p = $("<p class='review__description'>").text(result.review[i].rvContent);
+                                            				
+	                                            				
+	                                            				$span3.append($strong2);
+	                                            				$div7.append($span3);
+	                                            				$div6.append($div7);
+	                                            				
+	                                            				$div5.append($strong);
+	                                            				$div5.append($span1);
+	                                            				$div5.append($span2);
+	                                            				$div4.append($div5);
+	                                            				$div4.append($div6);
+	                                            				$div3.append($div4);
+	                                            				$div3.append($p);
+	                                            				//$div3.append($("<br>"));
+	                                            				$div2.append($img);
+	                                            				$div2.append($div3);
+	                                            				$ul.append($li);
+	                                            				$ul.append($div2);
+                 	                                        }
+                                            				$div.append($h3);
+                                            				$div.append($ul);
+                                            			},
+                                            			error : function(e){
+                                            				console.log(e);
+                                            			}
+                                            		});
+                                            	});
+                                            </script>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
@@ -367,11 +439,11 @@
 	                                                <tbody>
 	                                                    <tr>
 	                                                        <th>글제목 : </th>
-	                                                        <td>냉장고 팔아요~</td>
+	                                                        <td>${hotdealDetail.pTitle }</td>
 	                                                    </tr>
 	                                                    <tr>
 	                                                    	<th>상품명 : </th>
-	                                                    	<td>냉장고</td>
+	                                                    	<td>${hotdealDetail.pName }</td>
 	                                                    </tr>
 	                                                    <tr>
 	                                                    	<th>신고 유형 : </th>

@@ -8,7 +8,8 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.HotDeal" alias="HotDeal"/>
+		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Product" alias="product"/>
+		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Review" alias="review"/>
 	</typeAliases>
 	
 	<mappers>

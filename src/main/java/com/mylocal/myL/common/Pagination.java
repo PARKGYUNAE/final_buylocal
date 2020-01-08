@@ -13,12 +13,12 @@ public class Pagination {
 		// 페이지 정보를 담아 줄 PageInfo 참조 변수 선언
 		
 		// 페이징 처리에 필요한 나머지 변수만 선언함
-		int pageLimit = 10;	// 한 페이지에 보여질 페이징 수
+		int pageLimit = 5;	// 한 페이지에 보여질 페이징 수
 		int maxPage;		// 전체 페이지 중 가장 마지막 페이지
 		int startPage;		// 현재 페이지에서 보여질 페이징 버튼의 시작 페이지
 		int endPage;		// 현재 페이지에서 보여질 페이징 버튼의 끝 페이지
 		
-		int boardLimit = 5;	// 한 페이지에 보여질 게시글 개수
+		int boardLimit = 15;	// 한 페이지에 보여질 게시글 개수
 		
 		// * maxPage : 총 페이지 개수
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
