@@ -1,10 +1,12 @@
 package com.mylocal.myL.buylocal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mylocal.myL.buylocal.model.service.*;
+import com.mylocal.myL.buylocal.model.service.noticeService;
 
+@Controller
 public class noticeController {
 	@Autowired
 	private noticeService noticeService;

@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
- 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,7 +21,6 @@
     <!-- style css -->
     <link rel="stylesheet" href="resources/assets/css/main.css">
 </head>
-
 <body>
 	<c:import url="../common/menubar.jsp"/>	
 	

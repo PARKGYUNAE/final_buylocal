@@ -36,13 +36,13 @@ public class AdminController {
 	// 공지사항 수정 / 삭제 / 입력 추가할 것
 	
 	// 공지사항 등록폼으로(아직 화면이 미구현 noticeInsertForm 만들것)
-	@RequestMapping("noticeView.do")
+	/*@RequestMapping("noticeView.do")
 	public String noticeInsertView() {
 		return "admin/noticeInsertForm";
 		
-	}
+	}*/
 	
-	// 공지사항 입력
+	/*// 공지사항 입력
 	@RequestMapping("noticeInsert.do")
 		public String NoticeInsert(Notice n) {
 		
@@ -50,20 +50,20 @@ public class AdminController {
 		
 		return "redirect:admin.do";
 		
-	}
+	}*/
 	
 	// 공지사항 수정/삭제/입력은 공지사함 페이지가 있어야 할듯?
 	
-	@RequestMapping("noticeDetail.do")
+	/*@RequestMapping("noticeDetail.do")
 		public String NoticeDetail(Model model, int nNo, Notice n) {
 	
 		n = adService.NoticeSelectOne(nNo);
 		
 		return "admin/adminDetailView"; // 규내 누나 경로로 가자
 		
-	}
+	}*/
 	
-	// 수정하기 페이지로 이동
+	/*// 수정하기 페이지로 이동
 	@RequestMapping("noticeUpdateView.do")
 	public String NoticeUpdateView(Model model, int nNo, Notice n) {
 		n = adService.NoticeSelectOne(nNo);
@@ -71,9 +71,9 @@ public class AdminController {
 		model.addAttribute("notice", n);
 		return "admin/noticeUpdateView"; // 규내 누나 경로로 가자
 
-	}
+	}*/
 	
-	// 수정하기
+	/*// 수정하기
 	@RequestMapping("noticeUpdate.do")
 	public String NoticeUpdate(Notice n) {
 		
@@ -82,10 +82,10 @@ public class AdminController {
 				
 		return ""; //규내누나 페이지로 가자
 		
-	}
+	}*/
 	
 	
-	// 삭제 업데이트 하는식으로 하자
+	/*// 삭제 업데이트 하는식으로 하자
 	@RequestMapping("noticeDelete.do")
 	public String NoticeDelete(int nNo) {
 		
@@ -94,7 +94,7 @@ public class AdminController {
 		
 		return "";
 		
-	}
+	}*/
 	
 	
 	// 관리자 모드 차트 보기
