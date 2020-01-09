@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class etcController {
 	
+	
 	// 고객센터
 	@RequestMapping("contactUs.do")
 	public String contactUs() {
 		return "contactUs";
 	}
-	
 	
 	// 이벤트&광고
 	@RequestMapping("advertisement.do")
@@ -35,10 +35,5 @@ public class etcController {
 	public String insertProduct() {
 		return "application/insertProductForm";
 	}
-	
-	
-	
-	
-	
 		
 }

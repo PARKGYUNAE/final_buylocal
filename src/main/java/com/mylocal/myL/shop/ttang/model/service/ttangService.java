@@ -2,9 +2,9 @@ package com.mylocal.myL.shop.ttang.model.service;
 
 import java.util.ArrayList;
 
-import com.mylocal.myL.shop.ttang.model.vo.Ttang;
+import com.mylocal.myL.shop.ttang.model.vo.*;
 
 public interface ttangService {
 	
-	ArrayList<Ttang> selectList (int currentPage);
+	ArrayList<Product> selectList (int currentPage);
 }

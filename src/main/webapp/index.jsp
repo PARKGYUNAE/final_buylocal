@@ -33,11 +33,13 @@
             <div class="ft-child ft-bounce3"></div>
         </div>
     </div>
+    
     <!-- Preloader End -->
  	<c:url var="hotDealWishList" value="hotDealWishList.do"/>
 	<c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
 	<c:url var="hotDealDetail" value="hotDealDetail.do" />
 	<c:url var="admin" value="goAdmin.do"/>
+
     <!-- Main Wrapper Start -->
     <div class="wrapper">
         <!-- Header Start -->
@@ -50,7 +52,7 @@
                                 <div class="header__main-inner">
                                     <div class="header__main-left">
                                         <div class="logo">
-                                            <a href="index.html" class="logo--normal">
+                                            <a href="<%=request.getContextPath() %>" class="logo--normal">
                                                 <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
@@ -59,264 +61,172 @@
                                         <nav class="main-navigation text-center d-none d-lg-block">
                                             <ul class="mainmenu">
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="${admin }" class="mainmenu__link">
-                                                        <span class="mm-text">Home</span>
+                                                	<c:url var="introduction" value="introduction.do"/>
+                                                	<c:url var="holymoly" value="holymoly.do"/>
+                                                 	<c:url var="noticeM" value="noticeMain.do"/>
+                                                    <a href="${introduction}" class="mainmenu_link">
+                                                        <span class="mm-text">바이로컬</span>
                                                     </a>
                                                     <ul class="sub-menu">
                                                         <li>
-                                                            <a href="index.html">
-                                                                <span class="mm-text">Home One</span>
+                                                            <a href="${introduction}">
+                                                                <span class="mm-text">사이트 소개</span>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="index-02.html">
-                                                                <span class="mm-text">Home Two</span>
+                                                            <a href="${holymoly}">
+                                                                <span class="mm-text">홀리몰리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="${noticeM}">
+                                                                <span class="mm-text">공지사항</span>
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="mainmenu__item menu-item-has-children megamenu-holder">
                                                 	<c:url var="hotDeal" value="hotDealMenu.do"/>
-                                                		
-                                                    <a href="${hotDeal }" class="mainmenu__link">
+                                                    <a href="${hotDeal}" class="mainmenu__link">
                                                         <span class="mm-text">핫딜</span>
                                                     </a>
                                                     <ul class="megamenu">
                                                         <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Shop Grid</span>
-                                                            </a>
                                                             <ul>
                                                                 <li>
-                                                                    <a href="shop-fullwidth.html">
-                                                                        <span class="mm-text">Full Width</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">디지털/가전</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="shop.html">
-                                                                        <span class="mm-text">Left Sidebar</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">의류/패션잡화</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="shop-right-sidebar.html">
-                                                                        <span class="mm-text">Right Sidebar</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">뷰티/미용</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="shop-three-columns.html">
-                                                                        <span class="mm-text">Three Columns</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">스포츠/레저</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="shop-four-columns.html">
-                                                                        <span class="mm-text">Four Columns</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">도서/티켓/음반</span>
                                                                     </a>
                                                                 </li>
                                                             </ul>
                                                         </li>
                                                         <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Shop List</span>
-                                                            </a>
                                                             <ul> 
                                                                 <li>
-                                                                    <a href="shop-list.html">
-                                                                        <span class="mm-text">Full Width</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">가구/인테리어</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="shop-list-sidebar.html">
-                                                                        <span class="mm-text">Left Sidebar</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">신선/가공식품</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="shop-list-right-sidebar.html">
-                                                                        <span class="mm-text">Right Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Product Details</span>
-                                                            </a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="${hotDealDetail}">
-                                                                        <span class="mm-text">Tab Style 1</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">게임/취미</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="product-details-tab-style-2.html">
-                                                                        <span class="mm-text">Tab Style 2</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">반려동물용품</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="product-details-tab-style-3.html">
-                                                                        <span class="mm-text">Tab Style 3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-gallery-left.html">
-                                                                        <span class="mm-text">Gallery Left</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-gallery-right.html">
-                                                                        <span class="mm-text">Gallery Right</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-sticky-left.html">
-                                                                        <span class="mm-text">Sticky Left</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Product Details</span>
-                                                            </a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="product-details-sticky-right.html">
-                                                                        <span class="mm-text">Sticky Right</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-slider-box.html">
-                                                                        <span class="mm-text">Slider Box</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-slider-full-width.html">
-                                                                        <span class="mm-text">Slider Box Full Width</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-affiliate.html">
-                                                                        <span class="mm-text">Affiliate Proudct</span>
-                                                                    </a>
-                                                                </li>                                                    
-                                                                <li>
-                                                                    <a href="product-details-variable.html">
-                                                                        <span class="mm-text">Variable Proudct</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-group.html">
-                                                                        <span class="mm-text">Group Product</span>
+                                                                    <a href="#">
+                                                                        <span class="mm-text">기타</span>
                                                                     </a>
                                                                 </li>
                                                             </ul>
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <c:url var="ttang" value="ttangMain.do"/>
-                                                    <a href="${ttang }" class="mainmenu__link">
-                                                        <span class="mm-text">떙처리</span>
+                                             <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="ttangM" value="ttangMain.do"/>
+                                                    <a href="${ttangM}" class="mainmenu__link">
+                                                        <span class="mm-text">땡처리</span>
                                                     </a>
                                                     <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
-                                                            <a href="#">
-                                                                <span class="mm-text">Blog Grid</span>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="blog-left-sidebar.html">
-                                                                        <span class="mm-text">Left Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog.html">
-                                                                        <span class="mm-text">Right Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-01-column.html">
-                                                                        <span class="mm-text">One Column</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-02-columns.html">
-                                                                        <span class="mm-text">Two Columns</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-03-columns.html">
-                                                                        <span class="mm-text">Three Columns</span>
-                                                                    </a>
-                                                                </li>
+                                                            <li>
+                                                                <a title="한식" href="${ttangM}">
+                                                                    <span class="mm-text">한식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="중식" href="${ttangM}">
+                                                                    <span class="mm-text">중식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="일식" href="${ttangM}">
+                                                                    <span class="mm-text">일식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="양식" href="${ttangM}">
+                                                                    <span class="mm-text">양식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="커피/제과" href="${ttangM}">
+                                                                    <span class="mm-text">커피/제과</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="기타" href="${ttangM}">
+                                                                    <span class="mm-text">기타</span>
+                                                                </a>
+                                                            </li>
                                                             </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href=""><span class="mm-text">Blog Details</span></a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="blog-details-image.html">
-                                                                        <span class="mm-text">Image Post</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-details-audio.html">
-                                                                        <span class="mm-text">Audio Post</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-details-video.html">
-                                                                        <span class="mm-text">Video Post</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-details-gallery.html">
-                                                                        <span class="mm-text">Gallery Post</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="#" class="mainmenu__link">
-                                                        <span class="mm-text">Pages</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="my-account.html">
-                                                                <span class="mm-text">My Account</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="checkout.html">
-                                                                <span class="mm-text">Checkout</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="${hotDealBuyForm}">
-                                                                <span class="mm-text">Cart</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="compare.html">
-                                                                <span class="mm-text">Compare</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="order-tracking.html">
-                                                                <span class="mm-text">Track Order</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="${hotDealWishList}">
-                                                                <span class="mm-text">Wishlist</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                                       </li>
+                                                      
                                                 <li class="mainmenu__item">
-                                                    <a href="contact-us.html" class="mainmenu__link">
-                                                        <span class="mm-text">Contact Us</span>
+													<c:url var="shareboard" value="shareboard.do"/>
+                                                    <a href="${sharboard}" class="mainmenu__link">
+                                                        <span class="mm-text">나눔게시판</span>
+                                                    </a>
+                                                </li>
+						                       <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="advertisement" value="advertisement.do"/>
+                                                    <c:url var="insertProduct" value="insertProduct.do"/>
+                                                    <a href="${advertisement}" class="mainmenu__link">
+                                                        <span class="mm-text">신청하기</span>
+                                                    </a>
+                                                  <ul class="sub-menu">
+                                                        <li class="menu-item-has-children">
+                                                            <li>
+                                                                <a title="한식" href="${advertisement}">
+                                                                    <span class="mm-text">이벤트/광고 신청</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="중식" href="${insertProduct}">
+                                                                    <span class="mm-text">상품 신청</span>
+                                                                </a>
+                                                            </li>
+                                                   </ul>
+                                                 </li>
+                                                <li class="mainmenu__item">
+                                               	<c:url var="contactUs" value="contactUs.do"/> 
+                                                    <a href="${contactUs}" class="mainmenu__link">
+                                                        <span class="mm-text">고객센터</span>
+                                                    </a>
+                                                </li>
+                                                <!-- 관리자페이지 연결(임시) -->
+                                                <li class="mainmenu__item menu-item-has-children">
+                                                    <a href="${admin}" class="mainmenu__link">
+                                                        <span class="mm-text">관리자</span>
                                                     </a>
                                                 </li>
                                             </ul>

@@ -3,31 +3,73 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ttangMapper">
-	<resultMap id="ttangSet" type="ttang">
-		<id property="tNo" column="T_NO"/>
-		<result property="tTitle" column="T_TITLE"/>
-		<result property="sNo" column="S_NO"/>
-		<result property="pNo" column="P_NO"/>
-		<result property="tDate" column="T_DATE"/>
-		<result property="lCode" column="L_CODE"/>
-		<result property="ttCgCode" column="TT_CG_CODE"/>
-		<result property="tStatus" column="T_STATUS"/>
+	<resultMap id="productSet" type="product">
+		<id property="pNo" column="P_NO"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="pThumb" column="P_THUMB"/>
 		<result property="pOriginalPrice" column="P_ORIGINALPRICE"/>
 		<result property="pFinalPrice" column="P_FINALPRICE"/>
-		<result property="pName" column="P_NAME"/>
 		<result property="pAmount" column="P_AMOUNT"/>
+		<result property="pInfoImage" column="P_INFO_IMAGE"/>
+		<result property="pInfoText" column="P_INFO_TEXT"/>
+		<result property="cgName" column="CG_NAME"/>
+		<result property="pDate" column="P_DATE"/>
+		<result property="pStatus" column="P_STATUS"/>
+		<result property="lName" column="L_NAME"/>
+		<result property="bOwner" column="B_OWNER"/>
+		<result property="bShopAddress" column="B_SHOP_ADDRESS"/>
+		<result property="cPhone" column="C_PHONE"/>
+		<result property="pStarRate" column="P_STARRATE"/>
+		<result property="pOrigin" column="P_ORIGIN"/>
+		<result property="pTitle" column="P_TITLE"/>
+		<result property="pBoard" column="P_BOARD"/>
 	</resultMap>
 	
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*)
-		FROM TTANG
-		WHERE T_STATUS='Y'
+		FROM PRODUCT
+		WHERE P_STATUS='Y'AND P_BOARD = '땡처리'
 	</select>
 	
-	<select id="selectList" resultMap="ttangSet">
+	<select id="selectList" resultMap="productSet">
 		SELECT *
-		FROM TTANG JOIN PRODUCT USING (P_NO)
-		WHERE T_STATUS='Y'
+		FROM PRODUCT
+		WHERE P_STATUS='Y' AND P_BOARD = '땡처리'
 		ORDER BY S_NO DESC		
 	</select>
+	
+	<!-- <resultMap id="reviewSet" type="review">
+		<id property="rvNo" column="RV_NO"/>
+		<result property="rvStarRate" column="RV_STARRATE"/>
+		<result property="rvContent" column="RV_CONTENT"/>
+		<result property="cName" column="C_NAME"/>
+		<result property="rvStatus" column="RV_STATUS"/>
+	</resultMap>
+	
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='땡처리'
+	</select>
+	
+	<select id="selectList" resultMap="productSet">
+		SELECT * 
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='땡처리'
+		ORDER BY P_NO DESC
+	</select>
+	
+	<select id="selectBoard" resultMap="productSet">
+		SELECT * 
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='땡처리'
+		AND P_NO = #{pNo}
+	</select>
+	
+	<select id="selectReviewList" resultMap="reviewSet">
+		SELECT RV_NO, RV_STARRATE, RV_CONTENT, C_NAME, RV_STATUS, P_NO
+		FROM REVIEW JOIN CUSTOMER USING(C_NO)
+		WHERE RV_STATUS='Y' AND P_NO = #{pNo}
+	</select> -->
+	
 </mapper>
