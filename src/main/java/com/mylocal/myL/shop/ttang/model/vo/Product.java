@@ -65,11 +65,9 @@ public class Product {
 		return pName;
 	}
 
-
 	public void setpName(String pName) {
 		this.pName = pName;
 	}
-
 
 	public String getpThumb() {
 		return pThumb;
