@@ -35,7 +35,6 @@
 		SELECT *
 		FROM PRODUCT
 		WHERE P_STATUS='Y' AND P_BOARD = '땡처리'
-		ORDER BY S_NO DESC		
 	</select>
 	
 	<!-- <resultMap id="reviewSet" type="review">

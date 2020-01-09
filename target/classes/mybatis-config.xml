@@ -13,6 +13,8 @@
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Advertise" alias="Advertise"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Product" alias="ProductAdmin"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Seller" alias="Seller"/>
+		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productTtang"/>
+		<typeAlias type="com.mylocal.myL.buylocal.model.vo.Notice" alias="notice"/>
 	</typeAliases>
 	
 	<mappers>
@@ -21,5 +23,7 @@
 		<mapper resource="mappers/admin/adContent-mapper.xml"/>
 		<mapper resource="mappers/admin/adAdvertise-mapper.xml"/>
 		<mapper resource="mappers/admin/adUser-mapper.xml"/>
+		<mapper resource="mappers/ttang-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
 	</mappers>
 </configuration>
