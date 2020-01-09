@@ -85,7 +85,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-270x300.jpg" alt="제주감귤">
+                                                        <img src="resources/assets/img/products/prod-04-700x778.png" alt="제주감귤">
                                                     </figure>
                                                     <c:url var="ttangD" value="ttangDetail.do"/>
                                                     <a href="${ttangD}" class="product-overlay"></a>
