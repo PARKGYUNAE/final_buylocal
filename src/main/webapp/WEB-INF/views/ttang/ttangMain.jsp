@@ -23,82 +23,99 @@
 </head>
 
 <body>
+	<c:import url="../common/menubar.jsp"/>
 
-	<c:import url="../common/menubar.jsp" />
-	<br>
-	
-	<div class="main-container">
-		
-		<main class="site-main">	
-		
-			<!-- Page Content -->
-			<div class="container-fluid no-left-padding no-right-padding page-content">
-				<!-- container -->	
-				<div align="center">
-				<h1>떙처리</h1>
-				</div>
-				<hr>
-				
-				<h5><a style="margin-left:40%">한식</a></h5><h5><a style="margin-left:5%">중식</a></h5>
-				<h5><a style="margin-left:5%">양식</a></h5><h5><a style="margin-left:5%">일식</a></h5>
-				<br>
-				<hr><br>
-				
-				<div class="container">
-					<!-- Row -->
-					<div class="row">
-					<!-- Widget Area -->
-						<div class="col-xs-6 col-sm-3 widget-area" >
-							
-							<!-- Widget : Categories -->
-							<aside class="widget widget_categories text-center" >
-								<h3 class="widget-title">Categories</h3>
-								<ul>
-									<li><a href="#" title="Nature">전체보기</a></li>
-									<li><a href="#" title="Nature">식품류</a></li>
-									<li><a href="#" title="Technology">비식품류</a></li>
-									<li><a href="#" title="Travel">기타</a></li>
-								</ul>
-							</aside><!-- Widget : Categories /- -->
-				
-						</div><!-- Widget Area /- -->
-						<!-- Content Area -->
-						<div class="col-xs-6 col-sm-3 blog-masonry-box" >
-							<div class="type-post">
-								<div class="entry-cover">
-									<div class="post-meta">
-										<c:url var="ttangDetail" value="ttangDetail.do"/>
-										<span class="byline"><a href="${ttangDetail }" title="Indesign">상세정보보기</a></span>
-										<span class="post-date"><a href="#">구매하기</a></span>
-									</div>
-									<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
-								</div>
-								<div class="entry-content">
-									<div class="entry-header">	
-										<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
-										<h3 class="entry-title"><a href="#" title="Trendy Summer Fashion">Trendy Summer Fashion</a></h3>
-									</div>
-									<p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses...</p>
-									<a href="#" title="Read More">Read More</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-6 col-sm-3 blog-masonry-box">
-							<div class="type-post">
-									<div class="entry-cover">
-										<div class="post-meta">
-											<span class="byline">by <a href="#" title="Indesign">inDesign</a></span>
-											<span class="post-date"><a href="#">MARCH 17, 2017</a></span>
-										</div>
-										<a href="#"><img src="http://placehold.it/370x247" alt="Post" /></a>
-									</div>
-									<div class="entry-content">
-										<div class="entry-header">	
-											<span class="post-category"><a href="#" title="Lifestyle">Lifestyle</a></span>
-											<h3 class="entry-title"><a href="#" title="Trendy Summer Fashion">Trendy Summer Fashion</a></h3>
+        <!-- Breadcrumb area Start -->
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="page-title">땡처리게시판</h1>
+                        <ul class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="current"><span>식품류</span></li>
+                            <li class="current"><span>한식</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Breadcrumb area End -->
 
-										</div>
-									</div> --%>
+        <!-- Main Content Wrapper Start -->
+        <div  class="main-content-wrapper">
+            <div class="shop-page-wrapper ptb--80">
+                <div class="container">
+                    <div class="row">
+                    	<%-- <c:url var="wishList" value="wishList.do"/> --%>
+						<%-- <c:url var="buyForm" value="buyForm.do"/> --%>
+                        <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
+                            <div class="shop-toolbar mb--50">
+                                <div class="row align-items-center">
+                                    <div class="col-md-5 mb-sm--30 mb-xs--10">
+                                        <div class="shop-toolbar__left">
+                                            <div class="product-ordering">
+                                                <select class="product-ordering__select nice-select">
+                                                    <option value="0">기본정렬순</option>
+                                                    <option value="1">관련순</option>
+                                                    <option value="2">이름순, ㄱ-ㅎ</option>
+                                                    <option value="3">이름순, ㅎ-ㄱ</option>
+                                                    <option value="4">낮은가격순</option>
+                                                    <option value="5">높은가격순</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
+                                            <div class="product-view-mode ml--50 ml-xs--0">
+                                        	</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="shop-products">
+                                <div class="row">
+                                <!-- c:forEach start -->
+									<c:forEach var="productTtang" items="${list}">
+                                    <div class="col-xl-4 col-sm-6 mb--50">
+                                        <div class="ft-product">
+                                            <div class="product-inner">
+                                                <div class="product-image">
+                                                    <figure class="product-image--holder">
+                                                        <img src="resources/assets/img/products/prod-04-700x778.png" alt="제주감귤">
+                                                    </figure>
+                                                    <c:url var="ttangD" value="ttangDetail.do"/>
+                                                    <a href="${ttangD}" class="product-overlay"></a>
+                                                    <div class="product-action">
+                                                        <a href="#" class="action-btn">
+                                                            <i class="la la-heart-o"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info">
+                                                    <div class="product-category">
+                                                        <a href="${ttangD}">${productTtang.pName}</a>
+                                                    </div>
+                                                    <h3 class="product-title"><a href="${ttangD}">${productTtang.pTitle}</a></h3>
+                                                    <div class="product-info-bottom">
+                                                        <div class="product-price-wrapper">
+                                                            <span class="money" style="color:black; text-decoration:line-through;">${productTtang.pOriginalPrice}원</span>
+                                                        </div>
+                                                        <div class="product-price-wrapper">
+                                                            <span class="money">${productTtang.pFinalPrice}원</span>
+                                                        </div>
+                                                        <a href="#" class="add-to-cart pr--15">
+                                                            <i class="la la-plus"></i>
+                                                            <span>장바구니</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
 									</div>
                                   <!-- forEach end -->
 											</c:forEach>
@@ -112,17 +129,17 @@
 									<li><span class="page-number current">&lt;&lt;</span></li>
 								</c:if>
 								<c:if test="${pi.currentPage > 1 }">
-									<c:url var="before" value="${ttang }">
+									<c:url var="before" value="${productTtang}">
 										<c:param name="page" value="${pi.currentPage-1 }"/>
 									</c:url>
 									<li><a class="page-number" href="${before }">&lt;&lt;</a></li>
 								</c:if>
-								<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+								<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage}">
 									<c:if test="${p eq pi.currentPage }">
 										<li><span class="page-number current">${p }</span></li>
 									</c:if>
 									<c:if test="${p ne pi.currentPage }">
-										<c:url var="pagination" value="${ttang }">
+										<c:url var="pagination" value="${productTtang}">
 											<c:param name="page" value="${p }"/>
 										</c:url>
 										<li><a href="${pagination }" class="page-number">${p }</a></li>
@@ -133,7 +150,7 @@
 									<li><span class="page-number current">&gt;&gt;</span></li>
 								</c:if>
 								<c:if test="${pi.currentPage < pi.maxPage }">
-									<c:url var="after" value="${ttang }">
+									<c:url var="after" value="${productTtang}">
 										<c:param name="page" value="${pi.currentPage + 1 }"/>
 									</c:url>
 									<li><a class="page-number" href="${after }">&gt;&gt;</a></li>
@@ -154,21 +171,6 @@
 									<li><a href="#"> <span class="category-title">양식</span> <i class="fa fa-angle-double-right"></i></a></li>
 									<li><a href="#"> <span class="category-title">커피/제과</span> <i class="fa fa-angle-double-right"></i></a></li>
 									<li><a href="#"> <span class="category-title">기타</span> <i class="fa fa-angle-double-right"></i></a></li>
-								</ul>
-							</div>
-							
-							<div class="shop-widget mb--40">
-								<h3 class="widget-title mb--25">가격</h3>
-								<ul class="widget-list price-list">
-									<li><a href="shop.html"> <span>Low - Medium</span> <strong
-											class="font-weight-medium">10만원 이하</strong>
-									</a></li>
-									<li><a href="shop.html"> <span>Medium - High</span> <strong
-											class="font-weight-medium">10 ~ 30만원이하</strong>
-									</a></li>
-									<li><a href="shop.html"> <span>High - Avobe</span> <strong
-											class="font-weight-medium">30만원 초과</strong>
-									</a></li>
 								</ul>
 							</div>
 							<div class="shop-widget">

@@ -93,32 +93,31 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/jeju_tangerine/th2_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/jeju_tangerine/th3_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/jeju_tangerine/th4_jeju_tang-700x778.jpg" alt="Product">
+                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                        <!-- <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a> -->
                                                     </div>
                                                 </figure>
                                             </div>
@@ -178,16 +177,16 @@
                                             }
                                         ]'>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/jeju_tangerine/th1_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/jeju_tangerine/th2_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/jeju_tangerine/th3_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/jeju_tangerine/th4_jeju_tang-170x195.jpg" alt="Products">
+                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
                                             </figure>
                                         </div>
                                     </div>
@@ -291,10 +290,10 @@
                                         	<p>* 땡처리 게시판은 별도의 상품문의 페이지가 제공되지 않습니다. <br>
                                         	기타 문의사항은 사업자 연락처를 통해 주시기 바랍니다.</p>
                                             <!-- 그림 삽입 -->
-                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
-                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
-                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
-                                            <img src="resources/assets/img/products/jeju_tangerine/jeju_tangerine.jpg" alt="products_information">
+                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
+                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
+                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
+                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
                                         </div>
                                     </div>
                                  <!-- 추가 정보 -->   
@@ -356,35 +355,7 @@
                                         
                                         </div>
                                     </div>
-                                    <!-- 상품평(땡처리는 상품평x) -->
-                                   <!--  <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
-                                        <div class="product-reviews">
-                                            <h3 class="review__title"><a>1</a>개의 상품평 </h3>
-                                            <ul class="review__list">
-                                                <li class="review__item">
-                                                    <div class="review__container">
-                                                        <img src="resources/assets/img/others/comment-1.jpg" alt="Review Avatar" class="review__avatar">
-                                                        <div class="review__text">
-                                                            <div class="d-flex flex-sm-row flex-column justify-content-between">
-                                                                <div class="review__meta">
-                                                                    <strong class="review__author">우별림 </strong>
-                                                                    <span class="review__dash">-</span>
-                                                                    <span class="review__published-date">December 31, 2019</span>
-                                                                </div>
-                                                                <div class="product-rating">
-                                                                    <div class="star-rating star-five">
-                                                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="review__description">아주 맛이 기가 막히네요. 많이 파세요. ^-^b</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            
-                                        </div>
-                                    </div> -->
+                                    
                                      <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
                                         <div class="table-content table-responsive">
                                         

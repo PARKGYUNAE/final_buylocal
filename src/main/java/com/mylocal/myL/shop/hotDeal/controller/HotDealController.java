@@ -110,17 +110,17 @@ public class HotDealController {
 
 	@RequestMapping("hotDealBuyForm.do")
 	public String hotDealBuyForm() {
-		return "myPage/buyForm";
+		return "mypage/buyForm";
 	}
 
 	@RequestMapping("hotDealCheckOutForm.do")
 	public String hotDealCheckOutForm() {
-		return "myPage/checkOutForm";
+		return "mypage/checkOutForm";
 	}
 
 	@RequestMapping("hotDealWishList.do")
 	public String hotDealWishList() {
-		return "myPage/wishList";
+		return "mypage/wishList";
 	}
 
 	@RequestMapping("hotDealInsertForm.do")
