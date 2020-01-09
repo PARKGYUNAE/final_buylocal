@@ -192,8 +192,8 @@
                                                        </li>
                                                       
                                                 <li class="mainmenu__item">
-													<c:url var="shareboard" value="shareboard.do"/>
-                                                    <a href="${sharboard}" class="mainmenu__link">
+													<%-- <c:url var="shareboard" value="shareboard.do"/> --%>
+                                                    <a href="#" class="mainmenu__link">
                                                         <span class="mm-text">나눔게시판</span>
                                                     </a>
                                                 </li>
