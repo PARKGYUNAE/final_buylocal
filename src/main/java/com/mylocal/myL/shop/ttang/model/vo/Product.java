@@ -55,7 +55,6 @@ public class Product {
 		return pNo;
 	}
 
-
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
 	}
