@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="shareboardMapper">
+	
+	<resultMap id="ShareBoardResultSet" type="ShareBoard">
+			<id property="sbNo" column="SB_NO"/>
+		<result property="sbTitle" column="SB_TITLE"/>
+		<result property="sbContent" column="SB_CONTENT"/>
+		<result property="sbDate" column="SB_CREATEDATE"/>
+		<result property="sbStatus" column="SB_STATUS"/>
+		<result property="cName" column="C_NAME"/>
+		<result property="lName" column="L_NAME"/>
+		<result property="sbView" column="SB_VIEW"/>
+		<result property="sbcgName" column="SB_CG_NAME"/>
+	</resultMap>
+	
+	<select id="selectList" resultMap="ShareBoardResultSet">
+		SELECT *
+		FROM SHAREBOARD
+		JOIN CUSTOMER USING(C_NO)
+		JOIN LOCAL USING(L_CODE)
+		WHERE SB_STATUS='Y'
+		ORDER BY SB_NO DESC
+	</select>
+	
+	<select id="detailBoard" resultMap="ShareBoardResultSet">
+		SELECT * 
+		FROM SHAREBOARD
+		JOIN Sb_Category SB USING(SB_CG_CODE)
+		JOIN CUSTOMER USING(C_NO)
+		JOIN LOCAL USING(L_CODE)
+		WHERE SB_NO=#{sbNo}
+		AND SB_STATUS='Y'
+	</select>
+	
+	<update id="shareboardMapper" parameterType="ShareBoard">
+	UPDATE SHAREBOARD
+	SET SB_TITLE=#{sbTitle}, SB_CONTENT=#{sbContent}
+	WHERE SB_NO=#{sbNo}
+	</update>
+
+</mapper>
+	
