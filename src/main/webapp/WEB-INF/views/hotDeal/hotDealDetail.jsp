@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<!-- <html class="no-js" lang="zxx"> -->
+<html lang="en">
  
 <head>
     <meta charset="utf-8">
@@ -24,12 +25,15 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="resources/assets/css/main.css">
+    
+    
+
+    
 </head>
 
 <body>
 	<c:import url="../common/menubar.jsp" />
-    
-
+	
         <!-- Breadcrumb area Start -->
         <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
             <div class="container">
@@ -216,27 +220,43 @@
                                     </div>
 
                                 </form>
+                               <form action="hotDealAddCart.do" method="post">
                                 <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
-                                    <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                        <label class="quantity-label" for="qty">수량:</label>
-
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
-                                        </div>
-                                    </div>
-                                    <c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
-                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="location.href='${hotDealBuyForm}'">
-
-                                     	장바구니 담기
-                                    </button>
+                                    
+	                                    <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+	                                        <label class="quantity-label" for="qty">수량:</label>
+	                                        
+	                                        <input type="hidden" name="pNo" value="${hotdealDetail.pNo }"/>
+	                                        <input type="hidden" name="cNo" value="${loginUser.cNo }"/>
+	                                        
+	                                        <div class="quantity">
+	                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
+	                                        </div>
+	                                        
+	                                    </div>
+                                    
+                                    
+                                    <c:choose>
+                                      <c:when test="${ empty sessionScope.loginUser }">
+                                      	<c:url var="userLogin" value="userLogin.do"/>	 
+                                        <button type="button" class="btn btn-shape-square btn-size-sm" onclick="location.href='${userLogin}'">
+                                     		장바구니 담기
+                                    	</button>
+                                      </c:when>
+                                      <c:otherwise>	
+                                      
+                                    	<button type="submit" class="btn btn-shape-square btn-size-sm">
+                                     		장바구니 담기
+                                    	</button>
+                                    	
+                                      </c:otherwise>
+                                   	</c:choose>
+                                   	
                                 </div>  
+                                </form>
                                 <div class="product-footer-meta">
                                     <p><span>카테고리:</span> 
-
-                                        <a href="shop.html">Full Sweater</a>,
-                                        <a href="shop.html">SweatShirt</a>,
-                                        <a href="shop.html">Jacket</a>,
-                                        <a href="shop.html">Blazer</a>
+                                    	<a href="#">${hotdealDetail.cgName }</a>
                                     </p>
                                 </div>
                             </div>
@@ -450,36 +470,35 @@
                                     </div>
                                     <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
                                         <div class="table-content table-responsive">
-                                        	<form>
+                                        	<form method="post" action="hotdealReport.do">
 	                                            <table class="table shop_attributes">
 	                                                <tbody>
 	                                                    <tr>
 	                                                        <th>글제목 : </th>
-
 	                                                        <td>${hotdealDetail.pTitle }</td>
 	                                                    </tr>
 	                                                    <tr>
 	                                                    	<th>상품명 : </th>
 	                                                    	<td>${hotdealDetail.pName }</td>
-
 	                                                    </tr>
 	                                                    <tr>
 	                                                    	<th>신고 유형 : </th>
 	                                                    	<td>
 	                                                    		<select>
-	                                                    			<option >
-	                                                    			</option>
+	                                                    			<option value="광고">광고</option>
+	                                                    			<option value="허위/과장">허위/과장</option>
 	                                                    		</select>
 	                                                    	</td>
 	                                                    </tr>
 	                                                    <tr>
 	                                                        <th>신고 내용 : </th>
-	                                                        <td><textarea rows="10" cols="100"></textarea></td>
+	                                                        
 	                                                    </tr>
 	                                                </tbody>
 	                                            </table>
 	                                            <button>제출하기</button>
                                             </form>
+                                            
                                         </div>
                                     </div>
                                 </div>

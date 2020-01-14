@@ -101,7 +101,6 @@
 									</div> --%>
 									</div>
                                   <!-- forEach end -->
-											</c:forEach>
                                             </div>
                                         </div>
                                   

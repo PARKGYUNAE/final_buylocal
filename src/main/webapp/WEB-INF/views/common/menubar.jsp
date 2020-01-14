@@ -24,7 +24,12 @@
 </head>
 
 <body>
-
+	<script>
+		<c:if test="${!empty msg}">
+			alert('${msg}');
+			<c:remove var="msg"/>
+		</c:if>
+	</script>
     <!-- Preloader Start -->
     <div class="ft-preloader active">
         <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
@@ -398,5 +403,6 @@
    
        <!-- Main JS -->
        <script src="resources/assets/js/main.js"></script>
+     
 </body>
 </html>

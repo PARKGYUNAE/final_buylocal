@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +38,6 @@
 			<div class="container">
 				<div class="row">
 
-				<c:url var="hotDealWishList" value="hotDealWishList.do"/>
 				<c:url var="hotDealBuyForm" value="hotDealBuyForm.do"/>
 				<c:url var="hotDealInsertForm" value="hotDealInsertForm.do"/>
 
@@ -86,12 +86,31 @@
 													<c:param name="pNo" value="${hot.pNo }"/>
 												</c:url>
 												<a href="${hotDealDetail }" class="product-overlay"></a>
-												<div class="product-action">
-													<a href="${hotDealWishList }" class="action-btn"> <i
-
-														class="la la-heart-o"></i>
-													</a> 
-												</div>
+												<c:choose>
+			                                      <c:when test="${ empty sessionScope.loginUser }">
+			                                      	<c:url var="userLogin" value="userLogin.do"/>
+				                                    <div class="product-action">
+														<a href="${userLogin }" class="action-btn"> <i
+															class="la la-heart-o"></i>
+														</a> 
+													</div>
+			                                      </c:when>
+			                                      <c:otherwise>	
+			                                      
+												  <c:url var="hotDealWishList" value="hotDealAddWishList.do">
+												  	<c:param name="pNo" value="${hot.pNo }"/>
+												  	<c:param name="cNo" value="${loginUser.cNo }"/>
+												  </c:url>
+			                                    	<div class="product-action">
+														<a href="${hotDealWishList }" class="action-btn"> <i
+															class="la la-heart-o"></i>
+														</a> 
+													</div>
+			                                    	
+			                                      </c:otherwise>
+			                                   	</c:choose>
+												
+												
 											</div>
 											<div class="product-info">
 												<div class="product-category">
@@ -104,11 +123,47 @@
 												</h3>
 												<div class="product-title">
 													<div class="product-price-wrapper">
-														<span class="money">할인 전 가격 : ${hot.pOriginalPrice }</span>
+														<span class="money">
+															<sup><fmt:parseNumber value="${(hot.pOriginalPrice-hot.pFinalPrice)/hot.pOriginalPrice*100 }" integerOnly="true"/>%</sup>
+															<s>${hot.pOriginalPrice }</s>
+														</span>
 													</div>
 													<div class="product-price-wrapper">
-														<span class="money">할인 후 가격 : ${hot.pFinalPrice }</span>
+														<span class="money"><h3>${hot.pFinalPrice }원</h3></span>
 													</div>
+													<c:choose>
+	                                                	<c:when test="${hot.pStarRate == 5}">
+						                                    <div class="star-rating star-five" style="margin-left: 0px">
+						                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+						                                    </div>
+				                                    	</c:when>
+				                                    	<c:when test="${hot.pStarRate == 4}">
+						                                    <div class="star-rating star-four" style="margin-left: 0px">
+						                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+						                                    </div>
+				                                    	</c:when>
+				                                    	<c:when test="${hot.pStarRate == 3}">
+						                                    <div class="star-rating star-three" style="margin-left: 0px">
+						                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+						                                    </div>
+				                                    	</c:when>
+				                                    	<c:when test="${hot.pStarRate == 2}">
+						                                    <div class="star-rating star-two" style="margin-left: 0px">
+						                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+						                                    </div>
+				                                    	</c:when>
+				                                    	<c:when test="${hot.pStarRate == 1}">
+						                                    <div class="star-rating star-one" style="margin-left: 0px">
+						                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+						                                    </div>
+				                                    	</c:when>
+				                                    	<c:otherwise>
+						                                    <div class="star-rating star-half" style="margin-left: 0px">
+						                                        
+						                                    </div>
+				                                    	</c:otherwise>
+				                                    </c:choose>
+					      
 
 													<a href="${hotDealBuyForm }" class="add-to-cart pr--15"> <i
 

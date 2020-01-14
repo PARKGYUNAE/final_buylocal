@@ -13,6 +13,10 @@
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Advertise" alias="Advertise"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Product" alias="ProductAdmin"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Seller" alias="Seller"/>
+		<typeAlias type="com.mylocal.myL.user.model.vo.Customer" alias="Customer"/>
+		<typeAlias type="com.mylocal.myL.common.Cart" alias="Cart"/>
+		<typeAlias type="com.mylocal.myL.common.Deal" alias="Deal"/>
+		<typeAlias type="com.mylocal.myL.common.Favorite" alias="Favorite"/>
 	</typeAliases>
 	
 	<mappers>
@@ -21,5 +25,6 @@
 		<mapper resource="mappers/admin/adContent-mapper.xml"/>
 		<mapper resource="mappers/admin/adAdvertise-mapper.xml"/>
 		<mapper resource="mappers/admin/adUser-mapper.xml"/>
+		<mapper resource="mappers/user/user-mapper.xml"/>
 	</mappers>
 </configuration>

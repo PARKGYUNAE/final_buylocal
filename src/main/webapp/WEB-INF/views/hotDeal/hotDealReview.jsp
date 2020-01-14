@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
- 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,20 +22,32 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/main.css">
+    
+    <style>
+    	.starR{
+		  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+		  background-size: auto 100%;
+		  width: 30px;
+		  height: 30px;
+		  display: inline-block;
+		  text-indent: -9999px;
+		  cursor: pointer;
+		}
+		.starR.on{background-position:0 0;}
+    </style>
 </head>
-
 <body>
-	<c:import url="../common/menubar.jsp"/>
-
-        <!-- Breadcrumb area Start -->
+	<c:import url="../common/menubar.jsp" />
+	
+	        <!-- Breadcrumb area Start -->
         <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">찜 목록</h1>
+                        <h1 class="page-title">리뷰등록</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>Wishlist</span></li>
+                            <li class="current"><span>Contact Us</span></li>
                         </ul>
                     </div>
                 </div>
@@ -44,70 +56,66 @@
         <!-- Breadcrumb area End -->
 
         <!-- Main Content Wrapper Start -->
-        <div class="main-content-wrapper">
-            <div class="page-content-inner ptb--80 ptb-md--60">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="table-content table-responsive">
-                                <table class="table table-style-2 wishlist-table text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>&nbsp;</th>
-                                            <th>&nbsp;</th>
-                                            <th class="text-left">상품명</th>
-                                            <th>카테고리</th>
-                                            <th>가격</th>
-                                            <th>&nbsp;</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<c:if test="${fn:length(list) <= 0}">
-                                    		<tr>
-                                    			<td>상품이 존재하지 않습니다</td>
-                                    		</tr>
-                                        </c:if>
-                                        <c:if test="${fn:length(list) > 0}">
-                                        <c:forEach var="wishlist" items="${ list}">
-                                        	<tr>
-	                                            <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-	                                            <td class="product-thumbnail text-left">
-	                                                <img src="assets/img/products/prod-01-70x88.jpg" alt="Product Thumnail">
-	                                            </td>
-	                                            <td class="product-name text-left wide-column">
-	                                                <h3>
-	                                                    <a href="product-details.html">${wishlist.pName }</a>
-	                                                </h3>
-	                                            </td>
-	                                            <td class="product-stock">
-	                                                ${wishlist.cgName }
-	                                            </td>
-	                                            <td class="product-price">
-	                                                <span class="product-price-wrapper">
-	                                                    <span class="money">${wishlist.pFinalPrice }</span>
-	                                                </span>
-	                                            </td>
-	                                            <c:url var="hotDealDetail" value="hotDealDetail.do" >
-													<c:param name="pNo" value="${wishlist.pNo }"/>
-												</c:url>
-	                                            <td class="product-action-btn">
-	                                                <a href="${hotDealDetail }" class="btn btn-size-md">상품 보러가기</a>
-	                                            </td>
-	                                            
-                                        	</tr>
-                                        </c:forEach>
-                                        </c:if>
-                                        
-                                        
-                                    </tbody>
-                                </table>
-                            </div>  
+        <main class="main-content-wrapper">
+            <div class="inner-page-content pt--75 pt-md--55">
+                <!-- Contact Area Start -->
+                <section class="contact-area mb--75 mb-md--55">
+                    <div class="container">
+                        <div class="row">
+                        	<c:forEach var="lists" items="${list}">
+	                            <div class="col-lg-4 col-md-5 mb-sm--30">
+	                                <div class="heading mb--32">
+	                                    <h2>${lists.pName }</h2>
+	                                    <hr class="delimeter">
+	                                </div>
+	                                <div class="contact-info mb--20">
+	                                    <p>${lists.pInfoText }</p>
+	                                    <p>구매 갯수 : ${lists.quantity }</p>
+	                                    <p>총 가격 : ${lists.pFinalPrice * lists.quantity}</p>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-7 offset-lg-1">
+	                            
+                        			<form action="InsertReview.do" method="post">
+	                                <div class="heading mb--40">
+	                                    <h2>리뷰 작성</h2>
+	                                    <hr class="delimeter">
+	                                </div>
+	                                <input type="hidden" name="cNo" value="${lists.cNo }">
+	                                <input type="hidden" name="pNo" value="${lists.pNo }">
+                                    <input type="text" name="name" id="con_name" class="form__input mb--30" value="${loginUser.cName }" readonly>
+                                    <textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요." id="con_message" name="content"></textarea>
+                                    <div class="starRev">
+									  <span class="starR" name="star1">별1</span>
+									  <span class="starR" name="star2">별2</span>
+									  <span class="starR" name="star3">별3</span>
+									  <span class="starR" name="star4">별4</span>
+									  <span class="starR" name="star5">별5</span>
+									</div>
+									<br>
+									<input type="hidden" name="starRate" id="starRate">
+									
+                                    <button type="submit" class="btn btn-shape-round form__submit">등록하기</button>
+                                    
+                                    
+                           			 </form>
+	                            </div>
+                            </c:forEach>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- Main Content Wrapper Start -->
+                </section>
+                <script>
+                	$('.starRev span').click(function(){
+                	  $(this).parent().children('span').removeClass('on');
+                	  $(this).addClass('on').prevAll('span').addClass('on');
+                	  console.log($(this).text());
+                	  $("#starRate").val($(this).text());
+                	  return false;
+                	});
+                </script>
+                <!-- Contact Area End -->
+			</div>
+		</main>
 
         <!-- Footer Start-->
         <footer class="footer bg-color" data-bg-color="#f4f8fa">
@@ -624,17 +632,217 @@
         <!-- Global Overlay Start -->
         <a class="scroll-to-top" href=""><i class="la la-angle-double-up"></i></a>
         <!-- Global Overlay End -->
-    </div>
+   
     <!-- Main Wrapper End -->
  
 
     <!-- ************************* JS Files ************************* -->
 
+
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxvP66_Xk1ts77oL2Z7EpDxhDD_jMg-D0"></script>
+    <script>
+        // When the window has finished loading create our google map below
+        google.maps.event.addDomListener(window, 'load', init);
+
+        function init() {
+            // Basic options for a simple Google Map
+            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+            var mapOptions = {
+                // How zoomed in you want the map to start at (always required)
+                zoom: 12,
+
+                scrollwheel: false,
+
+                // The latitude and longitude to center the map (always required)
+                center: new google.maps.LatLng(40.740610, -73.935242), // New York
+
+                // How you would like to style the map. 
+                // This is where you would paste any style found on
+
+                styles: [{
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#e9e9e9"
+                            },
+                            {
+                                "lightness": 17
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#f5f5f5"
+                            },
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 17
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 29
+                            },
+                            {
+                                "weight": 0.2
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 18
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 16
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#f5f5f5"
+                            },
+                            {
+                                "lightness": 21
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#dedede"
+                            },
+                            {
+                                "lightness": 21
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [{
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 16
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [{
+                                "saturation": 36
+                            },
+                            {
+                                "color": "#333333"
+                            },
+                            {
+                                "lightness": 40
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.icon",
+                        "stylers": [{
+                            "visibility": "off"
+                        }]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#f2f2f2"
+                            },
+                            {
+                                "lightness": 19
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [{
+                                "color": "#fefefe"
+                            },
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{
+                                "color": "#fefefe"
+                            },
+                            {
+                                "lightness": 17
+                            },
+                            {
+                                "weight": 1.2
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Get the HTML DOM element that will contain your map 
+            // We are using a div with id="map" seen below in the <body>
+            var mapElement = document.getElementById('google-map');
+
+            // Create the Google Map using our element and options defined above
+            var map = new google.maps.Map(mapElement, mapOptions);
+
+            // Let's also add a marker while we're at it
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(40.740610, -73.935242),
+                map: map,
+                title: 'Contixs',
+                icon: "assets/img/icons/marker.png",
+                animation: google.maps.Animation.BOUNCE
+            });
+        }
+    </script>
     <!-- jQuery JS -->
     <script src="assets/js/vendor.js"></script>
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
 </body>
-
 </html>

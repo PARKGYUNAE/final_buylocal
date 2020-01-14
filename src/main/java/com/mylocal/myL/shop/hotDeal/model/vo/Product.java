@@ -18,7 +18,7 @@ public class Product {
 	private String bOwner; // 사업자명
 	private String bShopAddress; // 상호명
 	private String cPhone; // 전화번호
-	private String pStarRate;
+	private int pStarRate;
 	private String pOrigin;
 	private String pTitle;
 	private String pBoard;
@@ -29,7 +29,7 @@ public class Product {
 
 	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
 			String pInfoImage, String pInfoText, String cgName, String lName, String bOwner, String bShopAddress,
-			String cPhone, String pStarRate, String pOrigin, String pTitle, String pBoard) {
+			String cPhone, int pStarRate, String pOrigin, String pTitle, String pBoard) {
 		super();
 		this.pNo = pNo;
 		this.pName = pName;
@@ -201,12 +201,12 @@ public class Product {
 	}
 
 
-	public String getpStarRate() {
+	public int getpStarRate() {
 		return pStarRate;
 	}
 
 
-	public void setpStarRate(String pStarRate) {
+	public void setpStarRate(int pStarRate) {
 		this.pStarRate = pStarRate;
 	}
 
