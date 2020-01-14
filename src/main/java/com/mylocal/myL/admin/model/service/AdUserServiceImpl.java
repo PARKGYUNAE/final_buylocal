@@ -15,16 +15,21 @@ public class AdUserServiceImpl implements AdUserService{
 	@Autowired
 	AdUserDao adUserDao;
 
-	// 사업자 등급 관리리스트
+		// 사업자 등급 관리리스트(모든사람들)
 		@Override
-		public ArrayList<Seller> BusinessUserGradeSelectList() {
+		public ArrayList<Customer> BusinessUserGradeSelectList() {
 			return adUserDao.BusinessUserGradeSelectList();
 		}
 
-		// 사업자 정보 리스트
+		// 사업자 정보 리스트(사업자로 인증된 사람들만)
 		@Override
-		public ArrayList<Seller> BusinessUserInfoSelectList() {
+		public ArrayList<Customer> BusinessUserInfoSelectList() {
 			return adUserDao.BusinessUserInfoSelectList();
+		}
+		// 일반 회원 정보 리스트
+		@Override
+		public ArrayList<Customer> NormalUserInfoList() {
+			return  adUserDao.NormalUserInfoList();
 		}
 
 		// 일반 회원 구매 정보 리스트
@@ -33,22 +38,17 @@ public class AdUserServiceImpl implements AdUserService{
 			return adUserDao.NormalUserBuyList();
 		}
 
-		// 일반 회원 정보
-		@Override
-		public ArrayList<Customer> NormalUserInfoList() {
-			return  adUserDao.NormalUserInfoList();
-		}
 
-		// 일반 회원 정보 상세보기
+		// 회원 정보 상세보기
 		@Override
-		public Customer selectCustomer(int sNo) {
-			return adUserDao.SelectCustomer(sNo);
+		public Customer selectCustomer(int cNo) {
+			return adUserDao.SelectCustomer(cNo);
 		}
 
 		// 사업자 등급 업데이트
 		@Override
-		public int updateBusiness(Seller s) {
-			return adUserDao.UpdateBusinessGrade(s);
+		public int updateBusiness(Customer cu) {
+			return adUserDao.UpdateBusinessGrade(cu);
 		}
 
 		// 일반회원 블랙처리 업데이트
@@ -60,8 +60,8 @@ public class AdUserServiceImpl implements AdUserService{
 
 		// 사업자회원 블랙처리 업데이트
 		@Override
-		public int updateBusinessReport(Seller s) {
-			return adUserDao.UpdateBusinessReport(s);
+		public int updateBusinessReport(Customer cu) {
+			return adUserDao.UpdateBusinessReport(cu);
 		}
 
 

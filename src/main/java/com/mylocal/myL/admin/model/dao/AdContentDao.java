@@ -39,9 +39,9 @@ public class AdContentDao {
 		public ArrayList<Product> HotDealSelectList() {
 			return (ArrayList)sqlSession.selectList("adContentMapper.HotDealSelectList");
 		}
-		public ArrayList<ShareBoard> ShareBoardSelectList() {
+/*		public ArrayList<ShareBoard> ShareBoardSelectList() {
 			return (ArrayList)sqlSession.selectList("adContentMapper.ShareBoardSelectList");
-		}
+		}*/
 		
 		
 		// 게시글 목록 보러가기(상세보기를 위한)
@@ -54,9 +54,23 @@ public class AdContentDao {
 			return sqlSession.selectOne("adContentMapper.ShareBoardSelectList");		
 			}
 
-		public ShareBoard SelectShareboard(int rt_no) {
+/*		public ShareBoard SelectShareboard(int rt_no) {
 			return sqlSession.selectOne("adContentMapper.ShareBoardSelectList");	
-			}
+			}*/
+
+		// qna 갯수 가져오기
+		public int getQnaListCount() {
+			return sqlSession.selectOne("adContentMapper.getQnaListCount");	
+		}
+
+		public QnA SelectQna(int qNo) {
+			// TODO Auto-generated method stub
+			return sqlSession.selectOne("adContentMapper.selectQna", qNo);
+		}
+
+		public int UpdateQna(int qNo) {
+			return sqlSession.update("adContentMapper.updateQna", qNo);
+		}
 	
 	
 }

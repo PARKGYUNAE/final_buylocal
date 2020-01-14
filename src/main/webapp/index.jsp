@@ -59,7 +59,8 @@
                                         <nav class="main-navigation text-center d-none d-lg-block">
                                             <ul class="mainmenu">
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="${admin }" class="mainmenu__link">
+                                                <c:url var="qnaCount" value="qnaCount.do"/>
+                                                    <a href="${ qnaCount }" class="mainmenu__link">
                                                         <span class="mm-text">Home</span>
                                                     </a>
                                                     <ul class="sub-menu">

@@ -3,79 +3,114 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="adContentMapper">
-	
+
 	<!-- 광고관련 -->
 	<resultMap id="AdvertiseResultSet" type="Advertise">
-		<id property="a_no" column="NID"/>
-		<result property="a_title" column="NTITLE"/>
-		<result property="l_code" column="NWRITER"/>
-		<result property="s_no" column="NCONTENT"/>
-		<result property="a_date" column="N_CREATE_DATE"/>
-		<result property="s_name" column="N_MODIFY_DATE"/>
-		<result property="l_name" column="FILE_PATH"/>
+		<id property="a_no" column="NID" />
+		<result property="a_title" column="NTITLE" />
+		<result property="l_code" column="NWRITER" />
+		<result property="s_no" column="NCONTENT" />
+		<result property="a_date" column="N_CREATE_DATE" />
+		<result property="s_name" column="N_MODIFY_DATE" />
+		<result property="l_name" column="FILE_PATH" />
 	</resultMap>
-	
+
 	<!-- 물건관련 -->
 	<resultMap id="ProductResultSet" type="ProductAdmin">
-		<id property="pNo" column="P_NO"/>
-		<result property="pName" column="P_NAME"/>
-		<result property="pTitle" column="P_TITLE"/>
-		<result property="pDate" column="P_DATE"/>
-		<result property="sNo" column="S_NO"/>
-		<result property="sName" column="S_NAME"/>
-	
-		
+		<id property="pNo" column="P_NO" />
+		<result property="pName" column="P_NAME" />
+		<result property="pTitle" column="P_TITLE" />
+		<result property="pDate" column="P_DATE" />
+		<result property="cNo" column="C_NO" />
+		<result property="cName" column="C_NAME" />
+
+
 	</resultMap>
-	
-	<!--  판매자 내역 일부분 -->
-	<resultMap id="SellerResultSet" type="Seller">
-		<id property="sNo" column="S_NO"/>
-		<result property="sName" column="S_NAME"/>
-		<result property="sId" column="S_ID"/>
-		<result property="sPwd" column="S_PWD"/>
-		<result property="sEmail" column="S_EMAIL"/>
-		<result property="sAddress" column="S_ADDRESS"/>
-		<result property="sPermit" column="S_PERMIT"/>
-		<result property="sStatus" column="S_STATUS"/>
-		<result property="sShopName" column="S_SHOP_NMAE"/>
-		<result property="sShopNo" column="S_SHOP_NO"/>
-		<result property="sClass" column="S_CLASS"/>
-		<result property="sDetailClass" column="S_DETAIL_CLASS"/>
-		<result property="sOwner" column="S_OWNER"/>
-		<result property="sPhone" column="S_PHONE"/>
-		<result property="sPic" column="S_PIC"/>
-		<result property="sShopAddress" column="S_SHOP_ADDRESS"/>
-		<result property="sEnrollDate" column="S_ENROLLDATE"/>
-		
+
+	<!-- 판매자 내역 일부분 -->
+	<resultMap id="CustomerResultSet" type="CustomerAdmin">
+		<id property="cNo" column="C_NO" />
+		<result property="cName" column="C_NAME" />
+		<result property="cId" column="C_ID" />
+		<result property="cPwd" column="C_PWD" />
+		<result property="cEmail" column="C_EMAIL" />
+		<result property="cAddress" column="C_ADDRESS" />
+		<result property="sStatus" column="C_STATUS" />
+		<result property="cPhone" column="C_PHONE" />
+		<result property="cEnrollDate" column="C_ENROLLDATE" />
+
 	</resultMap>
-	
-	
+
+	<!-- QNA 내역 일부분 -->
+	<resultMap id="QnaResultSet" type="Qna">
+		<id property="qNo" column="Q_NO" />
+		<result property="qTitle" column="Q_TITLE" />
+		<result property="qContent" column="Q_CONTENT" />
+		<result property="qEnrollDate" column="Q_ENROLLDATE" />
+		<result property="qStatus" column="Q_STATUS" />
+		<result property="cEmail" column="C_EMAIL" />
+		<result property="cName" column="C_NAME" />
+		<result property="cNo" column="C_NO" />
+		<result property="cId" column="C_ID" />
+	</resultMap>
+
+	<!-- Q & A 갯수 확인 -->
+	<select id="getQnaListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE Q_STATUS='Y'
+	</select>
+
+
+	<!-- 신고하기 리스트 -->
 	<select id="ReportSelectList" resultMap="AdvertiseResultSet">
 		SELECT * FROM ADVERTISE
 	</select>
-	
-	<select id="QnASelectList" resultMap="AdvertiseResultSet">
-		SELECT * FROM ADVERTISE
+
+	<!-- QNA리스트 -->
+	<select id="QnASelectList" resultMap="QnaResultSet">
+		SELECT *
+		FROM QNA
+		JOIN
+		CUSTOMER USING(C_NO)
+		WHERE Q_STATUS='Y'
 	</select>
-	
-	
+
+
 	<select id="TtangSelectList" resultMap="ProductResultSet">
-		SELECT P.P_TITLE, P.P_NAME, S.S_NAME, P.P_DATE  
+		SELECT P.P_TITLE,
+		P.P_NAME, C.C_NAME, P.P_DATE , P.P_NO
 		FROM PRODUCT P
-		JOIN SELLER S ON(P.S_NO = S.S_NO)
+		JOIN CUSTOMER C
+		ON(P.C_NO = C.C_NO)
 		WHERE P.P_BOARD ='땡처리'
 	</select>
-	
+
 	<select id="HotDealSelectList" resultMap="ProductResultSet">
-		SELECT P.P_TITLE, P.P_NAME, S.S_NAME, P.P_DATE  
+		SELECT P.P_TITLE,
+		P.P_NAME, C.C_NAME, P.P_DATE, P.P_NO
 		FROM PRODUCT P
-		JOIN SELLER S ON(P.S_NO = S.S_NO)
+		JOIN CUSTOMER C
+		ON(P.C_NO = C.C_NO)
 		WHERE P.P_BOARD ='핫딜'
 
 	</select>
-	
-	<select id="ShareBoardSelectList" resultMap="AdvertiseResultSet">
-		SELECT * FROM ADVERTISE
+
+	<select id="selectQna" resultMap="QnaResultSet">
+		SELECT *
+		FROM QNA
+		JOIN CUSTOMER USING(C_NO)
+		WHERE Q_NO = #{qNo}
+		AND Q_STATUS='Y'
 	</select>
 	
+	<update id="updateQna" parameterType="_int">
+		UPDATE QNA
+		SET
+		Q_STATUS = 'N'
+		WHERE Q_NO = #{qNo}
+	
+	</update>
+		
+
 </mapper>

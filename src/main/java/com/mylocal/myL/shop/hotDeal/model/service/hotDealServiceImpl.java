@@ -39,5 +39,5 @@ public class hotDealServiceImpl implements hotDealService{
 	public ArrayList<Review> selectReviewList(int pNo) {
 		return hotdealDao.seletReviewList(pNo);
 	}
-
+}
 
