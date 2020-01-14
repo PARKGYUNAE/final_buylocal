@@ -32,8 +32,7 @@
                     <div class="col-12 text-center">
                         <h1 class="page-title">땡처리게시판</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>식품류</span></li>
+                            <li><a href="<%=request.getContextPath() %>">Home</a></li>
                             <li class="current"><span>한식</span></li>
                         </ul>
                     </div>
