@@ -14,29 +14,29 @@ import com.mylocal.myL.admin.model.vo.Ttang;
 public interface AdUserService {
 
 	
-	// 사업자 등록 관리 리스트
-		ArrayList<Seller> BusinessUserGradeSelectList();
+	// 사업자 등록 관리 리스트(전부다)
+		ArrayList<Customer> BusinessUserGradeSelectList();
 
-		// 사업자 정보 리스트
-		ArrayList<Seller> BusinessUserInfoSelectList();
+		// 사업자 정보 리스트(인증된 사람들만)
+		ArrayList<Customer> BusinessUserInfoSelectList();
 
 		// 일반회원 구매 정보리스트
 		ArrayList<Customer> NormalUserBuyList();
 
-	    // 일반 회원 정보 리스트
+	    // 일반 회원 정보 리스트(두명 다 쓸거같은뎅)
 		ArrayList<Customer> NormalUserInfoList();
 
 		// 사업자 정보 상세보기(통계) 두명이 같이씀
-		Customer selectCustomer(int sNo);
+		Customer selectCustomer(int cNo);
 
 		// 사업자 등급 업데이트
-		int updateBusiness(Seller s);
+		int updateBusiness(Customer cu);
 
-		// 일반회원 블랙처리 해제
+		// 일반회원 신고/탈퇴 관련 처리
 		int UpdateNormalUser(Customer cu);
 
-		// 사업자 회원 블랙처리 해제
-		int updateBusinessReport(Seller s);
+		// 사업자 회원 탈퇴 / 철회
+		int updateBusinessReport(Customer cu);
 
 		
 	

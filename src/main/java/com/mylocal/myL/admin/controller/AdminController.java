@@ -36,7 +36,7 @@ public class AdminController {
 	// 공지사항 수정 / 삭제 / 입력 추가할 것
 	
 	// 공지사항 등록폼으로(아직 화면이 미구현 noticeInsertForm 만들것)
-/*	@RequestMapping("noticeView.do")
+	@RequestMapping("noticeView.do")
 	public String noticeInsertView() {
 		return "admin/noticeInsertForm";
 		
@@ -95,7 +95,7 @@ public class AdminController {
 		return "";
 		
 	}
-*/	
+	
 	
 	// 관리자 모드 차트 보기
 	@RequestMapping("adminChart.do")

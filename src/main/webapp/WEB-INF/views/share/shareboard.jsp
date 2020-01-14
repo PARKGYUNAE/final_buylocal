@@ -75,22 +75,6 @@
 			<td>조회수</td>
 			<td>댓글수<td>
 			</tr>
-				<tr> <!--더미  -->
-					<td>6</td>
-					<td><a href="shareDetail.do">노트북팝니다</a></td>
-					<td>홍길동</td>
-					<td>2019/12/17</td>
-					<td>5</td>
-			<td>0</td>
-		</tr>
-		<tr> <!--더미  -->
-			<td>5</td>
-			<td><a href="shareDetail.do">두번쨰제목테스트</a></td>
-			<td>최형우</td>
-			<td>2019/12/17</td>
-			<td>0</td>
-			<td>0</td>
-		</tr>
 		
 			 		<c:forEach var="sb" items="${list }"> 
 			<tr>

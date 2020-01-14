@@ -11,13 +11,8 @@
 		cursor:pointer;
 		float:left;
 	}
-	
-	/* 왜 안 먹는지 아시는 분??? */
-	.postcodify_postcode5 .postcodify_address .postcodify_extra_info {
-	 border: 1px solid #e5e5e5;
-	 }
 	 
-/* 	#guideOk{
+ 	#guideOk{
       display:none;
       font-soze:12px;
       top:12px;
@@ -31,346 +26,24 @@
       top:12px;
       right:10px;
       color:red;
-   }  */
+   }  
+   
+   #post, #address1, #address2 {
+   	height: 40px;
+	padding-left: 10px;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+   }
+   
+   #postcodify_search_button {
+   	align: left;
+   }
 </style>
 </head>
 <body>
 	<c:import url="../common/menubar.jsp"/>
 	
-	<!-- Preloader Start -->
-    <!-- <div class="ft-preloader active">
-        <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
-            <div class="ft-child ft-bounce1"></div>
-            <div class="ft-child ft-bounce2"></div>
-            <div class="ft-child ft-bounce3"></div>
-        </div>
-    </div> -->
-    <!-- Preloader End -->
-
-    <!-- Main Wrapper Start -->
-    <!-- <div class="wrapper"> 여기가 문제임 include 되어있음 -->
-        <!-- Header Start -->
-        <!-- <header class="header">
-            <div class="header__inner fixed-header">
-                <div class="header__main">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="header__main-inner">
-                                    <div class="header__main-left">
-                                        <div class="logo">
-                                            <a href="index.html" class="logo--normal">
-                                                <img src="assets/img/logo/logo.png" alt="Logo">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="header__main-center">
-                                        <nav class="main-navigation text-center d-none d-lg-block">
-                                            <ul class="mainmenu">
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="index.html" class="mainmenu__link">
-                                                        <span class="mm-text">Home</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="index.html">
-                                                                <span class="mm-text">Home One</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="index-02.html">
-                                                                <span class="mm-text">Home Two</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mainmenu__item menu-item-has-children megamenu-holder">
-                                                    <a href="shop.html" class="mainmenu__link">
-                                                        <span class="mm-text">Shop</span>
-                                                    </a>
-                                                    <ul class="megamenu">
-                                                        <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Shop Grid</span>
-                                                            </a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="shop-fullwidth.html">
-                                                                        <span class="mm-text">Full Width</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop.html">
-                                                                        <span class="mm-text">Left Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-right-sidebar.html">
-                                                                        <span class="mm-text">Right Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-three-columns.html">
-                                                                        <span class="mm-text">Three Columns</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-four-columns.html">
-                                                                        <span class="mm-text">Four Columns</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Shop List</span>
-                                                            </a>
-                                                            <ul> 
-                                                                <li>
-                                                                    <a href="shop-list.html">
-                                                                        <span class="mm-text">Full Width</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-list-sidebar.html">
-                                                                        <span class="mm-text">Left Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-list-right-sidebar.html">
-                                                                        <span class="mm-text">Right Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Product Details</span>
-                                                            </a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="product-details.html">
-                                                                        <span class="mm-text">Tab Style 1</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-tab-style-2.html">
-                                                                        <span class="mm-text">Tab Style 2</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-tab-style-3.html">
-                                                                        <span class="mm-text">Tab Style 3</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-gallery-left.html">
-                                                                        <span class="mm-text">Gallery Left</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-gallery-right.html">
-                                                                        <span class="mm-text">Gallery Right</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-sticky-left.html">
-                                                                        <span class="mm-text">Sticky Left</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="megamenu-title" href="#">
-                                                                <span class="mm-text">Product Details</span>
-                                                            </a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="product-details-sticky-right.html">
-                                                                        <span class="mm-text">Sticky Right</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-slider-box.html">
-                                                                        <span class="mm-text">Slider Box</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-slider-full-width.html">
-                                                                        <span class="mm-text">Slider Box Full Width</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-affiliate.html">
-                                                                        <span class="mm-text">Affiliate Proudct</span>
-                                                                    </a>
-                                                                </li>                                                    
-                                                                <li>
-                                                                    <a href="product-details-variable.html">
-                                                                        <span class="mm-text">Variable Proudct</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-details-group.html">
-                                                                        <span class="mm-text">Group Product</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="blog.html" class="mainmenu__link">
-                                                        <span class="mm-text">Blog</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">
-                                                                <span class="mm-text">Blog Grid</span>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="blog-left-sidebar.html">
-                                                                        <span class="mm-text">Left Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog.html">
-                                                                        <span class="mm-text">Right Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-01-column.html">
-                                                                        <span class="mm-text">One Column</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-02-columns.html">
-                                                                        <span class="mm-text">Two Columns</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-03-columns.html">
-                                                                        <span class="mm-text">Three Columns</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href=""><span class="mm-text">Blog Details</span></a>
-                                                            <ul class="sub-menu">
-                                                                <li>
-                                                                    <a href="blog-details-image.html">
-                                                                        <span class="mm-text">Image Post</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-details-audio.html">
-                                                                        <span class="mm-text">Audio Post</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-details-video.html">
-                                                                        <span class="mm-text">Video Post</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="blog-details-gallery.html">
-                                                                        <span class="mm-text">Gallery Post</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="#" class="mainmenu__link">
-                                                        <span class="mm-text">Pages</span>
-                                                    </a>
-                                                    <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="my-account.html">
-                                                                <span class="mm-text">My Account</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="checkout.html">
-                                                                <span class="mm-text">Checkout</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="cart.html">
-                                                                <span class="mm-text">Cart</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="compare.html">
-                                                                <span class="mm-text">Compare</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="order-tracking.html">
-                                                                <span class="mm-text">Track Order</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="wishlist.html">
-                                                                <span class="mm-text">Wishlist</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mainmenu__item">
-                                                    <a href="contact-us.html" class="mainmenu__link">
-                                                        <span class="mm-text">Contact Us</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                    <div class="header__main-right">
-                                        <div class="header-toolbar-wrap">
-                                            <div class="header-toolbar">
-                                                <div class="header-toolbar__item header-toolbar--search-btn">
-                                                    <a href="#searchForm" class="header-toolbar__btn toolbar-btn">
-                                                        <i class="la la-search"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="header-toolbar__item header-toolbar--minicart-btn">
-                                                    <a href="#miniCart" class="header-toolbar__btn toolbar-btn">
-                                                        <i class="la la-shopping-cart"></i>
-                                                        <span>01</span>
-                                                    </a>
-                                                </div>
-                                                <div class="header-toolbar__item d-block d-lg-none">
-                                                    <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
-                                                        <div class="hamburger-icon">
-                                                            <span></span>
-                                                            <span></span>
-                                                            <span></span>
-                                                            <span></span>
-                                                            <span></span>
-                                                            <span></span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header> -->
-        <!-- Header End -->
-
-
-
-
-
-
+	
 
         <!-- Breadcrumb area Start -->
         <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
@@ -399,7 +72,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <div class="user-dashboard-tab flex-column flex-md-row">
+                           <div class="user-dashboard-tab flex-column flex-md-row">
                                 <!-- <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#dashboard" aria-controls="dashboard" aria-selected="true">Dashboard</a>
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#orders" aria-controls="orders" aria-selected="true">Orders</a>
@@ -514,97 +187,106 @@
                                     
                                     <div class="tab-pane fade show active" id="accountdetails">
                                     	
-                                        <form action="cinsert.do" method="post" class="form form--account" id="enrollForm">
+                                        <form action="cinsert.do" method="post" 
+                                        class="form form--account" id="enrollForm" name="enrollForm" onsubmit="return joinValidate();">
                                         <!-- 테이블로 다시 짜기 -->
-                                        <table class="" width="40%" align="center" cellspacing="5">
+                                        <table class="" width="70%" align="center" cellspacing="5">
                                         	<tr>
-                                        		<td width="120">
-                                        			<label class="form__label" for="f_name">아이디 <span class="required">*</span></label>
+                                        		<td width="">
+                                        			<label class="form__label" for="userId">아이디 <span class="required">*</span></label>
                                         		</td>
                                         		<td>
-                                                    <input type="text" name="cId" id="userId" class="form__input" placeholder="영소문자/숫자포함 5글자 이상">
+                                                    <input type="text" name="cId" id="userId" class="form__input" placeholder="영소문자/숫자포함 4글자 이상" required>
                                                     <!-- 아이디 중복 확인 추가 부분 -->
                                                     <span class="form__notes" id="guideOk"><em>이 아이디는 사용 가능합니다.</em></span>
                                                     <span class="form__notes" id="guideError"><em>이 아이디는 사용할 수 없습니다.</em></span>
+                                                    <span class="form__notes"><em id="idResult"></em></span>
                                                		<input type="hidden" name="idDuplicateCheck" id="idDuplicateCheck" value="0">
                                                	</td>
                                                	<td></td>
                                             </tr>
                                             <tr>
                                                 <td width="">
-                                                	<label class="form__label" for="l_name">비밀번호 <span class="required">*</span></label>
+                                                	<label class="form__label" for="userPwd">비밀번호 <span class="required">*</span></label>
                                                 </td>
                                                 <td>    
-                                                    <input type="password" name="cPwd" id="userPwd" class="form__input" placeholder="영대소문자/숫자 포함 8글자 이상">
+                                                    <input type="password" name="cPwd" id="userPwd" class="form__input" placeholder="" required>
                                                 </td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                             	<td width="">
-                                                	<label class="form__label" for="l_name">비밀번호 확인 <span class="required">*</span></label>
+                                                	<label class="form__label" for="userPwd2">비밀번호 확인 <span class="required">*</span></label>
                                                 </td>
                                                 <td>    
-                                                    <input type="password" name="cPwd2" id="userPwd2" class="form__input" placeholder="">
+                                                    <input type="password" name="cPwd2" id="userPwd2" class="form__input" placeholder="" required>
+                                                	<span class="form__notes"><em id="pwdResult"></em></span>
                                                 </td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                         		<td width="">
-                                        			<label class="form__label" for="f_name">이름 <span class="required">*</span></label>
+                                        			<label class="form__label" for="userName">이름 <span class="required">*</span></label>
                                         		</td>
                                         		<td>
-                                                    <input type="text" name="cName" id="userName" class="form__input">
+                                                    <input type="text" name="cName" id="userName" class="form__input" placeholder="한글 2글자 이상" required>
                                                	</td>
                                                	<td></td>
                                             </tr>
                                             <tr>
                                         		<td width="">
-                                        			<label class="form__label" for="f_name">이메일 주소 <span class="required">*</span></label>
+                                        			<label class="form__label" for="email">이메일 주소 <span class="required">*</span></label>
                                         		</td>
                                         		<td>
-                                                    <input type="email" name="cEmail" id="email" class="form__input">
+                                                    <input type="email" name="cEmail" id="email" class="form__input" required>
                                                	</td>
                                                	<td></td>
                                             </tr>
                                             <tr>
                                         		<td width="">
-                                        			<label class="form__label" for="f_name">전화번호 <span class="required">*</span></label>
+                                        			<label class="form__label" for="phone">전화번호 <span class="required">*</span></label>
                                         		</td>
                                         		<td>
-                                                    <input type="text" name="cPhone" id="phone" class="form__input">
+                                                    <input type="text" name="cPhone" id="phone" class="form__input" required>
                                                	</td>
                                                	<td></td>
                                             </tr>
                                             <tr>
 								               <td width="">
-                                        			<label class="form__label" for="f_name">우편 번호 <span class="required">*</span></label>
+                                        			<label class="form__label" for="post">우편 번호 <span class="required">*</span></label>
                                         		</td>
 								               <td>
-								                  <input type="text" name="post" class="postcodify_postcode5" value="" size="15"/>
-								                  <button type="button" id="postcodify_search_button">검색</button>
+								                  <input type="text" id="post" name="post" class="postcodify_postcode5" value="" size="15" required/>
+								                  <button type="button" id="postcodify_search_button" class="btn btn-size-sm">검색</button>
 								               </td>
 								            </tr>
 								            <tr>
 								               <td width="">
-                                        			<label class="form__label" for="f_name">도로명 주소 <span class="required">*</span></label>
+                                        			<label class="form__label" for="address1">도로명 주소 <span class="required">*</span></label>
                                         		</td>
 								               <td>
-								                  <input type="text" name="address1" class="postcodify_address" value="" size="30"/>
+								                  <input type="text" id="address1" name="address1" class="postcodify_address" value="" size="30" required/>
 								               </td>
 								               <td></td>
 								            </tr>
 								            <tr>
 								               <td width="">
-                                        			<label class="form__label" for="f_name">상세 주소 <span class="required">*</span></label>
+                                        			<label class="form__label" for="address2">상세 주소 <span class="required">*</span></label>
                                         		</td>
 								               <td>
-								                  <input type="text" name="address2" class="postcodify_extra_info" value="" size="30"/>
+								                  <input type="text" id="address2" name="address2" class="postcodify_extra_info" value="" size="30" required/>
 								               </td>
 								               <td></td>
 								            </tr>
+								            <!-- 뭐여 굳이 안써도 되는 거였음ㅋㅋ -->
+								            <!-- <tr>
+									            <td colspan="3" align="center">
+									            	<input type="hidden" value="일반" id="cLevel" name="cLevel">
+									            </td>
+								            </tr> -->
 								            <tr>
 									            <td colspan="3" align="center">
-									            	<input type="submit" value="회원가입" class="btn btn-size-md">
+									            	<input type="submit" value="회원가입" class="btn btn-size-sm" id="joinBtn">
 									            </td>
 								            </tr>
                                 
@@ -1252,22 +934,58 @@
       }); 
     </script>
     
-    <!-- 12/13 ajax 이후에 추가할 스크립트 -->
-   <!-- <script>
+    <!-- <script>
+		
+		// 유효성 검사
+		function joinValidate(){
+			if(!(/^[a-z][a-z\d]{3,11}$/i.test($("#enrollForm input[name=cId]").val()))){
+				$("#idResult").text("아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)").css("color", "red");
+				/* alert('아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)'); */
+				$("#enrollForm input[name=cId]").select();
+				return false;
+			}
+			
+			if($("#enrollForm input[name=cPwd]").val() != $("#enrollForm input[name=cPwd2]").val()){
+				$("#pwdResult").text("비밀번호 불일치").css("color", "red");
+				return false;
+			}
+			
+			if(!(/^[가-힣]{2,}$/.test($("#enrollForm input[name=cName]").val()))){
+				alert('이름은 한글로 2글자 이상 입력');
+				$("#enrollForm input[name=cName]").select();
+				return false;
+			}
+			
+			return true;
+			
+			
+		}
+	
+		
+	</script> -->
+    
+	<!-- 아이디 중복체크  -->
+   <script>
       $(function(){
          $("#userId").on("keyup", function(){
             var userId = $(this).val().trim();
+            $("#idResult").text('');
+            $("#guideOk").hide();
+            $("#guideError").hide();
             
-            if(userId.length < 4){
-               $("#guide").hide(); // 나타났던 span 태그 숨기기
-               $("idDupilcateCheck").val(0); // 중복 여부 확인 값 리셋
-               
-               return;
-            }
+            if(!(/^[a-z][a-z\d]{3,11}$/i.test($("#enrollForm input[name=cId]").val()))){
+				$("#idResult").text("아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)").css("color", "red");
+				/* alert('아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)'); */
+				//$("#enrollForm input[name=cId]").select();
+				return;
+			}
             
+       
+   
+			
             $.ajax({
             	url:"dupid.do",
-            	data:{id:userId},
+            	data:{cId:userId},
             	success:function(data){
             		// console.log(data);
             		// if(data == "true") { // 아이디를 사용할 수 있을 때
@@ -1298,7 +1016,7 @@
           return true;
        }
        
-    </script> -->
+    </script>
     
    </body> 
     

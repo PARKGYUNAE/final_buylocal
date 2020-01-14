@@ -2,6 +2,8 @@ package com.mylocal.myL.share.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -12,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mylocal.myL.share.exception.ShareBoardException;
-import com.mylocal.myL.share.model.vo.Customer;
 import com.mylocal.myL.share.model.vo.Reply;
 import com.mylocal.myL.share.model.vo.ShareBoard;
 import com.mylocal.myL.share.service.ShareService;
+import com.mylocal.myL.user.model.vo.Customer;
 
 @Controller
 public class ShareController {
@@ -60,14 +64,40 @@ public class ShareController {
 	
 	@RequestMapping("sbdetail.do")
 	public ModelAndView shareDatil(ModelAndView mv, ShareBoard sbno,
-									@RequestParam(name = "page") Integer page) {
+									@RequestParam(name = "page") Integer page,
+									 HttpServletRequest request, HttpServletResponse response) {
+		
+		int currentPage = page != null ? page : 1;
+		
 		ShareBoard shareboard = null;
-		shareboard = shareService.detailBoard(sbno);
+		
+		boolean flag = false;
+		Cookie[] cookies = request.getCookies();
+		
+		if(cookies != null) {
+			for(Cookie c : cookies) {
+				if(c.getName().equals("sbNo" + sbno)) {
+					flag = true; // 해당 게시글에 대한 쿠키 존재(이미 읽은 게시판)
+				}
+			}
+		}
+		
+		if(flag) {
+			Cookie c = new Cookie("sbno" + sbno, String.valueOf(sbno));
+			c.setMaxAge(1 * 24 * 60 * 60);
+			response.addCookie(c);
+		}
+		
+		
+		shareboard = shareService.detailBoard(sbno, flag);
 		 System.out.println("shareboard 값은 가져오니?" + shareboard);
+		 
 		  if(shareboard != null) {
 		         mv.addObject("sb", shareboard);
+		         mv.addObject("currentPage",currentPage);
 		         mv.setViewName("share/shareDetail");
-		         System.out.println("일로가니?" + shareboard);
+		         
+		         System.out.println("들어온값은? = " + shareboard);
 		      }else {
 		         throw new ShareBoardException("게시글 상세조회 실패!!");
 		      }
@@ -105,45 +135,38 @@ public class ShareController {
 //		
 //	}
 	
-//	@RequestMapping("rList.do")
-//	@ResponseBody
-//	public 	String addReply(Reply r, HttpSession session ) {
-//		
-////		Customer loginUser = (Customer)session.getAttribute("loginUser");
-////		r.setcName(loginUser.getcId());
-//		
-////		System.out.println(loginUser.getcId());
-//		
-//		
-//		//테스트를 위해 임시로 데이터를 로그인세션에 넣어두자
-//		Customer loginUser = new Customer(1,"홍길동","userID","pass01"
-//				,"EMAIL.COM","서울시은평구","Y","01099634139",new java.util.Date());
-//		
-//		session.setAttribute("loginUser", loginUser);
-//		r.setcName("홍길동");
-//		loginUser = (Customer)session.getAttribute("loginUser");
-//		
-//		
-//		int result = shareService.insertReply(r);
-//		
-//		if(result > 0 ) {
-//			return "success";
-//		}else {
-//			throw new ShareBoardException("댓글 등록 실패!");
-//		}
-//	}
-//	
-//	@RequestMapping(value="rList.do", produces="applica52tion/json; charset=utf-8")
-//	@ResponseBody
-//	public String getReplyList(int sbNo, HttpServletResponse response) {
-//		ArrayList<Reply> rList = shareService.selectReplyList(sbNo);
-//		
-//		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-//		
-//		
-//		return gson.toJson(rList);
-//	}
-//	
+	@RequestMapping("addReply.do")
+	@ResponseBody
+	public 	String addReply(Reply r, HttpSession session ) {
+		
+		Customer loginUser = (Customer)session.getAttribute("loginUser");
+		r.setcNo(loginUser.getcNo());
+		
+		System.out.println("회원번호는 == " + r.getcNo() + "입니다");
+		
+		System.out.println("나의 아이디는 == " + loginUser.getcId());
+		
+		int result = shareService.insertReply(r);
+		
+		
+		if(result > 0 ) {
+			return "success";
+		}else {
+			throw new ShareBoardException("댓글 등록 실패!");
+		}
+	}
+	
+	@RequestMapping(value="rList.do", produces="applica52tion/json; charset=utf-8")
+	@ResponseBody
+	public String getReplyList(int sbNo, HttpServletResponse response) {
+		ArrayList<Reply> rList = shareService.selectReplyList(sbNo);
+		
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		
+		
+		return gson.toJson(rList);
+	}
+	
 //	@RequestMapping(value="rUpdate.do")
 //	public String replyUpdate(Reply r) {
 //		

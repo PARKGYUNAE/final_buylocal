@@ -22,7 +22,7 @@ public interface AdContentService {
 		// 아래 3개는 게시글 모아보기
 		ArrayList<Product> TtangSelectList();
 		ArrayList<Product> HotDealSelectList();
-		ArrayList<ShareBoard> ShareBoardSelectList();
+		/*ArrayList<ShareBoard> ShareBoardSelectList();*/
 
 
 		// 신고하기 리스트들 뷰로 이동하기 위한 조건 3개 몰아쓰기
@@ -30,7 +30,17 @@ public interface AdContentService {
 
 		Ttang SelectTtang(int t_no);
 
-		ShareBoard SelectShareboard(int rt_no);
+		/*ShareBoard SelectShareboard(int rt_no);*/
+
+		
+		// qna 갯수 가져오기
+		int CountQna();
+
+		// qna 상세보기
+		QnA selctQna(int qNo);
+		
+		// 답변한 내용은 안보이게끔 status
+		int updateQna(int qNo);
 
 
 		

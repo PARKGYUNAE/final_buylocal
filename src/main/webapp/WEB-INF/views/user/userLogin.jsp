@@ -5,8 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <title>로그인</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <style>
 	@charset "UTF-8";
 	@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
@@ -341,12 +343,21 @@
             </div>
       </article>
 	      <div class="half bg"><br><br><br><br><br><br><br>
-		      <img class="socialLogin" src="resources/user/images/socialNaver.png">
+	      	  
+		      <img class="socialLogin" src="resources/user/images/socialNaver.png"">
 		      <img class="socialLogin" src="resources/user/images/socialGoogle.png">
-		      <img class="socialLogin" src="resources/user/images/socialKakao.png">
+		      <a id="kakao-login-btn" href="javascript:loginWithKakao()">
+		      <img class="socialLogin" src="resources/user/images/socialKakao.png"></a>
+		      <button id="kakaologin">코드받기</button>
 	      </div>
 	</section>
 	<script>
+	
+	$('#kakaologin').click(function(){
+		location.href="kakaologin.do"
+	});
+	
+	
 	$('.tabs .tab').click(function(){
 	    if ($(this).hasClass('signin')) {
 	        $('.tabs .tab').removeClass('active');
@@ -369,5 +380,34 @@
 	    $(this).css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
 	});
 	</script>
+	
+	<script type='text/javascript'>
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('c9164378bd53197130db851c46ce2097');
+      // 카카오 로그인 버튼을 생성합니다.
+      Kakao.Auth.createLoginButton({
+        container: '#kakao-login-btn',
+        success: function(authObj) {
+          // 로그인 성공시, API를 호출합니다.
+          Kakao.API.request({
+            url: '/v1/user/me',
+            success: function(res) {
+              console.log(JSON.stringify(res.kaccount_email));
+              console.log(JSON.stringify(res.id));
+              console.log(JSON.stringify(res.properties.profile_image));
+              console.log(JSON.stringify(res.properties.nickname));
+			  /* location.href="myProfile.do"; */
+            },
+            fail: function(error) {
+              alert(JSON.stringify(error));
+            }
+          });
+        },
+        fail: function(err) {
+          alert(JSON.stringify(err));
+        }
+      });
+
+</script>
 </body>
 </html>

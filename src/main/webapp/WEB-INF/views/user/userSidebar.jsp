@@ -14,30 +14,32 @@
 </style>
 </head>
 <body>
-	<c:import url="../common/menubar.jsp"/>
-	<br>
+
 	
-	<div class="main-container">
+	<!-- <div class="main-container">
 		
 		<main class="site-main">	
 		
-			<!-- Page Content -->
+			Page Content
 			<div class="container-fluid no-left-padding no-right-padding page-content">
-				<!-- container -->	
+				container	
 					<div class="container">
-					<!-- Row -->
-					<div class="row">
+					Row
+					<div class="row"> -->
 					<!-- Widget Area -->
 						<div class="col-xs-6 col-sm-3 widget-area" >
 							
 							<!-- Widget : Categories -->
 							<aside class="widget widget_categories text-center" >
+								<c:url var="myProfile" value="myProfile.do"/>
 								<h3 class="widget-title"><a href="${ myProfile }">MY PROFILE</a></h3>
 								<ul>
+									<c:url var="myInfo" value="myInfo.do"/>
 									<li><a href="${ myInfo }" title="Info">정보수정</a></li>
 									<li><a href="${ myCart }" title="Cart">장바구니</a></li>
 									<li><a href="${ myOrderList }" title="Order">구매내역</a></li>
 									<li><a href="${ myFavorite }" title="Favorite">찜</a></li>
+									<li><a href="${ myQna }" title="QnA">문의내역</a></li>
 								</ul>
 							</aside><!-- Widget : Categories /- -->
 							<!-- Widget : Tags /- -->
@@ -48,10 +50,10 @@
 						<!-- Content Area -->
 						<!-- Content Area /- -->
 						<!-- Widget Area -->
-					</div>
+		<!-- 			</div>
 				</div>
 			</div>
 		</main>
-	</div>
+	</div> -->
 </body>
 </html>

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mylocal.myL.common.Cart;
+import com.mylocal.myL.common.Favorite;
 import com.mylocal.myL.common.PageInfo;
 import com.mylocal.myL.common.Pagination;
 import com.mylocal.myL.shop.hotDeal.model.dao.hotDealDao;
@@ -39,6 +41,49 @@ public class hotDealServiceImpl implements hotDealService{
 	public ArrayList<Review> selectReviewList(int pNo) {
 		return hotdealDao.seletReviewList(pNo);
 	}
+
+
+	@Override
+	public ArrayList<Cart> getMyCart(int cNo) {
+		return hotdealDao.getMyCart(cNo);
+	}
+
+
+	@Override
+	public int AddCart(Cart c) {
+		return hotdealDao.AddCart(c);
+	}
+
+
+	@Override
+	public int buyProduct(int cNo) {
+		return hotdealDao.buyProduct(cNo);
+	}
+
+
+	@Override
+	public int AddWishList(Favorite f) {
+		return hotdealDao.AddWishList(f);
+	}
+
+
+	@Override
+	public ArrayList<Favorite> getMyWishList(int cNo) {
+		return hotdealDao.getMyWishList(cNo);
+	}
+
+
+	@Override
+	public int AddReview(Review r) {
+		return hotdealDao.AddReview(r);
+	}
+
+
+	@Override
+	public int updateBoard(Product p) {
+		return hotdealDao.updateBoard(p);
+	}
+
 
 
 }

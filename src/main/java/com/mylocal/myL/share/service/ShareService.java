@@ -14,7 +14,7 @@ public interface ShareService {
 	public int insertBoard(ShareBoard sb);
 
 	// 게시글 상세보기
-	public ShareBoard detailBoard(ShareBoard sbno);
+	public ShareBoard detailBoard(ShareBoard sbno, boolean flag);
 
 	// 게시글 수정
 	public int updateBoard(ShareBoard sb);

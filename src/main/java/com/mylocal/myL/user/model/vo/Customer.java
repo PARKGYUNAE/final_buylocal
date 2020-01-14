@@ -12,11 +12,12 @@ public class Customer {
 	private String cStatus;
 	private String cPhone; 
 	private Date cEnrollDate;
+	private String cLevel;
 	
 	public Customer() {}
 
 	public Customer(int cNo, String cName, String cId, String cPwd, String cEmail, String cAddress, String cStatus,
-			String cPhone, Date cEnrollDate) {
+			String cPhone, Date cEnrollDate, String cLevel) {
 		super();
 		this.cNo = cNo;
 		this.cName = cName;
@@ -27,6 +28,7 @@ public class Customer {
 		this.cStatus = cStatus;
 		this.cPhone = cPhone;
 		this.cEnrollDate = cEnrollDate;
+		this.cLevel = cLevel;
 	}
 
 	public int getcNo() {
@@ -101,13 +103,22 @@ public class Customer {
 		this.cEnrollDate = cEnrollDate;
 	}
 
+	public String getcLevel() {
+		return cLevel;
+	}
+
+	public void setcLevel(String cLevel) {
+		this.cLevel = cLevel;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [cNo=" + cNo + ", cName=" + cName + ", cId=" + cId + ", cPwd=" + cPwd + ", cEmail=" + cEmail
 				+ ", cAddress=" + cAddress + ", cStatus=" + cStatus + ", cPhone=" + cPhone + ", cEnrollDate="
-				+ cEnrollDate + "]";
+				+ cEnrollDate + ", cLevel=" + cLevel + "]";
 	}
-
+	
+	
 
 	
 	

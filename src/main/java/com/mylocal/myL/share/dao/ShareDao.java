@@ -40,6 +40,13 @@ public class ShareDao {
 		return sqlSession.update("shareboardMapper.deleteBoard", shno);
 	}
 
+	public int addReadCount(ShareBoard sbno) {
+		
+		return sqlSession.update("shareboardMapper.updateCount", sbno);
+		
+	}
+	
+	
 	public int insertReply(Reply r) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("replyMapper.insertReply", r);
@@ -59,4 +66,5 @@ public class ShareDao {
 		// TODO Auto-generated method stub
 		return sqlSession.update("replyMapper.deleteReply", rNo);
 	}
+
 }

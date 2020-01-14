@@ -32,7 +32,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Wishlist</h1>
+                        <h1 class="page-title">내 찜목록</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
                             <li class="current"><span>Wishlist</span></li>

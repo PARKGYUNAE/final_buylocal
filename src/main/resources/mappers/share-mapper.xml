@@ -40,6 +40,12 @@
 	SET SB_TITLE=#{sbTitle}, SB_CONTENT=#{sbContent}
 	WHERE SB_NO=#{sbNo}
 	</update>
+	
+	<update id="updateCount" parameterType="_int">
+		UPDATE SHAREBOARD
+		SET SB_VIEW = SB_VIEW + 1
+		WHERE SB_NO = #{sbNo}
+	</update>
 
 </mapper>
 	

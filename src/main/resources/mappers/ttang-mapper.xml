@@ -3,7 +3,7 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ttangMapper">
-	<resultMap id="productSet" type="product">
+	<resultMap id="productSet" type="productTtang">
 		<id property="pNo" column="P_NO"/>
 		<result property="pName" column="P_NAME"/>
 		<result property="pThumb" column="P_THUMB"/>
@@ -33,28 +33,8 @@
 	
 	<select id="selectList" resultMap="productSet">
 		SELECT *
-		FROM PRODUCT
+		FROM PD_VIEW
 		WHERE P_STATUS='Y' AND P_BOARD = '땡처리'
-	</select>
-	
-	<!-- <resultMap id="reviewSet" type="review">
-		<id property="rvNo" column="RV_NO"/>
-		<result property="rvStarRate" column="RV_STARRATE"/>
-		<result property="rvContent" column="RV_CONTENT"/>
-		<result property="cName" column="C_NAME"/>
-		<result property="rvStatus" column="RV_STATUS"/>
-	</resultMap>
-	
-	<select id="getListCount" resultType="_int">
-		SELECT COUNT(*)
-		FROM PD_VIEW
-		WHERE P_STATUS='Y' AND P_BOARD='땡처리'
-	</select>
-	
-	<select id="selectList" resultMap="productSet">
-		SELECT * 
-		FROM PD_VIEW
-		WHERE P_STATUS='Y' AND P_BOARD='땡처리'
 		ORDER BY P_NO DESC
 	</select>
 	
@@ -64,11 +44,6 @@
 		WHERE P_STATUS='Y' AND P_BOARD='땡처리'
 		AND P_NO = #{pNo}
 	</select>
-	
-	<select id="selectReviewList" resultMap="reviewSet">
-		SELECT RV_NO, RV_STARRATE, RV_CONTENT, C_NAME, RV_STATUS, P_NO
-		FROM REVIEW JOIN CUSTOMER USING(C_NO)
-		WHERE RV_STATUS='Y' AND P_NO = #{pNo}
-	</select> -->
+
 	
 </mapper>

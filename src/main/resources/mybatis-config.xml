@@ -9,14 +9,24 @@
 	
 	<typeAliases>
 		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Product" alias="product"/>
+		<typeAlias type="com.mylocal.myL.common.Cart" alias="Cart"/>
+      <typeAlias type="com.mylocal.myL.common.Deal" alias="Deal"/>
+      <typeAlias type="com.mylocal.myL.common.Favorite" alias="Favorite"/>
 		<typeAlias type="com.mylocal.myL.shop.hotDeal.model.vo.Review" alias="review"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Advertise" alias="Advertise"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Product" alias="ProductAdmin"/>
-		<typeAlias type="com.mylocal.myL.admin.model.vo.Seller" alias="Seller"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.Customer" alias="CustomerAdmin"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.QnA" alias="Qna"/>
+		<typeAlias type="com.mylocal.myL.admin.model.vo.ShareBoard" alias="ShareBoardAdmin"/>
+		
 		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productTtang"/>
 		<typeAlias type="com.mylocal.myL.buylocal.model.vo.Notice" alias="notice"/>
-	      <typeAlias type="com.mylocal.myL.share.model.vo.ShareBoard" alias="ShareBoard"/>
+		
+	    <typeAlias type="com.mylocal.myL.share.model.vo.ShareBoard" alias="ShareBoard"/>
 		<typeAlias type="com.mylocal.myL.share.model.vo.Reply" alias="Reply"/>
+		
+		<typeAlias type="com.mylocal.myL.user.model.vo.BusinessInfo" alias="BusinessInfo"/>
+		<typeAlias type="com.mylocal.myL.user.model.vo.Customer" alias="Customer"/>
 	</typeAliases>
 	
 	<mappers>
@@ -29,5 +39,6 @@
 		<mapper resource="mappers/notice-mapper.xml"/>
    		<mapper resource="mappers/share-mapper.xml"/>
 		<mapper resource="mappers/reply-mapper.xml"/>
+		<mapper resource="mappers/user/user-mapper.xml"/>
 	</mappers>
 </configuration>

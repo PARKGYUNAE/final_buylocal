@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
  
@@ -25,14 +26,13 @@
 
 <body>
 	<c:import url="../common/menubar.jsp"/>
-    
 
         <!-- Breadcrumb area Start -->
         <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Wishlist</h1>
+                        <h1 class="page-title">찜 목록</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
                             <li class="current"><span>Wishlist</span></li>
@@ -55,101 +55,50 @@
                                         <tr>
                                             <th>&nbsp;</th>
                                             <th>&nbsp;</th>
-                                            <th class="text-left">Product</th>
-                                            <th>Stock Status</th>
-                                            <th>Price</th>
+                                            <th class="text-left">상품명</th>
+                                            <th>카테고리</th>
+                                            <th>가격</th>
                                             <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/prod-01-70x88.jpg" alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.html">Pinstripe slim-fit suit blazer</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                In Stock
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.html" class="btn btn-size-md">Add to cart</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/prod-02-70x88.jpg" alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.html">Warm Shaker Solid Wood End Table</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                In Stock
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.html" class="btn btn-size-md">Add to cart</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/prod-03-70x88.jpg" alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.html">Atlin Designs Mid Century Club Chair</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                In Stock
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.html" class="btn btn-size-md">Add to cart</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/prod-04-70x88.jpg" alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.html">Contemporary 5-Light Large Chandelier</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                In Stock
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.html" class="btn btn-size-md">Add to cart</a>
-                                            </td>
-                                        </tr>
+                                    	<c:if test="${fn:length(list) <= 0}">
+                                    		<tr>
+                                    			<td>상품이 존재하지 않습니다</td>
+                                    		</tr>
+                                        </c:if>
+                                        <c:if test="${fn:length(list) > 0}">
+                                        <c:forEach var="wishlist" items="${ list}">
+                                        	<tr>
+	                                            <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
+	                                            <td class="product-thumbnail text-left">
+	                                                <img src="assets/img/products/prod-01-70x88.jpg" alt="Product Thumnail">
+	                                            </td>
+	                                            <td class="product-name text-left wide-column">
+	                                                <h3>
+	                                                    <a href="product-details.html">${wishlist.pName }</a>
+	                                                </h3>
+	                                            </td>
+	                                            <td class="product-stock">
+	                                                ${wishlist.cgName }
+	                                            </td>
+	                                            <td class="product-price">
+	                                                <span class="product-price-wrapper">
+	                                                    <span class="money">${wishlist.pFinalPrice }</span>
+	                                                </span>
+	                                            </td>
+	                                            <c:url var="hotDealDetail" value="hotDealDetail.do" >
+													<c:param name="pNo" value="${wishlist.pNo }"/>
+												</c:url>
+	                                            <td class="product-action-btn">
+	                                                <a href="${hotDealDetail }" class="btn btn-size-md">상품 보러가기</a>
+	                                            </td>
+	                                            
+                                        	</tr>
+                                        </c:forEach>
+                                        </c:if>
+                                        
+                                        
                                     </tbody>
                                 </table>
                             </div>  

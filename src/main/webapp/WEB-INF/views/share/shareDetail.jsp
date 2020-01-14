@@ -54,7 +54,7 @@
                 </tr>
                 <tr>
                 	<td colspan="2" align="center">
-                <button type="button">수정</button>
+                <button type="button" onclick="location.href='shareUpdate.do';">수정</button>
                 <button type="button">삭제</button>
                 <br><br>
                 	</td>
@@ -66,20 +66,23 @@
                         <input type="button" value="다음글"> &nbsp;
                     </td>
                 </tr>
+                </table>
 
 	<table border="2" align="center">
       <br><br>
         <h1 align="center">댓글영역</h1>
         <div id="rhead" align="center">댓글</div>
-        <div id="rcontent">
                 <tr>
                     <td>댓글작성</td>
                     <td><textarea id="rContent"></textarea>></td>
                     <td><button type="button" id="rSubmit">댓글등록</button></td>
                 </tr>
                 
+                
+                
+                
          <!-- 더미값  -->
-              <tr>
+       <%--        <tr>
                     <td>${sb.cName }</td>
                     <td>사겠습니다</td>
                     <td>${sb.sbDate }</td>
@@ -89,10 +92,26 @@
                 	<td>ㅇㅇ</td>
                 	 <td>${sb.sbDate }</td>
                 </tr> 
+            </table> --%>
                 <!--더미값  -->
-            </table>
-        </table>
-   </div>
+            
+            
+            
+			<table border="4" id="replyTable">
+			         <thead>
+			            <tr>
+			               <td colspan="4"> <b id='rCount'></b>
+			               </td>
+			            </tr>
+			            <tr>
+			            	<td colspan="3"><b id='rCount2'>└ Re : </b> </td>
+			            	
+			            </tr>
+			         </thead>
+			         <tbody>
+			            
+			         </tbody>
+			      </table>
 
         
         
@@ -107,29 +126,25 @@
 			});
 		</script>
 		
-<!-- <script>
-      $(function(){
-         // 초기 페이지 로딩 시 댓글 불러오기
-         getReplyList();
-         
-         // 타 회원이 작성한 댓글도 지속적으로 불러오기 위한 요청
-         setInterval(function(){
-            getReplyList();
-         }, 10000);
-         
-         
-         
-         
+ <script>
+		 $(function(){
+		     // 초기 페이지 로딩 시 댓글 불러오기
+		     getReplyList();
+		     
+		     // 타 회원이 작성한 댓글도 지속적으로 불러오기 위한 요청
+		     setInterval(function(){
+		        getReplyList();
+		     }, 10000);
          
          // 댓글 등록 ajax
          $("#rSubmit").on("click", function(){
             var rContent = $("#rContent").val();
-            var refsbNo = ${ sb.sbNo };
+            var sbNo = ${ sb.sbNo };
             
             $.ajax({
-               url:"rList.do",
+               url:"addReply.do",
                data:{rContent:rContent,
-            	   refsbNo:refsbNo},
+            	   sbNo:sbNo},
                type:"post",
                success:function(data){
                   console.log(data);
@@ -146,6 +161,7 @@
          });
          
       });
+
       
       // 댓글 리스트 불러오는 ajax 함수
       function getReplyList(){
@@ -162,20 +178,82 @@
                $tableBody.html("");
                
                $("#rCount").text("댓글(" + data.length+")");
-              /*  $("#rrCount").text("댓글(" + data.length+")"); */
+               $("#rCount2").text("대댓글개수(" + data.length+")");
                
                if(data.length >0){
                   for(var i in data){
+                	 /*  cName =   JSON.stringify($("<td width='100'>").text(data[i].cName)); */
+                	  /* cName =   $("<td id='hashid' width='100'>").text(data[i].cName); */
+                	  
+                      var rLevel = data[i].rLevel 
+                     
+                   
+                    
+                     
                      $tr = $("<tr>");
                      $cName = $("<td width='100'>").text(data[i].cName);
                      $rContent = $("<td>").text(data[i].rContent);
+                      $button = $("<td>").html("<button type='button' class='hashStandard' onclick='answerReply(this)'>답글달기</button>"); 
+                     
+                     
                      $rCreateDate = $("<td width='100'>").text(data[i].rCreateDate);
                      
                      $tr.append($cName);
                      $tr.append($rContent);
                      $tr.append($rCreateDate);
+                      $tr.append($button); 
+                     
+                       if(data[i].rLevel  == "1") { 
+                    	   $tr = $("<tr>");
+                           $cName = $("<td width='120'>").text("└ Re : "+data[i].cName);
+                           $rContent = $("<td>").text(data[i].rContent);
+                           
+                    	   $tr.append($cName);
+                           $tr.append($rContent);
+                           $tr.append($rCreateDate);
+                           $tr.append("&nbsp;");
+                   }  
+          			   
+                     -
                      
                      $tableBody.append($tr);
+                     
+                    
+                     
+                     
+                     
+                 /*     switch(rLevel) {
+                     case : 0
+                     document.getWriter("댓글이고");
+                     break;
+                     
+                     case : 1
+                     document.getWriter("대댓글이고");
+                     break;
+                    	 
+                     } */
+                     
+                     
+                /* 	  if(data[i].rLevel == "0" || data[i].rLevel != "1") {
+                     
+                     $tr.append($cName);
+                     $tr.append($rContent);
+                     $tr.append($rCreateDate);
+                     $tableBody.append($tr);
+
+                	  }if(data[i].rLevel == "1") { */
+                    /*  $tr = $("<tr>");
+                     $cName = $("<td width='100'>").text("└ Re" +  data[i].cName);
+                     $rContent = $("<td>").text(data[i].rContent);
+                     $rCreateDate = $("<td width='100'>").text(data[i].rCreateDate);
+                     $td = $("<td>"); */
+                  /*    
+                     $tr.append($cName).text("└ Re : ") + $tr.append($cName);
+                     $tr.append($rContent);
+                     $tr.append($rCreateDate);
+                	  }  */
+
+                	  
                   }
                }else{
                   $tr = $("<tr>");
@@ -192,7 +270,29 @@
          });
          
       }
-   </script> -->
+      
+		 
+		//대 댓글작성 위치 / 
+		function answerReply(e) {
+			var hashName = $(e).parent().parent().children().eq(0).text();
+			var csseffect = $(e).parent().parent().children();
+			
+			csseffect.css("color","red");
+			
+			console.log(csseffect);
+			/* console.log(hashName); */
+			
+			$("#rContent").val("@"+hashName);
+			
+			
+			
+			/* 
+			$("#hashtag").children().children();
+			console.log($("#hashtag").children().children()); */
+			
+			
+		}
+   </script>
         
     </body>
 </html>

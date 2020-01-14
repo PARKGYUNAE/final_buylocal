@@ -5,88 +5,10 @@
 <html>
 
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>SB Admin - Dashboard</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Page level plugin CSS-->
-  <link href="resources/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="resources/admin/css/sb-admin.css" rel="stylesheet">
-
+<c:import url="common.jsp"/>
 </head>
 
 <body id="page-top">
-
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-    <a class="navbar-brand mr-1" href="${admin}">Buy Local</a>
-
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
-    <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell fa-fw"></i>
-          <span class="badge badge-danger">9+</span> <!-- 여기다가 Q&A 갯수 추가하자! -->
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a> <!-- 여기다가 Q&A 갯수 추가하자! -->
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-envelope fa-fw"></i>
-          <span class="badge badge-danger">7</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Activity Log</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-        </div>
-      </li>
-    </ul>
-
-  </nav>
 
   <div id="wrapper">
 
@@ -647,7 +569,7 @@
             </div>
           </div>
           <div class="card-footer small text-muted">시스데이트 쓸 예정!
-          
+      <!--     
           	 <h4>메일 보내기</h4>
     <form action="mailSending.do" method="post">
       <div>
@@ -656,14 +578,14 @@
         class="form-control">
       </div>
       <div align="center">
-        <!-- 제목 -->
+        제목
         <input type="text" name="title" size="120"
         style="width: 100%" placeholder="제목을 입력해주세요"
         class="form-control">
       </div>
         <p>
           <div align="center">
-          <!-- 내용 -->
+          내용
             <textarea name="content" cols="120" rows="12"
             style="width: 100%; resize: none" placeholder="내용#"
             class="form-control"></textarea>
@@ -672,7 +594,13 @@
       <div align="center">
         <input type="submit" value="메일 보내기" class="btn btn-warning">
       </div>
-    </form>
+    </form> -->
+    
+    <div id="kakao-talk-channel-chat-button" data-channel-public-id="_xcLqmC" data-title="question" 
+    data-size="large" data-color="yellow" data-shape="pc" data-support-multiple-densities="true">
+    
+    <a href="https://open.kakao.com/o/sFPjmXSb">실시간 상담</a>
+    </div>
           	
           
           
@@ -836,5 +764,21 @@
   </script>
 
 </body>
+
+<script>
+  window.kakaoAsyncInit = function () {
+    Kakao.Channel.createChatButton({
+      container: '#kakao-talk-channel-chat-button'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//developers.kakao.com/sdk/js/kakao.plusfriend.min.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'kakao-js-sdk'));
+</script>
 
 </html>

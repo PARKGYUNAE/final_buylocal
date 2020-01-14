@@ -9,20 +9,26 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mylocal.myL.common.Cart;
+import com.mylocal.myL.common.Deal;
+import com.mylocal.myL.common.Favorite;
 import com.mylocal.myL.common.Pagination;
 import com.mylocal.myL.shop.hotDeal.model.service.hotDealService;
 import com.mylocal.myL.shop.hotDeal.model.vo.Product;
 import com.mylocal.myL.shop.hotDeal.model.vo.Review;
+import com.mylocal.myL.user.model.vo.Customer;
 
 
 @Controller
@@ -37,11 +43,14 @@ public class HotDealController {
 	}
 
 	@RequestMapping("hotDealMenu.do")
-	public String hotDealMenu(Model model, @RequestParam(value = "page", required = false) Integer page) {
+	public String hotDealMenu(Model model, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "msg", required = false) String msg) {
 		int currentPage = page != null ? page : 1;
 		ArrayList<Product> list = hotdealService.selectList(currentPage);
 		model.addAttribute("list", list);
 		model.addAttribute("pi", Pagination.getPageInfo());
+		if(msg != null) {
+			model.addAttribute("msg", msg);
+		}
 
 		return "hotDeal/hotDealMain";
 	}
@@ -51,7 +60,6 @@ public class HotDealController {
 			@RequestParam(value="divide", required=false) String str, HttpServletRequest request, HttpServletResponse response) {
 			int currentPage = page != null ? page : 1;
 	
-			System.out.println(str);
 			Product product = null;
 	
 			boolean flag = false;
@@ -71,7 +79,6 @@ public class HotDealController {
 			}
 			product = hotdealService.selectBoard(pNo, flag);
 			ArrayList<Review> review = hotdealService.selectReviewList(pNo);
-			System.out.println(review);
 			
 			if(str == null) {
 				mv.addObject("hotdealDetail", product).addObject("currentPage", currentPage);
@@ -107,25 +114,149 @@ public class HotDealController {
 		return "hotDeal/hotDealQnA";
 	}
 
+	@RequestMapping("hotDealAddCart.do")
+	public String hotDealAddCart(RedirectAttributes redirectAttributes, HttpServletRequest request) {
+		Cart c = new Cart();
+		int qty = Integer.parseInt(request.getParameter("qty"));
+		int pNo = Integer.parseInt(request.getParameter("pNo"));
+		int cNo = Integer.parseInt(request.getParameter("cNo"));
+		c.setcNo(cNo); c.setpNo(pNo); c.setQuantity(qty);
+		int result = hotdealService.AddCart(c);
+		if(result > 0) {
+			redirectAttributes.addAttribute("cNo", cNo);
+			return "redirect:hotDealBuyForm.do";
+		}else {
+			return "hotDeal/hotDealMain";
+		}
+	}
 
 	@RequestMapping("hotDealBuyForm.do")
-	public String hotDealBuyForm() {
-		return "mypage/buyForm";
+	public String hotDealBuyForm(Model model, int cNo) {
+		ArrayList<Cart> list = hotdealService.getMyCart(cNo);
+		int total = 0;
+		for(int i = 0; i < list.size(); i++) {
+			total += (list.get(i).getpFinalPrice() * list.get(i).getQuantity());
+		}
+		model.addAttribute("total", total);
+		model.addAttribute("list", list);
+		
+		return "user/buyForm";
 	}
 
 	@RequestMapping("hotDealCheckOutForm.do")
-	public String hotDealCheckOutForm() {
-		return "mypage/checkOutForm";
+	public String hotDealCheckOutForm(Model model, HttpSession session, int total, ArrayList<Cart> list) {
+		Customer loginUser = (Customer)session.getAttribute("loginUser");
+		
+		model.addAttribute("list", list);
+		model.addAttribute("total", total);
+		model.addAttribute("loginUser", loginUser);
+		return "user/checkOutForm";
+	}
+	@RequestMapping("hotDealAddWishList.do")
+	public String hotDealAddWishList(RedirectAttributes redirectAttributes, Model model, int pNo, int cNo) {
+		Favorite f = new Favorite();
+		f.setcNo(cNo); f.setpNo(pNo);
+		
+		try {
+			int result = hotdealService.AddWishList(f);
+			redirectAttributes.addAttribute("cNo", cNo);
+			return "redirect:hotDealWishList.do";
+		}catch(Exception e) {
+			redirectAttributes.addAttribute("msg", "이미 존재하는 상품이거나 찜등록에 실패하였습니다.");
+			return "redirect:hotDealMenu.do";
+		}
+		
 	}
 
 	@RequestMapping("hotDealWishList.do")
-	public String hotDealWishList() {
-		return "mypage/wishList";
+	public String hotDealWishList(Model model, int cNo) {
+		ArrayList<Favorite> list = hotdealService.getMyWishList(cNo);
+		model.addAttribute("list", list);
+		
+		return "user/wishList";
 	}
 
 	@RequestMapping("hotDealInsertForm.do")
 	public String hotDealInsert() {
 		return "hotDeal/hotDealInsertForm";
+	}
+	
+	@RequestMapping("hotDealBuyProduct.do")
+	public String hotDealBuyProduct(RedirectAttributes redirectAttributes, int cNo) {
+		ArrayList<Cart> list = hotdealService.getMyCart(cNo);
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("cNo", cNo);
+		
+		
+		int result = hotdealService.buyProduct(cNo);
+		if(result > 0) {
+			redirectAttributes.addFlashAttribute("map", map);
+			return "redirect:hotDealReview.do";
+		}else {
+			redirectAttributes.addAttribute("msg", "이미 존재하는 상품이거나 찜등록에 실패하였습니다.");
+			return "redirect:hotDealBuyForm.do";
+		}
+	}
+	@RequestMapping("hotDealReview.do")
+	public String hotDealReview(Model model, @ModelAttribute("map") HashMap<String, Object> map) {
+		ArrayList<Cart> list = (ArrayList<Cart>) map.get("list");
+		int cNo = (int) map.get("cNo");
+		
+		model.addAttribute("list", list);
+		model.addAttribute("cNo", cNo);
+		return "hotDeal/hotDealReview";
+	}
+	@RequestMapping("InsertReview.do")
+	public String InsertReview(RedirectAttributes redirectAttributes, HttpServletRequest request) {
+		int pNo = Integer.parseInt(request.getParameter("pNo"));
+		int cNo = Integer.parseInt(request.getParameter("cNo"));
+		String content = request.getParameter("content");
+		String name = request.getParameter("name");
+		String star = request.getParameter("starRate");
+		int starRate = 0;
+		switch(star) {
+		case "별1":
+			starRate = 1;
+			break;
+		case "별2":
+			starRate = 2;
+			break;
+		case "별3":
+			starRate = 3;
+			break;
+		case "별4":
+			starRate = 4;
+			break;
+		case "별5":
+			starRate = 5;
+			break;
+		}
+		Review r = new Review();
+		r.setRvStarRate(starRate);
+		r.setRvContent(content);
+		r.setpNo(pNo);
+		r.setcName(name);
+		r.setcNo(cNo);
+		
+		int result = hotdealService.AddReview(r);
+		
+		if(result > 0) {
+			Product p = hotdealService.selectBoard(pNo, false);
+			ArrayList<Review> r2 = hotdealService.selectReviewList(pNo);
+			int totalStar = 0;
+			for(int i = 0; i < r2.size(); i++) {
+				totalStar += r2.get(i).getRvStarRate();
+			}
+			p.setpStarRate(totalStar / r2.size());
+			int results = hotdealService.updateBoard(p);
+			
+			redirectAttributes.addAttribute("msg", "리뷰등록에 성공하였습니다.");
+			return "redirect:hotDealMenu.do";
+		}else {
+			redirectAttributes.addAttribute("msg", "리뷰등록에 실패하였습니다.");
+			return "redirect:hotDealMenu.do";
+		}
 	}
 
 }

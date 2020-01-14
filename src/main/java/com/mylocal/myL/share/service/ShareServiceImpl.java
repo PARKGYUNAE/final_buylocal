@@ -42,7 +42,11 @@ public class ShareServiceImpl implements ShareService{
 	}
 
 	@Override
-	public ShareBoard detailBoard(ShareBoard sbno) {
+	public ShareBoard detailBoard(ShareBoard sbno, boolean flag) {
+		if(!flag) {
+			shareDao.addReadCount(sbno);
+		}
+		
 		return shareDao.detailBoard(sbno);
 	}
 

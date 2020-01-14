@@ -26,4 +26,8 @@ public class ttangDao {
 		return (ArrayList)sqlSession.selectList("ttangMapper.selectList", null, rowbounds);
 	}
 	
+	public Product selectBoard(int pNo) {
+		return sqlSession.selectOne("ttangMapper.selectBoard", pNo);
+	}
+	
 }

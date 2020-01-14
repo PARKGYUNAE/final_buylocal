@@ -6,6 +6,7 @@ public class Reply {
 	private int rNo;
 	private int sbNo;
 	private String cName;
+	private int cNo;
 	private Date rCreateDate;
 	private String rContent;
 	private String rStatus;
@@ -13,11 +14,13 @@ public class Reply {
 
 	public Reply() {}
 
-	public Reply(int rNo, int sbNo, String cName, Date rCreateDate, String rContent, String rStatus, int rLevel) {
+	public Reply(int rNo, int sbNo, String cName, int cNo, Date rCreateDate, String rContent, String rStatus,
+			int rLevel) {
 		super();
 		this.rNo = rNo;
 		this.sbNo = sbNo;
 		this.cName = cName;
+		this.cNo = cNo;
 		this.rCreateDate = rCreateDate;
 		this.rContent = rContent;
 		this.rStatus = rStatus;
@@ -46,6 +49,14 @@ public class Reply {
 
 	public void setcName(String cName) {
 		this.cName = cName;
+	}
+
+	public int getcNo() {
+		return cNo;
+	}
+
+	public void setcNo(int cNo) {
+		this.cNo = cNo;
 	}
 
 	public Date getrCreateDate() {
@@ -82,7 +93,9 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [rNo=" + rNo + ", sbNo=" + sbNo + ", cName=" + cName + ", rCreateDate=" + rCreateDate
-				+ ", rContent=" + rContent + ", rStatus=" + rStatus + ", rLevel=" + rLevel + "]";
+		return "Reply [rNo=" + rNo + ", sbNo=" + sbNo + ", cName=" + cName + ", cNo=" + cNo + ", rCreateDate="
+				+ rCreateDate + ", rContent=" + rContent + ", rStatus=" + rStatus + ", rLevel=" + rLevel + "]";
 	}
+
+	
 }

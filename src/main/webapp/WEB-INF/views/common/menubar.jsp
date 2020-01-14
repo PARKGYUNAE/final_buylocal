@@ -4,12 +4,11 @@
 
 <!doctype html>
 <html class="no-js" lang="zxx">
- 
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Beck - Furniture eCommerce Bootstrap 4 Template</title>
+    <title>바이로컬</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -27,6 +26,13 @@
 
 </head>
 <body>
+
+<script>
+      <c:if test="${!empty msg}">
+         alert('${msg}');
+         <c:remove var="msg"/>
+      </c:if>
+   </script>
 
 <!-- Preloader Start -->
     <div class="ft-preloader active">
@@ -226,12 +232,6 @@
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
                                                 </li>
-                                                <!-- 관리자페이지 연결(임시) -->
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="${admin}" class="mainmenu__link">
-                                                        <span class="mm-text">관리자</span>
-                                                    </a>
-                                                </li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -245,16 +245,28 @@
                                                 </div>
                                                 <!-- 메뉴바 아이콘 추가 (소망) -->
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
-                                                    <c:if test="${ loginUser.cId eq 'admin' }">
-                                                    <a href="#" class="header-toolbar__btn toolbar-btn1">
-                                                        <i class="la la-gears"></i>
+                                                	<c:if test="${ loginUser.cId eq 'admin' }">
+                                                     <c:url var="qnaCount" value="qnaCount.do"/>
+                                                    <a href="${ qnaCount }" class="header-toolbar__btn toolbar-btn1">
+                                                        <i class="la la-wrench"></i>
                                                     </a>
                                                     </c:if>
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
-                                                    <a href="#miniCart" class="header-toolbar__btn toolbar-btn1">
+                                                	<c:if test="${ !empty sessionScope.loginUser }">
+                                                	<c:url var="logout" value="logout.do"/>
+                                                    <a href="${ logout }" class="header-toolbar__btn toolbar-btn1">
+                                                        <i class="la la-power-off"></i>
+                                                    </a>
+                                                    </c:if>
+                                                </div>
+                                                <div class="header-toolbar__item header-toolbar--minicart-btn">
+                                                	<c:if test="${ !empty sessionScope.loginUser }">
+                                                	<c:url var="myFavorite" value="myFavorite.do"/>
+                                                    <a href="${ myFavorite }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
+                                                    </c:if>
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                     <a href="#miniCart" class="header-toolbar__btn toolbar-btn">
@@ -266,7 +278,7 @@
                                                     <!-- 로그인 유저가 있을 시 같은 버튼을 누르면 회원 프로필 페이지로 이동 -->
                                                     <c:choose>
                                                         <c:when test="${ empty sessionScope.loginUser }">
-                                                        	<c:url var="userLogin" value="userlogin.do"/>	                                                    <c:url var="userLogin" value="userLogin.do"/>
+                                                        	<c:url var="userLogin" value="userLogin.do"/>	                                                    <c:url var="userLogin" value="userLogin.do"/>
 		                                                    <a href="${ userLogin }" class="header-toolbar__btn toolbar-btn1">
 		                                                        <i class="la la-user"></i>
 		                                                    </a>	
@@ -278,8 +290,7 @@
 		                                                    </a>
 		                                                </c:otherwise>
 	                                              	</c:choose>
-	                                                
-                                                </div>
+	                                               </div>                                                </div>
                                                 <div class="header-toolbar__item d-block d-lg-none">
                                                     <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                         <div class="hamburger-icon">
@@ -293,12 +304,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <!-- 로그아웃 버튼 만들어야 함 (소망) -->
-                                            <!-- 로그인 유저가 있을 시 활성화 -->
-                                            <c:if test="${ !empty sessionScope.loginUser }">
-                                            	<c:url var="logout" value="logout.do"/>
-	                                         	<a href="${ logout }">로그아웃</a>
-	                                         </c:if>
+                                            
                                         </div>
                                     </div>
                                 </div>

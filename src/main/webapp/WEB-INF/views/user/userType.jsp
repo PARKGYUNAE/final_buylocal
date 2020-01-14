@@ -11,6 +11,9 @@
 		cursor:pointer;
 		float:left;
 	}
+	#wrapper {
+		margin-top: 6%;
+	}
 </style>
 </head>
 <body>
@@ -24,8 +27,8 @@
 			<!-- Page Content -->
 			<div class="container-fluid no-left-padding no-right-padding page-content blog-single post-nosidebar">
 				<!-- Container -->
-				<div class="container">
-					<h3 align="center">REGISTER</h3>
+				<div class="container" id="wrapper">
+					<h5 align="center">회원 유형을 선택해주세요.</h5>
 					<div class="row">
 						<!-- Content Area -->
 						<div class="col-xl-12 col-lg-12 col-md-12 col-12 content-area">
@@ -35,14 +38,12 @@
 										<figure class="col-sm-6">
 											<!-- 일반 회원 가입 폼 페이지로 이동 -->
 											<c:url var="userSignUp" value="userSignUp.do"/>
-											<a href="${ userSignUp }"><img src="http://placehold.it/581x350" alt="일반 회원 가입" /></a>
-											<figcaption>일반 회원</figcaption>
+											<a href="${ userSignUp }"><img src="resources/user/images/type_customer.png" alt="일반 회원 가입" /></a>
 										</figure>
 										<figure class="col-sm-6">
 											<!-- 사업자 회원 가입 폼 페이지로 이동 -->
 											<c:url var="sellerSignUp" value="sellerSignUp.do"/>
-											<a href="${ sellerSignUp }"><img src="http://placehold.it/581x350" alt="사업자 회원 가입" /></a>
-											<figcaption>사업자 회원</figcaption>
+											<a href="${ sellerSignUp }"><img src="resources/user/images/type_seller.png" alt="사업자 회원 가입" /></a>
 										</figure>
 									</div>
 								</div>

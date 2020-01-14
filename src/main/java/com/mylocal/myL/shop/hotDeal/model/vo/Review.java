@@ -6,15 +6,37 @@ public class Review {
 	private String rvContent;
 	private String cName;
 	private String rvStatus;
+	private int pNo;
+	private int cNo;
 	
 	public Review() {}
 
-	public Review(int rvNo, int rvStarRate, String rvContent, String cName) {
+	public Review(int rvNo, int rvStarRate, String rvContent, String cName, int pNo, int cNo) {
 		super();
 		this.rvNo = rvNo;
 		this.rvStarRate = rvStarRate;
 		this.rvContent = rvContent;
 		this.cName = cName;
+		this.pNo = pNo;
+		this.cNo = cNo;
+	}
+	
+	
+
+	public int getcNo() {
+		return cNo;
+	}
+
+	public void setcNo(int cNo) {
+		this.cNo = cNo;
+	}
+
+	public int getpNo() {
+		return pNo;
+	}
+
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
 	}
 
 	public int getRvNo() {

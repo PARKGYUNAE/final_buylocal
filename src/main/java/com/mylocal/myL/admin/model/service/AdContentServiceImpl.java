@@ -40,10 +40,10 @@ public class AdContentServiceImpl implements AdContentService{
 		public ArrayList<Product> HotDealSelectList() {
 			return adContentDao.HotDealSelectList();
 		}
-		@Override
+/*		@Override
 		public ArrayList<ShareBoard> ShareBoardSelectList() {
 			return adContentDao.ShareBoardSelectList();
-		}
+		}*/
 
 		
 		
@@ -59,9 +59,29 @@ public class AdContentServiceImpl implements AdContentService{
 			return adContentDao.SelectTtang(t_no);
 		}
 
-		@Override
+		/*@Override
 		public ShareBoard SelectShareboard(int rt_no) {
 			return adContentDao.SelectShareboard(rt_no);
+		}*/
+
+		// qna 갯수 count status='y'인것만
+		@Override
+		public int CountQna() {
+			// TODO Auto-generated method stub
+			return adContentDao.getQnaListCount();
+		}
+
+		// qna 상세보기
+		@Override
+		public QnA selctQna(int qNo) {
+			// TODO Auto-generated method stub
+			return adContentDao.SelectQna(qNo);
+		}
+
+		// qna 답변했으면 완료처리하기
+		@Override
+		public int updateQna(int qNo) {
+			return adContentDao.UpdateQna(qNo);
 		}
 
 	

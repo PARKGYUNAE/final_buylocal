@@ -74,8 +74,8 @@
         <div class="main-content-wrapper">
             <div class="page-content-inner pt--80 pt-md--60">
                 <div class="container">
-                <c:url var="wishList" value="wishList.do"/>
-						<c:url var="buyForm" value="buyForm.do"/>
+                <c:url var="wishList" value="ttangWishList.do"/>
+				<c:url var="buyForm" value="ttangBuyForm.do"/>
                     <div class="row no-gutters mb--80 mb-md--57">
                         <div class="col-lg-7 product-main-image">
                             <div class="product-image">
@@ -205,11 +205,11 @@
                                     </div>
                                 </div>
 
-                                <h3 class="product-title mb--20">제주감귤10kg</h3>
-                                <p class="product-short-description mb--20">농가의 환경은 감율의 당도에 큰 영향을 미쳐요. 귤은 일정한 일조량은 물론, 건강한 토양, 그리고 바다와 가까울수록 산도가 적절히 빠져 최고의 맛을 낼 수 있는데요, 우리 감귤은 제주도 남쪽 해안가에 위치하여 이 모든 조건을 만족하는 건강한 환경에서 자라난 귤이랍니다!</p>
+                                <h3 class="product-title mb--20">${ttangDetail.pTitle}</h3>
+                                <p class="product-short-description mb--20">${ttangDetail.pInfoText}</p>
                                 <div class="product-price-wrapper mb--25">
-                                    <span class="money" style="text-decoration:line-through;">12,000원</span>
-                                    <span class="money" style="color:red;">9,000원</span>
+                                    <span class="money" style="text-decoration:line-through;">${ttangDetail.pOriginalPrice}</span>
+                                    <span class="money" style="color:red;">${ttangDetail.pFinalPrice}</span>
                                 </div>
                                 <!-- 옵션 -->
                                 <!-- <form action="#" class="variation-form mb--20">
@@ -251,7 +251,7 @@
                                         	찜
                                     </button>
                                     <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${buyForm}'">
-                                        장바구니
+                                        	장바구니
                                     </button>                                    
                                 </div>  
                                 <div class="product-footer-meta">
@@ -275,9 +275,6 @@
                                     <a class="nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
                                         <span>추가정보</span>
                                     </a>
-                                    <!-- <a class="nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
-                                        <span>상품평(1)</span>
-                                    </a> -->
                                     <a class="nav-link" id="nav-report-tab" data-toggle="tab" href="#nav-report" role="tab" aria-selected="true">
                                     	<span>신고하기</span>
                                     </a>
@@ -291,9 +288,7 @@
                                         	기타 문의사항은 사업자 연락처를 통해 주시기 바랍니다.</p>
                                             <!-- 그림 삽입 -->
                                             <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
-                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
-                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
-                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
+                                            
                                         </div>
                                     </div>
                                  <!-- 추가 정보 -->   
@@ -312,7 +307,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th cols="1">원산지</th>
-                                                        <td cols="1">제주도서귀포</td>
+                                                        <td cols="1">${ttangDetail.pOrigin}</td>
                                                         <th cols="1">제조연월일</th>
                                                         <td cols="1">생산년도:2019<br>
                                                         	제조연월일:발송일 전 일주일 전후</td>
@@ -359,7 +354,7 @@
                                      <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
                                         <div class="table-content table-responsive">
                                         
-                                        	<p>신고 절차
+                                        	<p>신고 절차     
 											지식재산권 침해 상품, 불법 혹은 부적격 상품, 부적절한 광고 내용 등 안전거래를 저해하는 상품이 확인될 경우, 신고하여 주시기 바랍니다. 신고 건은 아래의 절차에 따라 진행되며, 처리결과에 다소 시간이 걸릴 수 있습니다.
 											
 											<br><br>

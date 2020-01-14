@@ -31,7 +31,27 @@
 		<result property="rvContent" column="RV_CONTENT"/>
 		<result property="cName" column="C_NAME"/>
 		<result property="rvStatus" column="RV_STATUS"/>
+		<result property="pNo" column="P_NO"/>
+		<result property="cNo" column="C_NO"/>
 	</resultMap>
+	<resultMap id="cartSet" type="Cart">
+		<id property="cNo" column="C_NO"/>
+		<id property="pNo" column="P_NO"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="quantity" column="QUANTITY"/>
+		<result property="pFinalPrice" column="P_FINALPRICE"/>
+		<result property="pInfoText" column="P_INFO_TEXT"/>
+	</resultMap>
+	
+	<resultMap id="FavoriteSet" type="Favorite">
+		<id property="pNo" column="P_NO"/>
+		<id property="cNo" column="C_NO"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="pFinalPrice" column="P_FINALPRICE"/>
+		<result property="cgName" column="CG_NAME"/>
+	</resultMap>
+	
+	
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM PD_VIEW
@@ -51,12 +71,51 @@
 		AND P_NO = #{pNo}
 	</select>
 	
+	<update id="updateBoard" parameterType="product">
+		UPDATE PRODUCT
+		SET P_STARRATE = #{pStarRate}
+		WHERE P_NO = #{pNo}
+	</update>
+	
 	<select id="selectReviewList" resultMap="reviewSet">
-		SELECT RV_NO, RV_STARRATE, RV_CONTENT, C_NAME, RV_STATUS, P_NO
-		FROM REVIEW JOIN CUSTOMER USING(C_NO)
+		SELECT RV_NO, RV_STARRATE, RV_CONTENT, C_NAME, RV_STATUS, P_NO, REVIEW.C_NO
+		FROM REVIEW JOIN CUSTOMER ON(REVIEW.C_NO = CUSTOMER.C_NO)
 		WHERE RV_STATUS='Y' AND P_NO = #{pNo}
-
 	</select>
 	
+	<select id="getMyCart" resultMap ="cartSet">
+		SELECT CART.C_NO, CART.P_NO, P_NAME, QUANTITY, P_FINALPRICE, P_INFO_TEXT
+		FROM PRODUCT JOIN CART ON (CART.P_NO = PRODUCT.P_NO) 
+		WHERE CART.C_NO = #{cNo}
+		
+	</select>
+	
+	<insert id="addCart" parameterType="Cart">
+		INSERT INTO CART
+		VALUES(SEQ_CART.NEXTVAL, #{cNo}, #{pNo}, #{quantity})
+	</insert>
+	
+	<delete id="buyProduct" parameterType="_int">
+		DELETE FROM CART 
+		WHERE C_NO = #{cNo}
+	</delete>
+	
+	<insert id="addWishList" parameterType="Favorite">
+		INSERT INTO FAVORITE
+		VALUES(#{pNo}, #{cNo})
+	</insert>
+	
+	<select id="getMyWishList" resultMap="FavoriteSet">
+		SELECT PRODUCT.P_NO, CUSTOMER.C_NO, P_NAME, P_FINALPRICE, CG_NAME
+		FROM PRODUCT JOIN FAVORITE ON(PRODUCT.P_NO = FAVORITE.P_NO)
+        JOIN CATEGORY USING(CG_CODE)
+        JOIN CUSTOMER ON(FAVORITE.C_NO = CUSTOMER.C_NO)
+        WHERE FAVORITE.C_NO = #{cNo}
+	</select>
+	
+	<insert id="addReview" parameterType="review">
+		INSERT INTO REVIEW
+		VALUES(SEQ_REVIEW.NEXTVAL, #{rvStarRate}, #{rvContent}, #{cNo}, DEFAULT, #{pNo}, SYSDATE)
+	</insert>
 	
 </mapper>

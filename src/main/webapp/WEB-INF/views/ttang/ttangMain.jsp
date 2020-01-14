@@ -47,8 +47,8 @@
             <div class="shop-page-wrapper ptb--80">
                 <div class="container">
                     <div class="row">
-                    	<%-- <c:url var="wishList" value="wishList.do"/> --%>
-						<%-- <c:url var="buyForm" value="buyForm.do"/> --%>
+                    	<c:url var="wishList" value="ttangWishList.do"/> 
+						<c:url var="buyForm" value="ttangBuyForm.do"/> 
                         <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
                             <div class="shop-toolbar mb--50">
                                 <div class="row align-items-center">
@@ -87,10 +87,12 @@
                                                     <figure class="product-image--holder">
                                                         <img src="resources/assets/img/products/prod-04-700x778.png" alt="제주감귤">
                                                     </figure>
-                                                    <c:url var="ttangD" value="ttangDetail.do"/>
+                                                    <c:url var="ttangD" value="ttangDetail.do">
+                                                    	<c:param name="pNo" value="${productTtang.pNo}"/>
+                                                    </c:url>
                                                     <a href="${ttangD}" class="product-overlay"></a>
                                                     <div class="product-action">
-                                                        <a href="#" class="action-btn">
+                                                        <a href="${wishList}" class="action-btn">
                                                             <i class="la la-heart-o"></i>
                                                         </a>
                                                     </div>
@@ -107,7 +109,7 @@
                                                         <div class="product-price-wrapper">
                                                             <span class="money">${productTtang.pFinalPrice}원</span>
                                                         </div>
-                                                        <a href="#" class="add-to-cart pr--15">
+                                                        <a href="${buyForm}" class="add-to-cart pr--15">
                                                             <i class="la la-plus"></i>
                                                             <span>장바구니</span>
                                                         </a>
