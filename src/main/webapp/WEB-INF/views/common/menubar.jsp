@@ -330,14 +330,25 @@
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                 	<c:if test="${ loginUser.cId eq 'admin' }">
                                                     <a href="#" class="header-toolbar__btn toolbar-btn1">
-                                                        <i class="la la-gears"></i>
+                                                        <i class="la la-wrench"></i>
                                                     </a>
                                                     </c:if>
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
-                                                    <a href="#miniCart" class="header-toolbar__btn toolbar-btn1">
+                                                	<c:if test="${ !empty sessionScope.loginUser }">
+                                                	<c:url var="logout" value="logout.do"/>
+                                                    <a href="${ logout }" class="header-toolbar__btn toolbar-btn1">
+                                                        <i class="la la-power-off"></i>
+                                                    </a>
+                                                    </c:if>
+                                                </div>
+                                                <div class="header-toolbar__item header-toolbar--minicart-btn">
+                                                	<c:if test="${ !empty sessionScope.loginUser }">
+                                                	<c:url var="myFavorite" value="myFavorite.do"/>
+                                                    <a href="${ myFavorite }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
+                                                    </c:if>
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                     <a href="#miniCart" class="header-toolbar__btn toolbar-btn">
@@ -349,7 +360,7 @@
                                                     <!-- 로그인 유저가 있을 시 같은 버튼을 누르면 회원 프로필 페이지로 이동 -->
                                                     <c:choose>
                                                         <c:when test="${ empty sessionScope.loginUser }">
-                                                        	<c:url var="userLogin" value="userlogin.do"/>	                                                    <c:url var="userLogin" value="userLogin.do"/>
+                                                        	<c:url var="userLogin" value="userLogin.do"/>	                                                    <c:url var="userLogin" value="userLogin.do"/>
 		                                                    <a href="${ userLogin }" class="header-toolbar__btn toolbar-btn1">
 		                                                        <i class="la la-user"></i>
 		                                                    </a>	
@@ -375,10 +386,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <c:if test="${ !empty sessionScope.loginUser }">
-                                            	<c:url var="logout" value="logout.do"/>
-	                                         	<a href="${ logout }">로그아웃</a>
-	                                         </c:if>
+                                    
                                         </div>
                                     </div>
                                 </div>

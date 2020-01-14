@@ -13,10 +13,11 @@
 		<result property="cStatus" column="C_STATUS"/>
 		<result property="cPhone" column="C_PHONE"/>
 		<result property="cEnrollDate" column="C_ENROLLDATE"/>
+		<result property="cLevel" column="C_LEVEL"/>
 	</resultMap>
 	
 	<insert id="insertCustomer" parameterType="Customer">
-		INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, #{cName}, #{cId}, #{cPwd}, #{cEmail}, #{cAddress}, DEFAULT, #{cPhone}, SYSDATE)
+		INSERT INTO CUSTOMER VALUES (SEQ_CNO.NEXTVAL, #{cName}, #{cId}, #{cPwd}, #{cEmail}, #{cAddress}, DEFAULT, #{cPhone}, SYSDATE, DEFAULT)
 	</insert>
 	
 	<select id="selectOneCustomer" parameterType="Customer" resultMap="customerResultSet">
@@ -26,6 +27,43 @@
 		AND C_STATUS='Y'
 	</select>
 	
-
-
+	<select id="idCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) 
+		FROM CUSTOMER 
+		WHERE C_ID=#{cId}
+	</select>
+	
+	<update id="updateCustomer" parameterType="Customer">
+		UPDATE CUSTOMER
+		SET C_EMAIL=#{cEmail}, C_ADDRESS=#{cAddress}, C_PHONE=#{cPhone}
+		WHERE C_ID=#{cId}
+	</update>
+	
+	<update id="deleteCustomer" parameterType="Customer">
+		UPDATE CUSTOMER
+		SET C_STATUS=#{cStatus}
+		WHERE C_ID=#{cId}
+	</update>
+	
+	
+	<!-- /////////////////////////businessInfo////////////////////////// -->
+	
+	<resultMap id="BusinessInfoResultSet" type="BusinessInfo">
+		<id property="bShopNo" column="B_SHOP_NO"/>
+		<result property="bPermit" column="B_PERMIT"/>
+		<result property="bShopName" column="B_SHOP_NAME"/>
+		<result property="bClass" column="B_CLASS"/>
+		<result property="bDetailClass" column="B_DETAIL_CLASS"/>
+		<result property="bOwner" column="B_OWNER"/>
+		<result property="bPic" column="B_PIC"/>
+		<result property="bShopAddress" column="B_SHOP_ADDRESS"/>
+		<result property="cNo" column="C_NO"/>
+	</resultMap>
+	
+	<insert id="insertBusinessInfo" parameterType="BusinessInfo">
+		INSERT INTO BUSINESS_INFO
+		VALUES (#{bShopNo}, DEFAULT, #{bShopName}, #{bClass}, #{bDetailClass}, 
+				#{bOwner}, #{bPic}, #{bShopAddress}, SEQ_CNO.CURRVAL)
+	</insert>
+	
 </mapper>

@@ -4,8 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mylocal.myL.user.model.vo.BusinessInfo;
 import com.mylocal.myL.user.model.vo.Customer;
-import com.mylocal.myL.user.model.vo.Seller;
 
 @Repository("userDao")
 public class UserDao {
@@ -18,18 +18,13 @@ public class UserDao {
 	}
 	
 	// 사업자 회원 가입 
-	public int insertSeller(Seller s) {
-		return sqlSession.insert("userMapper.insertSeller", s);
+	public int insertBusinessInfo(BusinessInfo bi) {
+		return sqlSession.insert("userMapper.insertBusinessInfo", bi);
 	}
 
 	// 일반 회원 로그인
 	public Customer selectCustomer(Customer c) {
 		return (Customer)sqlSession.selectOne("userMapper.selectOneCustomer", c);
-	}
-
-	// 사업자 회원 로그인
-	public Seller selectSeller(Seller s) {
-		return (Seller)sqlSession.selectOne("userMapper.selectOneSeller", s);
 	}
 	
 	// 일반 회원 정보 수정
@@ -37,10 +32,6 @@ public class UserDao {
 		return sqlSession.update("userMapper.updateCustomer", c);
 	}
 	
-	// 사업자 회원 정보 수정
-	public int updateSeller(Seller s) {
-		return sqlSession.update("userMapper.updateSeller", s);
-	}
 
 	// 일반 회원 탈퇴
 	public int deleteCustomer(String cId) {
@@ -53,14 +44,10 @@ public class UserDao {
 	}
 	
 	// 일반 회원 아이디 중복 확인 
-	public int checkCidDup(String cId) {
+	public int checkIdDup(String cId) {
 		return sqlSession.selectOne("userMapper.idCheck", cId);
 	}
 
-	// 사업자 회원 아이디 중복 확인  -> 같은 메소드 이용 가능? 매개변수만 달리?
-	public int checkSidDup(String sId) {
-		return sqlSession.selectOne("userMapper.idCheck", sId);
-	}
 	
 	
 	

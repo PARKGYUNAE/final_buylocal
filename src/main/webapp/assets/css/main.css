@@ -3378,12 +3378,19 @@ a, button, .item-overlay, .global-overlay, .pagination li .page-number, .scroll-
       .user-dashboard-tab__head .nav-link {
         padding: 12px; } }
 
-.user-dashboard-tab__content {
+/* .user-dashboard-tab__content {
   -webkit-flex-basis: calc(100% - 220px);
   -moz-flex-basis: calc(100% - 220px);
   -ms-flex-preferred-size: calc(100% - 220px);
   flex-basis: calc(100% - 220px);
-  max-width: calc(100% - 220px); }
+  max-width: calc(100% - 220px); 
+
+  } */
+ .user-dashboard-tab__content {
+  	
+
+  } 
+  
   @media (max-width: 47.94em) {
     .user-dashboard-tab__content {
       -webkit-flex-basis: 100%;
