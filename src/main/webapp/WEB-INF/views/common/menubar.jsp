@@ -27,12 +27,12 @@
 </head>
 <body>
 
-<script>
+<!-- <script>
       <c:if test="${!empty msg}">
          alert('${msg}');
          <c:remove var="msg"/>
       </c:if>
-   </script>
+   </script> -->
 
 <!-- Preloader Start -->
     <div class="ft-preloader active">
@@ -48,6 +48,8 @@
 	<c:url var="hotDealDetail" value="hotDealDetail.do" />
 	<c:url var="admin" value="goAdmin.do"/>
 
+
+	
 
     <!-- Main Wrapper Start -->
     <div class="wrapper">
@@ -207,31 +209,45 @@
                                                     </a>
                                                 </li>
 						                       <li class="mainmenu__item menu-item-has-children">
-                                                    <c:url var="advertisement" value="advertisement.do"/>
-                                                    <c:url var="insertProduct" value="insertProduct.do"/>
+                                                    <c:url var="advertisementForm" value="advertisementForm.do"/>
+                                                    <c:url var="insertProductForm" value="insertProductForm.do"/>
                                                     <a href="${advertisement}" class="mainmenu__link">
                                                         <span class="mm-text">신청하기</span>
                                                     </a>
                                                   <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="한식" href="${advertisement}">
+                                                                <a title="한식" href="${advertisementForm}">
                                                                     <span class="mm-text">이벤트/광고 신청</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="중식" href="${insertProduct}">
+                                                                <a title="중식" href="${insertProductForm}">
                                                                     <span class="mm-text">상품 신청</span>
                                                                 </a>
                                                             </li>
                                                    </ul>
                                                  </li>
-                                                <li class="mainmenu__item">
-                                               	<c:url var="contactUs" value="contactUs.do"/> 
-                                                    <a href="${contactUs}" class="mainmenu__link">
+                                               	   <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="FAQ" value="FAQ.do"/>
+                                                    <c:url var="QNAform" value="QNAform.do"/>
+                                                    <a href="${FAQ}" class="mainmenu__link">
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
-                                                </li>
+                                                  <ul class="sub-menu">
+                                                        <li class="menu-item-has-children">
+                                                            <li>
+                                                                <a title="FAQ" href="${FAQ}">
+                                                                    <span class="mm-text">FAQ</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="QNA" href="${QNAform}">
+                                                                    <span class="mm-text">QNA</span>
+                                                                </a>
+                                                            </li>
+                                                   </ul>
+                                                 </li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -315,6 +331,190 @@
             </div>
         </header>
         <!-- Header End -->
+        
+        
+        <!-- OffCanvas Menu Start -->
+ <!-- 수정예정 -->
+        <div class="offcanvas-menu-wrapper" id="offcanvasMenu">
+            <div class="offcanvas-menu-inner">
+                <a href="" class="btn-close">
+                    <i class="la la-remove"></i>
+                </a>
+                <nav class="offcanvas-navigation">
+                    <ul class="offcanvas-menu">
+                        <li class="menu-item-has-children active">
+                            <a href="#">Home</a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="index.html">Homepage 01</a>
+                                </li>
+                                <li>
+                                    <a href="index-02.html">Homepage 02</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="shop.html">Shop</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item-has-children">
+                                    <a href="#">
+                                        <span class="mm-text">Shop Grid</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="shop-fullwidth.html">Full Width</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop.html">Left Sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-right-sidebar.html">Right Sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-three-columns.html">Three Columns</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-four-columns.html">Four Columns</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Shop List</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="shop-list.html">Full Width</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-list-sidebar.html">Left Sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-list-right-sidebar.html">Right Sidebar</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Product Details</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="${hotDealDetail}">Tab Style 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-tab-style-2.html">Tab Style 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-tab-style-3.html">Tab Style 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-gallery-left.html">Gallery Left</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-gallery-right.html">Gallery Right</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-sticky-left.html">Sticky Left</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-sticky-right.html">Sticky Right</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-slider-box.html">Slider Box</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-slider-full-width.html">Slider Box Full Width</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-affiliate.html">Affiliate Proudct</a>
+                                        </li>                                                    
+                                        <li>
+                                            <a href="product-details-variable.html">Variable Proudct</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details-group.html">Group Product</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="blog.html">Blog</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item-has-children">
+                                    <a href="#">Blog</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog.html">Blog Right Sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-01-column.html">Blog 01 column</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-02-columns.html">Blog 02 columns</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-03-columns.html">Blog 03 columns</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Blog Details</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="blog-details-audio.html">Audio Blog Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-details-gallery.html">Gallery Blog Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-details-image.html">image Blog Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-details-video.html">Video Blog Details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="my-account.html">My Account</a>
+                                </li>
+                                <li>
+                                    <a href="checkout.html">Checkout</a>
+                                </li>
+                                <li>
+                                    <a href="${hotDealBuyForm}">Cart</a>
+                                </li>
+                                <li>
+                                    <a href="compare.html">Compare</a>
+                                </li>
+                                <li>
+                                    <a href="order-tracking.html">Track Order</a>
+                                </li>
+                                <li>
+                                    <a href="${hotDealWishList}">Wishlist</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contact-us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="site-info vertical">
+                        <div class="site-info__item">
+                            <a href="tel:+01223566678"><strong>+01 2235 666 78</strong></a>
+                            <a href="mailto:Support@contixs.com">Support@furtrate.com</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- OffCanvas Menu End -->
+        
         
           <!-- Mini Cart Start -->
         <aside class="mini-cart" id="miniCart">

@@ -81,7 +81,7 @@
                                     <h2>이벤트 & 광고 신청하기</h2>
                                     <hr class="delimeter">
                                 </div>
-                                <form action="mail.php" class="form" id="contact-form">
+                                <form action="advertisement.do" class="form" id="contact-form" method="post">
                                     <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="이메일*">
                                     <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="작성자*">
                                     <input type="text" name="con_title" id="con_title" class="form__input mb--30" placeholder="제목*">
@@ -95,7 +95,7 @@
                                     </p>
                                     <textarea class="form__input form__input--textarea mb--30" placeholder="요청사항" id="con_message" name="con_message"></textarea>
                                     <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
-                                    <div class="form__output"></div>
+                                  
                                 </form>
                             </div>
                         </div>

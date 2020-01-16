@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>고객센터</title>
+    <title>QNA</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<c:import url="common/menubar.jsp"/>
+	<c:import url="../common/menubar.jsp"/>
 	
     
    <!-- Main Wrapper Start -->
@@ -35,10 +35,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">고객센터</h1>
+                        <h1 class="page-title">QNA</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
                             <li class="current"><span>고객센터</span></li>
+                            <li class="current"><span>QNA</span></li>
                         </ul>
                     </div>
                 </div>
@@ -152,7 +153,7 @@
         </main>
         <!-- Main Content Wrapper End -->
 
-		<c:import url="common/footer.jsp"/>
+		<c:import url="../common/footer.jsp"/>
 
     
         <!-- Global Overlay Start -->

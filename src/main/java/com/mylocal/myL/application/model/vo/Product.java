@@ -1,15 +1,17 @@
-package com.mylocal.myL.shop.ttang.model.vo;
+package com.mylocal.myL.application.model.vo;
 
 import java.sql.Date;
 
 public class Product {
 	private int pNo; // 상품고유번호
 	private String pName; //상품이름
-	private String pThumb; //썸네일
+	private String pThumb; //썸네일(후)
+	private String pOriginalThumb; // 썸네일(전) (20.01.16. 수정)
 	private int pOriginalPrice; //할인전가격
 	private int pFinalPrice; //최종판매가격
 	private int pAmount; //판매수량
-	private String pInfoImage; //상품정보(이미지)
+	private String pInfoImage; //상품정보(이미지)(후)
+	private String pOriginalInfoImage; // 상품정보(이미지)(전) (20.01.16. 수정)
 	private String pInfoText; //상품정보(텍스트)
 	private String cgName; //카테고리
 	private Date pDate; // 등록일자
@@ -29,27 +31,28 @@ public class Product {
 	private String pOrigin; // 원산지
 	private String pTitle; // 상품제목
 	private String pBoard; // 상품 게시판(땡/핫딜)
+
 	
 	
 	public Product() {}
 
 
-	
 
-	
-	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
-			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, String bOwner,
-			String bShopNo, String bShopName, String bShopAddress, String cEmail, String cPhone, String pVolumn,
-			String pProductDate, String pTreatment, String bPIC, String pStarRate, String pOrigin, String pTitle,
-			String pBoard) {
+	public Product(int pNo, String pName, String pThumb, String pOriginalThumb, int pOriginalPrice, int pFinalPrice,
+			int pAmount, String pInfoImage, String pOriginalInfoImage, String pInfoText, String cgName, Date pDate,
+			String pStatus, String lName, String bOwner, String bShopNo, String bShopName, String bShopAddress,
+			String cEmail, String cPhone, String pVolumn, String pProductDate, String pTreatment, String bPIC,
+			String pStarRate, String pOrigin, String pTitle, String pBoard) {
 		super();
 		this.pNo = pNo;
 		this.pName = pName;
 		this.pThumb = pThumb;
+		this.pOriginalThumb = pOriginalThumb;
 		this.pOriginalPrice = pOriginalPrice;
 		this.pFinalPrice = pFinalPrice;
 		this.pAmount = pAmount;
 		this.pInfoImage = pInfoImage;
+		this.pOriginalInfoImage = pOriginalInfoImage;
 		this.pInfoText = pInfoText;
 		this.cgName = cgName;
 		this.pDate = pDate;
@@ -71,32 +74,6 @@ public class Product {
 		this.pBoard = pBoard;
 	}
 
-
-	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
-			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, String bOwner,
-			String bShopNo, String bShopName, String bShopAddress, String cPhone, String pVolumn, String pProductDate,
-			String pTreatment, String bPIC, String pStarRate, String pOrigin, String pTitle, String pBoard) {
-		super();
-		this.pNo = pNo;
-		this.pName = pName;
-		this.pThumb = pThumb;
-		this.pOriginalPrice = pOriginalPrice;
-		this.pFinalPrice = pFinalPrice;
-		this.pAmount = pAmount;
-		this.pInfoImage = pInfoImage;
-		this.pInfoText = pInfoText;
-		this.cgName = cgName;
-		this.pDate = pDate;
-		this.pStatus = pStatus;
-		this.lName = lName;
-		this.bOwner = bOwner;
-		this.bShopAddress = bShopAddress;
-		this.cPhone = cPhone;
-		this.pStarRate = pStarRate;
-		this.pOrigin = pOrigin;
-		this.pTitle = pTitle;
-		this.pBoard = pBoard;
-	}
 
 
 	public int getpNo() {
@@ -104,9 +81,11 @@ public class Product {
 	}
 
 
+
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
 	}
+
 
 
 	public String getpName() {
@@ -114,9 +93,11 @@ public class Product {
 	}
 
 
+
 	public void setpName(String pName) {
 		this.pName = pName;
 	}
+
 
 
 	public String getpThumb() {
@@ -124,9 +105,23 @@ public class Product {
 	}
 
 
+
 	public void setpThumb(String pThumb) {
 		this.pThumb = pThumb;
 	}
+
+
+
+	public String getpOriginalThumb() {
+		return pOriginalThumb;
+	}
+
+
+
+	public void setpOriginalThumb(String pOriginalThumb) {
+		this.pOriginalThumb = pOriginalThumb;
+	}
+
 
 
 	public int getpOriginalPrice() {
@@ -134,9 +129,11 @@ public class Product {
 	}
 
 
+
 	public void setpOriginalPrice(int pOriginalPrice) {
 		this.pOriginalPrice = pOriginalPrice;
 	}
+
 
 
 	public int getpFinalPrice() {
@@ -144,9 +141,11 @@ public class Product {
 	}
 
 
+
 	public void setpFinalPrice(int pFinalPrice) {
 		this.pFinalPrice = pFinalPrice;
 	}
+
 
 
 	public int getpAmount() {
@@ -154,9 +153,11 @@ public class Product {
 	}
 
 
+
 	public void setpAmount(int pAmount) {
 		this.pAmount = pAmount;
 	}
+
 
 
 	public String getpInfoImage() {
@@ -164,9 +165,23 @@ public class Product {
 	}
 
 
+
 	public void setpInfoImage(String pInfoImage) {
 		this.pInfoImage = pInfoImage;
 	}
+
+
+
+	public String getpOriginalInfoImage() {
+		return pOriginalInfoImage;
+	}
+
+
+
+	public void setpOriginalInfoImage(String pOriginalInfoImage) {
+		this.pOriginalInfoImage = pOriginalInfoImage;
+	}
+
 
 
 	public String getpInfoText() {
@@ -174,9 +189,11 @@ public class Product {
 	}
 
 
+
 	public void setpInfoText(String pInfoText) {
 		this.pInfoText = pInfoText;
 	}
+
 
 
 	public String getCgName() {
@@ -184,9 +201,11 @@ public class Product {
 	}
 
 
+
 	public void setCgName(String cgName) {
 		this.cgName = cgName;
 	}
+
 
 
 	public Date getpDate() {
@@ -194,9 +213,11 @@ public class Product {
 	}
 
 
+
 	public void setpDate(Date pDate) {
 		this.pDate = pDate;
 	}
+
 
 
 	public String getpStatus() {
@@ -204,9 +225,11 @@ public class Product {
 	}
 
 
+
 	public void setpStatus(String pStatus) {
 		this.pStatus = pStatus;
 	}
+
 
 
 	public String getlName() {
@@ -214,9 +237,11 @@ public class Product {
 	}
 
 
+
 	public void setlName(String lName) {
 		this.lName = lName;
 	}
+
 
 
 	public String getbOwner() {
@@ -224,9 +249,11 @@ public class Product {
 	}
 
 
+
 	public void setbOwner(String bOwner) {
 		this.bOwner = bOwner;
 	}
+
 
 
 	public String getbShopNo() {
@@ -234,9 +261,11 @@ public class Product {
 	}
 
 
+
 	public void setbShopNo(String bShopNo) {
 		this.bShopNo = bShopNo;
 	}
+
 
 
 	public String getbShopName() {
@@ -244,9 +273,11 @@ public class Product {
 	}
 
 
+
 	public void setbShopName(String bShopName) {
 		this.bShopName = bShopName;
 	}
+
 
 
 	public String getbShopAddress() {
@@ -254,24 +285,29 @@ public class Product {
 	}
 
 
+
 	public void setbShopAddress(String bShopAddress) {
 		this.bShopAddress = bShopAddress;
 	}
 
-	
+
+
 	public String getcEmail() {
 		return cEmail;
 	}
 
 
+
 	public void setcEmail(String cEmail) {
 		this.cEmail = cEmail;
 	}
-	
-	
+
+
+
 	public String getcPhone() {
 		return cPhone;
 	}
+
 
 
 	public void setcPhone(String cPhone) {
@@ -279,9 +315,11 @@ public class Product {
 	}
 
 
+
 	public String getpVolumn() {
 		return pVolumn;
 	}
+
 
 
 	public void setpVolumn(String pVolumn) {
@@ -289,9 +327,11 @@ public class Product {
 	}
 
 
+
 	public String getpProductDate() {
 		return pProductDate;
 	}
+
 
 
 	public void setpProductDate(String pProductDate) {
@@ -299,9 +339,11 @@ public class Product {
 	}
 
 
+
 	public String getpTreatment() {
 		return pTreatment;
 	}
+
 
 
 	public void setpTreatment(String pTreatment) {
@@ -309,9 +351,11 @@ public class Product {
 	}
 
 
+
 	public String getbPIC() {
 		return bPIC;
 	}
+
 
 
 	public void setbPIC(String bPIC) {
@@ -319,9 +363,11 @@ public class Product {
 	}
 
 
+
 	public String getpStarRate() {
 		return pStarRate;
 	}
+
 
 
 	public void setpStarRate(String pStarRate) {
@@ -329,9 +375,11 @@ public class Product {
 	}
 
 
+
 	public String getpOrigin() {
 		return pOrigin;
 	}
+
 
 
 	public void setpOrigin(String pOrigin) {
@@ -339,9 +387,11 @@ public class Product {
 	}
 
 
+
 	public String getpTitle() {
 		return pTitle;
 	}
+
 
 
 	public void setpTitle(String pTitle) {
@@ -349,9 +399,11 @@ public class Product {
 	}
 
 
+
 	public String getpBoard() {
 		return pBoard;
 	}
+
 
 
 	public void setpBoard(String pBoard) {
@@ -360,19 +412,24 @@ public class Product {
 
 
 
-
-
 	@Override
 	public String toString() {
-		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalPrice=" + pOriginalPrice
-				+ ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount + ", pInfoImage=" + pInfoImage
-				+ ", pInfoText=" + pInfoText + ", cgName=" + cgName + ", pDate=" + pDate + ", pStatus=" + pStatus
-				+ ", lName=" + lName + ", bOwner=" + bOwner + ", bShopNo=" + bShopNo + ", bShopName=" + bShopName
-				+ ", bShopAddress=" + bShopAddress + ", cEmail=" + cEmail + ", cPhone=" + cPhone + ", pVolumn="
-				+ pVolumn + ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", bPIC=" + bPIC
-				+ ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard
-				+ "]";
+		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalThumb=" + pOriginalThumb
+				+ ", pOriginalPrice=" + pOriginalPrice + ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount
+				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoImage=" + pOriginalInfoImage + ", pInfoText="
+				+ pInfoText + ", cgName=" + cgName + ", pDate=" + pDate + ", pStatus=" + pStatus + ", lName=" + lName
+				+ ", bOwner=" + bOwner + ", bShopNo=" + bShopNo + ", bShopName=" + bShopName + ", bShopAddress="
+				+ bShopAddress + ", cEmail=" + cEmail + ", cPhone=" + cPhone + ", pVolumn=" + pVolumn
+				+ ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", bPIC=" + bPIC + ", pStarRate="
+				+ pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard + "]";
 	}
+
+
+	
+
+
+
+
 
 
 

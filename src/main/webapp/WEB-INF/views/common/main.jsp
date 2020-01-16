@@ -25,14 +25,16 @@
 
 <body>
 
-    <!-- Preloader Start -->
+	
+
+ <!-- Preloader Start -->   
     <div class="ft-preloader active">
-        <div class="ft-preloader-inner h-100 d-flex alig"C:/Users/규내/Downloads/ttang_gyu(백업본)/buyLocal/src/main/java/com/mylocal/myL/buylocal/model/dao/noticeDao.java"n-items-center justify-content-center">
+        <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
             <div class="ft-child ft-bounce1"></div>
             <div class="ft-child ft-bounce2"></div>
             <div class="ft-child ft-bounce3"></div>
         </div>
-    </div>
+    </div> 
     
     <!-- Preloader End -->
  	<c:url var="hotDealWishList" value="hotDealWishList.do"/>
@@ -198,31 +200,45 @@
                                                     </a>
                                                 </li>
 						                       <li class="mainmenu__item menu-item-has-children">
-                                                    <c:url var="advertisement" value="advertisement.do"/>
-                                                    <c:url var="insertProduct" value="insertProduct.do"/>
+                                                    <c:url var="advertisementForm" value="advertisementForm.do"/>
+                                                    <c:url var="insertProductForm" value="insertProductForm.do"/>
                                                     <a href="${advertisement}" class="mainmenu__link">
                                                         <span class="mm-text">신청하기</span>
                                                     </a>
                                                   <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="한식" href="${advertisement}">
+                                                                <a title="이벤트/광고 신청" href="${advertisementForm}">
                                                                     <span class="mm-text">이벤트/광고 신청</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="중식" href="${insertProduct}">
+                                                                <a title="상품 신청" href="${insertProductForm}">
                                                                     <span class="mm-text">상품 신청</span>
                                                                 </a>
                                                             </li>
                                                    </ul>
                                                  </li>
-                                                <li class="mainmenu__item">
-                                               	<c:url var="contactUs" value="contactUs.do"/> 
-                                                    <a href="${contactUs}" class="mainmenu__link">
+                                                  <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="FAQ" value="FAQ.do"/>
+                                                    <c:url var="QNAform" value="QNAform.do"/>
+                                                    <a href="${FAQ}" class="mainmenu__link">
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
-                                                </li>
+                                                  <ul class="sub-menu">
+                                                        <li class="menu-item-has-children">
+                                                            <li>
+                                                                <a title="FAQ" href="${FAQ}">
+                                                                    <span class="mm-text">FAQ</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="QNA" href="${QNAform}">
+                                                                    <span class="mm-text">QNA</span>
+                                                                </a>
+                                                            </li>
+                                                   </ul>
+                                                 </li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -2365,124 +2381,10 @@
         </main>
         <!-- Main Content Wrapper End -->
 
-        <!-- Footer Start-->
-        <footer class="footer bg-color" data-bg-color="#f4f8fa">
-            <div class="footer-top">
-                <div class="container-fluid">
-                    <div class="row border-bottom pt--70 pb--70">
-                        <div class="col-lg-3 col-sm-6 offset-md-1 offset-lg-0 mb-md--45">
-                            <div class="footer-widget">
-                                <div class="textwidget">
-                                    <figure class="footer-logo mb--30">
-                                        <img src="resources/assets/img/logo/logo.png" alt="Logo">
-                                    </figure>
-                                    <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-3 offset-lg-1 offset-sm-2 mb-md--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Company</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="index.html">About Us</a></li>
-                                        <li><a href="blog.html">Blogs</a></li>
-                                        <li><a href="#">Careers</a></li>
-                                        <li><a href="contact-us.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 offset-md-1 offset-lg-0 mb-xs--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Product</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Customers</a></li>
-                                        <li><a href="#">Demos</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 mb-xs--45">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Helps</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Introduction</a></li>
-                                        <li><a href="#">Feedback</a></li>
-                                        <li><a href="#">Referals</a></li>
-                                        <li><a href="#">Network Status</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20">Social Network</h3>
-                                <div class="footer-widget">
-                                    <ul class="footer-menu">
-                                        <li><a href="#">Facebook</a></li>
-                                        <li><a href="#">Twitter</a></li>
-                                        <li><a href="#">Linkedin</a></li>
-                                        <li><a href="#">Google +</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-middle ptb--40">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-11">
-                            <div class="footer-widget">
-                                <div class="taglist">
-                                    <span>Tags:</span>
-                                    <a href="#">Minimal eCommerce</a>
-                                    <a href="#">Marketing</a>
-                                    <a href="#">User Exprience</a>
-                                    <a href="#">Ali Express</a>
-                                    <a href="#">Web</a>
-                                    <a href="#">Digital Expo</a>
-                                    <a href="#">Web Search</a>
-                                    <a href="#">Affiliate</a>
-                                    <a href="#">UCWeb</a>
-                                    <a href="#">Support</a>
-                                    <a href="#">Template</a>
-                                    <a href="#">Best Queality</a>
-                                    <a href="#">Mobile</a>
-                                    <a href="#">24 Support</a>
-                                    <a href="#">Ali Express</a>
-                                    <a href="#">Web</a>
-                                    <a href="#">Laptop</a>
-                                    <a href="#">Web Search</a>
-                                    <a href="#">Affiliate</a>
-                                    <a href="#">Photoshop</a>
-                                    <a href="#">Support</a>
-                                    <a href="#">Template</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="container-fluid">
-                    <div class="row border-top ptb--20">
-                        <div class="col-12 text-center">
-                            <p class="copyright-text">Beck &copy; 2019 all rights reserved</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Footer End-->
 
-        <!-- OffCanvas Menu Start -->
+
+ <!-- OffCanvas Menu Start -->
+ <!-- 수정예정 -->
         <div class="offcanvas-menu-wrapper" id="offcanvasMenu">
             <div class="offcanvas-menu-inner">
                 <a href="" class="btn-close">
@@ -2725,12 +2627,13 @@
         <!-- Mini Cart End -->
 
         <!-- Searchform Popup Start -->
+        <!-- Searchform Popup Start -->
         <div class="searchform__popup" id="searchForm">
             <a href="#" class="btn-close"><i class="la la-remove"></i></a>
             <div class="searchform__body">
-                <p>Start typing and press Enter to search</p>
+                <p>검색어를 입력하세요</p>
                 <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
+                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="지역, 상품, 업체 등 을 검색해보세요">
                     <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
                 </form>
             </div>
@@ -2871,7 +2774,7 @@
             </div>
           </div>
         </div>
-        <!-- Qicuk View Modal End -->
+        <!-- Qicuk View Modal End --> 
 
         <!-- Global Overlay Start -->
         <div class="global-overlay"></div>

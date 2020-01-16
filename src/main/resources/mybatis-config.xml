@@ -20,6 +20,7 @@
 		<typeAlias type="com.mylocal.myL.admin.model.vo.ShareBoard" alias="ShareBoardAdmin"/>
 		
 		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productTtang"/>
+		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productInfo"/>
 		<typeAlias type="com.mylocal.myL.buylocal.model.vo.Notice" alias="notice"/>
 		
 	    <typeAlias type="com.mylocal.myL.share.model.vo.ShareBoard" alias="ShareBoard"/>
