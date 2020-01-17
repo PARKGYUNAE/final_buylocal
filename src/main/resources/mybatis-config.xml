@@ -21,6 +21,8 @@
 		
 		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productTtang"/>
 		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productInfo"/>
+		<!-- 상품 등록  -->
+		<typeAlias type="com.mylocal.myL.application.model.vo.Product" alias="NewProduct"/>
 		<typeAlias type="com.mylocal.myL.buylocal.model.vo.Notice" alias="notice"/>
 		
 	    <typeAlias type="com.mylocal.myL.share.model.vo.ShareBoard" alias="ShareBoard"/>
@@ -37,6 +39,7 @@
 		<mapper resource="mappers/admin/adAdvertise-mapper.xml"/>
 		<mapper resource="mappers/admin/adUser-mapper.xml"/>
 		<mapper resource="mappers/ttang-mapper.xml"/>
+		<mapper resource="mappers/product-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
    		<mapper resource="mappers/share-mapper.xml"/>
 		<mapper resource="mappers/reply-mapper.xml"/>

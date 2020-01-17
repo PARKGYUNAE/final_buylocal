@@ -21,9 +21,6 @@
     <!-- style css -->
     <link rel="stylesheet" href="resources/assets/css/main.css">
     
-    
-   
-
     <style>
     
     table.type04 {
@@ -56,13 +53,13 @@
 	<c:import url="../common/menubar.jsp"/>	
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section  class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="page-title">땡처리 상품상세 페이지</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="<%=request.getContextPath() %>">Home</a></li>
                             <li class="current"><span>땡처리게시판</span></li>
                             <li class="current"><span>상품상세페이지</span></li>
                         </ul>
@@ -299,7 +296,7 @@
                                         	
                                         	
                                             <table class="type04" style="font-size:14px;">
-												<h5>필수 표기정보</h5>
+												<h5>기본 표기정보</h5>
                                                 <tbody>
                                                     <tr>
                                                         <th >용량/수량/크기</th>

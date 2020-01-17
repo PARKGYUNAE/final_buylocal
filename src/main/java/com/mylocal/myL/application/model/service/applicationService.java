@@ -4,6 +4,7 @@ import com.mylocal.myL.application.model.vo.Product;
 
 public interface applicationService{
 
-	int insertProduct(Product p);
+	// 등록
+	public int insertProduct(Product p);
 	
 }

@@ -32,13 +32,13 @@
     <div class="wrapper">
    
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section  class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="page-title">공지사항</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="<%=request.getContextPath() %>">Home</a></li>
                             <li class="current"><span>Buylocal</span></li>
                             <li class="current"><span>공지사항</span></li>
                         </ul>

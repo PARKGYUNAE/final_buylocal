@@ -17,16 +17,10 @@ public class Product {
 	private Date pDate; // 등록일자
 	private String pStatus; //상태
 	private String lName; //지역
-	private String bOwner; // 사업자명
-	private String bShopNo; // 사업자번호 (20.01.15. 수정)
-	private String bShopName; // 상호명 (20.01.15. 수정)
-	private String bShopAddress; // 사업장주소 (20.01.15. 수정)
 	private String cEmail; // 회원 이메일(20.01.16. 수정)
-	private String cPhone; 
-	private String pVolumn; // 용량/크기 (20.01.15. 수정)
+	private String pVolume; // 용량/크기 (20.01.15. 수정)
 	private String pProductDate; // 제조연월 (20.01.15. 수정)
 	private String pTreatment; // 취급방법  (20.01.15. 수정)
-	private String bPIC; // 담당자 연락처
 	private String pStarRate; // 별점
 	private String pOrigin; // 원산지
 	private String pTitle; // 상품제목
@@ -36,12 +30,9 @@ public class Product {
 	
 	public Product() {}
 
-
-
 	public Product(int pNo, String pName, String pThumb, String pOriginalThumb, int pOriginalPrice, int pFinalPrice,
 			int pAmount, String pInfoImage, String pOriginalInfoImage, String pInfoText, String cgName, Date pDate,
-			String pStatus, String lName, String bOwner, String bShopNo, String bShopName, String bShopAddress,
-			String cEmail, String cPhone, String pVolumn, String pProductDate, String pTreatment, String bPIC,
+			String pStatus, String lName, String cEmail, String pVolume, String pProductDate, String pTreatment,
 			String pStarRate, String pOrigin, String pTitle, String pBoard) {
 		super();
 		this.pNo = pNo;
@@ -58,23 +49,15 @@ public class Product {
 		this.pDate = pDate;
 		this.pStatus = pStatus;
 		this.lName = lName;
-		this.bOwner = bOwner;
-		this.bShopNo = bShopNo;
-		this.bShopName = bShopName;
-		this.bShopAddress = bShopAddress;
 		this.cEmail = cEmail;
-		this.cPhone = cPhone;
-		this.pVolumn = pVolumn;
+		this.pVolume = pVolume;
 		this.pProductDate = pProductDate;
 		this.pTreatment = pTreatment;
-		this.bPIC = bPIC;
 		this.pStarRate = pStarRate;
 		this.pOrigin = pOrigin;
 		this.pTitle = pTitle;
 		this.pBoard = pBoard;
 	}
-
-
 
 	public int getpNo() {
 		return pNo;
@@ -244,54 +227,6 @@ public class Product {
 
 
 
-	public String getbOwner() {
-		return bOwner;
-	}
-
-
-
-	public void setbOwner(String bOwner) {
-		this.bOwner = bOwner;
-	}
-
-
-
-	public String getbShopNo() {
-		return bShopNo;
-	}
-
-
-
-	public void setbShopNo(String bShopNo) {
-		this.bShopNo = bShopNo;
-	}
-
-
-
-	public String getbShopName() {
-		return bShopName;
-	}
-
-
-
-	public void setbShopName(String bShopName) {
-		this.bShopName = bShopName;
-	}
-
-
-
-	public String getbShopAddress() {
-		return bShopAddress;
-	}
-
-
-
-	public void setbShopAddress(String bShopAddress) {
-		this.bShopAddress = bShopAddress;
-	}
-
-
-
 	public String getcEmail() {
 		return cEmail;
 	}
@@ -303,27 +238,14 @@ public class Product {
 	}
 
 
-
-	public String getcPhone() {
-		return cPhone;
+	public String getpVolume() {
+		return pVolume;
 	}
 
 
 
-	public void setcPhone(String cPhone) {
-		this.cPhone = cPhone;
-	}
-
-
-
-	public String getpVolumn() {
-		return pVolumn;
-	}
-
-
-
-	public void setpVolumn(String pVolumn) {
-		this.pVolumn = pVolumn;
+	public void setpVolume(String pVolume) {
+		this.pVolume = pVolume;
 	}
 
 
@@ -349,19 +271,6 @@ public class Product {
 	public void setpTreatment(String pTreatment) {
 		this.pTreatment = pTreatment;
 	}
-
-
-
-	public String getbPIC() {
-		return bPIC;
-	}
-
-
-
-	public void setbPIC(String bPIC) {
-		this.bPIC = bPIC;
-	}
-
 
 
 	public String getpStarRate() {
@@ -410,19 +319,20 @@ public class Product {
 		this.pBoard = pBoard;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalThumb=" + pOriginalThumb
 				+ ", pOriginalPrice=" + pOriginalPrice + ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount
 				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoImage=" + pOriginalInfoImage + ", pInfoText="
 				+ pInfoText + ", cgName=" + cgName + ", pDate=" + pDate + ", pStatus=" + pStatus + ", lName=" + lName
-				+ ", bOwner=" + bOwner + ", bShopNo=" + bShopNo + ", bShopName=" + bShopName + ", bShopAddress="
-				+ bShopAddress + ", cEmail=" + cEmail + ", cPhone=" + cPhone + ", pVolumn=" + pVolumn
-				+ ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", bPIC=" + bPIC + ", pStarRate="
-				+ pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard + "]";
+				+ ", cEmail=" + cEmail + ", pVolume=" + pVolume + ", pProductDate=" + pProductDate + ", pTreatment="
+				+ pTreatment + ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard="
+				+ pBoard + "]";
 	}
+
+
+
+	
 
 
 	

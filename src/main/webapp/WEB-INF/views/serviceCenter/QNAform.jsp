@@ -31,13 +31,13 @@
                  
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="page-title">QNA</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="<%=request.getContextPath() %>">Home</a></li>
                             <li class="current"><span>고객센터</span></li>
                             <li class="current"><span>QNA</span></li>
                         </ul>
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-5 mb-sm--30">
                                 <div class="heading mb--32">
-                                    <h2>Get In Touch</h2>
+                                    <h2>QNA</h2>
                                     <hr class="delimeter">
                                 </div>
                                 <div class="contact-info mb--20">
@@ -65,7 +65,7 @@
                                     <p><i class="fa fa-fax"></i>  F: 02-562-2378</p>
                                     <p><i class="fa fa-clock-o"></i> 월 – 금 : 9:00 – 18:00</p>
                                 </div>
-                                <div class="social">
+                                <!-- <div class="social">
                                     <a href="https://www.facebook.com" class="social__link">
                                         <i class="la la-facebook"></i>
                                     </a>
@@ -75,7 +75,7 @@
                                     <a href="https://www.plus.google.com" class="social__link">
                                         <i class="la la-google-plus"></i>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7 offset-lg-1">
                                 <div class="heading mb--40">
@@ -362,7 +362,8 @@
 
             // Let's also add a marker while we're at it
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(40.740610, -73.935242),
+            	// KH 정보교육원 2관 위/경도
+                position: new google.maps.LatLng(37.498527992984215, 127.0326313692361 ),
                 map: map,
                 title: 'Contixs',
                 icon: "resources/assets/img/icons/marker.png",

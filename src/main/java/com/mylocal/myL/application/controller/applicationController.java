@@ -65,27 +65,28 @@ public class applicationController {
 	
 	
 	// 상품등록 폼 제출하기
-/*	@RequestMapping("insertProduct.do")
+	@RequestMapping("insertProduct.do")
 	public String insertProduct(Product p, HttpServletRequest request, 
-								@RequestParam(value="uploadFile", required=false) MultipartFile file) {
+								@RequestParam(value="pThumb", required=false) MultipartFile tFile,
+								@RequestParam(value="pInfoImage", required=false) MultipartFile iFile) {
 		
 		// 썸네일
-		if(!file.getpOriginalThumb().equals("")) {
-			String renameThumbFileName = saveThumbFile(file, request);
+		if(!tFile.getOriginalFilename().equals("")) {
+			String pThumb = saveThumbFile(tFile, request);
 			
-			if(renameThumbFileName != null) {
-				p.setpOriginalThumb(file.getpOriginalThumb());
-				p.setpThumb(renameThumbFileName);
+			if(pThumb != null) {
+				p.setpOriginalThumb(tFile.getOriginalFilename());
+				p.setpThumb(pThumb);
 			}
 		}
 		
 		// 상품정보
-		if(!file.getOriginalFilename().equals("")) {
-			String renamePInfoFileName = saveProductInfo(file, request);
+		if(!iFile.getOriginalFilename().equals("")) {
+			String pInfoImage = saveProductInfo(iFile, request);
 			
-			if(renamePInfoFileName != null) {
-				p.setpOriginalInfoImage(file.getOriginalFilename());
-				p.setpInfoImage(renamePInfoFileName);
+			if(pInfoImage != null) {
+				p.setpOriginalInfoImage(iFile.getOriginalFilename());
+				p.setpInfoImage(pInfoImage);
 			}
 		}
 		
@@ -99,11 +100,12 @@ public class applicationController {
 		} else {
 			throw new applicationException("상품 등록 실패! 다시 시도 해 주세요.");
 		}
-		
 	}
+	
+	
 
 	// 썸네일 - SaveFile
-	public String saveThumbFile(MultipartFile file, HttpServletRequest request) {
+	public String saveThumbFile(MultipartFile tFile, HttpServletRequest request) {
 		String thumbRoot = request.getSession().getServletContext().getRealPath("resources");
 		
 		String saveThumbPath = thumbRoot + "\\pThumb";
@@ -118,14 +120,14 @@ public class applicationController {
 		// 게시판은 회원들이 업로드 하는 공간이므로 파일명이 겹칠 우려가 있어
 		// rename 과정을 거쳐서 저장할 것이다.
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String pOriginalThumb = file.getpOriginalThumb();
+		String pOriginalThumb = tFile.getOriginalFilename();
 		String pThumb = sdf.format(new java.util.Date()) + "."
 		+ pOriginalThumb.substring(pOriginalThumb.lastIndexOf(".") + 1);
 		
 		String pThumbPath = thumbFolder + "\\" + pThumb;
 		
 		try {
-			file.transferTo(new File(pThumbPath));
+			tFile.transferTo(new File(pThumbPath));
 		} catch (Exception e) {
 			System.out.println("파일 전송 에러 : " + e.getMessage());
 		} 
@@ -133,7 +135,7 @@ public class applicationController {
 	}
 
 	// 상품정보 - SaveFile
-	public String saveProductInfo(MultipartFile file, HttpServletRequest request) {
+	public String saveProductInfo(MultipartFile iFile, HttpServletRequest request) {
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		
 		String savePath = root + "\\productInfo";
@@ -148,17 +150,17 @@ public class applicationController {
 		// 게시판은 회원들이 업로드 하는 공간이므로 파일명이 겹칠 우려가 있어
 		// rename 과정을 거쳐서 저장할 것이다.
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String originFileName = file.getOriginalFilename();
-		String renameFileName = sdf.format(new java.util.Date()) + "."
-		+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
+		String pOriginalInfoImage = iFile.getOriginalFilename();
+		String pInfoImage = sdf.format(new java.util.Date()) + "."
+		+ pOriginalInfoImage.substring(pOriginalInfoImage.lastIndexOf(".") + 1);
 		
-		String renamePath = folder + "\\" + renameFileName;
+		String renamePath = folder + "\\" + pOriginalInfoImage;
 		
 		try {
-			file.transferTo(new File(renamePath));
+			iFile.transferTo(new File(renamePath));
 		} catch (Exception e) {
 			System.out.println("파일 전송 에러 : " + e.getMessage());
 		} 
-		return renameFileName;
-	}	*/
+		return pInfoImage;
+	}	
 }
