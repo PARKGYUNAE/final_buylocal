@@ -134,6 +134,7 @@ public class applicationController {
 		return pThumb;
 	}
 
+	
 	// 상품정보 - SaveFile
 	public String saveProductInfo(MultipartFile iFile, HttpServletRequest request) {
 		String root = request.getSession().getServletContext().getRealPath("resources");

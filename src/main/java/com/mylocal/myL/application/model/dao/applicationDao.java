@@ -15,4 +15,5 @@ public class applicationDao {
 		return sqlSession.insert("applicationMapper.insertProduct", p);
 	}
 	
+	
 }

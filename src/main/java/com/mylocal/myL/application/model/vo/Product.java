@@ -17,7 +17,6 @@ public class Product {
 	private Date pDate; // 등록일자
 	private String pStatus; //상태
 	private String lName; //지역
-	private String cEmail; // 회원 이메일(20.01.16. 수정)
 	private String pVolume; // 용량/크기 (20.01.15. 수정)
 	private String pProductDate; // 제조연월 (20.01.15. 수정)
 	private String pTreatment; // 취급방법  (20.01.15. 수정)
@@ -32,7 +31,7 @@ public class Product {
 
 	public Product(int pNo, String pName, String pThumb, String pOriginalThumb, int pOriginalPrice, int pFinalPrice,
 			int pAmount, String pInfoImage, String pOriginalInfoImage, String pInfoText, String cgName, Date pDate,
-			String pStatus, String lName, String cEmail, String pVolume, String pProductDate, String pTreatment,
+			String pStatus, String lName, String pVolume, String pProductDate, String pTreatment,
 			String pStarRate, String pOrigin, String pTitle, String pBoard) {
 		super();
 		this.pNo = pNo;
@@ -49,7 +48,6 @@ public class Product {
 		this.pDate = pDate;
 		this.pStatus = pStatus;
 		this.lName = lName;
-		this.cEmail = cEmail;
 		this.pVolume = pVolume;
 		this.pProductDate = pProductDate;
 		this.pTreatment = pTreatment;
@@ -227,15 +225,6 @@ public class Product {
 
 
 
-	public String getcEmail() {
-		return cEmail;
-	}
-
-
-
-	public void setcEmail(String cEmail) {
-		this.cEmail = cEmail;
-	}
 
 
 	public String getpVolume() {
@@ -325,7 +314,7 @@ public class Product {
 				+ ", pOriginalPrice=" + pOriginalPrice + ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount
 				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoImage=" + pOriginalInfoImage + ", pInfoText="
 				+ pInfoText + ", cgName=" + cgName + ", pDate=" + pDate + ", pStatus=" + pStatus + ", lName=" + lName
-				+ ", cEmail=" + cEmail + ", pVolume=" + pVolume + ", pProductDate=" + pProductDate + ", pTreatment="
+				+ ", pVolume=" + pVolume + ", pProductDate=" + pProductDate + ", pTreatment="
 				+ pTreatment + ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard="
 				+ pBoard + "]";
 	}
