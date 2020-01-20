@@ -31,7 +31,7 @@
                  
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/1920X200.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -65,30 +65,19 @@
                                     <p><i class="fa fa-fax"></i>  F: 02-562-2378</p>
                                     <p><i class="fa fa-clock-o"></i> 월 – 금 : 9:00 – 18:00</p>
                                 </div>
-                                <!-- <div class="social">
-                                    <a href="https://www.facebook.com" class="social__link">
-                                        <i class="la la-facebook"></i>
-                                    </a>
-                                    <a href="https://www.twitter.com" class="social__link">
-                                        <i class="la la-twitter"></i>
-                                    </a>
-                                    <a href="https://www.plus.google.com" class="social__link">
-                                        <i class="la la-google-plus"></i>
-                                    </a>
-                                </div> -->
                             </div>
                             <div class="col-md-7 offset-lg-1">
                                 <div class="heading mb--40">
                                     <h2>Contact Us</h2>
                                     <hr class="delimeter">
                                 </div>
-                                <form action="mail.php" class="form" id="contact-form">
-                                    <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="이메일*">
-                                    <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="작성자*">
-                                    <input type="text" name="con_title" id="con_title" class="form__input mb--30" placeholder="제목*">
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요*" id="con_message" name="con_message"></textarea>
+                                <form action="insertQNA.do" class="form" id="contact-form" method="post">
+                                   <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}"/>
+                                    	작성자 : <input type="text" name="cName" id="cName" value="${loginUser.cName}"  class="form__input mb--30" readonly>
+                                    	연락 받을 이메일 : <input type="email" name="cEmail" id="cEmail" value="${loginUser.cEmail}" class="form__input mb--30" readonly>
+                                    <input type="text" name="qTitle" id="qTitle" class="form__input mb--30" placeholder="제목*" required>
+                                    <textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요*" id="qContent" name="qContent" required></textarea>
                                     <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
-                                    <div class="form__output"></div>
                                 </form>
                             </div>
                         </div>
@@ -96,11 +85,17 @@
                 </section>
                 <!-- Contact Area End -->
 
-                <!-- Google Map Area Start -->
-                <div class="google-map-area">
-                    <div id="google-map"></div>
-                </div>
-                <!-- Google Map Area End -->
+				<script>
+					$(function(){
+						var cNo = $("#cNo").val();
+						var cName = $("#cName").val();
+						var cEmail = $("#cEmail").val();
+						console.log("cNo=" + cNo);
+						console.log("cName=" + cName);
+						console.log("cEmail=" + cEmail);
+					});
+				</script>
+
 
                 <!-- Brand Logo Area Start -->
                 <div class="brand-logo-area bg-color ptb--75" data-bg-color="#e9fefd">
@@ -170,207 +165,6 @@
     <!-- ************************* JS Files ************************* -->
 
 
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxvP66_Xk1ts77oL2Z7EpDxhDD_jMg-D0"></script>
-    <script>
-        // When the window has finished loading create our google map below
-        google.maps.event.addDomListener(window, 'load', init);
-
-        function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 12,
-
-                scrollwheel: false,
-
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(40.740610, -73.935242), // New York
-
-                // How you would like to style the map. 
-                // This is where you would paste any style found on
-
-                styles: [{
-                        "featureType": "water",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#e9e9e9"
-                            },
-                            {
-                                "lightness": 17
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#f5f5f5"
-                            },
-                            {
-                                "lightness": 20
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.fill",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 17
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.stroke",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 29
-                            },
-                            {
-                                "weight": 0.2
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 18
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.local",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 16
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#f5f5f5"
-                            },
-                            {
-                                "lightness": 21
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi.park",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#dedede"
-                            },
-                            {
-                                "lightness": 21
-                            }
-                        ]
-                    },
-                    {
-                        "elementType": "labels.text.stroke",
-                        "stylers": [{
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#ffffff"
-                            },
-                            {
-                                "lightness": 16
-                            }
-                        ]
-                    },
-                    {
-                        "elementType": "labels.text.fill",
-                        "stylers": [{
-                                "saturation": 36
-                            },
-                            {
-                                "color": "#333333"
-                            },
-                            {
-                                "lightness": 40
-                            }
-                        ]
-                    },
-                    {
-                        "elementType": "labels.icon",
-                        "stylers": [{
-                            "visibility": "off"
-                        }]
-                    },
-                    {
-                        "featureType": "transit",
-                        "elementType": "geometry",
-                        "stylers": [{
-                                "color": "#f2f2f2"
-                            },
-                            {
-                                "lightness": 19
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.fill",
-                        "stylers": [{
-                                "color": "#fefefe"
-                            },
-                            {
-                                "lightness": 20
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.stroke",
-                        "stylers": [{
-                                "color": "#fefefe"
-                            },
-                            {
-                                "lightness": 17
-                            },
-                            {
-                                "weight": 1.2
-                            }
-                        ]
-                    }
-                ]
-            };
-
-            // Get the HTML DOM element that will contain your map 
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('google-map');
-
-            // Create the Google Map using our element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
-
-            // Let's also add a marker while we're at it
-            var marker = new google.maps.Marker({
-            	// KH 정보교육원 2관 위/경도
-                position: new google.maps.LatLng(37.498527992984215, 127.0326313692361 ),
-                map: map,
-                title: 'Contixs',
-                icon: "resources/assets/img/icons/marker.png",
-                animation: google.maps.Animation.BOUNCE
-            });
-        }
-    </script>
     <!-- jQuery JS -->
     <script src="resources/assets/js/vendor.js"></script>
 

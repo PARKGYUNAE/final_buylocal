@@ -6,14 +6,14 @@ public class Product {
 	private int pNo; // 상품고유번호
 	private String pName; //상품이름
 	private String pThumb; //썸네일(후)
-	private String pOriginalThumb; // 썸네일(전) (20.01.16. 수정)
+	private String pOriginalT; // 썸네일(전) (20.01.16. 수정)
 	private int pOriginalPrice; //할인전가격
 	private int pFinalPrice; //최종판매가격
 	private int pAmount; //판매수량
 	private String pInfoImage; //상품정보(이미지)(후)
-	private String pOriginalInfoImage; // 상품정보(이미지)(전) (20.01.16. 수정)
+	private String pOriginalInfoI; // 상품정보(이미지)(전) (20.01.16. 수정)
 	private String pInfoText; //상품정보(텍스트)
-	private String cgName; //카테고리
+	private String cgCode; //카테고리
 	private Date pDate; // 등록일자
 	private String pStatus; //상태
 	private String lName; //지역
@@ -24,27 +24,29 @@ public class Product {
 	private String pOrigin; // 원산지
 	private String pTitle; // 상품제목
 	private String pBoard; // 상품 게시판(땡/핫딜)
+	private int cNo;
+	private String lCode; // 지역코드(20.01.20. 추가)
 
 	
 	
 	public Product() {}
 
-	public Product(int pNo, String pName, String pThumb, String pOriginalThumb, int pOriginalPrice, int pFinalPrice,
-			int pAmount, String pInfoImage, String pOriginalInfoImage, String pInfoText, String cgName, Date pDate,
+	public Product(int pNo, String pName, String pThumb, String pOriginalT, int pOriginalPrice, int pFinalPrice,
+			int pAmount, String pInfoImage, String pOriginalInfoI, String pInfoText, String cgCode, Date pDate,
 			String pStatus, String lName, String pVolume, String pProductDate, String pTreatment,
-			String pStarRate, String pOrigin, String pTitle, String pBoard) {
+			String pStarRate, String pOrigin, String pTitle, String pBoard, int cNo, String lCode) {
 		super();
 		this.pNo = pNo;
 		this.pName = pName;
 		this.pThumb = pThumb;
-		this.pOriginalThumb = pOriginalThumb;
+		this.pOriginalT = pOriginalT;
 		this.pOriginalPrice = pOriginalPrice;
 		this.pFinalPrice = pFinalPrice;
 		this.pAmount = pAmount;
 		this.pInfoImage = pInfoImage;
-		this.pOriginalInfoImage = pOriginalInfoImage;
+		this.pOriginalInfoI = pOriginalInfoI;
 		this.pInfoText = pInfoText;
-		this.cgName = cgName;
+		this.cgCode = cgCode;
 		this.pDate = pDate;
 		this.pStatus = pStatus;
 		this.lName = lName;
@@ -55,6 +57,8 @@ public class Product {
 		this.pOrigin = pOrigin;
 		this.pTitle = pTitle;
 		this.pBoard = pBoard;
+		this.cNo = cNo;
+		this.lCode= lCode;
 	}
 
 	public int getpNo() {
@@ -93,14 +97,14 @@ public class Product {
 
 
 
-	public String getpOriginalThumb() {
-		return pOriginalThumb;
+	public String getpOriginalT() {
+		return pOriginalT;
 	}
 
 
 
-	public void setpOriginalThumb(String pOriginalThumb) {
-		this.pOriginalThumb = pOriginalThumb;
+	public void setpOriginalT(String pOriginalT) {
+		this.pOriginalT = pOriginalT;
 	}
 
 
@@ -153,14 +157,14 @@ public class Product {
 
 
 
-	public String getpOriginalInfoImage() {
-		return pOriginalInfoImage;
+	public String getpOriginalInfoI() {
+		return pOriginalInfoI;
 	}
 
 
 
-	public void setpOriginalInfoImage(String pOriginalInfoImage) {
-		this.pOriginalInfoImage = pOriginalInfoImage;
+	public void setpOriginalInfoI(String pOriginalInfoI) {
+		this.pOriginalInfoI = pOriginalInfoI;
 	}
 
 
@@ -177,14 +181,14 @@ public class Product {
 
 
 
-	public String getCgName() {
-		return cgName;
+	public String getcgCode() {
+		return cgCode;
 	}
 
 
 
-	public void setCgName(String cgName) {
-		this.cgName = cgName;
+	public void setcgCode(String cgCode) {
+		this.cgCode = cgCode;
 	}
 
 
@@ -304,16 +308,35 @@ public class Product {
 
 
 
+
 	public void setpBoard(String pBoard) {
 		this.pBoard = pBoard;
 	}
 
+	
+	public int getcNo() {
+		return cNo;
+	}
+
+	public void setcNo(int cNo) {
+		this.cNo = cNo;
+	}
+
+	public String getlCode() {
+		return lCode;
+	}
+
+	public void setlCode(String lCode) {
+		this.lCode = lCode;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalThumb=" + pOriginalThumb
+		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalT=" + pOriginalT
 				+ ", pOriginalPrice=" + pOriginalPrice + ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount
-				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoImage=" + pOriginalInfoImage + ", pInfoText="
-				+ pInfoText + ", cgName=" + cgName + ", pDate=" + pDate + ", pStatus=" + pStatus + ", lName=" + lName
+				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoI=" + pOriginalInfoI + ", pInfoText="
+				+ pInfoText + ", cgCode=" + cgCode + ", pDate=" + pDate + ", pStatus=" + pStatus + ", lName=" + lName
 				+ ", pVolume=" + pVolume + ", pProductDate=" + pProductDate + ", pTreatment="
 				+ pTreatment + ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard="
 				+ pBoard + "]";
