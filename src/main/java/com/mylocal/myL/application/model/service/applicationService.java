@@ -12,3 +12,4 @@ public interface applicationService{
 	/*public int insertAdvertisement(Advertisement a);*/
 	
 }
+ 

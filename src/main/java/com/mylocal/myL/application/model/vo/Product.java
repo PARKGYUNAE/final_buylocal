@@ -26,7 +26,7 @@ public class Product {
 	private String pBoard; // 상품 게시판(땡/핫딜)
 	private int cNo;
 	private String lCode; // 지역코드(20.01.20. 추가)
-
+ 
 	
 	
 	public Product() {}

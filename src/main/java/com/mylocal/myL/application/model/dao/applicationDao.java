@@ -17,7 +17,7 @@ public class applicationDao {
 		System.out.println("dao지나가는중~");
 		return sqlSession.insert("productMapper.insertProduct", p);
 	}
-
+ 
 	/*public int insertAdvertisement(Advertisement a) {
 		return sqlSession.insert("applicationMapper.insertAdvertisement", a);
 	}*/

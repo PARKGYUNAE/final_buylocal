@@ -14,7 +14,7 @@ public class Advertisement {
 	
 	private int cNo; // 회원번호(광고주)
 	
-	public Advertisement() {}
+	public Advertisement() {} 
 
 	public Advertisement(int aNo, String aTitle, String lCode, Date aDate, String aStatus, String aFile, int cNo) {
 		super();

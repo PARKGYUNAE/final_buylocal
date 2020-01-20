@@ -36,7 +36,7 @@ public class applicationController {
 	
 	private Logger logger = LoggerFactory.getLogger(applicationController.class);
 	
-	
+	 
 	/*// 이벤트&광고 페이지 연결
 	@RequestMapping("advertisementForm.do")
 	public String advertisement() {

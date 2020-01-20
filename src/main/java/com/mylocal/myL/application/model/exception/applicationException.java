@@ -6,3 +6,4 @@ public class applicationException extends RuntimeException {
 		super(msg);
 	}
 }
+ 
