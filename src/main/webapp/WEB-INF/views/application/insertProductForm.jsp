@@ -15,7 +15,7 @@
 	  <div class="wrapper">
                  
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/1920X200.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -58,9 +58,20 @@
                                     <p><i class="fa fa-map-marker"></i>상품 등록 전, 유의사항을 먼저 확인하세요.</p>
                                 </div>
                                 <form action="insertProduct.do" method="post" enctype="multipart/form-data">
+ 									
+ 									<!-- cNo, lCode 보내기 -->
+                                   <c:set var="cAddress" value="${ loginUser.cAddress}"/>
+                                   <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}"/> 
+                                   <input type="hidden" id="cAddress" value="${cAddress}"/>
+                                   <input type="hidden" id="lCode" name="lCode"/>
+                                   
+                                   <script>
+                                   	
+                                   </script>
+
                                     <input type="text" name="pTitle" id="pTitle" class="form__input mb--30" placeholder="글 제목*" required>
-                                    <div id="pThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
-									<label for="pThumb"></label><input type="file" id="pThumb" name="pThumb" required>								
+                                    <div id="pOriginalThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
+									<label for="pOriginalThumb"></label><input type="file" id="pOriginalThumb" name="pOriginalThumb" >								
                                     </div><br>
                                     <input type="text" name="pName" id="pName" class="form__input mb--30" placeholder="상품 이름*" required>
 									<div id="pBoardArea">게시 할 게시판 위치를 정해주세요 : &nbsp;&nbsp;
@@ -70,8 +81,7 @@
 									</div><br>
 									<!-- 선택한 게시판 위치에 따라 제공되는 카테고리 선택지 다르게 -->
 									<div id="cgName">카테고리를 선택하세요 : &nbsp;&nbsp;
-									<select id="cgName1">
-										<option selected="selected">땡처리</option>
+									<select id="cgName1" name="cgCode">
 										<option value="T1">한식</option>
 										<option value="T2">중식</option>
 										<option value="T3">일식</option>
@@ -79,8 +89,7 @@
 										<option value="T5">커피/제과</option>
 										<option value="T6">기타</option>
 									</select>
-									<select id="cgName2">
-										<option selected="selected">핫딜</option>
+									<select id="cgName2" name="cgCode">
 										<option value="C1">디지털/가전</option>
 										<option value="C2">의류/패션잡화</option>
 										<option value="C3">뷰티/미용</option>
@@ -106,7 +115,7 @@
 								  	<input type="number" name="pAmount" id="pAmount" min="1" step="1" class="form__input mb--30" placeholder="판매 수량(개)*" required>
 								  	<textarea class="form__input form__input--textarea mb--30" id="pInfoText" name="pInfoText" placeholder="상품정보(텍스트)*" required></textarea>
                                     <div id="pInfoImgaeArea">상품정보(이미지)을 선택하세요 : &nbsp;&nbsp;
-									<label for="pInfoImage"></label><input type="file" id="pInfoImage" name="pInfoIamge" required>								
+									<label for="pOriginalInfoImage"></label><input type="file" id="pOriginalInfoImage" name="pOriginalInfoImage" >								
                                     </div>
                                     
                                     <br><hr><br>
@@ -131,14 +140,81 @@
 
 	<script type="text/javascript">
 	
-		// 오늘 날짜
-		var d = new Date();
-		var currentDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-		console.log("오늘 날짜 : " + currentDate);
+	// cNo 보내기  & cAddress를 lCode로 바꿔 보내기
+	$(function(){
+
+		var cNo = $("#cNo").val();
+		console.log('cNo=' + cNo);
+		
+		var cAddress = $('#cAddress').val(); 
+		var lCode = $('#lCode').val();
+		console.log('cAddress=' + cAddress);
+		
+		// 주소값이 '서울특별시'에  한정되었을 것으로 가정
+		if(cAddress.indexOf('종로구')){
+			lCode = 'L1';
+		} else if (cAddress.indexOf('중구')) {
+			lCode = 'L2';
+		} else if (cAddress.indexOf('용산구')) {
+			lCode = 'L3';
+		} else if (cAddress.indexOf('성동구')) {
+			lCode = 'L4';
+		} else if (cAddress.indexOf('광진구')) {
+			lCode = 'L5';
+		} else if (cAddress.indexOf('동대문구')) {
+			lCode = 'L6';
+		} else if (cAddress.indexOf('중랑구')) {
+			lCode = 'L7';
+		} else if (cAddress.indexOf('성북구')) {
+			lCode = 'L8';
+		} else if (cAddress.indexOf('강북구')) {
+			lCode = 'L9';
+		} else if (cAddress.indexOf('노봉구')) {
+			lCode = 'L10';
+		} else if (cAddress.indexOf('노원구')) {
+			lCode = 'L11';
+		} else if (cAddress.indexOf('은평구')) {
+			lCode = 'L12';
+		} else if (cAddress.indexOf('서대문구')) {
+			lCode = 'L13';
+		} else if (cAddress.indexOf('마포구')) {
+			lCode = 'L14';
+		} else if (cAddress.indexOf('양천구')) {
+			lCode = 'L15';
+		} else if (cAddress.indexOf('강서구')) {
+			lCode = 'L16';
+		} else if (cAddress.indexOf('구로구')) {
+			lCode = 'L17';
+		} else if (cAddress.indexOf('금천구')) {
+			lCode = 'L18';
+		} else if (cAddress.indexOf('영등포구')) {
+			lCode = 'L19';
+		} else if (cAddress.indexOf('동작구')) {
+			lCode = 'L20';
+		} else if (cAddress.indexOf('관악구')) {
+			lCode = 'L21';
+		} else if (cAddress.indexOf('서초구')) {
+			lCode = 'L22';
+		} else if (cAddress.indexOf('강남구')) {
+			lCode = 'L23';
+		} else if (cAddress.indexOf('송파구')) {
+			lCode = 'L24';
+		} else {
+			lCode = 'L25';
+		} 
+		
+		console.log("lCode=" + lCode);
+		
+	});	
 	
-		// 게시판 선택에 따라 카테고리, 판매종료일 변화(땡처리 선택시, 숨김)
 		$(function(){
 			
+			// 오늘 날짜
+			var d = new Date();
+			var currentDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			console.log("오늘 날짜 : " + currentDate);
+			
+			// 게시판 선택에 따라 카테고리, 판매종료일 변화(땡처리 선택시, 숨김)
 			$("#cgName1").hide();
 			
 			$(document).on('click', '#pBoard_type1', function(){
@@ -152,16 +228,18 @@
 					$('#cgName2').show();
 					$('#pEndDateArea').show();
 			});
+			
+			
+			// 땡처리 선택 시, 판매종료일은 판매시작일과 동일하게 설정
+			$("#pStartDate").change(function(){
+				var pStartDate = $("#pStartDate").val();
+				var pEndDate = $('#pEndDate').val();
+				$('#pEndDate').attr('value', pStartDate);
+				console.log("판매종료일 : " + pEndDate);
+			});
 		});
 		
-		// 땡처리 선택 시, 판매종료일은 판매시작일과 동일하게 설정
-		$("#pStartDate").change(function(){
-			var pStartDate = $("#pStartDate").val();
-			var pEndDate = $('#pEndDate').val();
-			$('#pEndDate').attr('value', pStartDate);
-			console.log("판매종료일 : " + pEndDate);
-		});
-		
+				
 	</script>
 	
 	<c:import url="../common/footer.jsp"/>

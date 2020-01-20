@@ -17,6 +17,6 @@ public class qnaServiceImpl implements qnaService{
 		return qnaDao.insertQNA(q);
 	}
 
-
+ 
 	
 }

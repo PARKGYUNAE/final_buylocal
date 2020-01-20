@@ -36,26 +36,13 @@ public class applicationController {
 	
 	private Logger logger = LoggerFactory.getLogger(applicationController.class);
 	
-	// QNA 페이지 연결
-	@RequestMapping("QNAform.do")
-	public String QNAform() {
-		return "serviceCenter/QNAform";
-	}
 	
-	// QNA 폼 제출
-	
-	// FAQ 페이지 연결 (폼 아직 안만듦)
-	@RequestMapping("FAQ.do")
-	public String FAQ() {
-		return "serviceCenter/FAQ";
-	}
-	
-	
-	// 이벤트&광고 페이지 연결
+	/*// 이벤트&광고 페이지 연결
 	@RequestMapping("advertisementForm.do")
 	public String advertisement() {
 		return "application/advertisementForm";
-	}
+	}*/
+	
 	
 	// 상품 등록 페이지 연결
 	@RequestMapping("insertProductForm.do")
@@ -70,27 +57,32 @@ public class applicationController {
 								@RequestParam(value="pThumb", required=false) MultipartFile tFile,
 								@RequestParam(value="pInfoImage", required=false) MultipartFile iFile) {
 		
-		// 썸네일
-		if(!tFile.getOriginalFilename().equals("")) {
+		// 썸네일 (nullPointerException)
+		/*if(!tFile.getOriginalFilename().equals("")) {
 			String pThumb = saveThumbFile(tFile, request);
 			
+			System.out.println("pThumb="+pThumb);
+			
 			if(pThumb != null) {
-				p.setpOriginalThumb(tFile.getOriginalFilename());
+				p.setpOriginalT(tFile.getOriginalFilename());
 				p.setpThumb(pThumb);
 			}
-		}
+		}*/
 		
 		// 상품정보
-		if(!iFile.getOriginalFilename().equals("")) {
+		/*if(!iFile.getOriginalFilename().equals("")) {
 			String pInfoImage = saveProductInfo(iFile, request);
 			
+			System.out.println("pInfoImage="+pInfoImage);
+			
 			if(pInfoImage != null) {
-				p.setpOriginalInfoImage(iFile.getOriginalFilename());
+				p.setpOriginalInfoI(iFile.getOriginalFilename());
 				p.setpInfoImage(pInfoImage);
 			}
-		}
+		}*/
 		
 		int result = appService.insertProduct(p);
+		System.out.println("result=" + result);
 		
 		if(result > 0) {
 			if(logger.isDebugEnabled()) {
@@ -116,15 +108,13 @@ public class applicationController {
 			thumbFolder.mkdirs();
 		}
 		
-		// 공지사항의 경우 rename 없이 저장했지만
-		// 게시판은 회원들이 업로드 하는 공간이므로 파일명이 겹칠 우려가 있어
-		// rename 과정을 거쳐서 저장할 것이다.
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String pOriginalThumb = tFile.getOriginalFilename();
 		String pThumb = sdf.format(new java.util.Date()) + "."
 		+ pOriginalThumb.substring(pOriginalThumb.lastIndexOf(".") + 1);
 		
 		String pThumbPath = thumbFolder + "\\" + pThumb;
+		System.out.println("pThumbPath=" + pThumbPath);
 		
 		try {
 			tFile.transferTo(new File(pThumbPath));
@@ -147,15 +137,13 @@ public class applicationController {
 			folder.mkdirs();
 		}
 		
-		// 공지사항의 경우 rename 없이 저장했지만
-		// 게시판은 회원들이 업로드 하는 공간이므로 파일명이 겹칠 우려가 있어
-		// rename 과정을 거쳐서 저장할 것이다.
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String pOriginalInfoImage = iFile.getOriginalFilename();
 		String pInfoImage = sdf.format(new java.util.Date()) + "."
 		+ pOriginalInfoImage.substring(pOriginalInfoImage.lastIndexOf(".") + 1);
 		
 		String renamePath = folder + "\\" + pOriginalInfoImage;
+		System.out.println("renamePath=" + renamePath);
 		
 		try {
 			iFile.transferTo(new File(renamePath));

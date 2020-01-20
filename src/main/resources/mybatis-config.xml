@@ -18,13 +18,13 @@
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Customer" alias="CustomerAdmin"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.QnA" alias="Qna"/>
 		<typeAlias type="com.mylocal.myL.admin.model.vo.ShareBoard" alias="ShareBoardAdmin"/>
-		
+		<!-- 규내 (시작) -->
 		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productTtang"/>
 		<typeAlias type="com.mylocal.myL.shop.ttang.model.vo.Product" alias="productInfo"/>
-		<!-- 상품 등록  -->
 		<typeAlias type="com.mylocal.myL.application.model.vo.Product" alias="NewProduct"/>
+		<typeAlias type="com.mylocal.myL.serviceCenter.model.vo.QNA" alias="Q"/>
 		<typeAlias type="com.mylocal.myL.buylocal.model.vo.Notice" alias="notice"/>
-		
+		<!-- 규내 (끝) -->
 	    <typeAlias type="com.mylocal.myL.share.model.vo.ShareBoard" alias="ShareBoard"/>
 		<typeAlias type="com.mylocal.myL.share.model.vo.Reply" alias="Reply"/>
 		
@@ -40,6 +40,7 @@
 		<mapper resource="mappers/admin/adUser-mapper.xml"/>
 		<mapper resource="mappers/ttang-mapper.xml"/>
 		<mapper resource="mappers/product-mapper.xml"/>
+		<mapper resource="mappers/qna-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
    		<mapper resource="mappers/share-mapper.xml"/>
 		<mapper resource="mappers/reply-mapper.xml"/>

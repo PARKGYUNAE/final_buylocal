@@ -6,3 +6,4 @@ public class qnaException extends RuntimeException {
 		super(msg);
 	}
 }
+ 

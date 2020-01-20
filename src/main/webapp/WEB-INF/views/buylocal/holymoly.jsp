@@ -29,7 +29,7 @@
 
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/1920X200.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">

@@ -4,9 +4,10 @@ import com.mylocal.myL.serviceCenter.model.vo.QNA;
 
 public interface qnaService{
 
-	// 상품 등록
+	// QNA 제출
 	public int insertQNA(QNA q);
 	
 	
 	
 }
+ 

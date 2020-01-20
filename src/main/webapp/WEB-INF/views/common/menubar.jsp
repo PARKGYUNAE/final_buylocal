@@ -27,12 +27,12 @@
 </head>
 <body>
 
-<!-- <script>
+<script>
       <c:if test="${!empty msg}">
          alert('${msg}');
          <c:remove var="msg"/>
       </c:if>
-   </script> -->
+   </script> 
 
 <!-- Preloader Start -->
     <div class="ft-preloader active">

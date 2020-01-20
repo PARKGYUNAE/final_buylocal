@@ -9,7 +9,7 @@ public class QNA {
 	private int cNo;
 	private Date qEnrollDate;
 	private String qStatus;
-	
+	 
 	public QNA() {
 		
 	}

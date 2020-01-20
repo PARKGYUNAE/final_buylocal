@@ -29,7 +29,7 @@
 
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section  class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/1920X200.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -140,84 +140,7 @@
                          
                             
                         </div>
-                        <div class="col-lg-3 order-lg-1">
-                            <div class="blog-sidebar pr--15 pr-lg--0">
-                                <div class="bl-widget author">
-                                    <div class="inner">
-                                        <div class="thumb">
-                                            <img src="resources/assets/img/others/team-04.jpg" alt="Author Images">
-                                        </div>
-                                        <div class="info">
-                                            <h5 class="mb--5">Ayo Burion</h5>
-                                            <p class="degne">UI/ Web Designer</p>
-                                            <p class="mb--25">An Affrotable world wide business service It is</p>
-                                            <ul class="social mb--20">
-                                                <li class="social__item">
-                                                    <a href="https://www.facebook.com" class="social__link">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="social__item">
-                                                    <a href="https://www.twitter.com" class="social__link">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="social__item">
-                                                    <a href="https://www.plus.google.com" class="social__link">
-                                                        <i class="fa fa-google-plus"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <div class="autor-meta">
-                                                <span>Articles <strong>84</strong></span>
-                                                <span>Comments <strong>490</strong></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bl-widget post mt--50">
-                                    <div class="inner">
-                                        <h5 class="title">Top News</h5>
-                                        <ul class="post-list">
-                                            <li>
-                                                <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
-                                                <span><i class="fa fa-clock-o"></i> 3 Days Ago</span>
-                                            </li>
-                                            <li>
-                                                <a href="#">There are many variations of passages of Lorem Ipsum available, </a>
-                                                <span><i class="fa fa-clock-o"></i> 8 Days Ago</span>
-                                            </li>
-                                            <li>
-                                                <a href="#">Lorem Ipsum is simply dummy text of the printing.</a>
-                                                <span><i class="fa fa-clock-o"></i> 4 Days Ago</span>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sed ut perspiciatis unde omnis iste natus error.</a>
-                                                <span><i class="fa fa-clock-o"></i> 6 Days Ago</span>
-                                            </li>
-                                            <li>
-                                                <a href="#">Lorem Ipsum is simply dummy text.</a>
-                                                <span><i class="fa fa-clock-o"></i> 5 Days Ago</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="bl-widget quote mt--50">
-                                    <div class="inner">
-                                        <div class="post-quote">
-                                            <div class="quote-info">
-                                                <i class="fa fa-quote-right"></i>
-                                                <div class="info">
-                                                    <h6 class="mb--0">CLEM OJAK</h6>
-                                                    <span>Designer</span>
-                                                </div>
-                                            </div>
-                                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
             </div>

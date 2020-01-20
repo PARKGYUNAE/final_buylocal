@@ -391,13 +391,13 @@
             </section>
             <!-- Slider area End -->
             
-            <!-- Top Sale Area Start -->
+           <!-- 
             <div class="container-fluid" style="border:1px solid red; height: 400px; width: 500px">
                 <div class="container">
                   	실시간 검색어
                 </div>
             </div>
-            <!-- Top Sale Area End -->
+            Top Sale Area End -->
 
 
             <!-- Product Tab Area Start -->
@@ -410,7 +410,7 @@
                         <div class="col-md-9">
                             <div class="tab-style-1">
                                 <div class="nav nav-tabs justify-content-md-end justify-content-center" id="product-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
+                                    <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="${hotDeal}" role="tab" aria-controls="new-all" aria-selected="true">
                                         <span class="nav-text">더보기</span>
                                     </a>
                                 </div>
@@ -1065,8 +1065,8 @@
                         <div class="col-md-9">
                             <div class="tab-style-1">
                                 <div class="nav nav-tabs justify-content-md-end justify-content-center" id="product-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
-                                        <span class="nav-text">더보기</span>
+                                    <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="${ttangM }" role="tab" aria-controls="new-all" aria-selected="true">
+                                        <span class="nav-text" >더보기</span>
                                     </a>
                                 </div>
                             </div>
