@@ -35,7 +35,7 @@ import com.mylocal.myL.serviceCenter.model.vo.QNA;
 @Controller
 public class qnaController {
 	@Autowired
-	private qnaService qnaService; 
+	private qnaService qnaService;  
 	
 	private Logger logger = LoggerFactory.getLogger(qnaController.class);
 	
