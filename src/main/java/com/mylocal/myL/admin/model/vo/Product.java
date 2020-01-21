@@ -15,6 +15,7 @@ public class Product {
 	private Date pDate; // 등록일자
 	private String pStatus; //상태
 	private String lName; //지역
+	private int cNo;
 	private String cName; // 사업자명
 	private String bShopAddress; // 상호명
 	private String cPhone; // 전화번호
@@ -28,8 +29,9 @@ public class Product {
 
 
 	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
-			String pInfoImage, String pInfoText, String cgName, String lName, String cName, String bShopAddress,
-			String cPhone, String pStarRate, String pOrigin, String pTitle, String pBoard) {
+			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, int cNo,
+			String cName, String bShopAddress, String cPhone, String pStarRate, String pOrigin, String pTitle,
+			String pBoard) {
 		super();
 		this.pNo = pNo;
 		this.pName = pName;
@@ -40,7 +42,10 @@ public class Product {
 		this.pInfoImage = pInfoImage;
 		this.pInfoText = pInfoText;
 		this.cgName = cgName;
+		this.pDate = pDate;
+		this.pStatus = pStatus;
 		this.lName = lName;
+		this.cNo = cNo;
 		this.cName = cName;
 		this.bShopAddress = bShopAddress;
 		this.cPhone = cPhone;
@@ -171,6 +176,16 @@ public class Product {
 	}
 
 
+	public int getcNo() {
+		return cNo;
+	}
+
+
+	public void setcNo(int cNo) {
+		this.cNo = cNo;
+	}
+
+
 	public String getcName() {
 		return cName;
 	}
@@ -246,11 +261,13 @@ public class Product {
 		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalPrice=" + pOriginalPrice
 				+ ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount + ", pInfoImage=" + pInfoImage
 				+ ", pInfoText=" + pInfoText + ", cgName=" + cgName + ", pDate=" + pDate + ", pStatus=" + pStatus
-				+ ", lName=" + lName + ", cName=" + cName + ", bShopAddress=" + bShopAddress + ", cPhone=" + cPhone
-				+ ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard
-				+ "]";
+				+ ", lName=" + lName + ", cNo=" + cNo + ", cName=" + cName + ", bShopAddress=" + bShopAddress
+				+ ", cPhone=" + cPhone + ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle
+				+ ", pBoard=" + pBoard + "]";
 	}
 
+
+	
 	
    
   

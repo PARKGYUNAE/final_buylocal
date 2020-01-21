@@ -5,8 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 <title>마이 페이지</title>
 <style>
+.row1 {
+	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height : 300px;
+    grid-gap: 20px;
+}
+
+.bl-widget.quote {
+  padding: 20px; }
+  .bl-widget.quote .inner .post-quote .quote-info {
+    display: flex;
+    height: 70px;
+    align-items: center;
+    margin-bottom: 20px; }
+    .bl-widget.quote1 .inner .post-quote .quote-info i {
+      color: #ff5151;
+      padding-right: 15px;
+      font-size: 100px; }
+  .bl-widget.quote1 .inner .post-quote p {
+    font-size: 15px;
+    line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -35,147 +57,117 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-9 order-lg-2 mb-md--50">
-                            <div class="row">
-                                <div class="col-12 mb--45">
-                                    <article class="blog format-standard">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-06.jpg" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-image.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>                                
-                                </div>
-                                <div class="col-12 mb--45">
-                                    <article class="blog format-gallery">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="element-carousel" data-slick-options='{
-                                                    "slidesToShow": 1,
-                                                    "slidesToScroll": 1,
-                                                    "autoplay": true,
-                                                    "autoplaySpeed": 1500
-                                                }'>
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-07.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-08.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-09.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div>                 
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-gallery.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-gallery.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-gallery.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>                                   
-                                </div>
-                                <div class="col-12 mb--45">
-                                    <article class="blog format-audio">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/182537870&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-audio.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-audio.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-audio.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>                                
-                                </div>
-                                <div class="col-12 mb--45">
-                                    <article class="blog format-video">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-video.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-video.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-video.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>                                  
-                                </div>
-                                <div class="col-12 mb--45">
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-09.jpg" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-image.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <ul class="pagination">
-                                        <li><span class="page-number current">1</span></li>
-                                        <li><a href="#" class="page-number">2</a></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><a href="#" class="page-number">16</a></li>
-                                    </ul>
-                                </div>
+                            <div class="row1">
+	                                <!-- <div class="col-12 mb--45"> -->
+	                                <!-- 반복 시작 -->
+	                                    <article class="blog format-standard">
+	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="inner">
+	                                        <div class="post-quote">
+	                                            <div class="quote-info">
+	                                                <!-- <i class="las la-address-book"></i> -->
+	                                                <div class="info">
+	                                                <i class="las la-address-book"></i>
+	                                                    <span>Designer</span>
+	                                                </div>
+	                                            </div>
+	                                            <p>내 정보 수정</p>
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                    </article>      
+                                     <!-- 반복 끝 -->
+                                     <!-- 반복 시작 -->
+	                                    <article class="blog format-standard">
+	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="inner">
+	                                        <div class="post-quote">
+	                                            <div class="quote-info">
+	                                                <i class="fa fa-quote1-right"></i>
+	                                                <div class="info">
+	                                                    <h6 class="mb--0">CLEM OJAK</h6>
+	                                                    <span>Designer</span>
+	                                                </div>
+	                                            </div>
+	                                            <p>장바구니</p>
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                    </article>      
+                                     <!-- 반복 끝 --> 
+                                     <!-- 반복 시작 -->
+	                                    <article class="blog format-standard">
+	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="inner">
+	                                        <div class="post-quote">
+	                                            <div class="quote-info">
+	                                                <i class="fa fa-quote1-right"></i>
+	                                                <div class="info">
+	                                                    <h6 class="mb--0">CLEM OJAK</h6>
+	                                                    <span>Designer</span>
+	                                                </div>
+	                                            </div>
+	                                            <p>위시 리스트</p>
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                    </article>      
+                                     <!-- 반복 끝 --> 
+                                     <!-- 반복 시작 -->
+	                                    <article class="blog format-standard">
+	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="inner">
+	                                        <div class="post-quote">
+	                                            <div class="quote-info">
+	                                                <i class="fa fa-quote1-right"></i>
+	                                                <div class="info">
+	                                                    <h6 class="mb--0">CLEM OJAK</h6>
+	                                                    <span>Designer</span>
+	                                                </div>
+	                                            </div>
+	                                            <p>구매내역</p>
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                    </article>      
+                                     <!-- 반복 끝 --> 
+                                     <!-- 반복 시작 -->
+	                                    <article class="blog format-standard">
+	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="inner">
+	                                        <div class="post-quote">
+	                                            <div class="quote-info">
+	                                                <i class="fa fa-quote1-right"></i>
+	                                                <div class="info">
+	                                                    <h6 class="mb--0">CLEM OJAK</h6>
+	                                                    <span>Designer</span>
+	                                                </div>
+	                                            </div>
+	                                            <p>미정</p>
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                    </article>      
+                                     <!-- 반복 끝 --> 
+                                     <!-- 반복 시작 -->
+	                                    <article class="blog format-standard">
+	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="inner">
+	                                        <div class="post-quote">
+	                                            <div class="quote-info">
+	                                                <i class="fa fa-quote1-right"></i>
+	                                                <div class="info">
+	                                                    <h6 class="mb--0">CLEM OJAK</h6>
+	                                                    <span>Designer</span>
+	                                                </div>
+	                                            </div>
+	                                            <p>비밀번호 변경</p>
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                    </article>      
+                                     <!-- 반복 끝 -->                              
+                               <!--  </div> -->
                             </div>
                         </div>
                         <div class="col-lg-3 order-lg-1">
@@ -210,7 +202,9 @@
                                                 </li> -->
                                             </ul>
                                             <div class="autor-meta">
-                                                <span>내 구매내역 <strong>5</strong></span>
+                                            
+                                                <span>내 구매내역 <strong>
+                                                <c:out value="${ dCount }"/></strong></span>
                                                 <span>내 문의글 <strong>2</strong></span>
                                             </div>
                                         </div>
@@ -223,7 +217,6 @@
                                             <li>
                                             	<c:url var="myInfo" value="myInfo.do"/>
                                                 <a href="${ myInfo }">정보 수정</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 3 Days Ago</span> -->
                                             </li>
                                             <li>
                                             	<c:choose>
@@ -237,20 +230,23 @@
                                                 </c:otherwise>
                                                 </c:choose>
                                             </li>
+                                            <c:if test="${ loginUser.cLevel eq '일반' }">
                                             <li>
                                             	<c:url var="myCart" value="myCart.do"/>
                                                 <a href="${ myCart }">장바구니</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 4 Days Ago</span> -->
                                             </li>
                                             <li>
                                             	<c:url var="myFavorite" value="myFavorite.do"/>
                                                 <a href="${ myFavorite }">위시 리스트</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 6 Days Ago</span> -->
                                             </li>
+                                            </c:if>                                             
                                             <li>
                                             	<c:url var="myQna" value="myQna.do"/>
                                                 <a href="${ myQna }">문의 내역</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 5 Days Ago</span> -->
+                                            </li>
+                                            <li>
+                                            	<c:url var="myInfo" value="myInfo.do"/>
+                                                <a href="${ myInfo }">비밀번호 변경</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -463,77 +459,11 @@
         <!-- OffCanvas Menu End -->
 
         <!-- Mini Cart Start -->
-        <aside class="mini-cart" id="miniCart">
-            <div class="mini-cart-wrapper">
-                <div class="mini-cart__close">
-                    <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-                </div>
-                <div class="mini-cart-inner">
-                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
-                    <div class="mini-cart__content">
-                        <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
-                        </div>
-                        <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        
         <!-- Mini Cart End -->
 
         <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-            <div class="searchform__body">
-                <p>Start typing and press Enter to search</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
-                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
-                </form>
-            </div>
-        </div>
+        
         <!-- Searchform Popup End -->
 
         <!-- Qicuk View Modal Start -->

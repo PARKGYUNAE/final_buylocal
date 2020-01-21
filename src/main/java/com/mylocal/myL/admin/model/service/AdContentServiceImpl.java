@@ -19,16 +19,22 @@ public class AdContentServiceImpl implements AdContentService{
 	@Autowired
 	AdContentDao adContentDao;
 
-	// 신고자 목록
+		// 신고 목록
 		@Override
 		public ArrayList<Report> ReportSelectList() {
 			return adContentDao.ReportSelectList();
 		}
 
-		// QnA 목록
+		// QnA 미답변 목록
 		@Override
 		public ArrayList<QnA> QnASelectList() {
 			return adContentDao.QnASelectList();
+		}
+		
+		// QnA 답변 목록
+		@Override
+		public ArrayList<QnA> QnASelectList2() {
+			return adContentDao.QnASelectList2();
 		}
 
 		// 아래 3개는 게시글 모아보기
@@ -48,16 +54,8 @@ public class AdContentServiceImpl implements AdContentService{
 		
 		
 		
-		// 아래 3개는 신고리스트 상세보고 타러가기
-		@Override
-		public HotDeal SelectHotDeal(int h_no) {
-			return adContentDao.SelectHotDeal(h_no);
-		}
+		// 아래 3개는 신고리스트 상세보기 타러가기
 
-		@Override
-		public Ttang SelectTtang(int t_no) {
-			return adContentDao.SelectTtang(t_no);
-		}
 
 		/*@Override
 		public ShareBoard SelectShareboard(int rt_no) {
@@ -69,6 +67,12 @@ public class AdContentServiceImpl implements AdContentService{
 		public int CountQna() {
 			// TODO Auto-generated method stub
 			return adContentDao.getQnaListCount();
+		}
+		
+		// 신고 갯수 count status='Y' 인것만
+		@Override
+		public int CountReport() {
+			return adContentDao.getReportListCount();
 		}
 
 		// qna 상세보기
@@ -83,6 +87,42 @@ public class AdContentServiceImpl implements AdContentService{
 		public int updateQna(int qNo) {
 			return adContentDao.UpdateQna(qNo);
 		}
+
+		// 신고하기 물건구매 폼(핫딜 땡처리)
+		@Override
+		public int ReportInsert(Report r) {
+			return adContentDao.InsertReport(r);
+		}
+
+		// 신고하기 상세보기
+		@Override
+		public Report selectReport(int rtNo) {
+			return adContentDao.SelectReport(rtNo);
+		}
+
+		// 허위신고 처리하기
+		@Override
+		public int deleteReport(int rtNo) {
+			return adContentDao.UpdateReportCancel(rtNo);
+		}
+
+		// 신고된 상품 정보가져오기
+		@Override
+		public Product SelectProduct(int rtNo) {
+			// TODO Auto-generated method stub
+			return adContentDao.SelectProduct(rtNo);
+		}
+
+		// 신고처리하기(회원)
+		@Override
+		public int updateCustomer(int getcNo) {
+			// TODO Auto-generated method stub
+			return adContentDao.uptdateCustomer(getcNo);
+		}
+
+
+
+
 
 	
 

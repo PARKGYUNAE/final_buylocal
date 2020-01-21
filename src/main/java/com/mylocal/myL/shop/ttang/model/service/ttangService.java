@@ -8,5 +8,7 @@ public interface ttangService {
 	
 	ArrayList<Product> selectList (int currentPage);
 
-	Product selectBoard(int pNo, boolean flag);
+	/*Product selectBoard(int pNo, boolean flag);*/
+	
+	Product selectBoard2(int pNo, boolean flag);
 }

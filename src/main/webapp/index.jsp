@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>바이로컬</title>
 </head>
 <body>
 	<c:import url="WEB-INF/views/common/main.jsp"/>

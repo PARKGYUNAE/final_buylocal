@@ -47,7 +47,7 @@
           
                     <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="bShopNo" class="form-control" required="required" value="${ qna.qContent }"autofocus="autofocus" readonly>
+              <input type="text" class="form-control" required="required" value="${ qna.qContent }"autofocus="autofocus"  style="height:300px"readonly>
               <label for="inputPassword">문의내용</label> 
             </div>
           </div>

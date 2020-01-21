@@ -66,9 +66,22 @@
 		FROM CUSTOMER
 		JOIN BUSINESS_INFO USING(C_NO)
 		WHERE C_LEVEL = '사업자'
+		AND C_STATUS = 'Y'
+	</select>
+	
+	
+		<!-- 비즈니스 회원만 출력 -->
+	<select id="BusinessUserInfoSelectList2"
+		resultMap="CustomerResultSet">
+		SELECT C_NO, C_NAME, C_ID, C_STATUS, C_ENROLLDATE, C_ADDRESS, C_LEVEL,
+		B_SHOP_NAME, B_CLASS, B_PERMIT, B_OWNER, B_SHOP_ADDRESS
+		FROM CUSTOMER
+		JOIN BUSINESS_INFO USING(C_NO)
+		WHERE C_LEVEL = '사업자'
+		AND C_STATUS = 'N'
 	</select>
 
-	<!-- 회원 값 출력 -->
+	<!-- 사업자 회원 값 출력 -->
 	<select id="selectCustomer" resultMap="CustomerResultSet">
 		SELECT C_NO, C_NAME, C_ID,
 		C_STATUS, C_EMAIL, C_ENROLLDATE, C_ADDRESS, B_SHOP_NAME,C_LEVEL, B_CLASS, B_PERMIT,
@@ -78,6 +91,16 @@
 		USING(C_NO)
 		WHERE
 		C_NO = #{cNo}
+	</select>
+	
+	<!-- 일반 회원 상세정보 출력 -->
+	<select id="selectNormalCustomer" resultMap="CustomerResultSet">
+		SELECT C_NO, C_NAME, C_ID,
+		C_STATUS, C_EMAIL, C_ENROLLDATE, C_ADDRESS,C_LEVEL
+		FROM CUSTOMER
+		WHERE
+		C_NO = #{cNo}
+	
 	</select>
 
 	<!-- 사업자로 등급 변경 -->
@@ -89,11 +112,19 @@
 	</update>
 
 
-  <!-- 사업자 회원 변경  -->
+  <!-- 일반 사용자 변경  -->
 	<update id="updateNormalUser" parameterType="CustomerAdmin">
 		UPDATE CUSTOMER
 		SET
 		C_STATUS = #{cStatus}
+		WHERE C_NO = #{cNo}
+	</update>
+	
+	<!--  사업자 블랙 취소  -->
+	<update id="updateBusinessReport" parameterType="CustomerAdmin">
+		UPDATE CUSTOMER
+		SET
+		C_STATUS = 'Y'
 		WHERE C_NO = #{cNo}
 	</update>
 

@@ -72,6 +72,12 @@ public class ShareServiceImpl implements ShareService{
 		return shareDao.deleteReply(rNo);
 	}
 
+	/*@Override
+	public int insertReply2(Reply r) {
+		
+		return shareDao.insertReply2(r);
+	}*/
+
 	
 
 }

@@ -6,7 +6,9 @@ public class Deal {
 	private int dNo;
 	private Date dDate;
 	private int pNo;
+	private String pName;
 	private int cNo;
+	private String cName;
 	private int dPrice;
 	private int dAmount;
 	private String dMethod;
@@ -14,16 +16,86 @@ public class Deal {
 	private Date dRevDate;
 	private String dRevCheck;
 	private String dStatus;
+	private String dUid;
 	
 	public Deal() {}
 
-	public Deal(int dNo, Date dDate, int pNo, int cNo, int dPrice, int dAmount, String dMethod, String dReceiver,
-			Date dRevDate, String dRevCheck) {
+	
+	
+
+	public Deal(int dNo, Date dDate, int pNo, String pName, int cNo, String cName, int dPrice, int dAmount,
+			String dMethod, String dReceiver, Date dRevDate, String dRevCheck, String dStatus, String dUid) {
 		super();
 		this.dNo = dNo;
 		this.dDate = dDate;
 		this.pNo = pNo;
+		this.pName = pName;
 		this.cNo = cNo;
+		this.cName = cName;
+		this.dPrice = dPrice;
+		this.dAmount = dAmount;
+		this.dMethod = dMethod;
+		this.dReceiver = dReceiver;
+		this.dRevDate = dRevDate;
+		this.dRevCheck = dRevCheck;
+		this.dStatus = dStatus;
+		this.dUid = dUid;
+	}
+
+	
+
+
+
+	public String getdUid() {
+		return dUid;
+	}
+
+
+
+
+	public void setdUid(String dUid) {
+		this.dUid = dUid;
+	}
+
+
+
+
+	public String getpName() {
+		return pName;
+	}
+
+
+
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+
+
+
+	public String getcName() {
+		return cName;
+	}
+
+
+
+
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+
+
+
+
+	public Deal(int dNo, int pNo, String pName, int cNo, String cName, int dPrice, int dAmount, String dMethod,
+			String dReceiver, Date dRevDate, String dRevCheck) {
+		super();
+		this.dNo = dNo;
+		this.pNo = pNo;
+		this.pName = pName;
+		this.cNo = cNo;
+		this.cName = cName;
 		this.dPrice = dPrice;
 		this.dAmount = dAmount;
 		this.dMethod = dMethod;
@@ -31,6 +103,8 @@ public class Deal {
 		this.dRevDate = dRevDate;
 		this.dRevCheck = dRevCheck;
 	}
+
+
 
 	public int getdNo() {
 		return dNo;
@@ -120,12 +194,18 @@ public class Deal {
 		this.dStatus = dStatus;
 	}
 
+
+
+
 	@Override
 	public String toString() {
-		return "Deal [dNo=" + dNo + ", dDate=" + dDate + ", pNo=" + pNo + ", cNo=" + cNo + ", dPrice=" + dPrice
-				+ ", dAmount=" + dAmount + ", dMethod=" + dMethod + ", dReceiver=" + dReceiver + ", dRevDate="
-				+ dRevDate + ", dRevCheck=" + dRevCheck + ", dStatus=" + dStatus + "]";
+		return "Deal [dNo=" + dNo + ", dDate=" + dDate + ", pNo=" + pNo + ", pName=" + pName + ", cNo=" + cNo
+				+ ", cName=" + cName + ", dPrice=" + dPrice + ", dAmount=" + dAmount + ", dMethod=" + dMethod
+				+ ", dReceiver=" + dReceiver + ", dRevDate=" + dRevDate + ", dRevCheck=" + dRevCheck + ", dStatus="
+				+ dStatus + ", dUid=" + dUid + "]";
 	}
+
+	
 	
 	
 }

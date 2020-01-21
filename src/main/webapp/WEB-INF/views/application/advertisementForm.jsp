@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>이벤트&광고</title>
+    <title>이벤트 및 광고 신청 페이지</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<c:import url="common/menubar.jsp"/>
+	<c:import url="../common/menubar.jsp"/>
 
 
    <!-- Main Wrapper Start -->
@@ -31,14 +31,15 @@
                  
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/1920X200.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">이벤트&광고</h1>
+                        <h1 class="page-title">이벤트 및 광고</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>이벤트&광고</span></li>
+                            <li><a href="<%=request.getContextPath() %>">Home</a></li>
+                            <li class="current"><span>신청하기</span></li>
+                            <li class="current"><span>이벤트 및 광고</span></li>
                         </ul>
                     </div>
                 </div>
@@ -60,9 +61,9 @@
                                 </div>
                                 <div class="contact-info mb--20">
                                     <p><i class="fa fa-map-marker"></i>유의사항1</p>
-                                    <p><i class="fa fa-phone"></i>유의사항2</p>
-                                    <p><i class="fa fa-fax"></i>유의사항3</p>
-                                    <p><i class="fa fa-clock-o"></i>연락처 : </p>
+                                    <p><i class="fa fa-phone"></i>- 작성된 이벤트/광고는 공지사항 페이지에 게시됩니다.</p>
+                                    <p><i class="fa fa-fax"></i>- 파일 크기는 ~ 까지 입니다. </p>
+                                    <p><i class="fa fa-clock-o"></i>기타 문의사항은 QNA 게시판을 이용하세요.</p>
                                 </div>
                                 <div class="social">
                                     <a href="https://www.facebook.com" class="social__link">
@@ -78,24 +79,25 @@
                             </div>
                             <div class="col-md-7 offset-lg-1">
                                 <div class="heading mb--40">
-                                    <h2>이벤트 & 광고 신청하기</h2>
+                                    <h2>이벤트 및 광고 신청하기</h2>
                                     <hr class="delimeter">
                                 </div>
-                                <form action="mail.php" class="form" id="contact-form">
-                                    <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="이메일*">
-                                    <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="작성자*">
-                                    <input type="text" name="con_title" id="con_title" class="form__input mb--30" placeholder="제목*">
-									<p>게시 할 위치를 정해주세요 : &nbsp;&nbsp;
-									<input type="checkbox" name="con_type" id="con_type1" ><label for="con_type1">땡처리게시판</label> 
-									&nbsp;&nbsp;
-									<input type="checkbox" name="con_type" id="con_type2"><label for="con_type2">핫딜게시판</label>
-									</p>
-									<p>게시 할 파일을 선택하세요 : &nbsp;&nbsp;
-									<label for="con_file"></label><input type="file" id="con_file">								
-                                    </p>
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="요청사항" id="con_message" name="con_message"></textarea>
+                                <form action="advertisementForm.do" class="form" id="contact-form" method="post" enctype="multipart/form-data">
+                                    
+                                    <!-- cNo, lCode 보내기 -->
+                                   <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}"/> 
+                                   <input type="hidden" id="cAddress" value="${loginUser.cAddress}"/>
+                                   <input type="hidden" id="lCode"  name="lCode"/>
+                                   
+                                    <div>작성자<input type="text" name="cName" id="cName" value="${cName}" class="form__input mb--30" readonly></div>
+                                    <div>연락 받을 이메일<input type="email" name="cEmail" id="cEmail" value="${cEmail}" class="form__input mb--30" readonly></div>
+                                    <div>이벤트/광고 제목<input type="text" name="aTitle" id="aTitle" class="form__input mb--30" placeholder="제목*" required></div>
+									<div>게시 할 파일을 선택하세요 : &nbsp;&nbsp;
+									<label for="aFile"></label><input type="file" id="aFile" name="aFile">								
+                                    </div>
+                                    <br><br>
                                     <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
-                                    <div class="form__output"></div>
+                                  
                                 </form>
                             </div>
                         </div>
@@ -106,7 +108,76 @@
         </main>
         <!-- Main Content Wrapper End -->
 
-		<c:import url="common/footer.jsp"/>
+		<script>
+		// cNo 보내기  & cAddress를 lCode로 바꿔 보내기
+		$(function(){
+
+			var cNo = $("#cNo").val();
+			console.log('cNo=' + cNo);
+			
+			var cAddress = $('#cAddress').val(); 
+			var lCode = $('#lCode').val();
+			console.log('cAddress=' + cAddress);
+			
+			// 주소값이 '서울특별시'에  한정되었을 것으로 가정
+			if(cAddress.indexOf('종로구')){
+				lCode = 'L1';
+			} else if (cAddress.indexOf('중구')) {
+				lCode = 'L2';
+			} else if (cAddress.indexOf('용산구')) {
+				lCode = 'L3';
+			} else if (cAddress.indexOf('성동구')) {
+				lCode = 'L4';
+			} else if (cAddress.indexOf('광진구')) {
+				lCode = 'L5';
+			} else if (cAddress.indexOf('동대문구')) {
+				lCode = 'L6';
+			} else if (cAddress.indexOf('중랑구')) {
+				lCode = 'L7';
+			} else if (cAddress.indexOf('성북구')) {
+				lCode = 'L8';
+			} else if (cAddress.indexOf('강북구')) {
+				lCode = 'L9';
+			} else if (cAddress.indexOf('노봉구')) {
+				lCode = 'L10';
+			} else if (cAddress.indexOf('노원구')) {
+				lCode = 'L11';
+			} else if (cAddress.indexOf('은평구')) {
+				lCode = 'L12';
+			} else if (cAddress.indexOf('서대문구')) {
+				lCode = 'L13';
+			} else if (cAddress.indexOf('마포구')) {
+				lCode = 'L14';
+			} else if (cAddress.indexOf('양천구')) {
+				lCode = 'L15';
+			} else if (cAddress.indexOf('강서구')) {
+				lCode = 'L16';
+			} else if (cAddress.indexOf('구로구')) {
+				lCode = 'L17';
+			} else if (cAddress.indexOf('금천구')) {
+				lCode = 'L18';
+			} else if (cAddress.indexOf('영등포구')) {
+				lCode = 'L19';
+			} else if (cAddress.indexOf('동작구')) {
+				lCode = 'L20';
+			} else if (cAddress.indexOf('관악구')) {
+				lCode = 'L21';
+			} else if (cAddress.indexOf('서초구')) {
+				lCode = 'L22';
+			} else if (cAddress.indexOf('강남구')) {
+				lCode = 'L23';
+			} else if (cAddress.indexOf('송파구')) {
+				lCode = 'L24';
+			} else {
+				lCode = 'L25';
+			} 
+			
+			console.log("lCode=" + lCode);
+			
+		});	
+		</script>
+
+		<c:import url="../common/footer.jsp"/>
 
     
         <!-- Global Overlay Start -->

@@ -21,7 +21,6 @@
     <!-- style css -->
     <link rel="stylesheet" href="resources/assets/css/main.css">
     
-    
     <style>
     
     table.type04 {
@@ -54,13 +53,13 @@
 	<c:import url="../common/menubar.jsp"/>	
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section  class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/1920X200.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="page-title">땡처리 상품상세 페이지</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="<%=request.getContextPath() %>">Home</a></li>
                             <li class="current"><span>땡처리게시판</span></li>
                             <li class="current"><span>상품상세페이지</span></li>
                         </ul>
@@ -297,24 +296,23 @@
                                         	
                                         	
                                             <table class="type04" style="font-size:14px;">
-												<h5>필수 표기정보</h5>
+												<h5>기본 표기정보</h5>
                                                 <tbody>
                                                     <tr>
                                                         <th >용량/수량/크기</th>
-                                                        <td >10 kg (박스포함)</td>
+                                                        <td >${ttangDetail.pVolumn}</td>
                                                         <th >생산자(수입자)</th>
-                                                        <td >제주담은</td>
+                                                        <td >${ttangDetail.bShopName}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th cols="1">원산지</th>
-                                                        <td cols="1">${ttangDetail.pOrigin}</td>
-                                                        <th cols="1">제조연월일</th>
-                                                        <td cols="1">생산년도:2019<br>
-                                                        	제조연월일:발송일 전 일주일 전후</td>
+                                                        <th >원산지</th>
+                                                        <td >${ttangDetail.pOrigin}</td>
+                                                        <th >제조연월일</th>
+                                                        <td >${ttangDetail.pProductDate}</td>
                                                     </tr>
                                                     <tr>
                                                         <th colspan="1">취급방법</th>
-                                                        <td colspan="3">상온에 보관해주세요. (장기보관 시, 개별포장하여 보관해주세요)</td>
+                                                        <td colspan="3">${ttangDetail.pTreatment}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -327,30 +325,34 @@
 											<table class="type04" style="font-size:14px;">
                                                 <tbody>
                                                     <tr>
-                                                        <th cols="1">상호/대표자</th>
-                                                        <td cols="1">제주담음/김지혜</td>
-                                                        <th cols="1">사업자번호</th>
-                                                        <td cols="1">460-95-00421</td>
+                                                        <th >상호/대표자</th>
+                                                        <td >${ttangDetail.bShopName}/${ttangDetail.bOwner}</td>
+                                                        <th >사업자번호</th>
+                                                        <td >${ttangDetail.bShopNo}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th cols="1">e-mail</th>
-                                                        <td cols="1">inhane1010@naver.com</td>
-                                                        <th cols="1">연락처</th>
-                                                        <td cols="1">064-749-8675</td>
+                                                        <th >e-mail</th>
+                                                        <td >${ttangDetail.cEmail}</td>
+                                                        <th >연락처</th>
+                                                        <td >${ttangDetail.bPIC}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th colspan="1">사업장 소재지</th>
-                                                        <td colspan="3">제주특별자치도 제주시 돈내길 46 203호(이도일동, 고덕쉐르빌아파트)<br>
-                                                        <img src="#" alt="사업장지도">
-                                                        </td>
-                                                        
+                                                        <th colspan="1">사업장 위치</th>
+                                                        <td colspan="3">${ttangDetail.bShopAddress}</td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th colspan="1"></th>
+                                                        <td colspan="3"><div id="map" style="width:851px;height:400px;float:right;"></div></td>
                                                     </tr>
                                                 </tbody>
-                                            </table>                 
-                                        
-                                        </div>
+                                            </table>     
+                                            
+                                          
+             
+             
+             
+             							</div>
                                     </div>
-                                    
                                      <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
                                         <div class="table-content table-responsive">
                                         
@@ -360,7 +362,7 @@
 											<br><br>
 											신고 접수 > 내용 심사 > 판매자 소명 요청 > 처리</p>
 											
-											<br><br>
+											<br>
                                             <form action="#" class="form pr--30">
                                                     <div class="form__group mb--10">
                                                         <label class="form__label d-block" for="title">상품명<span class="required">*</span></label>
@@ -568,8 +570,53 @@
 
      <c:import url="../common/footer.jsp"/>
 
+<!-- 지도 API -->
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c56f421aa8df947305c86a5ace96deab&libraries=services,clusterer,drawing"></script>
+
+<script>
+ 
+ var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(37.631795, 127.022429), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
 
 
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('${ttangDetail.bShopAddress}', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        console.log("coords=" + coords);
+        
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:0 0;"> ${ttangDetail.bShopName} </div>'
+        });
+        
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});     
+</script>
         <!-- Global Overlay Start -->
         <div class="global-overlay"></div>
         <!-- Global Overlay End -->

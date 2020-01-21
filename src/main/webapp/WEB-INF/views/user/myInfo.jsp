@@ -355,27 +355,32 @@
                                             <li>
                                             	<c:url var="myInfo" value="myInfo.do"/>
                                                 <a href="${ myInfo }">정보 수정</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 3 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myOrderList" value="myOrderList.do"/>
-                                                <a href="${ myOrderList }">구매 내역</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 8 Days Ago</span> -->
+                                            	<c:choose>
+                                            	<c:when test="${ loginUser.cLevel eq '사업자' }">
+                                            		<c:url var="myBusiness" value="myBusiness.do"/>
+	                                                <a href="${ myBusiness }">거래 내역</a>
+                                                </c:when>
+                                                <c:otherwise>
+	                                                <c:url var="myOrderList" value="myOrderList.do"/>
+	                                                <a href="${ myOrderList }">구매 내역</a>
+                                                </c:otherwise>
+                                                </c:choose>
                                             </li>
+                                            <c:if test="${ loginUser.cLevel eq '일반' }">
                                             <li>
                                             	<c:url var="myCart" value="myCart.do"/>
                                                 <a href="${ myCart }">장바구니</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 4 Days Ago</span> -->
                                             </li>
                                             <li>
                                             	<c:url var="myFavorite" value="myFavorite.do"/>
                                                 <a href="${ myFavorite }">위시 리스트</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 6 Days Ago</span> -->
                                             </li>
+                                            </c:if>                                             
                                             <li>
                                             	<c:url var="myQna" value="myQna.do"/>
                                                 <a href="${ myQna }">문의 내역</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 5 Days Ago</span> -->
                                             </li>
                                         </ul>
                                     </div>

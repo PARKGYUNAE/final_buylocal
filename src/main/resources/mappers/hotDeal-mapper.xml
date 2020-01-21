@@ -51,17 +51,105 @@
 		<result property="cgName" column="CG_NAME"/>
 	</resultMap>
 	
+	<resultMap id="DealSet" type="Deal">
+		<id property="dNo" column="D_NO"/>
+		<result property="dDate" column="D_DATE"/>
+		<result property="pNo" column="P_NO"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="cNo" column="C_NO"/>
+		<result property="cName" column="C_NAME"/>
+		<result property="dPrice" column="D_PRICE"/>
+		<result property="dAmount" column="D_AMOUNT"/>
+		<result property="dMethod" column="D_METHOD"/>
+		<result property="dReceiver" column="D_RECEIVER"/>
+		<result property="dRevCheck" column="D_REVCHECK"/>
+		<result property="dStatus" column="D_STATUS"/>
+		<result property="dUid" column="D_UID"/>
+	</resultMap>
 	
+	<!-- 로그인 x 일 경우 상품 갯수 조회 -->
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM PD_VIEW
 		WHERE P_STATUS='Y' AND P_BOARD='핫딜'
 	</select>
+	
+	<!-- 로그인 o 일 경우 상품 갯수 조회 -->
+	<select id="getListCount2" resultType="_int" parameterType="string">
+		SELECT COUNT(*)
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND B_SHOP_ADDRESS LIKE '%'|| #{location} || '%'
+	</select>
+	
+	<select id="getListCountC" resultType="_int" parameterType="string">
+		SELECT COUNT(*)
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND CG_NAME = #{location}
+	</select>
+	
+	<!-- 로그인 x 일 경우 상품 리스트 조회 -->
 	<select id="selectList" resultMap="productSet">
 		SELECT * 
 		FROM PD_VIEW
 		WHERE P_STATUS='Y' AND P_BOARD='핫딜'
 		ORDER BY P_NO DESC
+	</select>
+	
+	<!-- 로그인 o 일 경우 상품 리스트 조회 -->
+	<select id="selectList2" resultMap="productSet">
+		SELECT * 
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND B_SHOP_ADDRESS LIKE '%'|| #{location} || '%'
+		ORDER BY P_NO DESC
+	</select>
+	
+	<select id="selectList3" resultMap="productSet" parameterType="hashmap">
+		SELECT * 
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND B_SHOP_ADDRESS LIKE '%'|| #{location} || '%'
+		<if test="optionArray == '이름순(A-Z)'">
+			ORDER BY P_NAME
+		</if>
+		<if test="optionArray == '이름순(Z-A)'">
+			ORDER BY P_NAME DESC
+		</if>
+		<if test="optionArray == '가격순(low to high)'">
+			ORDER BY P_ORIGINALPRICE
+		</if>
+		<if test="optionArray == '가격순(high to low)'">
+			ORDER BY P_ORIGINALPRICE DESC
+		</if>
+	</select>
+	
+	<select id="selectList4" resultMap="productSet" parameterType="string">
+		SELECT * 
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' 
+		<if test="optionArray == '이름순(A-Z)'">
+			ORDER BY P_NAME
+		</if>
+		<if test="optionArray == '이름순(Z-A)'">
+			ORDER BY P_NAME DESC
+		</if>
+		<if test="optionArray == '가격순(low to high)'">
+			ORDER BY P_ORIGINALPRICE
+		</if>
+		<if test="optionArray == '가격순(high to low)'">
+			ORDER BY P_ORIGINALPRICE DESC
+		</if>
+	</select>
+	
+	<select id="selectListC" resultMap="productSet" parameterType="hashmap">
+		SELECT * 
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND B_SHOP_ADDRESS LIKE '%'|| #{location} || '%'
+		AND CG_NAME = #{category}
+	</select>
+	
+	<select id="selectListC2" resultMap="productSet" parameterType="hashmap">
+		SELECT * 
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND CG_NAME = #{category}
 	</select>
 	
 	<select id="selectBoard" resultMap="productSet">
@@ -113,9 +201,32 @@
         WHERE FAVORITE.C_NO = #{cNo}
 	</select>
 	
+	<delete id="deleteWishList" parameterType="Favorite">
+		DELETE FROM FAVORITE
+		WHERE P_NO=#{pNo} AND C_NO=#{cNo}
+	</delete>
+	
+	<delete id="deleteCart" parameterType="Cart">
+		DELETE FROM CART
+		WHERE P_NO=#{pNo} AND C_NO=#{cNo}
+	</delete>
+	
 	<insert id="addReview" parameterType="review">
 		INSERT INTO REVIEW
 		VALUES(SEQ_REVIEW.NEXTVAL, #{rvStarRate}, #{rvContent}, #{cNo}, DEFAULT, #{pNo}, SYSDATE)
 	</insert>
+	
+	<insert id="insertDeal" parameterType="Deal">
+		INSERT INTO DEAL
+		VALUES(SEQ_DEAL.NEXTVAL, SYSDATE, #{pNo}, #{cNo}, #{dPrice}, #{dAmount}, #{dMethod}, #{dReceiver}, NULL, #{dRevCheck}, #{dStatus}, #{dUid})
+	</insert>
+	
+	<select id="selectDeal" parameterType="_int" resultMap="DealSet">
+		SELECT D.D_NO, D.D_DATE, D.P_NO, D.C_NO, D.D_PRICE, D_AMOUNT, D_METHOD, D_RECEIVER, D_REV_DATE, D_REV_CHECK, D_STATUS, D_UID, PRODUCT.P_NAME, CUSTOMER.C_NAME
+		FROM DEAL D
+		JOIN PRODUCT ON(D.P_NO = PRODUCT.P_NO)
+		JOIN CUSTOMER ON(CUSTOMER.C_NO = PRODUCT.C_NO)
+		WHERE D_NO = #{dNo}
+	</select>
 	
 </mapper>

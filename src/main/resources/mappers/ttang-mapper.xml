@@ -3,6 +3,7 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ttangMapper">
+
 	<resultMap id="productSet" type="productTtang">
 		<id property="pNo" column="P_NO"/>
 		<result property="pName" column="P_NAME"/>
@@ -25,6 +26,35 @@
 		<result property="pBoard" column="P_BOARD"/>
 	</resultMap>
 	
+	<!-- 상품의 추가정보 가져오기 -->
+	<resultMap id="productSet2" type="productInfo">
+		<id property="pNo" column="P_NO"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="pThumb" column="P_THUMB"/>
+		<result property="pOriginalPrice" column="P_ORIGINALPRICE"/>
+		<result property="pFinalPrice" column="P_FINALPRICE"/>
+		<result property="pAmount" column="P_AMOUNT"/>
+		<result property="pInfoImage" column="P_INFO_IMAGE"/>
+		<result property="pInfoText" column="P_INFO_TEXT"/>
+		<result property="cgName" column="CG_NAME"/>
+		<result property="pDate" column="P_DATE"/>
+		<result property="pStatus" column="P_STATUS"/>
+		<result property="lName" column="L_NAME"/>
+		<result property="bOwner" column="B_OWNER"/>
+		<result property="bShopNo" column="B_SHOP_NO"/>
+		<result property="bShopName" column="B_SHOP_NAME"/>
+		<result property="bShopAddress" column="B_SHOP_ADDRESS"/>
+		<result property="cEmail" column="C_EMAIL"/>
+		<result property="pVolumn" column="P_VOLUMN"/>
+		<result property="pProductDate" column="P_PRODUCT_DATE"/>
+		<result property="pTreatment" column="P_TREATMENT"/>
+		<result property="bPIC" column="B_PIC"/>
+		<result property="pStarRate" column="P_STARRATE"/>
+		<result property="pOrigin" column="P_ORIGIN"/>
+		<result property="pTitle" column="P_TITLE"/>
+		<result property="pBoard" column="P_BOARD"/>
+	</resultMap>
+	
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM PRODUCT
@@ -38,12 +68,20 @@
 		ORDER BY P_NO DESC
 	</select>
 	
-	<select id="selectBoard" resultMap="productSet">
+	<!-- <select id="selectBoard" resultMap="productSet">
 		SELECT * 
 		FROM PD_VIEW
 		WHERE P_STATUS='Y' AND P_BOARD='땡처리'
 		AND P_NO = #{pNo}
+	</select> -->
+	
+	<select id="selectBoard2" resultMap="productSet2">
+		SELECT *
+		FROM PD_VIEW2
+		WHERE P_NO = #{pNo} AND B_SHOP_NO IS NOT NULL
+		AND P_STATUS = 'Y' AND P_BOARD = '땡처리'
 	</select>
 
+	
 	
 </mapper>

@@ -1,20 +1,16 @@
 package com.mylocal.myL.admin.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mylocal.myL.admin.model.vo.Advertise;
-import com.mylocal.myL.admin.model.vo.Customer;
-import com.mylocal.myL.admin.model.vo.HotDeal;
 import com.mylocal.myL.admin.model.vo.Notice;
-import com.mylocal.myL.admin.model.vo.QnA;
-import com.mylocal.myL.admin.model.vo.Report;
-import com.mylocal.myL.admin.model.vo.Seller;
-import com.mylocal.myL.admin.model.vo.ShareBoard;
-import com.mylocal.myL.admin.model.vo.Ttang;
+import com.mylocal.myL.common.Deal;
+import com.mylocal.myL.common.PageInfo;
 
 
 
@@ -22,10 +18,19 @@ import com.mylocal.myL.admin.model.vo.Ttang;
 public class AdminDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
+	
+	// 게시글 갯수 카운트
+	public int getListCount() {
+		return sqlSession.selectOne("AdminMapper.getListCount");
+	}
 
-	// 공지사항 목록 들고 관리자 페이지로
-	public ArrayList<Notice> NoticeSelectList() {
-		return (ArrayList)sqlSession.selectList("AdminMapper.NoticeSelectList");
+	// 공지사항 목록 들고 관리자 페이지로도 가고 / 실제 리스트 페이지로도 가고 (관리자페이지는 따로 빼자)
+	public ArrayList<Notice> NoticeSelectList(PageInfo pi) {
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		return (ArrayList)sqlSession.selectList("AdminMapper.NoticeSelectList", null, rowBounds);
 	}
 
 	public int NoticeInsert(Notice n) {
@@ -46,6 +51,41 @@ public class AdminDao {
 		return sqlSession.update("AdminMapper.NoticeDelete", nNo);
 	}
 
+	// 공지사항 조회수 추가구문
+	public int addReadCount(int nNo) {
+		return sqlSession.update("AdminMapper.updateCount", nNo); 
+	}
+
+
+	public ArrayList<Deal> selectDeal() {
+	      return (ArrayList)sqlSession.selectList("AdminMapper.selectDeal");
+	   }
+
+   public HashMap<String, Integer> selectDeal(String a) {
+      HashMap<String, Integer> result = new HashMap<>();
+      
+      String category[] = {"C1","C2","C3","C4","C5","C6","C7","C8","C9","C10"};
+      int categoryR[] = {0,0,0,0,0,0,0,0,0,0};
+      for(int i = 0; i < categoryR.length; i++) {
+         HashMap<String, String> h = new HashMap<>();
+         h.put("str", category[i]);
+         categoryR[i] = sqlSession.selectOne("AdminMapper.selectDeal2", h);
+         System.out.println(category[i] + " : " + categoryR[i]);
+      }
+      result.put("디지털/가전", categoryR[0]);
+      result.put("의류/패션잡화", categoryR[1]);
+      result.put("뷰티/미용", categoryR[2]);
+      result.put("스포츠/레저", categoryR[3]);
+      result.put("도서/티켓/음반", categoryR[4]);
+      result.put("가구/인테리어", categoryR[5]);
+      result.put("신선/가공식품", categoryR[6]);
+      result.put("게임/취미", categoryR[7]);
+      result.put("반려동물용품", categoryR[8]);
+      result.put("기타", categoryR[9]);
+      
+      
+      return result;
+   }
 
 	
 	

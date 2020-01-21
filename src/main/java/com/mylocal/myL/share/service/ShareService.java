@@ -34,6 +34,9 @@ public interface ShareService {
 	// 댓글 삭제
 	public int deleteReply(int rNo);
 
+	//대댓글 등록
+	//public int insertReply2(Reply r);
+
 	
 
 }

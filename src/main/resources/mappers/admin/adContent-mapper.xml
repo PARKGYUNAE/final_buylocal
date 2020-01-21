@@ -52,6 +52,23 @@
 		<result property="cName" column="C_NAME" />
 		<result property="cNo" column="C_NO" />
 		<result property="cId" column="C_ID" />
+		<result property="qReplyDate" column="Q_REPLYDATE" />
+		
+	</resultMap>
+
+	<!-- 신고관련 -->
+	<resultMap id="ReportResultSet" type="Report">
+		<id property="rtNo" column="RT_NO" />
+		<result property="rtTitle" column="RT_TITLE" />
+		<result property="rtContent" column="RT_CONTENT" />
+		<result property="rtDate" column="RT_DATE" />
+		<result property="cNo" column="C_NO" />
+		<result property="cName" column="C_NAME" />
+		<result property="rtCategory" column="RT_CATEGORY" />
+		<result property="rtStatus" column="RT_STATUS" />
+		<result property="rtDivide" column="RT_DIVIDE" />
+		<result property="rtNum" column="RT_NUM" />
+		<result property="pBoard" column="P_BOARD" />
 	</resultMap>
 
 	<!-- Q & A 갯수 확인 -->
@@ -61,11 +78,24 @@
 		WHERE Q_STATUS='Y'
 	</select>
 
-
-	<!-- 신고하기 리스트 -->
-	<select id="ReportSelectList" resultMap="AdvertiseResultSet">
-		SELECT * FROM ADVERTISE
+	<!-- 신고된 갯수 확인 -->
+	<select id="getReportListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM
+		REPORT
+		WHERE RT_STATUS='Y'
 	</select>
+
+
+
+	<insert id="insertReport" parameterType="Report">
+		INSERT INTO REPORT
+		VALUES(
+		SEQ_REPORT.NEXTVAL, #{rtTitle}, #{ rtContent }, SYSDATE,
+		#{cNo}, #{rtCategory}, DEFAULT, '1', #{rtNum}
+		)
+
+	</insert>
 
 	<!-- QNA리스트 -->
 	<select id="QnASelectList" resultMap="QnaResultSet">
@@ -75,7 +105,30 @@
 		CUSTOMER USING(C_NO)
 		WHERE Q_STATUS='Y'
 	</select>
+	
+	
+	<!-- QNA리스트 -->
+	<select id="QnASelectList2" resultMap="QnaResultSet">
+		SELECT *
+		FROM QNA
+		JOIN
+		CUSTOMER USING(C_NO)
+		WHERE Q_STATUS='N'
+	</select>
 
+	<!-- 신고 목록 리스트 -->
+	<select id="ReportSelectList" resultMap="ReportResultSet">
+		SELECT REPORT.C_NO,
+		RT_NO, RT_TITLE, RT_CONTENT, RT_DATE, RT_CATEGORY,
+		RT_STATUS,
+		RT_DIVIDE, RT_NUM, C_NAME, C_ID, P_BOARD
+		FROM REPORT
+		JOIN CUSTOMER
+		ON(CUSTOMER.C_NO = REPORT.C_NO)
+		JOIN PRODUCT ON(RT_NUM = P_NO)
+		WHERE
+		RT_STATUS = 'Y'
+	</select>
 
 	<select id="TtangSelectList" resultMap="ProductResultSet">
 		SELECT P.P_TITLE,
@@ -96,21 +149,63 @@
 
 	</select>
 
+	<!-- Qna 상세보기 -->
 	<select id="selectQna" resultMap="QnaResultSet">
 		SELECT *
 		FROM QNA
-		JOIN CUSTOMER USING(C_NO)
+		JOIN CUSTOMER
+		USING(C_NO)
 		WHERE Q_NO = #{qNo}
 		AND Q_STATUS='Y'
 	</select>
-	
+
+	<!-- 신고하기 상세보기 -->
+	<select id="selectReport" resultMap="ReportResultSet">
+		SELECT REPORT.C_NO, RT_NO,
+		RT_TITLE, RT_CONTENT, RT_DATE, RT_CATEGORY,
+		RT_STATUS, RT_DIVIDE,
+		RT_NUM, C_NAME, C_ID, P_BOARD
+		FROM REPORT
+		JOIN CUSTOMER ON(CUSTOMER.C_NO
+		= REPORT.C_NO)
+		JOIN PRODUCT ON(RT_NUM = P_NO)
+		WHERE RT_STATUS = 'Y'
+		AND
+		RT_NO = #{rtNo}
+	</select>
+
+	<!-- 상품 가져오기 -->
+	<select id="selectProduct" resultMap="ProductResultSet">
+		SELECT *
+		FROM PRODUCT
+		JOIN CUSTOMER USING(C_NO)
+		WHERE P_STATUS='Y'
+		AND P_NO = #{rtNum}
+	</select>
+
 	<update id="updateQna" parameterType="_int">
 		UPDATE QNA
 		SET
-		Q_STATUS = 'N'
+		Q_STATUS = 'N',
+		Q_REPLYDATE = SYSDATE
 		WHERE Q_NO = #{qNo}
-	
+
 	</update>
-		
+
+	<update id="updateReportCancel" parameterType="_int">
+		UPDATE REPORT
+		SET
+		RT_STATUS = 'N'
+		WHERE RT_NO = #{rtNo}
+
+	</update>
+	
+	<update id="updateCustomer"  parameterType="_int">
+		UPDATE CUSTOMER
+		SET
+		C_STATUS = 'N'
+		WHERE C_NO = #{getcNo}
+	</update>
+
 
 </mapper>

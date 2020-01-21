@@ -5,22 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 <title>마이 페이지</title>
-<link href="<c:url value='/etc/bootstrap-3.3.2-dist/css/bootstrap.min.css' />" rel="stylesheet" type="text/css">
-<link href="<c:url value='/etc/bootstrap-3.3.2-dist/css/bootstrap-theme.css' />" rel="stylesheet" type="text/css">
-<link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
-
-<script type="text/javascript" src="<c:url value='/js/jquery-1.11.2.min.js' />" ></script>
-<script type="text/javascript" src="<c:url value='/etc/DataTables-1.10.5/media/js/jquery.dataTables.min.js' />" ></script>
-<script type="text/javascript" src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js" ></script>
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-</script>
 <style>
 #post, #address1, #address2 {
    	height: 40px;
@@ -42,7 +28,14 @@ $(document).ready(function() {
 	font-weight: bold;
 	color: #0277BD;
 	}
+	
 </style>
+<script type="text/javascript">
+$(document).ready(function () {
+$('#dtBasicExample').DataTable();
+$('.dataTables_length').addClass('bs-select');
+});
+</script>
 </head>
 <body>
 
@@ -76,44 +69,61 @@ $(document).ready(function() {
                                         <div class="blog__inner">
                                            
                                     <!-- 여기 사이에 넣으면 됨 -->
-                                   	<table id="table_id" class="table table-striped table-bordered" style="width:100%">
-							        <thead>
-							            <tr>
-							                <th>Name</th>
-							                <th>Position</th>
-							                <th>Office</th>
-							                <th>Age</th>
-							                <th>Start date</th>
-							                <th>Salary</th>
-							            </tr>
-							        </thead>
-							        <tbody>
-							            <tr>
-							                <td>Tiger Nixon</td>
-							                <td>System Architect</td>
-							                <td>Edinburgh</td>
-							                <td>61</td>
-							                <td>2011/04/25</td>
-							                <td>$320,800</td>
-							            </tr>
-							            <tr>
-							                <td>Garrett Winters</td>
-							                <td>Accountant</td>
-							                <td>Tokyo</td>
-							                <td>63</td>
-							                <td>2011/07/25</td>
-							                <td>$170,750</td>
-							            </tr>
-							            <tr>
-							                <td>Ashton Cox</td>
-							                <td>Junior Technical Author</td>
-							                <td>San Francisco</td>
-							                <td>66</td>
-							                <td>2009/01/12</td>
-							                <td>$86,000</td>
-							            </tr>
-							        </tbody>
-							</table>
+                                 
+						         <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+								  <thead>
+								    <tr>
+								      <th class="th-sm">거래일자</th>
+								      <th class="th-sm">회원명</th>
+								      <th class="th-sm">상품명</th>
+								      <th class="th-sm">수량</th>
+								      <th class="th-sm">결제금액</th>
+								      <th class="th-sm">수령인</th>
+								      <th class="th-sm">수령일자</th>
+								      <th class="th-sm">수령여부</th>
+								      <th class="th-sm">확인</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								  <c:forEach var="dealList" items="${ dlist }">
+								    <tr>
+								      <td>${ dealList.dDate }</td>
+								      <td>${ dealList.cName }</td>
+								      <td>${ dealList.pName }</td>
+								      <td>${ dealList.dAmount }</td>
+								      <td>${ dealList.dPrice }</td>
+								      <td>${ dealList.dReceiver }</td>
+								      <td>${ dealList.dRevDate }</td>
+								      <td>${ dealList.dRevCheck }</td> 
+								      <td>
+								      <input type="hidden" id="dNo" value="${ dealList.dNo }">
+											<c:url var="checkRcv" value="checkRcv.do">
+												<c:param name="dNo" value="${ dealList.dNo }"/>
+												<c:param name="dRevCheck" value="${ dealList.dRevCheck }"/>
+											</c:url>
+											<button type="button" id="chkRcvBtn" onclick="location.href='${ checkRcv }'">변경</button>
+								      		
+								      </td>
+								    </tr>
+								    </c:forEach>
+								    
+								  </tbody>
+								  <tfoot>
+								  	<tr>
+								    <th>거래일자</th>
+								    <th>회원명</th>
+								    <th>상품명</th>
+								      <th>수량</th>
+								      <th>결제금액</th>
+								      <th>수령인</th>
+								      <th>수령일자</th>
+								      <th>수령여부</th>
+								      <th>확인</th>
+								    </tr>
+								  </tfoot>
+								</table>
+      
+     
                             		<!-- 여기 사이에 넣으면 됨 -->
                             		
                                         </div>
@@ -179,27 +189,14 @@ $(document).ready(function() {
                                             <li>
                                             	<c:url var="myInfo" value="myInfo.do"/>
                                                 <a href="${ myInfo }">정보 수정</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 3 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myOrderList" value="myOrderList.do"/>
-                                                <a href="${ myOrderList }">구매 내역</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 8 Days Ago</span> -->
+                                            	<c:url var="myBusiness" value="myBusiness.do"/>
+                                                <a href="${ myBusiness }">거래 내역</a>
                                             </li>
-                                            <li>
-                                            	<c:url var="myCart" value="myCart.do"/>
-                                                <a href="${ myCart }">장바구니</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 4 Days Ago</span> -->
-                                            </li>
-                                            <li>
-                                            	<c:url var="myFavorite" value="myFavorite.do"/>
-                                                <a href="${ myFavorite }">위시 리스트</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 6 Days Ago</span> -->
-                                            </li>
-                                            <li>
+                                          	<li>
                                             	<c:url var="myQna" value="myQna.do"/>
                                                 <a href="${ myQna }">문의 내역</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 5 Days Ago</span> -->
                                             </li>
                                         </ul>
                                     </div>
@@ -635,23 +632,66 @@ $(document).ready(function() {
     </div>
     <!-- Main Wrapper End -->
     
-    
-<script>
-    $(document).ready(function() {
-        $(‘#table_id').DataTable();
-    } );
-</script>
-    
+	<script>
+		function chkRcv() {
+			var btnval = $("#chkRcvBtn").val();
+			var rcv = $("#chkRcvBtn").parent().parent().children().eq(7).text();
+			
+			console.log(btnval);
+			console.log(rcv);
+			
+			if(btnval == '취소') {
+				alert('수령 취소 처리하시겠습니까?');
+				$("#chkRcvBtn").attr('value', '확인');
+			} else {
+				alert('수령 처리하시겠습니까?');
+				$("#chkRcvBtn").attr('value', '취소');
+			}	
+			
+		};
+		
+		
+		
+	
+		/* $(document).on('click','#chkRcvBtn', function () { {
+			alert($(this).attr('value'));
+			$(this).attr("value", '완료');
+			console.log($(this).attr('value'));
+			
+		}; */
+	</script>
     
     
   
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
-    <script src="resource/assets/js/vendor.js"></script>
+    <!-- <script src="resource/assets/js/vendor.js"></script> -->
 
     <!-- Main JS -->
-    <script src="resource/assets/js/main.js"></script>
+    <!-- <script src="resource/assets/js/main.js"></script> -->
+    
+	<!-- Bootstrap core JavaScript-->
+	<!--   <script src="resources/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
+  <!-- Core plugin JavaScript-->
+	<!--   <script src="resources/admin/vendor/jquery-easing/jquery.easing.min.js"></script> -->
+
+  <!-- Page level plugin JavaScript-->
+	<script src="resources/admin/vendor/datatables/jquery.dataTables.js"></script>
+  	<script src="resources/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+  	<link href="resources/user/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+  	<link href="resources/user/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+  	<link href="resources/user/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
+  	<link href="resources/user/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+  	<script src="resources/user/datatables/jquery.dataTables.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+<!--   <script src="resources/admin/js/sb-admin.min.js"></script> -->
+
+  <!-- Demo scripts for this page-->
+<!--   <script src="resources/admin/js/demo/datatables-demo.js"></script> -->
 </body>
 
 </html>

@@ -32,28 +32,38 @@ public class AdContentController {
 	@Autowired // 메일 전송을 위한
 	private JavaMailSender mailSender;
 
-	// QnA 답변안한 갯수 불러오기
-	@RequestMapping("qnaCount.do")
+	// QnA 신고 목록 불러오기
+	@RequestMapping("Count.do")
 	public ModelAndView qnaCount(ModelAndView mv, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 
 		int count = adContentService.CountQna();
+		
+		int count1 = adContentService.CountReport();
 
-		// Count 세션 Name
+		// Count 세션 Name Qna갯수
 		int Number = count;
+		
+		// Count 세션 Name report 갯수
+		int Number1 = count1;
 
 		session.setAttribute("QnACount", Number);
+		
+		session.setAttribute("reportCount", Number1);
 
 		mv = new ModelAndView();
 
 		mv.addObject("count", count);
+		mv.addObject("reportCount", Number1);
 
 		mv.setViewName("admin/main");
 		return mv;
 	}
 	
-	// QnA 눌렀을때 갯수 최신화해서 받아오기
+	
+	
+	
 	
 	
 	// QnA 답변안한 갯수 불러오기
@@ -63,15 +73,22 @@ public class AdContentController {
 		HttpSession session = request.getSession();
 
 		int count = adContentService.CountQna();
+	
+		int count1 = adContentService.CountReport();
 
 		// Count 세션 Name
 		int Number = count;
+		
+		int Number1 = count1;
 
 		session.setAttribute("QnACount", Number);
+		
+		session.setAttribute("reportCount", Number1);
 
 		mv = new ModelAndView();
 
 		mv.addObject("count", count);
+		mv.addObject("reportCount", Number1);
 
 		mv.setViewName("admin/qna");
 		
@@ -120,11 +137,28 @@ public class AdContentController {
 
 	// QNA 관리 메뉴 리스트
 	@RequestMapping("qna.do")
-	public ModelAndView QnaMenu(ModelAndView mv) {
+	public ModelAndView QnaMenu(ModelAndView mv, HttpServletRequest request) {
+		//미답변 목록
 		ArrayList<QnA> list = adContentService.QnASelectList();
+		
+		// 답변 목록
+		ArrayList<QnA> list2 = adContentService.QnASelectList2();
+		
+		
+		HttpSession session = request.getSession();
 
-		if (list != null) {
+		int count = adContentService.CountQna();
+		
+		int Number = count;
+		
+		session.setAttribute("QnACount", Number);
+		
+		
+
+		if (list != null || list2 != null) {
 			mv.addObject("list", list);
+			mv.addObject("list2", list2);
+			mv.addObject("count", count);
 			mv.setViewName("admin/qna");
 
 		} else {
@@ -156,14 +190,58 @@ public class AdContentController {
 
 	// 신고리스트 메뉴(report 테이블 사용) 리스트
 	@RequestMapping("report.do")
-	public ModelAndView BlackMenu(ModelAndView mv) {
+	public ModelAndView BlackMenu(ModelAndView mv,  HttpServletRequest request) {
 		ArrayList<Report> list = adContentService.ReportSelectList();
+		
+		HttpSession session = request.getSession();
+		
+		
+		int count1 = adContentService.CountReport();
+		
+		int Number1 = count1;
+		
+		session.setAttribute("reportCount", Number1);
 
-		mv.setViewName("admin/report");
+		mv.addObject("reportCount", Number1);
+		
+		if(list != null) {
+			mv.addObject("list", list);
+			mv.setViewName("admin/report");
+		}else {
+			throw new AdUserException("신고하기 조회 실패");
+		}
+
 
 		return mv;
 	}
 
+	// 신고리스트 상세보기
+	@RequestMapping("reportDetail.do")
+	public String reportDetail(RedirectAttributes redirectAttributes, ModelAndView mv, int rtNo ) {
+		
+		Report r = null;
+		
+		r = adContentService.selectReport(rtNo);
+		
+		
+		if(r.getRtDivide().equals("1") && r.getpBoard().equals("핫딜")){
+			redirectAttributes.addAttribute("pNo", r.getRtNum());
+			return "redirect:hotDealDetail.do";
+			
+		}else if(r.getRtDivide().equals("1") && r.getpBoard().equals("땡처리")) {
+			System.out.println("땡처리이지롱");
+			return "redirect:hotDealDetail.do";
+		}else {
+			return "redirect:hotDealDetail.do";
+		}
+		
+
+
+	}
+	
+	// 신고처리하기
+	
+	
 	// 각 메뉴별로 디테일뷰 만들어주기(팝업창으로 띄우자)
 	// QNA / 신고 / 게시판별 상세보기
 
@@ -182,8 +260,30 @@ public class AdContentController {
 	 * 
 	 * }
 	 */
+	
 
-	// 신고하기 상세보기 (이안에서 업데이트할거임) 공통값을 꺼내와야함 각자 온 게시판이 다름
+	
+	@RequestMapping("insertReport.do")
+	public String report(HttpServletRequest request, Report r) {
+		
+	
+		
+		r.setRtContent(r.getRtContent().replace("\n", "<br>"));
+		
+		int result = adContentService.ReportInsert(r);
+		
+		if(result > 0) {
+			return "redirect:hotDealMenu.do";
+		} 
+		
+		else {
+			throw new AdUserException("신고하기 실패");
+		}
+		
+		
+	}
+
+/*	// 신고하기 상세보기 (이안에서 업데이트할거임) 공통값을 꺼내와야함 각자 온 게시판이 다름
 	@RequestMapping("roportView.do")
 	public ModelAndView ReportView(ModelAndView mv, int rt_no, int h_no, int t_no, int option) {
 
@@ -201,16 +301,49 @@ public class AdContentController {
 		mv.addObject("hotdeal", hotdeal).setViewName("board/boardUpdateForm");
 
 		return mv;
+	}*/
+
+	// 신고하기 업데이트(허위신고였으므로 목록에서만 삭제)
+	@RequestMapping("reportCancel.do")
+	public String reportCancel(ModelAndView mv, int rtNo) {
+
+		
+		int result = adContentService.deleteReport(rtNo);
+		
+		
+		if(result > 0) {
+			return "redirect:report.do";
+		}else {
+			throw new AdUserException("허위 신고 처리 실패"); 
+		}
+		
+
+	}
+	
+	@RequestMapping("reportUpdate.do")
+	public String reportUpdate(ModelAndView mv, int rtNo) {
+		Report r = adContentService.selectReport(rtNo);
+		
+		Product p = adContentService.SelectProduct(r.getRtNum());
+		
+		
+		int result = adContentService.deleteReport(rtNo);
+		
+		int result1 = adContentService.updateCustomer(p.getcNo());
+		
+		
+		if(result > 0 || result1 > 0) {
+			return "redirect:report.do";
+			
+		}else {
+			throw new AdUserException("신고처리 실패"); 
+		}
+		
+		
+		
 	}
 
-	// 신고하기 업데이트(해당 유저 등급을 status='N' 으로 변경!)
-	@RequestMapping("bupdate.do")
-	public ModelAndView boardUpdate(ModelAndView mv, HotDeal hotdeal, Ttang ttang, ShareBoard shareboard) {
-
-		return mv;
-	}
-
-	// 메일 전송
+	// 메일 전송 (답변 날짜)
 	@RequestMapping("mailSending.do")
 	public String mailSending(RedirectAttributes redirect, HttpServletRequest request, int qNo) {
 

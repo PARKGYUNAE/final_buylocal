@@ -31,9 +31,13 @@
 
 <body>
 	<c:import url="../common/menubar.jsp" />
-	<c:url var="successBuy" value="hotDealBuyProduct.do">
+	<%-- <c:url var="successBuy" value="hotDealBuyProduct.do">
 		<c:param name="cNo" value="${loginUser.cNo }"/>
-	</c:url>
+	</c:url> --%>
+	<form method="post" action="hotDealBuyProduct.do" id="buyformm">
+		<input type="hidden" value="${loginUser.cNo }" name="cNo">
+		<input type="hidden" name="uId" id="uId">
+	</form>
 	<script>
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp23257133'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -63,7 +67,9 @@
 		        msg += '에러내용 : ' + rsp.error_msg;
 		    }
 		    alert(msg);
-		    location.href='${successBuy}';
+		    $("#uId").val(rsp.imp_uid);
+		    $("#buyformm").submit();
+		    //location.href='${successBuy}';
 		});
 	</script>
 

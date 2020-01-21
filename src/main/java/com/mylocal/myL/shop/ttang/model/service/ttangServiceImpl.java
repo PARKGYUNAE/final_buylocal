@@ -24,9 +24,14 @@ public class ttangServiceImpl implements ttangService{
 		return ttangDao.selectList(pi);
 	}
 	
-	@Override
+	/*@Override
 	public Product selectBoard(int pNo, boolean flag) {
 		return ttangDao.selectBoard(pNo);
+	}*/
+	
+	@Override
+	public Product selectBoard2(int pNo, boolean flag) {
+		return ttangDao.selectBoard2(pNo);
 	}
 
 }

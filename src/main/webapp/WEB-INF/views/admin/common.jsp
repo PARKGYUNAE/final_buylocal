@@ -29,7 +29,8 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="${admin}">Buy Local</a>
+<c:url var="Count" value="Count.do"/>
+    <a class="navbar-brand mr-1" href="${Count}"><img src="resources/admin/images/logo-white.png"></a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -37,13 +38,14 @@
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
+      <div class="input-group" style= "color: white">
+        ${ loginUser.cName } 님 환영합니다. 
       </div>
     </form>
 
     <!-- Navbar -->
 
-    
+
     <ul class="navbar-nav ml-auto ml-md-0">
     
     
@@ -53,17 +55,20 @@
           
           <span class="badge badge-danger">
           <c:url var="qnaCount" value="qnaCount.do"/>	
-          	${QnACount}
+          	${reportCount}
           </span> 
           <i class="fas fa-bell fa-fw"></i> 
+          
+          
           
         
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-          <a class="dropdown-item" href="#">안녕1</a>
-          <a class="dropdown-item" href="#">Another action</a> <!-- 여기다가 Q&A 갯수 추가하자! -->
+        <c:url var="report" value="report.do"/>
+          <a class="dropdown-item" href="${ report }">신고목록</a>
+<!--           <a class="dropdown-item" href="#">Another action</a> 여기다가 Q&A 갯수 추가하자!
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Something else here</a> -->
         </div>
       </li>
       
@@ -71,7 +76,7 @@
       <li class="nav-item dropdown no-arrow mx-1"> <!-- 문자메시지 -->
         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <span class="badge badge-danger">
-          <c:url var="qnaCount" value="qnaCount.do"/>	
+          <c:url var="Count" value="Count.do"/>	
           	${QnACount}
           </span> 
           
@@ -79,22 +84,25 @@
       
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-          <a class="dropdown-item" href="#">문의내역</a>
-          <a class="dropdown-item" href="#">Another action</a>
+        <c:url var="qna" value="refreshQnaCount.do"/>
+          <a class="dropdown-item" href="${ qna }">문의내역</a>
+<!--           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Something else here</a> -->
         </div>
       </li>
       
       <li class="nav-item dropdown no-arrow"> <!-- 사용자 모양 -->
+      
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Activity Log</a>
+        <c:url var="logout" value="logout.do"/>
+          <a class="dropdown-item" href="${ logout }">로그 아웃</a>
+<!--           <a class="dropdown-item" href="#">Activity Log</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a> -->
           
         </div>
       </li>

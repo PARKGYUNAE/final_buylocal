@@ -62,45 +62,43 @@
                 <section class="contact-area mb--75 mb-md--55">
                     <div class="container">
                         <div class="row">
-                        	<c:forEach var="lists" items="${list}">
-	                            <div class="col-lg-4 col-md-5 mb-sm--30">
-	                                <div class="heading mb--32">
-	                                    <h2>${lists.pName }</h2>
-	                                    <hr class="delimeter">
-	                                </div>
-	                                <div class="contact-info mb--20">
-	                                    <p>${lists.pInfoText }</p>
-	                                    <p>구매 갯수 : ${lists.quantity }</p>
-	                                    <p>총 가격 : ${lists.pFinalPrice * lists.quantity}</p>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-7 offset-lg-1">
-	                            
-                        			<form action="InsertReview.do" method="post">
-	                                <div class="heading mb--40">
-	                                    <h2>리뷰 작성</h2>
-	                                    <hr class="delimeter">
-	                                </div>
-	                                <input type="hidden" name="cNo" value="${lists.cNo }">
-	                                <input type="hidden" name="pNo" value="${lists.pNo }">
-                                    <input type="text" name="name" id="con_name" class="form__input mb--30" value="${loginUser.cName }" readonly>
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요." id="con_message" name="content"></textarea>
-                                    <div class="starRev">
-									  <span class="starR" name="star1">별1</span>
-									  <span class="starR" name="star2">별2</span>
-									  <span class="starR" name="star3">별3</span>
-									  <span class="starR" name="star4">별4</span>
-									  <span class="starR" name="star5">별5</span>
-									</div>
-									<br>
-									<input type="hidden" name="starRate" id="starRate">
-									
-                                    <button type="submit" class="btn btn-shape-round form__submit">등록하기</button>
-                                    
-                                    
-                           			 </form>
-	                            </div>
-                            </c:forEach>
+                            <div class="col-lg-4 col-md-5 mb-sm--30">
+                                <div class="heading mb--32">
+                                    <h2>${d.pName }</h2>
+                                    <hr class="delimeter">
+                                </div>
+                                <div class="contact-info mb--20">
+                                    <p>판매자 : ${d.cName }</p>
+                                    <p>구매 갯수 : ${d.dAmount }</p>
+                                    <p>총 가격 : ${d.dPrice * d.dAmount}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-7 offset-lg-1">
+                            
+                       			<form action="InsertReview.do" method="post">
+                                <div class="heading mb--40">
+                                    <h2>리뷰 작성</h2>
+                                    <hr class="delimeter">
+                                </div>
+                                <input type="hidden" name="cNo" value="${d.cNo }">
+                                <input type="hidden" name="pNo" value="${d.pNo }">
+                                   <input type="text" name="name" id="con_name" class="form__input mb--30" value="${loginUser.cName }" readonly>
+                                   <textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요." id="con_message" name="content"></textarea>
+                                   <div class="starRev">
+								  <span class="starR" name="star1">별1</span>
+								  <span class="starR" name="star2">별2</span>
+								  <span class="starR" name="star3">별3</span>
+								  <span class="starR" name="star4">별4</span>
+								  <span class="starR" name="star5">별5</span>
+								</div>
+								<br>
+								<input type="hidden" name="starRate" id="starRate">
+								
+                                   <button type="submit" class="btn btn-shape-round form__submit">등록하기</button>
+                                   
+                                   
+                          		</form>
+                            </div>
                         </div>
                     </div>
                 </section>

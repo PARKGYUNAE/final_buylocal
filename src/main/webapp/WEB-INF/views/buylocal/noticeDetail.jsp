@@ -59,26 +59,14 @@
 
 								<br>
 								
-                                <h3>공지사항1</h3>
+                                <h3>${ notice.nTitle }</h3>
                                 <hr>
-                                <p>20.01.03. / 조회수 : 10</p>
+                                <p>${ notice.nDate } / 조회수 : ${ notice.nView }</p>
                                 
                                 <br><br>
                                 
                                 <p>
-                                	공지사항 내용입니당.
-                                	<br><br>
-                                	1. 공지사항 내용
-                                	- 공지사항 세부내용
-									<br><br>
-                                	2. 공지사항 내용
-                                	- 공지사항 세부내용
-									<br><br>
-                                	3. 공지사항 내용 
-                                  	- 공지사항 세부내용
-  									<br><br>
-  									
-  									감사합니다.<br><br>                              
+                                	${ notice.nContent }                         
                                 </p>
                                 
                                 <hr>
@@ -97,10 +85,29 @@
                                 
                                 <br>
                                 
-                                <div id="buttonArea" style="float:right;">	
-	                                <button> 목록으로 </button>
-	                                <button> 글 삭제 </button>
-	                                <button> 글 수정 </button>
+                                <div id="buttonArea" style="float:right;">
+                                
+                                <c:url var="noticeList" value="noticeList.do">
+                                	<c:param name="page" value="${ currentPage }"/>
+                                </c:url>
+                                
+                                <c:url var="noticeUpdateView" value="noticeUpdateView.do">
+                                	<c:param name="nNo" value="${ notice.nNo }"/>
+                                	<c:param name="page" value="${ currentPage }"/>
+                                </c:url>
+                                
+                                <c:url var="noticeDelete" value="noticeDelete.do">
+                                	<c:param name="nNo" value="${ notice.nNo }"/>
+                                </c:url>
+                                
+	                                <button onclick="location.href='${noticeList}'"> 목록으로 </button>
+                                	<c:if test="${ loginUser.cId eq 'admin' }">
+	                                <button onclick="location.href='${ noticeUpdateView }'"> 글 수정 </button>
+	                                
+	      
+
+	                                <button id="delete_btn"> 글 삭제 </button>
+	                                </c:if>
                                 </div>
                                 
                             </div>  
@@ -131,6 +138,19 @@
 
     <!-- Main JS -->
     <script src="resources/assets/js/main.js"></script>
+    
+    <script>
+    $("#delete_btn").click(function(){
+        if(confirm("공지사항을 삭제하시겠습니까?") == true){
+        	location.href='${ noticeDelete }'
+            alert("삭제되었습니다.");
+        }
+        else{
+            return ;
+        }
+    });
+    </script>
+
 </body>
 
 </html>

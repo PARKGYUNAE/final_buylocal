@@ -35,10 +35,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">이벤트&광고</h1>
+                        <h1 class="page-title">공지사항 작성</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>이벤트&광고</span></li>
+                            <li class="current"><span>공지사항 작성</span></li>
                         </ul>
                     </div>
                 </div>
@@ -53,48 +52,19 @@
                 <section class="contact-area mb--75 mb-md--55">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-4 col-md-5 mb-sm--30">
-                                <div class="heading mb--32">
-                                    <h2>* 유의사항</h2>
+                            <div class="col-md-7 offset-lg-3">
+                                <div class="heading mb--60">
+                                    <h2 align="center">공지사항 등록하기</h2>
                                     <hr class="delimeter">
                                 </div>
-                                <div class="contact-info mb--20">
-                                    <p><i class="fa fa-map-marker"></i>유의사항1</p>
-                                    <p><i class="fa fa-phone"></i>유의사항2</p>
-                                    <p><i class="fa fa-fax"></i>유의사항3</p>
-                                    <p><i class="fa fa-clock-o"></i>연락처 : </p>
-                                </div>
-                                <div class="social">
-                                    <a href="https://www.facebook.com" class="social__link">
-                                        <i class="la la-facebook"></i>
-                                    </a>
-                                    <a href="https://www.twitter.com" class="social__link">
-                                        <i class="la la-twitter"></i>
-                                    </a>
-                                    <a href="https://www.plus.google.com" class="social__link">
-                                        <i class="la la-google-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7 offset-lg-1">
-                                <div class="heading mb--40">
-                                    <h2>이벤트 & 광고 신청하기</h2>
-                                    <hr class="delimeter">
-                                </div>
-                                <form action="mail.php" class="form" id="contact-form">
-                                    <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="이메일*">
-                                    <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="작성자*">
-                                    <input type="text" name="con_title" id="con_title" class="form__input mb--30" placeholder="제목*">
-									<p>게시 할 위치를 정해주세요 : &nbsp;&nbsp;
-									<input type="checkbox" name="con_type" id="con_type1" ><label for="con_type1">땡처리게시판</label> 
-									&nbsp;&nbsp;
-									<input type="checkbox" name="con_type" id="con_type2"><label for="con_type2">핫딜게시판</label>
-									</p>
-									<p>게시 할 파일을 선택하세요 : &nbsp;&nbsp;
-									<label for="con_file"></label><input type="file" id="con_file">								
-                                    </p>
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="요청사항" id="con_message" name="con_message"></textarea>
-                                    <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
+                                <form action="noticeInsert.do" class="form" method="post">
+                                    <input type="text" name="nTitle" class="form__input mb--30" placeholder="제목">
+                                    
+                                    <textarea class="form-control col-sm-15" rows="20" name="nContent" placeholder="공지내용" ></textarea>
+                                    <br><br>
+                                    <button type="reset" class="btn pull-left" value="작성취소">작성취소&nbsp;&nbsp;</button>
+                                    <button type="submit" class="btn pull-right" align="right">작성하기&nbsp;&nbsp;</button>
+                                    
                                     <div class="form__output"></div>
                                 </form>
                             </div>

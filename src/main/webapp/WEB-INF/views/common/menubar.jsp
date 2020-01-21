@@ -32,7 +32,7 @@
          alert('${msg}');
          <c:remove var="msg"/>
       </c:if>
-   </script>
+   </script> 
 
 <!-- Preloader Start -->
     <div class="ft-preloader active">
@@ -49,6 +49,8 @@
 	<c:url var="admin" value="goAdmin.do"/>
 
 
+	
+
     <!-- Main Wrapper Start -->
     <div class="wrapper">
         <!-- Header Start -->
@@ -62,7 +64,7 @@
                                     <div class="header__main-left">
                                         <div class="logo">
                                             <a href="<%=request.getContextPath() %>" class="logo--normal">
-                                                <img src="resources/assets/img/logo/logo.png" alt="Logo">
+                                                <img src="resources/assets/img/logo/buylocal.png" alt="Logo">
                                             </a>
                                         </div>
                                     </div>
@@ -207,31 +209,45 @@
                                                     </a>
                                                 </li>
 						                       <li class="mainmenu__item menu-item-has-children">
-                                                    <c:url var="advertisement" value="advertisement.do"/>
-                                                    <c:url var="insertProduct" value="insertProduct.do"/>
+                                                    <c:url var="advertisementForm" value="advertisementForm.do"/>
+                                                    <c:url var="insertProductForm" value="insertProductForm.do"/>
                                                     <a href="${advertisement}" class="mainmenu__link">
                                                         <span class="mm-text">신청하기</span>
                                                     </a>
                                                   <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="한식" href="${advertisement}">
+                                                                <a title="한식" href="${advertisementForm}">
                                                                     <span class="mm-text">이벤트/광고 신청</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="중식" href="${insertProduct}">
+                                                                <a title="중식" href="${insertProductForm}">
                                                                     <span class="mm-text">상품 신청</span>
                                                                 </a>
                                                             </li>
                                                    </ul>
                                                  </li>
-                                                <li class="mainmenu__item">
-                                               	<c:url var="contactUs" value="contactUs.do"/> 
-                                                    <a href="${contactUs}" class="mainmenu__link">
+                                               	   <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="FAQ" value="FAQ.do"/>
+                                                    <c:url var="QNAform" value="QNAform.do"/>
+                                                    <a href="${FAQ}" class="mainmenu__link">
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
-                                                </li>
+                                                  <ul class="sub-menu">
+                                                        <li class="menu-item-has-children">
+                                                            <li>
+                                                                <a title="FAQ" href="${FAQ}">
+                                                                    <span class="mm-text">FAQ</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="QNA" href="${QNAform}">
+                                                                    <span class="mm-text">QNA</span>
+                                                                </a>
+                                                            </li>
+                                                   </ul>
+                                                 </li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -316,56 +332,187 @@
         </header>
         <!-- Header End -->
         
+        
+     <!-- OffCanvas Menu Start -->
+        <div class="offcanvas-menu-wrapper" id="offcanvasMenu">
+            <div class="offcanvas-menu-inner">
+                <a href="" class="btn-close">
+                    <i class="la la-remove"></i>
+                </a>
+                <nav class="offcanvas-navigation">
+                    <ul class="offcanvas-menu">
+                        <li class="menu-item-has-children active">
+                       	<a href="${introduction}" class="mainmenu_link">바이로컬</a>
+                            <ul class="sub-menu">
+                              <li>
+                                  <a href="${introduction}">사이트 소개
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="${holymoly}">
+                                    	  홀리몰리
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="${noticeM}">
+                                    	  공지사항
+                                  </a>
+                              </li>
+                          </ul>
+                        </li>
+                      
+                      
+                       <li class="menu-item-has-children active">
+                            <a href="${hotDeal }"  class="mainmenu_link">핫딜</a>
+                           <ul class="sub-menu">
+                                                <li>
+                                                    <a href="#">디지털/가전</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">의류/패션잡화</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">뷰티/미용</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">스포츠/레저</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">도서/티켓/음반</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">가구/인테리어</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">신선/가공식품</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">게임/취미</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">반려동물용품</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">기타</a>
+                                                </li>
+                                            </ul>
+                                </li>
+                      
+                      
+                                <li class="menu-item-has-children">
+                                    <a href="${ttangM }" >땡처리</a>
+                                          <ul class="sub-menu">
+                                                        <li class="menu-item-has-children">
+                                                            <li>
+                                                                <a title="한식" href="${ttangM}">
+                                                                    <span class="mm-text">한식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="중식" href="${ttangM}">
+                                                                    <span class="mm-text">중식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="일식" href="${ttangM}">
+                                                                    <span class="mm-text">일식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="양식" href="${ttangM}">
+                                                                    <span class="mm-text">양식</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="커피/제과" href="${ttangM}">
+                                                                    <span class="mm-text">커피/제과</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a title="기타" href="${ttangM}">
+                                                                    <span class="mm-text">기타</span>
+                                                                </a>
+                                                            </li>
+                                                            </ul>
+                                </li>
+                                <li>
+		                            <a href="${shareboard }">나눔게시판</a>
+		                        </li>
+                                <li class="menu-item-has-children">
+                                    <a href="${advertisementForm }">신청하기</a>
+                                     <ul class="sub-menu">
+                                        <li>
+                                            <a title="이벤트/광고 신청" href="${advertisementForm}">
+                                                <span class="mm-text">이벤트/광고 신청</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a title="상품 신청" href="${insertProductForm}">
+                                                <span class="mm-text">상품 신청</span>
+                                            </a>
+                                        </li>
+                                     </ul>
+                                </li>
+                        <li class="menu-item-has-children active">
+                            <a href="${FAQ }">고객센터</a>
+                            <ul class="sub-menu">
+                                    <li>
+                                        <a title="FAQ" href="${FAQ}">
+                                            FAQ
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="QNA" href="${QNAform}">
+                                            QNA
+                                        </a>
+                                    </li>
+                           </ul>
+                                </li>
+                    </ul>
+                    <div class="site-info vertical">
+                        <div class="site-info__item">
+                            <a href="tel:+01223566678"><strong>+01 2235 666 78</strong></a>
+                            <a href="mailto:Support@contixs.com">Support@furtrate.com</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- OffCanvas Menu End -->
+        
+        
           <!-- Mini Cart Start -->
+         <!-- Mini Cart Start -->
         <aside class="mini-cart" id="miniCart">
             <div class="mini-cart-wrapper">
                 <div class="mini-cart__close">
                     <a href="#" class="btn-close"><i class="la la-remove"></i></a>
                 </div>
                 <div class="mini-cart-inner">
-                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
+                    <h3 class="mini-cart__heading mb--45">장바구니</h3>
                     <div class="mini-cart__content">
                         <ul class="mini-cart__list">
+                           
+                           <c:forEach var="buylist" items="${ buylist }">
+                           
                             <li class="mini-cart__product">
                                 <a href="#" class="mini-cart__product-remove">
                                     <i class="la la-remove"></i>
                                 </a>
                                 <div class="mini-cart__product-image">
-                                    <img src="resources/assets/img/products/prod-01-100x100.jpg" alt="products">
+                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
+                                    <a class="mini-cart__product-title" href="product-details.html">${buylist.pName }</a>
+                                    <span class="mini-cart__product-quantity">${buylist.quantity }개 x ${buylist.pFinalPrice}원</span>
                                 </div>
                             </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="resources/assets/img/products/prod-02-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="resources/assets/img/products/prod-03-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
+                              </c:forEach>
+                            
                         </ul>
                         <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
+                            <span>합계 금액</span>
+                            <span class="ammount">${total }원</span>
                         </div>
                         <div class="mini-cart__buttons">
                             <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
@@ -375,6 +522,7 @@
                 </div>
             </div>
         </aside>
+                            
         <!-- Mini Cart End -->
         
         

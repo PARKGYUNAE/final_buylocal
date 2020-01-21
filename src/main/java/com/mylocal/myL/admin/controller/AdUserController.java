@@ -62,7 +62,9 @@ public class AdUserController {
 
 			Customer customer = null;
 
-			customer = adUserService.selectCustomer(cNo);
+			
+			customer = adUserService.selectNormalCustomer(cNo);
+			
 
 			if (customer != null) {
 				mv.addObject("customer", customer);
@@ -104,11 +106,16 @@ public class AdUserController {
 	// 사업자 정보 리스트들 보기(사업자로 인증된 사람들만 보자)
 	@RequestMapping("businessUserInfo.do")
 	public ModelAndView BusinessUserInfo(ModelAndView mv) {
+		
+		// 정상적인 사업자 리스트
 		ArrayList<Customer> list = adUserService.BusinessUserInfoSelectList();
 
+		// 신고된 사업자 리스트
+		ArrayList<Customer> list2 = adUserService.BusinessUserInfoSelectList2();
 
-		if (list != null) {
+		if (list != null || list2 != null) {
 			mv.addObject("list", list);
+			mv.addObject("list2", list2);
 			mv.setViewName("admin/businessUserInfo");
 		} else {
 			throw new AdUserException("사업자 리스트 조회 실패!");
@@ -189,13 +196,16 @@ public class AdUserController {
 
 	// 사업자 블랙 취소 (업데이트)
 	@RequestMapping("businessUserReport.do")
-	public ModelAndView BusinessUserReport(ModelAndView mv, Customer cu) {
+	public String BusinessUserReport(ModelAndView mv, Customer cu) {
 
 		int result = adUserService.updateBusinessReport(cu);
+		
+		if(result > 0) {
+			return "redirect:businessUserInfo.do";
+		}else {
+			throw new AdUserException("회원 탈퇴/철회  실패!");
+		}
 
-		mv.setViewName("admin/businessUserGrade");
-
-		return mv;
 	}
 
 }

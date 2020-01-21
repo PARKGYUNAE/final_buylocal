@@ -26,14 +26,13 @@
 	<c:import url="../common/menubar.jsp"/>
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
+        <section  class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/1920X200.png">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="page-title">땡처리게시판</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>식품류</span></li>
+                            <li><a href="<%=request.getContextPath() %>">Home</a></li>
                             <li class="current"><span>한식</span></li>
                         </ul>
                     </div>

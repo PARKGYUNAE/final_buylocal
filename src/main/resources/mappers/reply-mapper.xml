@@ -13,6 +13,7 @@
 		<result property="rContent" column="R_CONTENT"/>
 		<result property="rStatus" column="R_STATUS"/>
 		<result property="rLevel" column="R_LEVEL"/>
+		<result property="refRno" column="REF_RNO"/>
 		
 </resultMap>
 
@@ -22,14 +23,22 @@
  	JOIN CUSTOMER USING(C_NO)
    	WHERE SB_NO=#{sbNo}
 	AND R_STATUS='Y'
-	ORDER BY SB_NO DESC
-	
+	 ORDER BY R_NO DESC
 </select>
 
 <insert id="insertReply" parameterType="Reply" >
 	INSERT INTO REPLY
-	VALUES(R_NO.NEXTVAL, #{sbNo}, #{cNo}, SYSDATE, #{rContent}, 'Y' , 0)
+	VALUES(R_NO.NEXTVAL, #{sbNo}, #{cNo}, SYSDATE, #{rContent}, 'Y' , #{rLevel}, #{refRno} )
 </insert>
+
+
+<!--
+ <insert id="insertReply2" parameterType="Reply" >
+	INSERT INTO REPLY
+	VALUES(R_NO.NEXTVAL, #{sbNo}, #{cNo}, SYSDATE, #{rContent}, 'Y' , 1, #{refRno} )
+</insert> -->
+
+
 <!-- SEQ_CNO.NEXTVAL
  -->
 </mapper>

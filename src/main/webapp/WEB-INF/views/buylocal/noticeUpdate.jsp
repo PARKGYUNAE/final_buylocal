@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>고객센터</title>
+    <title>이벤트&광고</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -23,9 +23,9 @@
 </head>
 
 <body>
-	<c:import url="common/menubar.jsp"/>
-	
-    
+	<c:import url="../common/menubar.jsp"/>
+
+
    <!-- Main Wrapper Start -->
     <div class="wrapper">
                  
@@ -35,10 +35,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">고객센터</h1>
+                        <h1 class="page-title">공지사항 작성</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>고객센터</span></li>
+                            <li class="current"><span>공지사항 작성</span></li>
                         </ul>
                     </div>
                 </div>
@@ -53,40 +52,27 @@
                 <section class="contact-area mb--75 mb-md--55">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-4 col-md-5 mb-sm--30">
-                                <div class="heading mb--32">
-                                    <h2>Get In Touch</h2>
+                            <div class="col-md-7 offset-lg-3">
+                                <div class="heading mb--60">
+                                    <h2 align="center">공지사항 수정하기</h2>
                                     <hr class="delimeter">
                                 </div>
-                                <div class="contact-info mb--20">
-                                    <p><i class="fa fa-map-marker"></i>서울특별시 강남구 테헤란로 14길 6 남도빌딩</p>
-                                    <p><i class="fa fa-phone"></i> T: 1544-9970</p>
-                                    <p><i class="fa fa-fax"></i>  F: 02-562-2378</p>
-                                    <p><i class="fa fa-clock-o"></i> 월 – 금 : 9:00 – 18:00</p>
-                                </div>
-                                <div class="social">
-                                    <a href="https://www.facebook.com" class="social__link">
-                                        <i class="la la-facebook"></i>
-                                    </a>
-                                    <a href="https://www.twitter.com" class="social__link">
-                                        <i class="la la-twitter"></i>
-                                    </a>
-                                    <a href="https://www.plus.google.com" class="social__link">
-                                        <i class="la la-google-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7 offset-lg-1">
-                                <div class="heading mb--40">
-                                    <h2>Contact Us</h2>
-                                    <hr class="delimeter">
-                                </div>
-                                <form action="mail.php" class="form" id="contact-form">
-                                    <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="이메일*">
-                                    <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="작성자*">
-                                    <input type="text" name="con_title" id="con_title" class="form__input mb--30" placeholder="제목*">
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요*" id="con_message" name="con_message"></textarea>
-                                    <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
+                                <form action="noticeUpdate.do" class="form" method="post">
+                                	<input type="hidden" name="page" value="${ currentPage }">
+                                	<input type="hidden" name=nNo value="${ notice.nNo }">
+                                
+                                    <input type="text" name="nTitle" class="form__input mb--30" value="${ notice.nTitle }">
+                                    
+                                    <textarea class="form-control col-sm-15" rows="20" name="nContent" >${ notice.nContent }</textarea>
+                                    <br><br>
+                                    
+                                    
+                                    <c:url var="noticeList" value="noticeList.do">
+                                    	<c:param name="page" value="${ currnetPage }"/>
+                                    </c:url>
+                                    <button type="reset" class="btn pull-left" onclick="location.href='${ noticeList }'">목록으로&nbsp;&nbsp;</button>
+                                    <input type="submit" class="btn pull-right" align="right" value="수정하기">
+                                    
                                     <div class="form__output"></div>
                                 </form>
                             </div>
@@ -94,65 +80,11 @@
                     </div>
                 </section>
                 <!-- Contact Area End -->
-
-                <!-- Google Map Area Start -->
-                <div class="google-map-area">
-                    <div id="google-map"></div>
-                </div>
-                <!-- Google Map Area End -->
-
-                <!-- Brand Logo Area Start -->
-                <div class="brand-logo-area bg-color ptb--75" data-bg-color="#e9fefd">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="element-carousel"
-                                data-slick-options='{
-                                    "slidesToShow": 5,
-                                    "autoplay": true
-                                }'
-                                data-slick-responsive='[
-                                    {"breakpoint": 1200, "settings": {"slidesToShow": 4}},
-                                    {"breakpoint": 992, "settings": {"slidesToShow": 3}},
-                                    {"breakpoint": 768, "settings": {"slidesToShow": 2}},
-                                    {"breakpoint": 480, "settings": {"slidesToShow": 1}}
-                                ]'>
-                                    <div class="item">
-                                        <figure>
-                                            <img src="resources/assets/img/brand/brand-01.png" alt="Brand" class="mx-auto">
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure>
-                                            <img src="resources/assets/img/brand/brand-02.png" alt="Brand" class="mx-auto">
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure>
-                                            <img src="resources/assets/img/brand/brand-03.png" alt="Brand" class="mx-auto">
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure>
-                                            <img src="resources/assets/img/brand/brand-04.png" alt="Brand" class="mx-auto">
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure>
-                                            <img src="resources/assets/img/brand/brand-05.png" alt="Brand" class="mx-auto">
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Brand Logo Area End -->
             </div>
         </main>
         <!-- Main Content Wrapper End -->
 
-		<c:import url="common/footer.jsp"/>
+		<c:import url="../common/footer.jsp"/>
 
     
         <!-- Global Overlay Start -->
