@@ -1,6 +1,7 @@
 package com.mylocal.myL.share.controller;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,11 +30,14 @@ public class ShareController {
 	@Autowired
 	private ShareService shareService;
 	
+	//나눔게시글 작성
 	@RequestMapping("shareInsert.do")
 	public String shareInser() {
 		
 		return "share/shareInsert";
 	}
+	
+	//나눔게시글 목록조회
 	@RequestMapping("shareboard.do")
 	public ModelAndView sharingboard(ModelAndView mv) {
 		 ArrayList<ShareBoard> list = shareService.selectList();
@@ -61,11 +67,11 @@ public class ShareController {
 //		return "redirect:shareInsert.do";
 //	}
 	
-	
+	// 나눔게시글 상세보기
 	@RequestMapping("sbdetail.do")
 	public ModelAndView shareDatil(ModelAndView mv, ShareBoard sbno,
 									@RequestParam(name = "page") Integer page,
-									 HttpServletRequest request, HttpServletResponse response) {
+									 HttpServletRequest request, HttpServletResponse response,HttpSession session) {
 		
 		int currentPage = page != null ? page : 1;
 		
@@ -96,13 +102,15 @@ public class ShareController {
 		         mv.addObject("sb", shareboard);
 		         mv.addObject("currentPage",currentPage);
 		         mv.setViewName("share/shareDetail");
-		         
+		         session.setAttribute("cookies", cookies);
 		         System.out.println("들어온값은? = " + shareboard);
 		      }else {
 		         throw new ShareBoardException("게시글 상세조회 실패!!");
 		      }
 		  return mv;
 	}
+	
+	//나눔게시글 수정
 	@RequestMapping("shareUpdate.do")
 	public ModelAndView shareUpdate(ModelAndView mv, ShareBoard sb,
 			@RequestParam("page") Integer page) {
@@ -137,10 +145,14 @@ public class ShareController {
 	
 	@RequestMapping("addReply.do")
 	@ResponseBody
-	public 	String addReply(Reply r, HttpSession session ) {
+	public 	String addReply(HttpSession session,
+					@ModelAttribute Reply r) {
 		
 		Customer loginUser = (Customer)session.getAttribute("loginUser");
 		r.setcNo(loginUser.getcNo());
+		r.setRefRno(r.getrNo());
+		
+		System.out.println("rNo값은 == " + r.getrNo());
 		
 		System.out.println("회원번호는 == " + r.getcNo() + "입니다");
 		
@@ -148,6 +160,8 @@ public class ShareController {
 		
 		int result = shareService.insertReply(r);
 		
+		System.out.println("result 1 맞는지 == " + result);
+		System.out.println("r이 값이 뭔지알면댐 == " + r);
 		
 		if(result > 0 ) {
 			return "success";
@@ -156,13 +170,43 @@ public class ShareController {
 		}
 	}
 	
+/*	대댓글 insert ajax
+ * 	@RequestMapping("addReply2.do")
+	@ResponseBody
+	public 	String addReply2(HttpSession session,
+			@ModelAttribute Reply r) {
+		System.out.println("접근은하는지부터 보자");
+		Customer loginUser = (Customer)session.getAttribute("loginUser");
+		
+		r.setcNo(loginUser.getcNo());
+		System.out.println("rNo값은 == " + r.getrNo());
+		
+		System.out.println("회원번호는 == " + r.getcNo() + "입니다");
+		
+		System.out.println("나의 아이디는 == " + loginUser.getcId());
+		
+		int result = shareService.insertReply2(r);
+		
+		System.out.println("result 1 맞는지 == " + result);
+		System.out.println("r이 값이 뭔지알면댐 == " + r);
+		
+		if(result > 0 ) {
+			return "success";
+		}else {
+			throw new ShareBoardException("대댓글 등록 실패!");
+		}
+	}*/
+	
+	
 	@RequestMapping(value="rList.do", produces="applica52tion/json; charset=utf-8")
 	@ResponseBody
-	public String getReplyList(int sbNo, HttpServletResponse response) {
+	public String getReplyList(int sbNo, HttpServletResponse response
+			,@ModelAttribute Reply r, Model model) {
+		
 		ArrayList<Reply> rList = shareService.selectReplyList(sbNo);
 		
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-		
+		System.out.println("rList == " + rList);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy'/'MM'/'dd' 'HH'시'mm'분'ss'초'").create();
 		
 		return gson.toJson(rList);
 	}

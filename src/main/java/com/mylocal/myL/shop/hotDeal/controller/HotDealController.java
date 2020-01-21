@@ -35,19 +35,87 @@ import com.mylocal.myL.user.model.vo.Customer;
 public class HotDealController {
 	@Autowired
 	private hotDealService hotdealService;
-	
-
-	@RequestMapping("goAdmin.do")
-	public String goAdmin() {
-		return "admin/main";
-	}
 
 	@RequestMapping("hotDealMenu.do")
-	public String hotDealMenu(Model model, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "msg", required = false) String msg) {
-		int currentPage = page != null ? page : 1;
-		ArrayList<Product> list = hotdealService.selectList(currentPage);
-		model.addAttribute("list", list);
-		model.addAttribute("pi", Pagination.getPageInfo());
+	public String hotDealMenu(HttpSession session, Model model, @RequestParam(value = "page", required = false) Integer page, 
+			@RequestParam(value = "msg", required = false) String msg, @RequestParam(value = "optionArray", required = false) String optionArray,
+			@RequestParam(value = "category", required = false) String category) {		
+		
+		
+		Customer loginUser = (Customer)session.getAttribute("loginUser");
+		if(loginUser != null) {
+			int currentPage = page != null ? page : 1;
+			
+			if(optionArray == null) {
+				String location = (loginUser.getcAddress().split(",")[1]).split(" ")[1];
+				ArrayList<Product> list = new ArrayList<>();
+				if(category == null) {
+					list = hotdealService.selectList(currentPage, location);
+				}else {
+					list = hotdealService.selectListCategory(currentPage, location, category);
+				}
+				
+				model.addAttribute("list", list);
+				model.addAttribute("pi", Pagination.getPageInfo());
+			}else {
+				switch(optionArray) {
+				case "1":
+					optionArray = "이름순(A-Z)";
+					break;
+				case "2":
+					optionArray = "이름순(Z-A)";
+					break;
+				case "3":
+					optionArray = "가격순(low to high)";
+					break;
+				case "4":
+					optionArray = "가격순(high to low)";
+					break;
+				}
+				
+				String location = (loginUser.getcAddress().split(",")[1]).split(" ")[1];
+				ArrayList<Product> list = hotdealService.selectList(currentPage, location, optionArray);
+				
+				model.addAttribute("list", list);
+				model.addAttribute("pi", Pagination.getPageInfo());
+			}
+		}else {
+			if(optionArray == null) {
+				int currentPage = page != null ? page : 1;
+				ArrayList<Product> list = new ArrayList<>();
+				
+				if(category == null) {
+					list = hotdealService.selectList(currentPage);
+				}else {
+					list = hotdealService.selectListCategory(currentPage, category);
+				}
+				
+				model.addAttribute("list", list);
+				model.addAttribute("pi", Pagination.getPageInfo());
+			}else {
+				switch(optionArray) {
+				case "1":
+					optionArray = "이름순(A-Z)";
+					break;
+				case "2":
+					optionArray = "이름순(Z-A)";
+					break;
+				case "3":
+					optionArray = "가격순(low to high)";
+					break;
+				case "4":
+					optionArray = "가격순(high to l0ow)";
+					break;
+				}
+				int currentPage = page != null ? page : 1;
+				ArrayList<Product> list = hotdealService.selectList(currentPage, optionArray);
+				model.addAttribute("list", list);
+				model.addAttribute("pi", Pagination.getPageInfo());
+			}
+		}
+		
+		
+		
 		if(msg != null) {
 			model.addAttribute("msg", msg);
 		}
@@ -57,7 +125,7 @@ public class HotDealController {
 
 	@RequestMapping("hotDealDetail.do")
 	public ModelAndView hotDealDetail(ModelAndView mv, int pNo, @RequestParam(value="page", required=false) Integer page,
-			@RequestParam(value="divide", required=false) String str, HttpServletRequest request, HttpServletResponse response) {
+			@RequestParam(value="divide", required=false) String str, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 			int currentPage = page != null ? page : 1;
 	
 			Product product = null;
@@ -79,10 +147,23 @@ public class HotDealController {
 			}
 			product = hotdealService.selectBoard(pNo, flag);
 			ArrayList<Review> review = hotdealService.selectReviewList(pNo);
-			
+			Customer loginUser = (Customer)session.getAttribute("loginUser");
+			ArrayList<Product> list = new ArrayList<>();
+			if(loginUser != null) {
+				list = hotdealService.selectListCategory(currentPage, (loginUser.getcAddress().split(",")[1]).split(" ")[1], product.getCgName());
+			}else {
+				list = hotdealService.selectListCategory(currentPage, product.getCgName());
+			}
+			for(int i = 0; i < list.size(); i++) {
+				if(list.get(i).getpNo() == product.getpNo()) {
+					list.remove(i);
+				}
+			}
 			if(str == null) {
+				
 				mv.addObject("hotdealDetail", product).addObject("currentPage", currentPage);
 				mv.addObject("review", review);
+				mv.addObject("list", list);
 				mv.setViewName("hotDeal/hotDealDetail");
 			
 			}else {
@@ -90,6 +171,7 @@ public class HotDealController {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				String date = sdf.format(product.getpDate());
 				product.setpDate(null);
+				
 				map.put("date", date);
 				map.put("hotdealDetail", product);
 				map.put("currentPage", currentPage);
@@ -117,7 +199,11 @@ public class HotDealController {
 	@RequestMapping("hotDealAddCart.do")
 	public String hotDealAddCart(RedirectAttributes redirectAttributes, HttpServletRequest request) {
 		Cart c = new Cart();
-		int qty = Integer.parseInt(request.getParameter("qty"));
+		int qty = 1;
+		if(request.getParameter("qty") != null) {
+			qty = Integer.parseInt(request.getParameter("qty"));
+		}
+		 
 		int pNo = Integer.parseInt(request.getParameter("pNo"));
 		int cNo = Integer.parseInt(request.getParameter("cNo"));
 		c.setcNo(cNo); c.setpNo(pNo); c.setQuantity(qty);
@@ -182,31 +268,91 @@ public class HotDealController {
 	}
 	
 	@RequestMapping("hotDealBuyProduct.do")
-	public String hotDealBuyProduct(RedirectAttributes redirectAttributes, int cNo) {
+	public String hotDealBuyProduct(RedirectAttributes redirectAttributes, int cNo, String uId) {
 		ArrayList<Cart> list = hotdealService.getMyCart(cNo);
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("cNo", cNo);
+		map.put("method", "카드");
+		map.put("pageInfo", "핫딜");
+		map.put("uId", uId);
+		System.out.println("UID: " + uId);
 		
+		redirectAttributes.addFlashAttribute("map", map);
+		return "redirect:hotDealReceiveInfo.do";
 		
-		int result = hotdealService.buyProduct(cNo);
-		if(result > 0) {
-			redirectAttributes.addFlashAttribute("map", map);
-			return "redirect:hotDealReview.do";
-		}else {
-			redirectAttributes.addAttribute("msg", "이미 존재하는 상품이거나 찜등록에 실패하였습니다.");
-			return "redirect:hotDealBuyForm.do";
-		}
 	}
-	@RequestMapping("hotDealReview.do")
-	public String hotDealReview(Model model, @ModelAttribute("map") HashMap<String, Object> map) {
+	
+	@RequestMapping("completeReceive.do")
+	public String hotDealcompleteReceive(int cNo, String receiver, String method, String uId) {
+		ArrayList<Cart> list = hotdealService.getMyCart(cNo);
+		ArrayList<Deal> lists = new ArrayList<>();
+		for(int i = 0; i < list.size(); i++) {
+			Deal d = new Deal();
+			d.setcNo(cNo); 			       d.setdAmount(list.get(i).getQuantity());
+			d.setdMethod(method);          d.setdPrice(list.get(i).getpFinalPrice());
+			d.setdReceiver(receiver);      d.setdRevCheck("미수령"); 
+			d.setpNo(list.get(i).getpNo());d.setdStatus("Y");
+			d.setdUid(uId);
+			
+			hotdealService.insertDeal(d);
+			lists.add(d);
+		}
+		
+
+		int result = hotdealService.buyProduct(cNo);
+		
+		return "redirect:myProfile.do";
+	}
+	
+	@RequestMapping("hotDealReceiveInfo.do")
+	public String hotDealReceiveInfo(Model model, @ModelAttribute("map") HashMap<String, Object> map) {
 		ArrayList<Cart> list = (ArrayList<Cart>) map.get("list");
 		int cNo = (int) map.get("cNo");
 		
 		model.addAttribute("list", list);
 		model.addAttribute("cNo", cNo);
+		model.addAttribute("method", map.get("method"));
+		model.addAttribute("pageInfo", map.get("pageInfo"));
+		model.addAttribute("uId", map.get("uId"));
+		return "common/receiveInfo";
+	}
+	
+	@RequestMapping("hotDealReview.do")
+	public String hotDealReview(Model model, int dNo) {
+		Deal d = hotdealService.selectDeal(dNo);
+		
+		model.addAttribute("d", d);
 		return "hotDeal/hotDealReview";
 	}
+	
+	@RequestMapping("deleteWishlist.do")
+	public String deleteWishlist(RedirectAttributes redirectAttributes, int pNo, int cNo) {
+		Favorite f = new Favorite();
+		f.setcNo(cNo); f.setpNo(pNo);
+		int result = hotdealService.deleteWishList(f);
+		if(result > 0) {
+			redirectAttributes.addAttribute("cNo", cNo);
+			return "redirect:hotDealWishList.do";
+		}else {
+			redirectAttributes.addAttribute("msg", "해당 찜목록 삭제에 실패하였습니다.");
+			return "redirect:hotDealWishList.do";
+		}
+	}
+	@RequestMapping("deleteCart.do")
+	public String deleteCart(RedirectAttributes redirectAttributes, int pNo, int cNo) {
+		Cart c = new Cart();
+		c.setcNo(cNo); c.setpNo(pNo);
+		int result = hotdealService.deleteCart(c);
+		if(result > 0) {
+			redirectAttributes.addAttribute("cNo", cNo);
+			return "redirect:hotDealBuyForm.do";
+		}else {
+			redirectAttributes.addAttribute("msg", "해당 장바구니목록 삭제에 실패하였습니다.");
+			return "redirect:hotDealBuyForm.do";
+		}
+	}
+	
 	@RequestMapping("InsertReview.do")
 	public String InsertReview(RedirectAttributes redirectAttributes, HttpServletRequest request) {
 		int pNo = Integer.parseInt(request.getParameter("pNo"));

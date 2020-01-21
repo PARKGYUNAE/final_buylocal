@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -179,13 +180,25 @@
   
   <script>
   var ctx = document.getElementById("myPieChart");
+  var arr = [];
+  var i = 0;
+  <c:forEach var="entry" items="${categorys}" varStatus="status">
+  	arr[i] = "${entry.value}";
+  	i++;
+  </c:forEach>
+  console.log("${categorys.value}");
   var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ["핫딜", "땡처리", "넣을까", "야후!!"],
+      labels: ["디지털/가전", "의류/패션잡화", "뷰티/미용", "스포츠/레저", "도서/티켓/음반", "가구/인테리어",
+    	  "신선/가공식품", "게임/취미", "반려동물용품", "기타"],
       datasets: [{
-        data: [17.21, 20.58, 6.25, 3.32],
-        backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+    	  data:[arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9]],
+       /*  data: ["${categorys.get(0)}","${categorys.get(1)}","${categorys.get(2)}",
+        	"${categorys.get(3)}","${categorys.get(4)}","${categorys.get(5)}",
+        	"${categorys.get(6)}","${categorys.get(7)}","${categorys.get(8)}","${categorys.get(9)}"], */
+        //backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+        backgroundColor:['red', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'purple', 'pink', 'black', 'gray'],
       }],
     },
   });
@@ -210,7 +223,7 @@
         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
         pointHitRadius: 10,
         pointBorderWidth: 2,
-        data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+        data: ["${month[0]}", "${month[1]}", "${month[2]}", "${month[3]}", "${month[4]}", "${month[5]}", "${month[6]}", "${month[7]}", "${month[8]}", "${month[9]}", "${month[10]}", "${month[11]}"],
       }],
     },
     options: {
@@ -282,7 +295,53 @@
   });
   
   </script>
+  
+  <!-- 월별 수익 -->
+ <script>
+  var ctx = document.getElementById("myBarChart");
+  var myLineChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+      datasets: [{
+        label: "Revenue",
+        backgroundColor: "rgba(2,117,216,1)",
+        borderColor: "rgba(2,117,216,1)",
+        data: ["${month[0]}", "${month[1]}", "${month[2]}", "${month[3]}", "${month[4]}", "${month[5]}", "${month[6]}", "${month[7]}", "${month[8]}", "${month[9]}", "${month[10]}", "${month[11]}"],
+      }],
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          time: {
+            unit: 'month'
+          },
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            maxTicksLimit: 12
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 30000,
+            maxTicksLimit: 6
+          },
+          gridLines: {
+            display: true
+          }
+        }],
+      },
+      legend: {
+        display: false
+      }
+    }
+  });
 
+  
+  </script>
 </body>
 
 </html>

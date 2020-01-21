@@ -26,6 +26,14 @@ public class AdUserServiceImpl implements AdUserService{
 		public ArrayList<Customer> BusinessUserInfoSelectList() {
 			return adUserDao.BusinessUserInfoSelectList();
 		}
+		
+		// 사업자 정보 리스트(블랙리스트 당한 사람들)
+		@Override
+		public ArrayList<Customer> BusinessUserInfoSelectList2() {
+			return adUserDao.BusinessUserInfoSelectList2();
+		}
+		
+		
 		// 일반 회원 정보 리스트
 		@Override
 		public ArrayList<Customer> NormalUserInfoList() {
@@ -63,6 +71,14 @@ public class AdUserServiceImpl implements AdUserService{
 		public int updateBusinessReport(Customer cu) {
 			return adUserDao.UpdateBusinessReport(cu);
 		}
+
+		// 일반 회원 정보 상세보기
+		@Override
+		public Customer selectNormalCustomer(int cNo) {
+			return adUserDao.selectNormalCustomer(cNo);
+		}
+
+	
 
 
 

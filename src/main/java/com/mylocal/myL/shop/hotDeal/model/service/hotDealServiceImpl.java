@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mylocal.myL.common.Cart;
+import com.mylocal.myL.common.Deal;
 import com.mylocal.myL.common.Favorite;
 import com.mylocal.myL.common.PageInfo;
 import com.mylocal.myL.common.Pagination;
@@ -21,7 +22,6 @@ public class hotDealServiceImpl implements hotDealService{
 	private hotDealDao hotdealDao;
 	
 	@Override
-
 	public ArrayList<Product> selectList(int currentPage) {
 
 		int listCount = hotdealDao.getListCount();
@@ -31,6 +31,50 @@ public class hotDealServiceImpl implements hotDealService{
 		return hotdealDao.selectList(pi);
 	}
 
+	@Override
+	public ArrayList<Product> selectList(int currentPage, String location) {
+		
+		int listCount = 0;
+		
+		if(location.equals("이름순(A-Z)") || location.equals("이름순(Z-A)") || location.equals("가격순(low to high)")
+				|| location.equals("가격순(high to low)")) {
+			listCount = hotdealDao.getListCount();
+		}else {
+			listCount = hotdealDao.getListCount(location);
+		}
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		return hotdealDao.selectList(pi, location);
+	}
+	
+	@Override
+	public ArrayList<Product> selectList(int currentPage, String location, String optionArray) {
+		
+		int listCount = hotdealDao.getListCount(location);
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		return hotdealDao.selectList(pi, location, optionArray);
+	}
+	
+	@Override
+	public ArrayList<Product> selectListCategory(int currentPage, String location, String category) {
+		int listCount = hotdealDao.getListCountC(category);
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		return hotdealDao.selectListCategory(pi, location, category);
+	}
+
+	@Override
+	public ArrayList<Product> selectListCategory(int currentPage, String category) {
+		int listCount = hotdealDao.getListCountC(category);
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		return hotdealDao.selectListCategory(pi, category);
+	}
 
 	@Override
 	public Product selectBoard(int pNo, boolean flag) {
@@ -83,6 +127,37 @@ public class hotDealServiceImpl implements hotDealService{
 	public int updateBoard(Product p) {
 		return hotdealDao.updateBoard(p);
 	}
+
+
+	@Override
+	public int deleteWishList(Favorite f) {
+		return hotdealDao.deleteWishList(f);
+	}
+
+
+	@Override
+	public int deleteCart(Cart c) {
+		return hotdealDao.deleteCart(c);
+	}
+
+	@Override
+	public void insertDeal(Deal d) {
+		hotdealDao.insertDeal(d);
+	}
+
+	@Override
+	public Deal selectDeal(int dNo) {
+		return hotdealDao.selectDeal(dNo);
+	}
+
+
+	
+
+	
+
+	
+
+	
 
 
 

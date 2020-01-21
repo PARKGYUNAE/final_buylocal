@@ -253,8 +253,8 @@
                                                <!-- 메뉴바 아이콘 추가 (소망) -->
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                 	<c:if test="${ loginUser.cId eq 'admin' }">
-                                                     <c:url var="qnaCount" value="qnaCount.do"/>
-                                                    <a href="${ qnaCount }" class="header-toolbar__btn toolbar-btn1">
+                                                     <c:url var="Count" value="Count.do"/>
+                                                    <a href="${ Count }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-wrench"></i>
                                                     </a>
                                                     </c:if>

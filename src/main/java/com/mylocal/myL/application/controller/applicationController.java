@@ -57,6 +57,7 @@ public class applicationController {
 								@RequestParam(value="pThumb", required=false) MultipartFile tFile,
 								@RequestParam(value="pInfoImage", required=false) MultipartFile iFile) {
 		
+		System.out.println("controller 지나는 중 ");
 		// 썸네일 (nullPointerException)
 		/*if(!tFile.getOriginalFilename().equals("")) {
 			String pThumb = saveThumbFile(tFile, request);

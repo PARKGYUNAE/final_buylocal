@@ -1,6 +1,7 @@
 package com.mylocal.myL.shop.hotDeal.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mylocal.myL.common.Cart;
+import com.mylocal.myL.common.Deal;
 import com.mylocal.myL.common.Favorite;
 import com.mylocal.myL.common.PageInfo;
 
@@ -25,6 +27,15 @@ public class hotDealDao {
 		return sqlSession.selectOne("hotDealMapper.getListCount");
 	}
 	
+	public int getListCount(String location) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("hotDealMapper.getListCount2", location);
+	}
+	
+	public int getListCountC(String category) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("hotDealMapper.getListCountC", category);
+	}
 
 	public ArrayList<Product> selectList(PageInfo pi) {
 
@@ -32,6 +43,50 @@ public class hotDealDao {
 		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
 		
 		return (ArrayList)sqlSession.selectList("hotDealMapper.selectList", null, rowbounds);
+	}
+	
+	public ArrayList<Product> selectList(PageInfo pi, String location) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
+		if(location.equals("이름순(A-Z)") || location.equals("이름순(Z-A)") || location.equals("가격순(low to high)")
+				|| location.equals("가격순(high to low)")) {
+			HashMap<String, Object> h = new HashMap<>();
+			h.put("optionArray", location);
+			return (ArrayList)sqlSession.selectList("hotDealMapper.selectList4", h, rowbounds);
+		}else {
+			return (ArrayList)sqlSession.selectList("hotDealMapper.selectList2", location, rowbounds);
+		}
+	}
+	
+	public ArrayList<Product> selectList(PageInfo pi, String location, String optionArray) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		HashMap<String, Object> h = new HashMap<>();
+		h.put("location", location);
+		h.put("optionArray", optionArray);
+		
+		return (ArrayList)sqlSession.selectList("hotDealMapper.selectList3", h, rowbounds);
+	}
+	
+	public ArrayList<Product> selectListCategory(PageInfo pi, String location, String category) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
+		HashMap<String, Object> h = new HashMap<>();
+		h.put("location", location);
+		h.put("category", category);
+		System.out.println(location + ", "+ category);
+		ArrayList<Product> list = (ArrayList)sqlSession.selectList("hotDealMapper.selectListC", h, rowbounds);
+		System.out.println(list);
+			
+		return list;
+	}
+	
+	public ArrayList<Product> selectListCategory(PageInfo pi, String category) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		return (ArrayList)sqlSession.selectList("hotDealMapper.selectListC2", category, rowbounds);
 	}
 
 
@@ -79,6 +134,41 @@ public class hotDealDao {
 	public int updateBoard(Product p) {
 		return sqlSession.update("hotDealMapper.updateBoard", p);
 	}
+
+
+	public int deleteWishList(Favorite f) {
+		return sqlSession.delete("hotDealMapper.deleteWishList", f);
+	}
+
+
+	public int deleteCart(Cart c) {
+		return sqlSession.delete("hotDealMapper.deleteCart", c);
+	}
+
+	public void insertDeal(Deal d) {
+		int result = sqlSession.insert("hotDealMapper.insertDeal", d);
+	}
+
+	public Deal selectDeal(int dNo) {
+		return sqlSession.selectOne("hotDealMapper.selectDeal", dNo);
+	}
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+	
 
 
 

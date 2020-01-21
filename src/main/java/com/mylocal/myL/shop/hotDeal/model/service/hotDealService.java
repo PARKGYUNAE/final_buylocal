@@ -3,6 +3,7 @@ package com.mylocal.myL.shop.hotDeal.model.service;
 import java.util.ArrayList;
 
 import com.mylocal.myL.common.Cart;
+import com.mylocal.myL.common.Deal;
 import com.mylocal.myL.common.Favorite;
 import com.mylocal.myL.shop.hotDeal.model.vo.Product;
 import com.mylocal.myL.shop.hotDeal.model.vo.Review;
@@ -11,6 +12,14 @@ public interface hotDealService {
 
 	ArrayList<Product> selectList(int currentPage);
 
+	ArrayList<Product> selectList(int currentPage, String location);
+	
+	ArrayList<Product> selectList(int currentPage, String location, String optionArray);
+	
+	ArrayList<Product> selectListCategory(int currentPage, String location, String category);
+	
+	ArrayList<Product> selectListCategory(int currentPage, String category);
+	
 	Product selectBoard(int pNo, boolean flag);
 
 	ArrayList<Review> selectReviewList(int pNo);
@@ -28,6 +37,18 @@ public interface hotDealService {
 	int AddReview(Review r);
 
 	int updateBoard(Product p);
+
+	int deleteWishList(Favorite f);
+
+	int deleteCart(Cart c);
+
+	void insertDeal(Deal d);
+
+	Deal selectDeal(int dNo);
+
+
+
+	
 
 	
 }

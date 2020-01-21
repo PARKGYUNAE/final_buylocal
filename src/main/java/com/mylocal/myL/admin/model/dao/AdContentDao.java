@@ -22,14 +22,19 @@ public class AdContentDao {
 
 
 
-	// 신고 목록
+		// 신고 목록
 		public ArrayList<Report> ReportSelectList() {
 			return (ArrayList)sqlSession.selectList("adContentMapper.ReportSelectList");
 		}
 
-		// QnA 목록
+		// QnA 미응답 목록
 		public ArrayList<QnA> QnASelectList() {
 			return (ArrayList)sqlSession.selectList("adContentMapper.QnASelectList");
+		}
+		
+		// QnA 답변 목록
+		public ArrayList<QnA> QnASelectList2() {
+			return (ArrayList)sqlSession.selectList("adContentMapper.QnASelectList2");
 		}
 
 		// 게시글 목록(땡처리/핫딜/나눔게시판)
@@ -46,13 +51,7 @@ public class AdContentDao {
 		
 		// 게시글 목록 보러가기(상세보기를 위한)
 
-		public HotDeal SelectHotDeal(int h_no) {
-			return sqlSession.selectOne("adContentMapper.ShareBoardSelectList");		
-			}
 
-		public Ttang SelectTtang(int t_no) {
-			return sqlSession.selectOne("adContentMapper.ShareBoardSelectList");		
-			}
 
 /*		public ShareBoard SelectShareboard(int rt_no) {
 			return sqlSession.selectOne("adContentMapper.ShareBoardSelectList");	
@@ -63,6 +62,7 @@ public class AdContentDao {
 			return sqlSession.selectOne("adContentMapper.getQnaListCount");	
 		}
 
+		// qna 상세보기
 		public QnA SelectQna(int qNo) {
 			// TODO Auto-generated method stub
 			return sqlSession.selectOne("adContentMapper.selectQna", qNo);
@@ -71,6 +71,34 @@ public class AdContentDao {
 		public int UpdateQna(int qNo) {
 			return sqlSession.update("adContentMapper.updateQna", qNo);
 		}
+
+		// 신고하기 입력
+		public int InsertReport(Report r) {
+			return sqlSession.update("adContentMapper.insertReport", r);
+		}
+
+		// 신고된 갯수 불러오기
+		public int getReportListCount() {
+			return sqlSession.selectOne("adContentMapper.getReportListCount");	
+		}
+		// 신고하기 상세보기
+		public Report SelectReport(int rtNo) {
+			return sqlSession.selectOne("adContentMapper.selectReport", rtNo);
+		}
+
+		public int UpdateReportCancel(int rtNo) {
+			return sqlSession.update("adContentMapper.updateReportCancel", rtNo);
+		}
+
+		public Product SelectProduct(int rtNo) {
+			return sqlSession.selectOne("adContentMapper.selectProduct", rtNo);
+		}
+
+		public int uptdateCustomer(int getcNo) {
+			return sqlSession.update("adContentMapper.updateCustomer", getcNo);
+		}
+
+
 	
 	
 }

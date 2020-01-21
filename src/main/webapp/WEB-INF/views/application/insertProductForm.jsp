@@ -64,10 +64,6 @@
                                    <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}"/> 
                                    <input type="hidden" id="cAddress" value="${cAddress}"/>
                                    <input type="hidden" id="lCode" name="lCode"/>
-                                   
-                                   <script>
-                                   	
-                                   </script>
 
                                     <input type="text" name="pTitle" id="pTitle" class="form__input mb--30" placeholder="글 제목*" required>
                                     <div id="pOriginalThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
@@ -75,13 +71,14 @@
                                     </div><br>
                                     <input type="text" name="pName" id="pName" class="form__input mb--30" placeholder="상품 이름*" required>
 									<div id="pBoardArea">게시 할 게시판 위치를 정해주세요 : &nbsp;&nbsp;
-									<label><input type="radio" id="pBoard_type1" name="pBoard" value="ttang">땡처리게시판</label> 
+									<label><input type="radio" id="pBoard_type1" name="pBoard" value="땡처리" onClick="updateList(this.value)">땡처리게시판</label> 
 									&nbsp;&nbsp;
-									<label><input type="radio" id="pBoard_type2" name="pBoard" value="hotDeal" checked>핫딜게시판</label>
+									<label><input type="radio" id="pBoard_type2" name="pBoard" value="핫딜" onClick="updateList(this.value)" checked>핫딜게시판</label>
 									</div><br>
 									<!-- 선택한 게시판 위치에 따라 제공되는 카테고리 선택지 다르게 -->
 									<div id="cgName">카테고리를 선택하세요 : &nbsp;&nbsp;
 									<select id="cgName1" name="cgCode">
+										<option value="">땡처리</option>
 										<option value="T1">한식</option>
 										<option value="T2">중식</option>
 										<option value="T3">일식</option>
@@ -90,6 +87,7 @@
 										<option value="T6">기타</option>
 									</select>
 									<select id="cgName2" name="cgCode">
+										<option value="">핫딜</option>
 										<option value="C1">디지털/가전</option>
 										<option value="C2">의류/패션잡화</option>
 										<option value="C3">뷰티/미용</option>
@@ -140,6 +138,26 @@
 
 	<script type="text/javascript">
 	
+	$("input[name='pBoard']:radio").change(function(){
+		var pBoard = this.value;
+		
+		if(pBoard == "땡처리"){
+			$("#cgName1").show();
+			$('#cgName2').hide();
+			$('#cgName2').prop("disabled", true); // 비워주기
+			$('#cgName2').val("");
+			$('#pEndDateArea').hide(); 
+		} else if (pBoard == "핫딜") {
+			$("#cgName1").hide();
+			$("#cgName1").prop("disabled", true); 
+			$("#cgName1").val(""); // 비워주기
+			$("#cgName2").show(); 
+			$('#pEndDateArea').show();
+		}
+		
+	});
+	
+	
 	// cNo 보내기  & cAddress를 lCode로 바꿔 보내기
 	$(function(){
 
@@ -147,63 +165,66 @@
 		console.log('cNo=' + cNo);
 		
 		var cAddress = $('#cAddress').val(); 
-		var lCode = $('#lCode').val();
 		console.log('cAddress=' + cAddress);
 		
 		// 주소값이 '서울특별시'에  한정되었을 것으로 가정
-		if(cAddress.indexOf('종로구')){
-			lCode = 'L1';
-		} else if (cAddress.indexOf('중구')) {
-			lCode = 'L2';
-		} else if (cAddress.indexOf('용산구')) {
-			lCode = 'L3';
-		} else if (cAddress.indexOf('성동구')) {
-			lCode = 'L4';
-		} else if (cAddress.indexOf('광진구')) {
-			lCode = 'L5';
-		} else if (cAddress.indexOf('동대문구')) {
-			lCode = 'L6';
-		} else if (cAddress.indexOf('중랑구')) {
-			lCode = 'L7';
-		} else if (cAddress.indexOf('성북구')) {
-			lCode = 'L8';
-		} else if (cAddress.indexOf('강북구')) {
-			lCode = 'L9';
-		} else if (cAddress.indexOf('노봉구')) {
-			lCode = 'L10';
-		} else if (cAddress.indexOf('노원구')) {
-			lCode = 'L11';
-		} else if (cAddress.indexOf('은평구')) {
-			lCode = 'L12';
-		} else if (cAddress.indexOf('서대문구')) {
-			lCode = 'L13';
-		} else if (cAddress.indexOf('마포구')) {
-			lCode = 'L14';
-		} else if (cAddress.indexOf('양천구')) {
-			lCode = 'L15';
-		} else if (cAddress.indexOf('강서구')) {
-			lCode = 'L16';
-		} else if (cAddress.indexOf('구로구')) {
-			lCode = 'L17';
-		} else if (cAddress.indexOf('금천구')) {
-			lCode = 'L18';
-		} else if (cAddress.indexOf('영등포구')) {
-			lCode = 'L19';
-		} else if (cAddress.indexOf('동작구')) {
-			lCode = 'L20';
-		} else if (cAddress.indexOf('관악구')) {
-			lCode = 'L21';
-		} else if (cAddress.indexOf('서초구')) {
-			lCode = 'L22';
-		} else if (cAddress.indexOf('강남구')) {
-			lCode = 'L23';
-		} else if (cAddress.indexOf('송파구')) {
-			lCode = 'L24';
+		if(cAddress.indexOf('종로구') != -1){
+			$("#lCode").val('L1');
+		} else if (cAddress.indexOf('중구') != -1) {
+			$("#lCode").val('L2');
+		} else if (cAddress.indexOf('용산구') != -1) {
+			$("#lCode").val('L3');
+		} else if (cAddress.indexOf('성동구') != -1) {
+			$("#lCode").val('L4');
+		} else if (cAddress.indexOf('광진구') != -1) {
+			$("#lCode").val('L5');
+		} else if (cAddress.indexOf('동대문구') != -1) {
+			$("#lCode").val('L6');
+		} else if (cAddress.indexOf('중랑구') != -1) {
+			$("#lCode").val('L7');
+		} else if (cAddress.indexOf('성북구') != -1) {
+			$("#lCode").val('L8');
+		} else if (cAddress.indexOf('강북구') != -1) {
+			$("#lCode").val('L9');
+		} else if (cAddress.indexOf('노봉구') != -1) {
+			$("#lCode").val('L10');
+		} else if (cAddress.indexOf('노원구') != -1) {
+			$("#lCode").val('L11');
+		} else if (cAddress.indexOf('은평구') != -1) {
+			$("#lCode").val('L12');
+		} else if (cAddress.indexOf('서대문구') != -1) {
+			$("#lCode").val('L13');
+		} else if (cAddress.indexOf('마포구') != -1) {
+			$("#lCode").val('L14');
+		} else if (cAddress.indexOf('양천구') != -1) {
+			$("#lCode").val('L15');
+		} else if (cAddress.indexOf('강서구') != -1) {
+			$("#lCode").val('L16');
+		} else if (cAddress.indexOf('구로구') != -1) {
+			$("#lCode").val('L17');
+		} else if (cAddress.indexOf('금천구') != -1) {
+			$("#lCode").val('L18');
+		} else if (cAddress.indexOf('영등포구') != -1) {
+			$("#lCode").val('L19');
+		} else if (cAddress.indexOf('동작구') != -1) {
+			$("#lCode").val('L20');
+		} else if (cAddress.indexOf('관악구') != -1) {
+			$("#lCode").val('L21');
+		} else if (cAddress.indexOf('서초구') != -1) {
+			$("#lCode").val('L22');
+		} else if (cAddress.indexOf('강남구') != -1) {
+			$("#lCode").val('L23');
+		} else if (cAddress.indexOf('송파구') != -1) {
+			$("#lCode").val('L24');
+		} else if (cAddress.indexOf('강동구') != -1){
+			$("#lCode").val('L25');
 		} else {
-			lCode = 'L25';
-		} 
+			alert("당신은 서울특별시민이 아니네요! 상품 등록이 어렵겠습니다. :)");
+		}
 		
+		var lCode = $('#lCode').val();
 		console.log("lCode=" + lCode);
+		
 		
 	});	
 	
@@ -217,15 +238,18 @@
 			// 게시판 선택에 따라 카테고리, 판매종료일 변화(땡처리 선택시, 숨김)
 			$("#cgName1").hide();
 			
+			// 땡처리 선택
 			$(document).on('click', '#pBoard_type1', function(){
 					$("#cgName1").show();
-					$('#cgName2').hide(); 
+					$('#cgName2').hide();
+					$('#cgName2').val(""); // 비워주기
 					$('#pEndDateArea').hide(); 
 			});
 			
 			$(document).on('click', '#pBoard_type2', function(){
 					$("#cgName1").hide();
-					$('#cgName2').show();
+					$("#cgName1").val(""); // 비워주기
+					$('#cgName2').show(); 
 					$('#pEndDateArea').show();
 			});
 			
@@ -233,13 +257,15 @@
 			// 땡처리 선택 시, 판매종료일은 판매시작일과 동일하게 설정
 			$("#pStartDate").change(function(){
 				var pStartDate = $("#pStartDate").val();
-				var pEndDate = $('#pEndDate').val();
-				$('#pEndDate').attr('value', pStartDate);
+				$('#pEndDate').val(pStartDate);
+				var pEndDate = $("#pEndDate").val();
 				console.log("판매종료일 : " + pEndDate);
 			});
 		});
 		
-				
+		
+		
+		
 	</script>
 	
 	<c:import url="../common/footer.jsp"/>

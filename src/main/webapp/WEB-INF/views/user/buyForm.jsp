@@ -67,7 +67,11 @@
                                                 <tbody>
                                                 	<c:forEach var="buylist" items="${list }">
                                                 	<tr>
-                                                        <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
+	                                                	<c:url var="deleteCart" value="deleteCart.do">
+	                                        				<c:param name="pNo" value="${buylist.pNo }"/>
+	                                        				<c:param name="cNo" value="${buylist.cNo }"/>
+	                                        			</c:url>
+                                                        <td class="product-remove text-left"><a href="${ deleteCart}"><i class="la la-remove"></i></a></td>
                                                         <td class="product-thumbnail text-left">
                                                             <img src="assets/img/products/prod-01-70x88.jpg" alt="Product Thumnail">
                                                         </td>

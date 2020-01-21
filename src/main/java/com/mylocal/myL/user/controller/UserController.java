@@ -2,18 +2,23 @@ package com.mylocal.myL.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +27,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mylocal.myL.common.Cart;
+import com.mylocal.myL.common.Deal;
+import com.mylocal.myL.shop.hotDeal.model.service.hotDealService;
 import com.mylocal.myL.user.model.exception.UserException;
 import com.mylocal.myL.user.model.service.UserService;
 import com.mylocal.myL.user.model.vo.BusinessInfo;
@@ -33,6 +41,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired 
+	private hotDealService hotdealService;
 	
 	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -66,8 +76,16 @@ public class UserController {
 	
 	// 로그인 후 마이페이지 이동 처리  
 	@RequestMapping("myProfile.do")
-	public String myProfile() {
-		return "user/myProfile";
+	public ModelAndView myProfile(ModelAndView mv, HttpSession session) {
+		Customer loginUser = (Customer)session.getAttribute("loginUser");
+		int cNo = loginUser.getcNo();
+		
+		int dCount = userService.countDeal(cNo);
+		session.setAttribute("dCount", dCount);
+		mv.addObject("dCount", dCount);
+		mv.setViewName("user/myProfile");
+		
+		return mv;
 		}
 	
 	// 마이페이지에서 정보수정 페이지 이동 처리
@@ -76,11 +94,18 @@ public class UserController {
 		return "user/myInfo";
 		}
 	
-	// 마이페이지에서 구매내역 페이지 이동 처리
+	// 마이페이지에서 구매내역 페이지 이동 처리 (범석수정)
 	@RequestMapping("myOrderList.do")
-	public String myOrderList() {
-		return "user/myOrderList";
-		}
+	   public String myOrderList(HttpSession session, Model model) {
+	      Customer loginUser = (Customer)session.getAttribute("loginUser");
+	      int cNo = loginUser.getcNo();
+	      
+	      
+	      ArrayList<Deal> list = userService.selectDealList2(cNo);
+	      model.addAttribute("list", list);
+	      
+	      return "user/myOrderList";
+	      }
 	
 	// 마이페이지에서 장바구니 페이지 이동 처리
 		@RequestMapping("myCart.do")
@@ -90,8 +115,23 @@ public class UserController {
 	
 	// 마이페이지에서 사업자 회원 거래내역 페이지 이동처리
 	@RequestMapping("myBusiness.do")
-	public String myBusiness() {
-		return "user/myBusiness";
+	public String myBusiness(Model model, HttpSession session) {	
+		
+		Customer loginUser = (Customer)session.getAttribute("loginUser");
+		
+		int cNo = loginUser.getcNo();
+		
+		ArrayList<Deal> dlist = userService.selectDealList(cNo);
+		model.addAttribute("dlist", dlist);
+	
+	
+		if(dlist != null) {
+			model.addAttribute("msg", "거래 내역 조회에 성공했습니다.");
+			return "user/myBusiness";
+		} else {
+			throw new UserException("거래내역 조회 실패!");
+		}
+		
 	}
 	
 	// 네비바에서 하트 누르면 찜 페이지 이동 처리
@@ -100,8 +140,7 @@ public class UserController {
 		return "user/myFavorite";
 		}
 	
-	// 
-	
+
 	
 	// 일반 회원 가입 폼 작성 후 요청 처리 컨트롤러
 	@RequestMapping("cinsert.do")
@@ -131,15 +170,33 @@ public class UserController {
 	
 	// 암호화 처리 후 로그인 (일반 회원)
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public String loginCustomer(Customer c, Model model) {
+	public String loginCustomer(Customer c, Model model, HttpSession session) {
 		
 		Customer loginUser = userService.loginCustomer(c);
 		
+		System.out.println("loginUser" + loginUser);
+		
+		boolean flag = bcryptPasswordEncoder.matches(c.getcPwd(), loginUser.getcPwd());
+		System.out.println("비밀번호 일치 여부? " + flag);
+		
 		if(loginUser != null && bcryptPasswordEncoder.matches(c.getcPwd(), loginUser.getcPwd())) {
 			model.addAttribute("loginUser", loginUser);
+			
+			// 로그인 시 로그인 유저의 장바구니 불러오기
+			ArrayList<Cart> list = hotdealService.getMyCart(loginUser.getcNo());
+			int total = 0;
+			for(int i = 0; i < list.size(); i++) {
+				total += (list.get(i).getpFinalPrice() * list.get(i).getQuantity());
+			}
+			/*model.addAttribute("total", total);
+			model.addAttribute("list", list);*/
+			
+			session.setAttribute("total", total);
+			session.setAttribute("list", list);
+			
 			return "common/main";
 		} else {
-			throw new UserException("로그인 실패");
+			throw new UserException("로그인 실패!");
 		}
 		
 	}
@@ -153,20 +210,20 @@ public class UserController {
 	}
 	
 	
-	// 아이디 중복확인
-	@RequestMapping("dupid.do")
-	public ModelAndView isDuplicateCheck(String cId, ModelAndView mv) {
-		
-		boolean isUsable = userService.checkIdDup(cId) == 0 ? true : false;
-		
-		Map map = new HashMap();
-		map.put("isUsable", isUsable);
-		mv.addAllObjects(map);
-		mv.setViewName("jsonView");
-		 
-		return mv;
+	// 아이디 중복 확인
+	@RequestMapping(value = "checkId.do", method = RequestMethod.POST)
+	public void checkId(@RequestParam("cId") String cId, HttpServletResponse response) throws Exception {
+		userService.checkId(cId, response);
 	}
 	
+	// 이메일 중복 확인 
+	@RequestMapping(value = "checkEmail.do", method = RequestMethod.POST)
+	public void checkEmail(@RequestParam("cEmail") String cEmail, HttpServletResponse response) throws Exception {
+		userService.checkId(cEmail, response);
+	}
+	
+	
+	// 회원 정보 수정 
 	@RequestMapping("cupdate.do")
 	public String updateCustomer(Customer c, Model model,
 								@RequestParam("post") String post,
@@ -227,14 +284,47 @@ public class UserController {
 	}
 	
 	
-	// 카카오 로그인 test
-/*	@RequestMapping("kakaologin.do")
-	public String kakaoLogin() {
-		
-		return "user/kakaoLogin";
+	// 사업자 거래 내역 조회 페이지에서 상품 수령 체크
+	@RequestMapping("checkRcv.do")
+	public ModelAndView checkRcv(Deal d, @RequestParam("dRevCheck") String dRevCheck,
+							@RequestParam("dNo") int dNo, ModelAndView mv, HttpSession session) {
 	
+		if(dRevCheck.equals("미수령")) {
+			d.setdRevCheck("수령");
+		} else {
+			d.setdRevCheck("미수령");
+		}
+		
+		int result = userService.checkRcv(d);
+		
+		if(result > 0) {
+			mv.addObject("deal", d)
+			  .setViewName("redirect:myBusiness.do");
+			return mv;
+		} else {
+			throw new UserException("수령 현황 변경 실패!");
+		}
+		
 	}
-	*/
+	
+	// 비밀번호 찾기 
+	@RequestMapping(value="findPwd.do", method=RequestMethod.POST)
+	public void findPwd(@ModelAttribute Customer c, HttpServletResponse response) throws Exception {
+		userService.findPwd(response, c);
+	}
+	
+	// 일반회원 구매내역 건수 조회
+	/*@RequestMapping("countDeal.do")
+	public String countDeal(Model model, HttpSession session) {
+		
+		Customer loginUser = (Customer)session.getAttribute("loginUser");
+		int cNo = loginUser.getcNo();
+		
+		int dCount = userService.countDeal(cNo);
+		session.setAttribute("dCount", dCount);
+			
+		return "user/myProfile";
+	}*/
 	
 	
 	

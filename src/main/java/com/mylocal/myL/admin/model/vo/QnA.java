@@ -12,11 +12,12 @@ public class QnA {
 	private Date qEnrollDate;
 	private String qStatus;
 	private String cEmail;
+	private String qReplyDate; // 답변일
 	
 	public QnA() {}
 
 	public QnA(int qNo, String qTitle, String qContent, int cNo, String cName, String cId, Date qEnrollDate,
-			String qStatus, String cEmail) {
+			String qStatus, String cEmail, String qReplyDate) {
 		super();
 		this.qNo = qNo;
 		this.qTitle = qTitle;
@@ -27,7 +28,7 @@ public class QnA {
 		this.qEnrollDate = qEnrollDate;
 		this.qStatus = qStatus;
 		this.cEmail = cEmail;
-		
+		this.qReplyDate = qReplyDate;
 	}
 
 	public int getqNo() {
@@ -90,23 +91,34 @@ public class QnA {
 		return qStatus;
 	}
 
-	public void setcEmail(String cEmail) {
-		this.cEmail = cEmail;
+	public void setqStatus(String qStatus) {
+		this.qStatus = qStatus;
 	}
-	
+
 	public String getcEmail() {
 		return cEmail;
 	}
 
-	public void setqStatus(String qStatus) {
-		this.qStatus = qStatus;
+	public void setcEmail(String cEmail) {
+		this.cEmail = cEmail;
+	}
+
+	public String getqReplyDate() {
+		return qReplyDate;
+	}
+
+	public void setqReplyDate(String qReplyDate) {
+		this.qReplyDate = qReplyDate;
 	}
 
 	@Override
 	public String toString() {
 		return "QnA [qNo=" + qNo + ", qTitle=" + qTitle + ", qContent=" + qContent + ", cNo=" + cNo + ", cName=" + cName
-				+ ", cId=" + cId + ", qEnrollDate=" + qEnrollDate + ", qStatus=" + qStatus + ", cEmail=" + cEmail + "]";
+				+ ", cId=" + cId + ", qEnrollDate=" + qEnrollDate + ", qStatus=" + qStatus + ", cEmail=" + cEmail
+				+ ", qReplyDate=" + qReplyDate + "]";
 	}
+
+	
 
 
 	

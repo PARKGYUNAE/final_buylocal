@@ -7,7 +7,7 @@
 <head>
 <c:import url="common.jsp"/>
 </head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <body id="page-top">
 
   <div id="wrapper">
@@ -16,46 +16,58 @@
     <ul class="sidebar navbar-nav">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="main.jsp" id="personDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>회원관리</span>
+         <i class="fa fa-cog fa-spin fa-fw"></i> 
+          <span>일반회원</span>
         </a>
          <div class="dropdown-menu" aria-labelledby="personDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <c:url var="normalUser" value="normalUser.do"/>
-          <c:url var="businessUser" value="businessUser.do"/>
-          <a class="dropdown-item" href="${ normalUser }">일반 회원</a>
-          <a class="dropdown-item" href="${ businessUser }">사업자 회원</a>
+          <c:url var="normalUserInfo" value="normalUserInfo.do"/>
+          <c:url var="normalUserBuy" value="adNormalUserBuy.do"/>
+          <a class="dropdown-item" href="${ normalUserInfo }">회원정보</a>
+          <a class="dropdown-item" href="${ normalUserBuy }">구매내역</a>
           </div>
       </li>
       
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>게시글관리</span>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="main.jsp" id="personDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-cog fa-spin fa-fw"></i> 
+          <span>사업자회원</span>
         </a>
-        
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <!-- 말이 게시글이지 핫딜, 팝니다삽니다 다 불러옵니다! -->
-          <c:url var="content" value="content.do"/>
-          <c:url var="qna" value="qna.do"/>
-          <c:url var="report" value="report.do"/>
-          <a class="dropdown-item" href="${ content }">게시글 관리</a>
-           <a class="dropdown-item" href="${ qna }">Q&A</a>
-          <a class="dropdown-item" href="${ report }">신고 리스트</a>
-          <div class="dropdown-divider"></div>
-        </div>
+         <div class="dropdown-menu" aria-labelledby="personDropdown">
+         <c:url var="businessUserInfo" value="businessUserInfo.do"/>
+          <c:url var="businessUserGrade" value="businessUserGrade.do"/>
+          <a class="dropdown-item" href="${ businessUserInfo }">사업자 정보</a>
+          <a class="dropdown-item" href="${ businessUserGrade }">등급 관리</a>
+          </div>
       </li>
-      <li class="nav-item">
-      		<c:url var="advertise" value="advertise.do"/>
-        <a class="nav-link" href="${ advertise }">
+      
+      
+      
+            <li class="nav-item">
+             <c:url var="content" value="content.do"/>
+        <a class="nav-link" href="${ content }">
+          <i class="fas fa-fw fa-tachometer-alt"></i> 
+          <span>게시글 관리</span></a>
+      </li>
+      
+            <li class="nav-item">
+            <c:url var="qna" value="qna.do"/>
+        <a class="nav-link" href="${ qna }">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>지역광고</span></a>
+          <span>Q&A</span></a>
       </li>
+      
+            <li class="nav-item">
+            <c:url var="report" value="report.do"/>
+        <a class="nav-link" href="${ report }">
+          <i class="fa fa-camera-retro fa-1x"></i>
+          <span>신고목록</span></a>
+      </li>
+      
+
       <li class="nav-item">
-      		<c:url var="adminChart" value="adminChart.do"/>
+            <c:url var="adminChart" value="adminChart.do"/>
         <a class="nav-link" href="${adminChart}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-chart-area"></i>
           <span>통계</span></a>
       </li>
     </ul>
@@ -77,7 +89,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-          		  신고 리스트</div>
+                  신고 리스트</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -87,7 +99,8 @@
                     <th>신고 제목</th>
                     <th>신고자</th>
                     <th>신고 일자</th>
-                    <th>신고 여부</th>
+                    <th>신고 처리</th>
+                    <th>취소 처리</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -96,53 +109,81 @@
                     <th>신고 제목</th>
                     <th>신고자</th>
                     <th>신고 일자</th>
-                    <th>신고 여부</th>
+                    <th>신고 처리</th>
+                    <th>취소 처리</th>
                   </tr>
                 </tfoot>
                 <tbody>
-                  <tr>
-                    <td>욕설</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                  </tr>
-                
-                  <tr>
-                    <td>사기</td>
-                    <td>Systems Administrator</td>
-                    <td>London</td>
-                    <td>21</td>
-                    <td>2009/02/27</td>
-                  </tr>
-                  <tr>
-                    <td>광고</td>
-                    <td>Developer</td>
-                    <td>San Francisco</td>
-                    <td>30</td>
-                    <td>2010/07/14</td>
-                  </tr>
-                  <tr>
-                    <td>기타...</td>
-                    <td>Regional Director</td>
-                    <td>Edinburgh</td>
-                    <td>51</td>
-                    <td>2008/11/13</td>
-                  </tr>
-                  <tr>
-                    <td>기타</td>
-                    <td>Javascript Developer</td>
-                    <td>Singapore</td>
-                    <td>29</td>
-                    <td>2011/06/27</td>
-                  </tr>
-                  <tr>
-                    <td>기타</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>27</td>
-                    <td>2011/01/25</td>
-                  </tr>
+                  
+                   <c:forEach var="report" items="${ list }">
+                      <c:url var="reportDetail" value="reportDetail.do">
+                      <c:param name="rtNo" value="${ report.rtNo }"/>
+                      </c:url>
+                      <c:url var="reportCancel" value="reportCancel.do">
+                         <c:param name="rtNo" value="${ report.rtNo }"/>
+                      </c:url>
+                      
+                      <c:url var="reportUpdate" value="reportUpdate.do">
+                         <c:param name="rtNo" value="${ report.rtNo }"/>
+                      </c:url>
+                      
+                         <tr>
+                            <td  style="cursor:pointer" id="hello"  onclick="window.open('${reportDetail}', 'report', 'width=1000,height=600, left=400 top=100')">${ report.rtCategory }</td>
+                            <td>${ report.rtTitle }</td>
+                            <td>${ report.cName }</td>
+                            <td>${ report.rtDate }</td>
+                            <td class="check">신고처리</td>
+                            <td class="cancel">신고취소</td>
+                            <input type="hidden" value="${report.rtNo }">
+                         </tr>
+                   
+                   
+                   </c:forEach>
+              <script>
+   
+      $(function(){
+         $(".check").click(function(){
+            var result = confirm('해당신고룰 처리하시겠습니까?');
+
+            if(result){
+               var str = ""
+                 var tdArr = new Array();    // 배열 선언
+                 var checkBtn = $(this); 
+
+                 var result = checkBtn.parent().children().eq(6).val();
+
+
+
+               location.href="reportUpdate.do?rtNo=" + result;
+            }else{
+               
+            }
+            
+         });
+      });
+      
+      
+      $(function(){
+         $(".cancel").click(function(){
+            var result = confirm('해당 신고 접수를 취소하시겠습니까?');
+
+            if(result){
+               var str = ""
+                    var tdArr = new Array();    // 배열 선언
+                    var checkBtn = $(this); 
+                    var result = checkBtn.parent().children().eq(6).val();
+
+
+                  location.href="reportCancel.do?rtNo=" + result;
+               
+            }else{
+               
+            }
+            
+         });
+      });
+   </script>
+                 
                 </tbody>
               </table>
             </div>
@@ -201,6 +242,8 @@
       </div>
     </div>
   </div>
+  
+     
 
   <!-- Bootstrap core JavaScript-->
   <script src="resources/admin/vendor/jquery/jquery.min.js"></script>

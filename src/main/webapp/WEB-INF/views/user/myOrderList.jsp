@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +19,17 @@
    	align: left;
    }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<script>
+$(document).ready(function () {
+	$('#dtBasicExample').DataTable();
+	$('.dataTables_length').addClass('bs-select');
+	});
+</script>
+  
 </head>
 <body>
-
-    	<c:import url="../common/menubar.jsp"/>
-
+    <c:import url="../common/menubar.jsp"/>
          <!-- Breadcrumb area Start -->
         <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
             <div class="container">
@@ -49,70 +56,82 @@
                                 <div class="col-12 mb--45">
                                     <article class="blog format-standard">
                                         <div class="blog__inner">
-                                            <!-- <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-06.jpg" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-image.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Read More</a>
-                                            </div> -->
-                                            
-                                            <!-- <div class="user-dashboard-tab flex-column flex-md-row">
-                                
-                               				 <div class="user-dashboard-tab__content tab-content"> -->
-                                    
-                                    
-                                    <!-- 여기 사이에 넣으면 됨 -->
-                                   		<!--  <div class="tab-pane fade" id="orders"> -->
-                                        <div class="message-box mb--30 d-none">
-                                            <p><i class="fa fa-check-circle"></i>No order has been made yet.</p>
-                                            <a href="shop.html">Go Shop</a>
-                                        </div>
-                                        <div class="table-content table-responsive">
-                                            <table class="table text-center">
-                                                <thead>
-                                                    <tr>
-                                                        <th>번호</th>
-                                                        <th>상품명</th>
-                                                        <th>구매일자</th>
-                                                        <th>가격</th>
-                                                        <th>리뷰</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td class="wide-column">September 19, 2018</td>
-                                                        <td>Processing</td>
-                                                        <td class="wide-column">$49.00 for 1 item</td>
-                                                        <td><a href="product-details.html" class="btn btn-size-md">REVIEW</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td class="wide-column">September 19, 2018</td>
-                                                        <td>Processing</td>
-                                                        <td class="wide-column">$49.00 for 1 item</td>
-                                                        <td><a href="product-details.html" class="btn btn-size-md">View</a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+          
+                                        <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+										  <thead>
+										    <tr>
+										      <th class="th-sm">&nbsp;번호
+										      </th>
+										      <th class="th-sm">상품명
+										      </th>
+										      <th class="th-sm">구매일자
+										      </th>
+										      <th class="th-sm">가격
+										      </th>
+										      <th class="th-sm">수령인
+										      </th>
+										      <th class="th-sm">주문번호
+										      </th>
+										      <th class="th-sm">수량
+										      </th>
+										      <th class="th-sm">리뷰등록
+										      </th>
+										      <th class="th-sm">환불
+										    </tr>
+										  </thead>
+										  <tbody>
+										    <c:forEach var="list" items="${list }" varStatus="status">
+                                              <tr>
+                                                  <td>${status.count }</td>
+                                                  <td>${list.pName }</td>
+                                                  <td>${list.dDate }</td>
+                                                  <td>${list.dPrice }</td>
+                                                  <td>${list.dReceiver }</td>
+                                                  <td>${list.dUid }</td>
+                                                  <td>${list.dAmount }</td>
+                                                  <c:url var="hotDealReview" value="hotDealReview.do">
+                                                  	<c:param name="dNo" value="${list.dNo }"/>
+                                                  </c:url>
+                                                  <c:url var="refund" value="refund.do">
+                                                  	<c:param name="dNo" value="${list.dNo }"/>
+                                                  </c:url>
+                                                  <td><a href="${hotDealReview}" class="btn btn-size-sm">리뷰등록</a></td>
+                                                  <td><a href="${refund }" class="btn btn-size-sm">환불하기</a></td>
+                                              </tr>
+                                             </c:forEach>
+										    
+										  </tbody>
+										  <tfoot>
+										    <th>&nbsp;번호
+										      </th>
+										      <th>상품명
+										      </th>
+										      <th>구매일자
+										      </th>
+										      <th>가격
+										      </th>
+										      <th>수령인
+										      </th>
+										      <th>결제방법
+										      </th>
+										      <th>수량
+										      </th>
+										      <th>리뷰등록
+										      </th>
+										      <th>주문번호
+										      </th>
+										  </tfoot>
+										</table>
+                                       
+                                        
                                    <!--  </div> -->
                             		<!-- 여기 사이에 넣으면 됨 -->
                             		
                                         </div>
                                     </article>                                
                                 </div>
+                                
+							           
                                 <!-- <div class="col-12 mb--45">
                                     <article class="blog format-gallery">
                                         <div class="blog__inner">
@@ -220,19 +239,6 @@
                                 </div>
                             </div> -->
                             </div>
-                            <!-- 페이징 부분 -->
-                            <!-- <div class="row">
-                                <div class="col-12 text-center">
-                                    <ul class="pagination">
-                                        <li><span class="page-number current">1</span></li>
-                                        <li><a href="#" class="page-number">2</a></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><a href="#" class="page-number">16</a></li>
-                                    </ul>
-                                </div>
-                            </div> -->
                         </div>
                         <div class="col-lg-3 order-lg-1">
                             <div class="blog-sidebar pr--15 pr-lg--0">
@@ -266,7 +272,7 @@
                                                 </li> -->
                                             </ul>
                                             <div class="autor-meta">
-                                                <span>내 구매내역 <strong>5</strong></span>
+                                                <span>내 구매내역 <strong>${fn:length(list)}</strong></span>
                                                 <span>내 문의글 <strong>2</strong></span>
                                             </div>
                                         </div>
@@ -742,7 +748,17 @@
     <script src="resource/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
-    <script src="resource/assets/js/main.js"></script>
+    <script src="resources/admin/vendor/datatables/jquery.dataTables.js"></script>
+     <script src="resources/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+     <link href="resources/user/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+     
+     
+     <link href="resources/user/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="resources/user/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="resources/user/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+     <link href="resources/user/datatables/jquery.dataTables.min.js" rel="stylesheet" type="text/css">
+
+     
 </body>
 
 </html>

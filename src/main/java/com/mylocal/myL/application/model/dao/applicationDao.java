@@ -4,7 +4,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mylocal.myL.application.model.vo.Advertisement;
 import com.mylocal.myL.application.model.vo.Product;
 
 @Repository("appDao")
@@ -15,6 +14,7 @@ public class applicationDao {
 	public int insertProduct(Product p) {
 		
 		System.out.println("dao지나가는중~");
+		System.out.println("p : " + p);
 		return sqlSession.insert("productMapper.insertProduct", p);
 	}
  

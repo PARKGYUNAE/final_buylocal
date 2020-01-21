@@ -16,7 +16,6 @@ public class Product {
 	private String cgCode; //카테고리
 	private Date pDate; // 등록일자
 	private String pStatus; //상태
-	private String lName; //지역
 	private String pVolume; // 용량/크기 (20.01.15. 수정)
 	private String pProductDate; // 제조연월 (20.01.15. 수정)
 	private String pTreatment; // 취급방법  (20.01.15. 수정)
@@ -33,7 +32,7 @@ public class Product {
 
 	public Product(int pNo, String pName, String pThumb, String pOriginalT, int pOriginalPrice, int pFinalPrice,
 			int pAmount, String pInfoImage, String pOriginalInfoI, String pInfoText, String cgCode, Date pDate,
-			String pStatus, String lName, String pVolume, String pProductDate, String pTreatment,
+			String pStatus, String pVolume, String pProductDate, String pTreatment,
 			String pStarRate, String pOrigin, String pTitle, String pBoard, int cNo, String lCode) {
 		super();
 		this.pNo = pNo;
@@ -49,7 +48,6 @@ public class Product {
 		this.cgCode = cgCode;
 		this.pDate = pDate;
 		this.pStatus = pStatus;
-		this.lName = lName;
 		this.pVolume = pVolume;
 		this.pProductDate = pProductDate;
 		this.pTreatment = pTreatment;
@@ -217,20 +215,6 @@ public class Product {
 
 
 
-	public String getlName() {
-		return lName;
-	}
-
-
-
-	public void setlName(String lName) {
-		this.lName = lName;
-	}
-
-
-
-
-
 	public String getpVolume() {
 		return pVolume;
 	}
@@ -329,19 +313,18 @@ public class Product {
 	public void setlCode(String lCode) {
 		this.lCode = lCode;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalT=" + pOriginalT
 				+ ", pOriginalPrice=" + pOriginalPrice + ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount
-				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoI=" + pOriginalInfoI + ", pInfoText="
-				+ pInfoText + ", cgCode=" + cgCode + ", pDate=" + pDate + ", pStatus=" + pStatus + ", lName=" + lName
-				+ ", pVolume=" + pVolume + ", pProductDate=" + pProductDate + ", pTreatment="
-				+ pTreatment + ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard="
-				+ pBoard + "]";
+				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoI=" + pOriginalInfoI + ", pInfoText=" + pInfoText
+				+ ", cgCode=" + cgCode + ", pDate=" + pDate + ", pStatus=" + pStatus + ", pVolume="
+				+ pVolume + ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", pStarRate=" + pStarRate
+				+ ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard + ", cNo=" + cNo + ", lCode="
+				+ lCode + "]";
 	}
-
+	
 
 
 	

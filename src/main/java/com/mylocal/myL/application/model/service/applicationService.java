@@ -8,8 +8,6 @@ public interface applicationService{
 	// 상품 등록
 	public int insertProduct(Product p);
 	
-	// 광고/이벤트 등록
-	/*public int insertAdvertisement(Advertisement a);*/
 	
 }
  

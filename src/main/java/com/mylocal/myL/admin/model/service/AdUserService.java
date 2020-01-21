@@ -19,6 +19,9 @@ public interface AdUserService {
 
 		// 사업자 정보 리스트(인증된 사람들만)
 		ArrayList<Customer> BusinessUserInfoSelectList();
+		
+		//  사업자 정보 리스트(신고된 회원들)
+		ArrayList<Customer> BusinessUserInfoSelectList2();
 
 		// 일반회원 구매 정보리스트
 		ArrayList<Customer> NormalUserBuyList();
@@ -38,6 +41,10 @@ public interface AdUserService {
 		// 사업자 회원 탈퇴 / 철회
 		int updateBusinessReport(Customer cu);
 
+		// 일반 회원 정보 상세보기
+		Customer selectNormalCustomer(int cNo);
+
+	
 		
 	
 	

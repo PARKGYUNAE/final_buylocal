@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!doctype html>
 <!-- <html class="no-js" lang="zxx"> -->
@@ -199,34 +200,7 @@
                                     <div>판매 수량 : ${hotdealDetail.pAmount }</div>
 
                                 </div>
-                                <form action="#" class="variation-form mb--20">
-                                    <div class="product-size-variations d-flex align-items-center mb--15">
-                                        <p class="variation-label">Size:</p>   
-                                        <div class="product-size-variation variation-wrapper">
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
-                                                    <span class="product-size-variation-label">S</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
-                                                    <span class="product-size-variation-label">M</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
-                                                    <span class="product-size-variation-label">L</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
-                                                    <span class="product-size-variation-label">XL</span>
-                                                </a>
-                                            </div>
-                                        </div>                                 
-                                    </div>
-
-                                </form>
+                                
                                <form action="hotDealAddCart.do" method="post">
                                 <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                     
@@ -457,7 +431,7 @@
 	                                            				$div4.append($div6);
 	                                            				$div3.append($div4);
 	                                            				$div3.append($p);
-	                                            				//$div3.append($("<br>"));
+	                                            				$div3.append($("<br>"));
 	                                            				$div2.append($img);
 	                                            				$div2.append($div3);
 	                                            				$ul.append($li);
@@ -475,23 +449,22 @@
 
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
+                                     <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
                                         <div class="table-content table-responsive">
-                                        	<form method="post" action="hotdealReport.do">
+                                        	<form method="post" action="insertReport.do">
+	                                                <input type="hidden" name="rtNum" value="${ hotdealDetail.pNo }">
+	                                                <input type="hidden" name="cNo" value="${ loginUser.cNo }"/>
 	                                            <table class="table shop_attributes">
 	                                                <tbody>
 	                                                    <tr>
 	                                                        <th>글제목 : </th>
-	                                                        <td>${hotdealDetail.pTitle }</td>
+	                                                        <td><input type="text" name="rtTitle"  value="${ hotdealDetail.pTitle }"></td>
 	                                                    </tr>
-	                                                    <tr>
-	                                                    	<th>상품명 : </th>
-	                                                    	<td>${hotdealDetail.pName }</td>
-	                                                    </tr>
+	                                                
 	                                                    <tr>
 	                                                    	<th>신고 유형 : </th>
 	                                                    	<td>
-	                                                    		<select>
+	                                                    		<select name="rtCategory">
 	                                                    			<option value="광고">광고</option>
 	                                                    			<option value="허위/과장">허위/과장</option>
 	                                                    		</select>
@@ -499,20 +472,21 @@
 	                                                    </tr>
 	                                                    <tr>
 	                                                        <th>신고 내용 : </th>
-	                                                        <td id="#summernote"></td>
+	                                                        <td><textarea cols="50" rows="7" name=rtContent></textarea></td>
 	                                                        
 	                                                    </tr>
+
 	                                                </tbody>
 	                                            </table>
 	    	
-	    										<script>
+<!-- 	    										<script>
                                                  	$(document).ready(function() {
                                                  	  $('#summernote').summernote({
                                                  	    lang: 'ko-KR' // default: 'en-US'
                                                  	  });
                                                  	});
-                                                 </script>
-	                                            <button>제출하기</button>
+                                                 </script> -->
+	                                            <input type="submit" value="신고하기"></button>
                                             </form>
                                             
                                         </div>
@@ -521,6 +495,7 @@
                             </div>
                         </div>
                     </div>
+                     <label>이상품과 연관된 상품</label>
                     <div class="row mb--75 mb-md--55">
                         <div class="col-12">
                             <div class="element-carousel slick-vertical-center" data-slick-options='{
@@ -542,6 +517,11 @@
                                     "slidesToShow": 1
                                 }}
                             ]'>
+                            
+                           <c:forEach var="list" items="${list }" end="3">
+                           		<c:url var="hotDealDetail" value="hotDealDetail.do">
+									<c:param name="pNo" value="${list.pNo }" />
+								</c:url>
                                 <div class="item">
                                     <div class="ft-product">
                                         <div class="product-inner">
@@ -549,151 +529,55 @@
                                                 <figure class="product-image--holder">
                                                     <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
                                                 </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
+                                                <a href="${hotDealDetail}" class="product-overlay"></a>
                                                 <div class="product-action">
                                                     <a data-toggle="modal" data-target="#productModal" class="action-btn">
                                                         <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
+                                                    </a>                                                    
                                                 </div>
                                             </div>
                                             <div class="product-info">
                                                 <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
+                                                    <a href="${hotDealDetail}">${list.pTitle }</a>
                                                 </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
+                                                <h3 class="product-title"><a href="${hotDealDetail}">${list.pName }</a></h3>
+                                                
                                                     <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
+														<span class="money"> <sup><fmt:parseNumber
+																	value="${(list.pOriginalPrice-list.pFinalPrice)/list.pOriginalPrice*100 }"
+																	integerOnly="true" />%</sup> <s>${list.pOriginalPrice }</s>
+														</span>
+													</div>
+													<div class="product-price-wrapper">
+														<span class="money"><h4>${list.pFinalPrice }원</h4></span>
+													</div>
+													<c:url var="hotDealBuyForm" value="hotDealBuyForm.do" >
+														<c:param name="pNo" value="${hot.pNo }" />
+														<c:param name="cNo" value="${loginUser.cNo }" />
+													</c:url>
+                                                    <c:choose>
+														<c:when test="${ empty sessionScope.loginUser }">
+															<c:url var="userLogin" value="userLogin.do" />
+																<a href="${userLogin }" class="add-to-cart pr--15">
+																	<i class="la la-plus"></i> <span>장바구니</span>
+																</a>
+														</c:when>
+														<c:otherwise>
+															<c:url var="hotDealAddCart" value="hotDealAddCart.do" >
+																<c:param name="pNo" value="${hot.pNo }" />
+																<c:param name="cNo" value="${loginUser.cNo }" />
+															</c:url>
+															<a href="${hotDealAddCart }" class="add-to-cart pr--15">
+																<i class="la la-plus"></i> <span>장바구니</span>
+															</a>
+														</c:otherwise>
+													</c:choose>
+                                               
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                        <i class="la la-eye"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-repeat"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -892,7 +776,7 @@
                                     <a href="#">Product Details</a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="product-details.html">Tab Style 1</a>
+                                            <a href="${hotDealDetail}">Tab Style 1</a>
                                         </li>
                                         <li>
                                             <a href="product-details-tab-style-2.html">Tab Style 2</a>
@@ -1030,7 +914,7 @@
                                     <img src="resources/assets/img/products/prod-01-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
+                                    <a class="mini-cart__product-title" href="${hotDealDetail}">Golden Easy Spot Chair.</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -1042,7 +926,7 @@
                                     <img src="resources/assets/img/products/prod-02-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
+                                    <a class="mini-cart__product-title" href="${hotDealDetail}">Golden Easy Spot Chair.</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -1054,7 +938,7 @@
                                     <img src="resources/assets/img/products/prod-03-100x100.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
+                                    <a class="mini-cart__product-title" href="${hotDealDetail}">Golden Easy Spot Chair.</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -1107,7 +991,7 @@
                         >
                             <div class="product-image">
                                 <div class="product-image--holder">
-                                    <a href="product-details.html">
+                                    <a href="${hotDealDetail}">
                                         <img src="resources/assets/img/products/prod-01.jpg" alt="Product Image" class="primary-image">
                                     </a>
                                 </div>
@@ -1115,7 +999,7 @@
                             </div>
                             <div class="product-image">
                                 <div class="product-image--holder">
-                                    <a href="product-details.html">
+                                    <a href="${hotDealDetail}">
                                         <img src="resources/assets/img/products/prod-02.jpg" alt="Product Image" class="primary-image">
                                     </a>
                                 </div>
@@ -1123,98 +1007,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="modal-box product-summary">
-                            <div class="product-navigation text-right mb--20">
-                                <a href="#" class="prev"><i class="la la-angle-double-left"></i></a>
-                                <a href="#" class="next"><i class="la la-angle-double-right"></i></a>
-                            </div>
-                            <div class="product-rating d-flex mb--20">
-                                <div class="star-rating star-three">
-                                    <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                </div>
-                            </div>
-                            <h3 class="product-title mb--20">Golden Easy Spot Chair.</h3>
-                            <p class="product-short-description mb--25">Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                            <div class="product-price-wrapper mb--25">
-                                <span class="money">$200.00</span>
-                                <span class="price-separator">-</span>
-                                <span class="money">$400.00</span>
-                            </div>
-                            <form action="#" class="variation-form mb--30">
-                                <div class="product-color-variations d-flex align-items-center mb--20">
-                                    <p class="variation-label">Color:</p>
-                                    <div class="product-color-variation variation-wrapper">
-                                        <div class="variation">
-                                            <a class="product-color-variation-btn red selected" data-toggle="tooltip" data-placement="top" title="Red">
-                                                <span class="product-color-variation-label">Red</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-color-variation-btn black" data-toggle="tooltip" data-placement="top" title="Black">
-                                                <span class="product-color-variation-label">Black</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-color-variation-btn pink" data-toggle="tooltip" data-placement="top" title="Pink">
-                                                <span class="product-color-variation-label">Pink</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-color-variation-btn blue" data-toggle="tooltip" data-placement="top" title="Blue">
-                                                <span class="product-color-variation-label">Blue</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-size-variations d-flex align-items-center mb--15">
-                                    <p class="variation-label">Size:</p>   
-                                    <div class="product-size-variation variation-wrapper">
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
-                                                <span class="product-size-variation-label">S</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
-                                                <span class="product-size-variation-label">M</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
-                                                <span class="product-size-variation-label">L</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
-                                                <span class="product-size-variation-label">XL</span>
-                                            </a>
-                                        </div>
-                                    </div>                                 
-                                </div>
-                                <a href="" class="reset_variations">Clear</a>
-                            </form>
-                            <div class="product-action d-flex flex-sm-row flex-column align-items-sm-center align-items-start mb--30">
-                                <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                    <label class="quantity-label" for="quick-qty">Quantity:</label>
-                                    <div class="quantity">
-                                        <input type="number" class="quantity-input" name="qty" id="quick-qty" value="1" min="1">
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-size-sm btn-shape-square" onclick="window.location.href='cart.html'">
-                                    Add To Cart
-                                </button>
-                            </div>  
-                            <div class="product-footer-meta">
-                                <p><span>Category:</span>
-                                    <a href="shop.html">Full Sweater</a>,
-                                    <a href="shop.html">SweatShirt</a>,
-                                    <a href="shop.html">Jacket</a>,
-                                    <a href="shop.html">Blazer</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
               </div>
             </div>

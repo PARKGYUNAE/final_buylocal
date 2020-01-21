@@ -32,6 +32,13 @@ public class AdUserDao {
 		public ArrayList<Customer> BusinessUserInfoSelectList() {
 			return (ArrayList)sqlSession.selectList("adUserMapper.BusinessUserInfoSelectList");
 		}
+		
+		// 사업자 정보 리스트(신고된 리스트)
+		public ArrayList<Customer> BusinessUserInfoSelectList2() {
+			return (ArrayList)sqlSession.selectList("adUserMapper.BusinessUserInfoSelectList2");
+		}
+		
+		
 		// 일반 회원 정보
 		public ArrayList<Customer> NormalUserInfoList() {
 			return (ArrayList)sqlSession.selectList("adUserMapper.NormalUserInfoList");
@@ -43,6 +50,8 @@ public class AdUserDao {
 		}
 
 
+		// 일반회원 상세보기
+		
 
 		// 사업자 정보 상세보기
 		public Customer SelectCustomer(int cNo) {
@@ -64,6 +73,13 @@ public class AdUserDao {
 		public int UpdateBusinessReport(Customer cu) {
 			return sqlSession.update("adUserMapper.updateBusinessReport", cu);
 		}
+
+		// 일반 회원 정보 상세보기
+		public Customer selectNormalCustomer(int cNo) {
+			return sqlSession.selectOne("adUserMapper.selectNormalCustomer", cNo);
+		}
+
+
 		
 	
 }

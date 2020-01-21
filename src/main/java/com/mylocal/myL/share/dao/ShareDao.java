@@ -66,5 +66,10 @@ public class ShareDao {
 		// TODO Auto-generated method stub
 		return sqlSession.update("replyMapper.deleteReply", rNo);
 	}
+	/*//대댓글 등록
+	public int insertReply2(Reply r) {
+		
+		return sqlSession.insert("replyMapper.insertReply2",r);
+	}*/
 
 }

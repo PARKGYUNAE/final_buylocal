@@ -16,46 +16,58 @@
     <ul class="sidebar navbar-nav">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="main.jsp" id="personDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>회원관리</span>
+         <i class="fa fa-cog fa-spin fa-fw"></i> 
+          <span>일반회원</span>
         </a>
          <div class="dropdown-menu" aria-labelledby="personDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <c:url var="normalUser" value="normalUser.do"/>
-          <c:url var="businessUser" value="businessUser.do"/>
-          <a class="dropdown-item" href="${ normalUser }">일반 회원</a>
-          <a class="dropdown-item" href="${ businessUser }">사업자 회원</a>
+          <c:url var="normalUserInfo" value="normalUserInfo.do"/>
+          <c:url var="normalUserBuy" value="adNormalUserBuy.do"/>
+          <a class="dropdown-item" href="${ normalUserInfo }">회원정보</a>
+          <a class="dropdown-item" href="${ normalUserBuy }">구매내역</a>
           </div>
       </li>
       
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>게시글관리</span>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="main.jsp" id="personDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-cog fa-spin fa-fw"></i> 
+          <span>사업자회원</span>
         </a>
-        
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <!-- 말이 게시글이지 핫딜, 팝니다삽니다 다 불러옵니다! -->
-          <c:url var="content" value="content.do"/>
-          <c:url var="qna" value="qna.do"/>
-          <c:url var="report" value="report.do"/>
-          <a class="dropdown-item" href="${ content }">게시글 관리</a>
-           <a class="dropdown-item" href="${ qna }">Q&A</a>
-          <a class="dropdown-item" href="${ report }">신고 리스트</a>
-          <div class="dropdown-divider"></div>
-        </div>
+         <div class="dropdown-menu" aria-labelledby="personDropdown">
+         <c:url var="businessUserInfo" value="businessUserInfo.do"/>
+          <c:url var="businessUserGrade" value="businessUserGrade.do"/>
+          <a class="dropdown-item" href="${ businessUserInfo }">사업자 정보</a>
+          <a class="dropdown-item" href="${ businessUserGrade }">등급 관리</a>
+          </div>
       </li>
-      <li class="nav-item">
-      		<c:url var="advertise" value="advertise.do"/>
-        <a class="nav-link" href="${ advertise }">
+      
+      
+      
+            <li class="nav-item">
+      		 <c:url var="content" value="content.do"/>
+        <a class="nav-link" href="${ content }">
+          <i class="fas fa-fw fa-tachometer-alt"></i> 
+          <span>게시글 관리</span></a>
+      </li>
+      
+            <li class="nav-item">
+      		<c:url var="qna" value="qna.do"/>
+        <a class="nav-link" href="${ qna }">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>지역광고</span></a>
+          <span>Q&A</span></a>
       </li>
+      
+            <li class="nav-item">
+      		<c:url var="report" value="report.do"/>
+        <a class="nav-link" href="${ report }">
+          <i class="fa fa-camera-retro fa-1x"></i>
+          <span>신고목록</span></a>
+      </li>
+      
+
       <li class="nav-item">
       		<c:url var="adminChart" value="adminChart.do"/>
         <a class="nav-link" href="${adminChart}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-chart-area"></i>
           <span>통계</span></a>
       </li>
     </ul>
@@ -80,10 +92,10 @@
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5">회원 관리</div>
+                <div class="mr-5">일반 회원</div>
               </div>
-              <c:url var="user" value="user.do"/>
-              <a class="card-footer text-white clearfix small z-1" href="${ user }">
+               <c:url var="normalUser" value="normalUser.do"/>
+              <a class="card-footer text-white clearfix small z-1" href="${ normalUser }">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -91,6 +103,25 @@
               </a>
             </div>
           </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-success o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-shopping-cart"></i>
+                </div>
+                <div class="mr-5">사업자 회원</div>
+              </div>
+               <c:url var="businessUser" value="businessUser.do"/>
+              <a class="card-footer text-white clearfix small z-1" href="${ businessUser }">
+                <span class="float-left">View Details</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          
+          
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
@@ -108,23 +139,7 @@
               </a>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">지역 광고</div>
-              </div>
-               <c:url var="boardList" value="advertise.do"/>
-              <a class="card-footer text-white clearfix small z-1" href="${ advertise }">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
+          
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-danger o-hidden h-100">
               <div class="card-body">
