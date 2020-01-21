@@ -202,27 +202,74 @@
 						                       <li class="mainmenu__item menu-item-has-children">
                                                     <c:url var="advertisementForm" value="advertisementForm.do"/>
                                                     <c:url var="insertProductForm" value="insertProductForm.do"/>
-                                                    <a href="${advertisementForm}" class="mainmenu__link">
+                                                         <c:choose>
+                                	<c:when test="${ empty sessionScope.loginUser }">
+                                		<c:url var="userLogin" value="userLogin.do"/>	
+                                		 <a href="${userLogin}" class="mainmenu__link">
                                                         <span class="mm-text">신청하기</span>
+                                                    </a>
+                                		<ul class="sub-menu">
+                                      <li>
+                                          <a title="이벤트/광고 신청" href="${userLogin}">
+                                              <span class="mm-text">이벤트/광고 신청</span>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a title="상품 신청" href="${userLogin}">
+                                              <span class="mm-text">상품 신청</span>
+                                          </a>
+                                      </li>
+                                    </ul> 
+                                	</c:when>
+                                	<c:otherwise>
+                                	 <a href="${advertisementForm}" class="mainmenu__link">
+                                                        <span class="mm-text">신청하기</span>
+                                                    </a>
+                                                  
+                                		<ul class="sub-menu">
+                                      <li>
+                                          <a title="이벤트/광고 신청" href="${advertisementForm}">
+                                              <span class="mm-text">이벤트/광고 신청</span>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a title="상품 신청" href="${insertProductForm}">
+                                              <span class="mm-text">상품 신청</span>
+                                          </a>
+                                      </li>
+                                    </ul> 
+                                	</c:otherwise>
+                                	</c:choose>
+                                                   
+                                                   
+                                                 </li>
+                                                 <!-- FAQ는 로그인 안해도 열람가능하게 수정 할 예정! -->
+                                                  <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="FAQ" value="FAQ.do"/>
+                                                    <c:url var="QNAform" value="QNAform.do"/>
+                                                 
+                                                                  <c:choose>
+                                	<c:when test="${ empty sessionScope.loginUser }">
+                                		<c:url var="userLogin" value="userLogin.do"/>	
+                                		<a href="${userLogin}" class="mainmenu__link">
+                                                        <span class="mm-text">고객센터</span>
                                                     </a>
                                                   <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="이벤트/광고 신청" href="${advertisementForm}">
-                                                                    <span class="mm-text">이벤트/광고 신청</span>
+                                                                <a title="FAQ" href="${userLogin}">
+                                                                    <span class="mm-text">FAQ</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="상품 신청" href="${insertProductForm}">
-                                                                    <span class="mm-text">상품 신청</span>
+                                                                <a title="QNA" href="${userLogin}">
+                                                                    <span class="mm-text">QNA</span>
                                                                 </a>
                                                             </li>
-                                                   </ul>
-                                                 </li>
-                                                  <li class="mainmenu__item menu-item-has-children">
-                                                    <c:url var="FAQ" value="FAQ.do"/>
-                                                    <c:url var="QNAform" value="QNAform.do"/>
-                                                    <a href="${FAQ}" class="mainmenu__link">
+                                                   </ul> 
+                                	</c:when>
+                                	<c:otherwise>
+                                	 <a href="${FAQ}" class="mainmenu__link">
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
                                                   <ul class="sub-menu">
@@ -238,8 +285,14 @@
                                                                 </a>
                                                             </li>
                                                    </ul>
+                                	</c:otherwise>
+                                	</c:choose>
                                                  </li>
                                             </ul>
+                                            
+                                            
+                                            
+                                            
                                         </nav>
                                     </div>
                                     <div class="header__main-right">
@@ -2489,23 +2542,63 @@
 		                            <a href="${shareboard }">나눔게시판</a>
 		                        </li>
                                 <li class="menu-item-has-children">
-                                    <a href="${advertisement }">신청하기</a>
-                                     <ul class="sub-menu">
-                                        <li>
-                                            <a title="이벤트/광고 신청" href="${advertisementForm}">
-                                                <span class="mm-text">이벤트/광고 신청</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a title="상품 신청" href="${insertProductForm}">
-                                                <span class="mm-text">상품 신청</span>
-                                            </a>
-                                        </li>
-                                     </ul>
+                                    
+                                          <c:choose>
+                                	<c:when test="${ empty sessionScope.loginUser }">
+                                		<c:url var="userLogin" value="userLogin.do"/>	
+                                		<a href="${userLogin }">신청하기</a>
+                                			<ul class="sub-menu">
+                                   				 <li>
+                                           <a title="이벤트/광고 신청" href="${userLogin}">
+                                               <span class="mm-text">이벤트/광고 신청</span>
+                                           </a>
+                                    			</li>
+                                    			<li>
+                                           <a title="상품 신청" href="${userLogin}">
+                                               <span class="mm-text">상품 신청</span>
+                                           </a>
+                                       </li>
+                                 			 </ul> 
+                                	</c:when>
+                                	<c:otherwise>
+                                	<a href="${advertisement }">신청하기</a>
+                                		<ul class="sub-menu">
+                                      <li>
+                                          <a title="이벤트/광고 신청" href="${advertisementForm}">
+                                              <span class="mm-text">이벤트/광고 신청</span>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a title="상품 신청" href="${insertProductForm}">
+                                              <span class="mm-text">상품 신청</span>
+                                          </a>
+                                      </li>
+                                    </ul> 
+                                	</c:otherwise>
+                                	</c:choose>
                                 </li>
                         <li class="menu-item-has-children active">
-                            <a href="${FAQ }">고객센터</a>
-                            <ul class="sub-menu">
+                            
+                          <c:choose>
+                                	<c:when test="${ empty sessionScope.loginUser }">
+                                		<c:url var="userLogin" value="userLogin.do"/>
+                                		<a href="${userLogin }">고객센터</a>	
+                                			<ul class="sub-menu">
+			                                    <li>
+			                                        <a title="FAQ" href="${userLogin}">
+			                                            FAQ
+			                                        </a>
+			                                    </li>
+			                                    <li>
+			                                        <a title="QNA" href="${userLogin}">
+			                                            QNA
+			                                        </a>
+			                                    </li>
+			                           </ul>
+                                	</c:when>
+                                	<c:otherwise>
+                                	<a href="${FAQ }">고객센터</a>
+                                		<ul class="sub-menu">
                                     <li>
                                         <a title="FAQ" href="${FAQ}">
                                             FAQ
@@ -2516,9 +2609,9 @@
                                             QNA
                                         </a>
                                     </li>
-                           </ul>
-                                </li>
-                    </ul>
+                           			</ul> 
+                                	</c:otherwise>
+                                	</c:choose>
                     <div class="site-info vertical">
                         <div class="site-info__item">
                             <a href="tel:+01223566678"><strong>+01 2235 666 78</strong></a>
