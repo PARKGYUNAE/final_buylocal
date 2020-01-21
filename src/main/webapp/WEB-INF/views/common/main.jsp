@@ -65,7 +65,7 @@
                                                 <li class="mainmenu__item menu-item-has-children">
                                                 	<c:url var="introduction" value="introduction.do"/>
                                                 	<c:url var="holymoly" value="holymoly.do"/>
-                                                 	<c:url var="noticeM" value="noticeMain.do"/>
+                                                 	<c:url var="noticeM" value="noticeList.do"/>
                                                     <a href="${introduction}" class="mainmenu__link">
                                                         <span class="mm-text">바이로컬</span>
                                                     </a>
