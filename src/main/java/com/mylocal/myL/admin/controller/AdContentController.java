@@ -282,6 +282,26 @@ public class AdContentController {
 		
 		
 	}
+	
+	// 땡처리 게시판 신고 
+	@RequestMapping("insertReport1.do")
+	public String report1(HttpServletRequest request, Report r) {
+		
+		
+		r.setRtContent(r.getRtContent().replace("\n", "<br>"));
+		
+		int result = adContentService.ReportInsert(r);
+		
+		if(result > 0) {
+			return "redirect:ttangMain.do";
+		} 
+		
+		else {
+			throw new AdUserException("신고하기 실패");
+		}
+		
+		
+	}
 
 /*	// 신고하기 상세보기 (이안에서 업데이트할거임) 공통값을 꺼내와야함 각자 온 게시판이 다름
 	@RequestMapping("roportView.do")

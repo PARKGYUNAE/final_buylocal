@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html>
 <head>
@@ -73,8 +75,7 @@
         <div class="main-content-wrapper">
             <div class="page-content-inner pt--80 pt-md--60">
                 <div class="container">
-                <c:url var="wishList" value="ttangWishList.do"/>
-				<c:url var="buyForm" value="ttangBuyForm.do"/>
+                
                     <div class="row no-gutters mb--80 mb-md--57">
                         <div class="col-lg-7 product-main-image">
                             <div class="product-image">
@@ -194,10 +195,10 @@
                         </div>
                         <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
                             <div class="product-summary pl-lg--30 pl-md--0">
-                                <div class="product-navigation text-right mb--20">
+                                <!-- <div class="product-navigation text-right mb--20">
                                     <a href="#" class="prev"><i class="la la-angle-double-left"></i></a>
                                     <a href="#" class="next"><i class="la la-angle-double-right"></i></a>
-                                </div>
+                                </div> -->
                                 <div class="product-rating d-flex mb--20">
                                     <div class="star-rating star-four">
                                         <span>Rated <strong class="rating">5.00</strong> out of 5</span>
@@ -210,55 +211,50 @@
                                     <span class="money" style="text-decoration:line-through;">${ttangDetail.pOriginalPrice}</span>
                                     <span class="money" style="color:red;">${ttangDetail.pFinalPrice}</span>
                                 </div>
-                                <!-- 옵션 -->
-                                <!-- <form action="#" class="variation-form mb--20">
-                                    <div class="product-size-variations d-flex align-items-center mb--15">
-                                        <p class="variation-label">Size:</p>   
-                                        <div class="product-size-variation variation-wrapper">
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
-                                                    <span class="product-size-variation-label">S</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
-                                                    <span class="product-size-variation-label">M</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
-                                                    <span class="product-size-variation-label">L</span>
-                                                </a>
-                                            </div>
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
-                                                    <span class="product-size-variation-label">XL</span>
-                                                </a>
-                                            </div>
-                                        </div>                                 
-                                    </div> -->
-                                    <a href="" class="reset_variations">Clear</a>
-                                </form>
+                                
+                                
+                                <form action="ttangAddCart.do" method="post">
                                 <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                     <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                         <label class="quantity-label" for="qty">수량:</label>
+                                        
+                                        <input type="hidden" name="pNo" value="${ttangDetail.pNo }"/>
+                                        <input type="hidden" name="cNo" value="${loginUser.cNo }"/>
+                                        
                                         <div class="quantity">
                                             <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${wishList}'">
+                                    
+                                    <c:choose>
+                                    <c:when test="${empty sessionScope.loginUser }">
+                                    <c:url var="userLogin" value="userLogin.do"/>
+                                    <%-- <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${userLogin}'">
                                         	찜
-                                    </button>
-                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${buyForm}'">
+                                    </button> --%>
+			
+                                    <button type="button" class="btn btn-shape-square btn-size-sm" onclick="location.href='${userLogin}'">
                                         	장바구니
-                                    </button>                                    
+                                    </button>
+                                    </c:when>
+                                     <c:otherwise>       
+                                     
+                                    <!-- <button type="submit" class="btn btn-shape-square btn-size-sm">
+                                        	찜
+                                    </button> -->
+			
+                                    <button type="submit" class="btn btn-shape-square btn-size-sm" >
+                                        	장바구니
+                                    </button>        
+                                            
+                                     </c:otherwise>
+                                    </c:choose>
+                                                                       
                                 </div>  
+                                </form>
                                 <div class="product-footer-meta">
                                     <p><span>Category:</span> 
-                                    <!-- 카테고리 키워드 클릭 시, 검색하기 기능으로 연결 -->
-                                        <a href="#">#감귤</a>,
-                                        <a href="#">#한라봉</a>,
-                                        <a href="#">#제철과일</a>   
+                                        <a href="#">${ttangDetail.cgName}</a>
                                     </p>
                                 </div>
                             </div>
@@ -286,8 +282,8 @@
                                         	<p>* 땡처리 게시판은 별도의 상품문의 페이지가 제공되지 않습니다. <br>
                                         	기타 문의사항은 사업자 연락처를 통해 주시기 바랍니다.</p>
                                             <!-- 그림 삽입 -->
-                                            <img src="resources/assets/img/products/prod-04-700x778.png" alt="products_information">
-                                            
+                                           <p>${ttangDetail.pInfoImage }</p>
+                                           
                                         </div>
                                     </div>
                                  <!-- 추가 정보 -->   
@@ -300,19 +296,19 @@
                                                 <tbody>
                                                     <tr>
                                                         <th >용량/수량/크기</th>
-                                                        <td >${ttangDetail.pVolumn}</td>
+                                                        <td ><%-- ${ttangDetail.pVolumn} --%></td>
                                                         <th >생산자(수입자)</th>
-                                                        <td >${ttangDetail.bShopName}</td>
+                                                        <td ><%-- ${ttangDetail.bShopName} --%></td>
                                                     </tr>
                                                     <tr>
                                                         <th >원산지</th>
                                                         <td >${ttangDetail.pOrigin}</td>
                                                         <th >제조연월일</th>
-                                                        <td >${ttangDetail.pProductDate}</td>
+                                                        <td ><%-- ${ttangDetail.pProductDate} --%></td>
                                                     </tr>
                                                     <tr>
                                                         <th colspan="1">취급방법</th>
-                                                        <td colspan="3">${ttangDetail.pTreatment}</td>
+                                                        <td colspan="3"><%-- ${ttangDetail.pTreatment} --%></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -326,15 +322,15 @@
                                                 <tbody>
                                                     <tr>
                                                         <th >상호/대표자</th>
-                                                        <td >${ttangDetail.bShopName}/${ttangDetail.bOwner}</td>
+                                                        <td ><%-- ${ttangDetail.bShopName} --%>/${ttangDetail.bOwner}</td>
                                                         <th >사업자번호</th>
-                                                        <td >${ttangDetail.bShopNo}</td>
+                                                        <td ><%-- ${ttangDetail.bShopNo} --%></td>
                                                     </tr>
                                                     <tr>
                                                         <th >e-mail</th>
-                                                        <td >${ttangDetail.cEmail}</td>
+                                                        <td ><%-- ${ttangDetail.cEmail} --%></td>
                                                         <th >연락처</th>
-                                                        <td >${ttangDetail.bPIC}</td>
+                                                        <td >${ttangDetail.cPhone}</td>
                                                     </tr>
                                                     <tr>
                                                         <th colspan="1">사업장 위치</th>
@@ -363,30 +359,32 @@
 											신고 접수 > 내용 심사 > 판매자 소명 요청 > 처리</p>
 											
 											<br>
-                                            <form action="#" class="form pr--30">
+                                            <form method="post" action="insertReport1.do" class="form pr--30">
+                                                    <input type="hidden" name="rtNum" value="${ttangDetail.pNo }"/>
+                                                    <input type="hidden" name="cNo" value="${loginUser.cNo }"/>
+                                                    
                                                     <div class="form__group mb--10">
                                                         <label class="form__label d-block" for="title">상품명<span class="required">*</span></label>
-                                                        <input type="text" name="title" id="title" class="form__input" readonly>
+                                                        <input type="text" name="rtTitle" id="title" class="form__input" value="${ttangDetail.pName}" readonly>
                                                     </div>
                                                     <div class="form__group mb--20">
                                                         <label class="form__label d-block" for="name">신고 유형<span class="required">*</span></label>
-                                                        <select>
-                                                        	<option>선택하세요</option>
-                                                        	<option>지적재산권 침해</option>
-                                                        	<option>허위과장광고</option>
-                                                        	<option>미인증 등 관련법위반</option>
-                                                        	<option>기타 불법물</option>
-                                                        	<option>중복 상품</option>
-                                                        	<option>상품정보 오류</option>
+                                                        <select name="rtCategory">
+                                                        	<option value="지적재산권 침해">지적재산권 침해</option>
+                                                        	<option value="허위과장광고">허위과장광고</option>
+                                                        	<option value="미인증 등 관련법위반">미인증 등 관련법위반</option>
+                                                        	<option value="기타 불법물">기타 불법물</option>
+                                                        	<option value="중복 상품">중복 상품</option>
+                                                        	<option value="상품정보 오류">상품정보 오류</option>
 														</select>
                                                     </div>
-                                                    <div class="form__group mb--10">
+                                                    <!-- <div class="form__group mb--10">
                                                         <label class="form__label d-block" for="title">신고 제목<span class="required">*</span></label>
                                                         <input type="text" name="title" id="title" class="form__input">
-                                                    </div>
+                                                    </div> -->
                                                     <div class="form__group mb--20">
                                                         <label class="form__label d-block" for="content">신고 내용<span class="required">*</span></label>
-                                                        <input type="text" name="content" id="content" class="form__input">
+                                                        <input type="text" name="rtContent" id="content" class="form__input" name="rtContent">
                                                     </div>
                                    
                                                     <div class="form__group">
@@ -403,6 +401,8 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <label>이상품과 연관된 상품</label>
                     <div class="row mb--75 mb-md--55">
                         <div class="col-12">
                             <div class="element-carousel slick-vertical-center" data-slick-options='{
@@ -424,6 +424,10 @@
                                     "slidesToShow": 1
                                 }}
                             ]'>
+                            	<c:forEach var="list" items="${list }" end="3">
+                            	<c:url var="ttangDetail" value="ttangDetail.do">
+                            		<c:param name="pNo" value="${list.pNo }"/>
+                            	</c:url>
                                 <div class="item">
                                     <div class="ft-product">
                                         <div class="product-inner">
@@ -431,141 +435,56 @@
                                                 <figure class="product-image--holder">
                                                     <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
                                                 </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
+                                                <a href="${ttangDetail }" class="product-overlay"></a>
                                                 <div class="product-action">
-                                                    
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    
+                                                    <a data-toggle="modal" data-target="#productModal" class="action-btn">
+                                                        <i class="la la-eye"></i>
+                                                    </a>                                                    
                                                 </div>
                                             </div>
                                             <div class="product-info">
                                                 <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
+                                                    <a href="${ttangDetail}">${list.pTitle}</a>
                                                 </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
+                                                <h3 class="product-title"><a href="${ttangDetail }">${list.pName }</a></h3>
+                                                
+                                                <div class="product-price-wrapper">
+														<span class="money"> <sup><fmt:parseNumber
+																	value="${(list.pOriginalPrice-list.pFinalPrice)/list.pOriginalPrice*100 }"
+																	integerOnly="true" />%</sup> <s>${list.pOriginalPrice }</s> 
+														</span>
+													</div>
+                                                <div class="product-price-wrapper">
+                                                	<span class="money"><h4>${list.pFinalPrice }원</h4></span>
                                                 </div>
+                                                <c:url var="ttangBuyForm" value="ttangBuyForm.do">
+                                                	<c:param name="pNo" value="${ttang.pNo }"/>
+                                                	<c:param name="cNo" value="${loginUser.cNo }"/>
+                                                </c:url>
+                                                <c:choose>
+                                                <c:when test="${empty sessionScope.loginUser }">
+                                                <c:url var="userLogin" value="userLogin.do"/>
+                                                	<a href="${userLogin }" class="add-to-cart pr--15">
+                                                		<i class="la la-plus"></i> <span>장바구니</span>
+                                                	</a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                <c:url var="ttangAddCart" value="ttangAddCart.do">
+                                                	<c:param name="pNo" value="${ttang.pNo }"/>
+                                                	<c:param name="cNo" value="${loginUser.cNo }"/>
+                                                </c:url>	
+                                                <a href="${ttangAddCart }" class="add-to-cart pr--5">
+                                                	<i class="la la-plus"></i><span>장바구니</span>
+                                                </a>
+                                               </c:otherwise>
+                                               </c:choose> 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="ft-product">
-                                        <div class="product-inner">
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                </figure>
-                                                <a href="product-details.html" class="product-overlay"></a>
-                                                <div class="product-action">
-                                                    
-                                                    <a href="wishlist.html" class="action-btn">
-                                                        <i class="la la-heart-o"></i>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-category">
-                                                    <a href="product-details.html">Chair</a>
-                                                </div>
-                                                <h3 class="product-title"><a href="product-details.html">Golden Easy Spot Chair.</a></h3>
-                                                <div class="product-info-bottom">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money">$150</span>
-                                                    </div>
-                                                    <a href="cart.html" class="add-to-cart pr--15">
-                                                        <i class="la la-plus"></i>
-                                                        <span>Add To Cart</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                </c:forEach>
+                                </div></div></div></div></div></div>
+                              
         <!-- Main Content Wrapper End -->
 
      <c:import url="../common/footer.jsp"/>
@@ -574,7 +493,7 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c56f421aa8df947305c86a5ace96deab&libraries=services,clusterer,drawing"></script>
 
-<script>
+<!-- <script>
  
  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -616,7 +535,7 @@ geocoder.addressSearch('${ttangDetail.bShopAddress}', function(result, status) {
         map.setCenter(coords);
     } 
 });     
-</script>
+</script> -->
         <!-- Global Overlay Start -->
         <div class="global-overlay"></div>
         <!-- Global Overlay End -->

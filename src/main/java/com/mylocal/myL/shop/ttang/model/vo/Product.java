@@ -25,7 +25,7 @@ public class Product {
 	private String pProductDate; // 제조연월 (20.01.15. 수정)
 	private String pTreatment; // 취급방법  (20.01.15. 수정)
 	private String bPIC; // 담당자 연락처
-	private String pStarRate; // 별점
+	private int pStarRate; // 별점
 	private String pOrigin; // 원산지
 	private String pTitle; // 상품제목
 	private String pBoard; // 상품 게시판(땡/핫딜)
@@ -34,13 +34,34 @@ public class Product {
 	public Product() {}
 
 
-	
+	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
+	         String pInfoImage, String pInfoText, String cgName, String lName, String bOwner, String bShopAddress,
+	         String cPhone, int pStarRate, String pOrigin, String pTitle, String pBoard) {
+	      super();
+	      this.pNo = pNo;
+	      this.pName = pName;
+	      this.pThumb = pThumb;
+	      this.pOriginalPrice = pOriginalPrice;
+	      this.pFinalPrice = pFinalPrice;
+	      this.pAmount = pAmount;
+	      this.pInfoImage = pInfoImage;
+	      this.pInfoText = pInfoText;
+	      this.cgName = cgName;
+	      this.lName = lName;
+	      this.bOwner = bOwner;
+	      this.bShopAddress = bShopAddress;
+	      this.cPhone = cPhone;
+	      this.pStarRate = pStarRate;
+	      this.pOrigin = pOrigin;
+	      this.pTitle = pTitle;
+	      this.pBoard = pBoard;
+	   }
 
 	
 	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
 			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, String bOwner,
 			String bShopNo, String bShopName, String bShopAddress, String cEmail, String cPhone, String pVolumn,
-			String pProductDate, String pTreatment, String bPIC, String pStarRate, String pOrigin, String pTitle,
+			String pProductDate, String pTreatment, String bPIC, int pStarRate, String pOrigin, String pTitle,
 			String pBoard) {
 		super();
 		this.pNo = pNo;
@@ -65,33 +86,6 @@ public class Product {
 		this.pProductDate = pProductDate;
 		this.pTreatment = pTreatment;
 		this.bPIC = bPIC;
-		this.pStarRate = pStarRate;
-		this.pOrigin = pOrigin;
-		this.pTitle = pTitle;
-		this.pBoard = pBoard;
-	}
-
-
-	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
-			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, String bOwner,
-			String bShopNo, String bShopName, String bShopAddress, String cPhone, String pVolumn, String pProductDate,
-			String pTreatment, String bPIC, String pStarRate, String pOrigin, String pTitle, String pBoard) {
-		super();
-		this.pNo = pNo;
-		this.pName = pName;
-		this.pThumb = pThumb;
-		this.pOriginalPrice = pOriginalPrice;
-		this.pFinalPrice = pFinalPrice;
-		this.pAmount = pAmount;
-		this.pInfoImage = pInfoImage;
-		this.pInfoText = pInfoText;
-		this.cgName = cgName;
-		this.pDate = pDate;
-		this.pStatus = pStatus;
-		this.lName = lName;
-		this.bOwner = bOwner;
-		this.bShopAddress = bShopAddress;
-		this.cPhone = cPhone;
 		this.pStarRate = pStarRate;
 		this.pOrigin = pOrigin;
 		this.pTitle = pTitle;
@@ -319,12 +313,12 @@ public class Product {
 	}
 
 
-	public String getpStarRate() {
+	public int getpStarRate() {
 		return pStarRate;
 	}
 
 
-	public void setpStarRate(String pStarRate) {
+	public void setpStarRate(int pStarRate) {
 		this.pStarRate = pStarRate;
 	}
 
@@ -359,9 +353,6 @@ public class Product {
 	}
 
 
-
-
-
 	@Override
 	public String toString() {
 		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalPrice=" + pOriginalPrice
@@ -376,6 +367,13 @@ public class Product {
 
 
 
+
+
+	
+	}
+
+
+
 	
 
 
@@ -384,4 +382,4 @@ public class Product {
 
 	
 	
-}
+
