@@ -25,15 +25,17 @@ public class Product {
 	private String pBoard; // 상품 게시판(땡/핫딜)
 	private int cNo;
 	private String lCode; // 지역코드(20.01.20. 추가)
- 
+	private Date pStartDate; // 판매시작일(20.01.25. 수정)
+	private Date pEndDate; // 판매종료일 (20.01.25. 수정)
 	
 	
 	public Product() {}
 
+
 	public Product(int pNo, String pName, String pThumb, String pOriginalT, int pOriginalPrice, int pFinalPrice,
 			int pAmount, String pInfoImage, String pOriginalInfoI, String pInfoText, String cgCode, Date pDate,
-			String pStatus, String pVolume, String pProductDate, String pTreatment,
-			String pStarRate, String pOrigin, String pTitle, String pBoard, int cNo, String lCode) {
+			String pStatus, String pVolume, String pProductDate, String pTreatment, String pStarRate, String pOrigin,
+			String pTitle, String pBoard, int cNo, String lCode, Date pStartDate, Date pEndDate) {
 		super();
 		this.pNo = pNo;
 		this.pName = pName;
@@ -56,13 +58,15 @@ public class Product {
 		this.pTitle = pTitle;
 		this.pBoard = pBoard;
 		this.cNo = cNo;
-		this.lCode= lCode;
+		this.lCode = lCode;
+		this.pStartDate = pStartDate;
+		this.pEndDate = pEndDate;
 	}
+
 
 	public int getpNo() {
 		return pNo;
 	}
-
 
 
 	public void setpNo(int pNo) {
@@ -70,11 +74,9 @@ public class Product {
 	}
 
 
-
 	public String getpName() {
 		return pName;
 	}
-
 
 
 	public void setpName(String pName) {
@@ -82,11 +84,9 @@ public class Product {
 	}
 
 
-
 	public String getpThumb() {
 		return pThumb;
 	}
-
 
 
 	public void setpThumb(String pThumb) {
@@ -94,11 +94,9 @@ public class Product {
 	}
 
 
-
 	public String getpOriginalT() {
 		return pOriginalT;
 	}
-
 
 
 	public void setpOriginalT(String pOriginalT) {
@@ -106,11 +104,9 @@ public class Product {
 	}
 
 
-
 	public int getpOriginalPrice() {
 		return pOriginalPrice;
 	}
-
 
 
 	public void setpOriginalPrice(int pOriginalPrice) {
@@ -118,11 +114,9 @@ public class Product {
 	}
 
 
-
 	public int getpFinalPrice() {
 		return pFinalPrice;
 	}
-
 
 
 	public void setpFinalPrice(int pFinalPrice) {
@@ -130,11 +124,9 @@ public class Product {
 	}
 
 
-
 	public int getpAmount() {
 		return pAmount;
 	}
-
 
 
 	public void setpAmount(int pAmount) {
@@ -142,11 +134,9 @@ public class Product {
 	}
 
 
-
 	public String getpInfoImage() {
 		return pInfoImage;
 	}
-
 
 
 	public void setpInfoImage(String pInfoImage) {
@@ -154,11 +144,9 @@ public class Product {
 	}
 
 
-
 	public String getpOriginalInfoI() {
 		return pOriginalInfoI;
 	}
-
 
 
 	public void setpOriginalInfoI(String pOriginalInfoI) {
@@ -166,11 +154,9 @@ public class Product {
 	}
 
 
-
 	public String getpInfoText() {
 		return pInfoText;
 	}
-
 
 
 	public void setpInfoText(String pInfoText) {
@@ -178,17 +164,14 @@ public class Product {
 	}
 
 
-
-	public String getcgCode() {
+	public String getCgCode() {
 		return cgCode;
 	}
 
 
-
-	public void setcgCode(String cgCode) {
+	public void setCgCode(String cgCode) {
 		this.cgCode = cgCode;
 	}
-
 
 
 	public Date getpDate() {
@@ -196,11 +179,9 @@ public class Product {
 	}
 
 
-
 	public void setpDate(Date pDate) {
 		this.pDate = pDate;
 	}
-
 
 
 	public String getpStatus() {
@@ -208,11 +189,9 @@ public class Product {
 	}
 
 
-
 	public void setpStatus(String pStatus) {
 		this.pStatus = pStatus;
 	}
-
 
 
 	public String getpVolume() {
@@ -220,11 +199,9 @@ public class Product {
 	}
 
 
-
 	public void setpVolume(String pVolume) {
 		this.pVolume = pVolume;
 	}
-
 
 
 	public String getpProductDate() {
@@ -232,17 +209,14 @@ public class Product {
 	}
 
 
-
 	public void setpProductDate(String pProductDate) {
 		this.pProductDate = pProductDate;
 	}
 
 
-
 	public String getpTreatment() {
 		return pTreatment;
 	}
-
 
 
 	public void setpTreatment(String pTreatment) {
@@ -255,11 +229,9 @@ public class Product {
 	}
 
 
-
 	public void setpStarRate(String pStarRate) {
 		this.pStarRate = pStarRate;
 	}
-
 
 
 	public String getpOrigin() {
@@ -267,11 +239,9 @@ public class Product {
 	}
 
 
-
 	public void setpOrigin(String pOrigin) {
 		this.pOrigin = pOrigin;
 	}
-
 
 
 	public String getpTitle() {
@@ -279,11 +249,9 @@ public class Product {
 	}
 
 
-
 	public void setpTitle(String pTitle) {
 		this.pTitle = pTitle;
 	}
-
 
 
 	public String getpBoard() {
@@ -291,41 +259,63 @@ public class Product {
 	}
 
 
-
-
 	public void setpBoard(String pBoard) {
 		this.pBoard = pBoard;
 	}
 
-	
+
 	public int getcNo() {
 		return cNo;
 	}
+
 
 	public void setcNo(int cNo) {
 		this.cNo = cNo;
 	}
 
+
 	public String getlCode() {
 		return lCode;
 	}
 
+
 	public void setlCode(String lCode) {
 		this.lCode = lCode;
 	}
+
+
+	public Date getpStartDate() {
+		return pStartDate;
+	}
+
+
+	public void setpStartDate(Date pStartDate) {
+		this.pStartDate = pStartDate;
+	}
+
+
+	public Date getpEndDate() {
+		return pEndDate;
+	}
+
+
+	public void setpEndDate(Date pEndDate) {
+		this.pEndDate = pEndDate;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalT=" + pOriginalT
 				+ ", pOriginalPrice=" + pOriginalPrice + ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount
 				+ ", pInfoImage=" + pInfoImage + ", pOriginalInfoI=" + pOriginalInfoI + ", pInfoText=" + pInfoText
-				+ ", cgCode=" + cgCode + ", pDate=" + pDate + ", pStatus=" + pStatus + ", pVolume="
-				+ pVolume + ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", pStarRate=" + pStarRate
+				+ ", cgCode=" + cgCode + ", pDate=" + pDate + ", pStatus=" + pStatus + ", pVolume=" + pVolume
+				+ ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", pStarRate=" + pStarRate
 				+ ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard + ", cNo=" + cNo + ", lCode="
-				+ lCode + "]";
+				+ lCode + ", pStartDate=" + pStartDate + ", pEndDate=" + pEndDate + "]";
 	}
-	
 
+	
 
 	
 

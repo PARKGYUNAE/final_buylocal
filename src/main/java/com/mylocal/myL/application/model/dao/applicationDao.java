@@ -18,9 +18,5 @@ public class applicationDao {
 		return sqlSession.insert("productMapper.insertProduct", p);
 	}
  
-	/*public int insertAdvertisement(Advertisement a) {
-		return sqlSession.insert("applicationMapper.insertAdvertisement", a);
-	}*/
-	
 	
 }

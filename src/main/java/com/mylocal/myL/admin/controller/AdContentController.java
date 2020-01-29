@@ -230,7 +230,7 @@ public class AdContentController {
 			
 		}else if(r.getRtDivide().equals("1") && r.getpBoard().equals("땡처리")) {
 			System.out.println("땡처리이지롱");
-			return "redirect:hotDealDetail.do";
+			return "redirect:ttangDetail.do";
 		}else {
 			return "redirect:hotDealDetail.do";
 		}

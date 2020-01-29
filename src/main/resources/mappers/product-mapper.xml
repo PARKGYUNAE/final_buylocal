@@ -4,7 +4,7 @@
 "http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="productMapper">
 
-	<!-- <resultMap id="productSet" type="NewProduct">
+	<resultMap id="productSet" type="productA">
 		<id property="pNo" column="P_NO"/>
 		<result property="pName" column="P_NAME"/>
 		<result property="pThumb" column="P_THUMB"/>
@@ -27,16 +27,18 @@
 		<result property="pTreatment" column="P_TREATMENT"/>
 		<result property="pOriginalThumb" column="P_ORIGINAL_THUMB"/>
 		<result property="pOriginalInfoImage" column="P_ORIGINAL_INFO_IMAGE"/>
-	</resultMap> -->
+		<result property="pStartDate" column="P_START_DATE"/>
+		<result property="pEndDate" column="P_END_DATE"/>
+	</resultMap> 
 		
-	<!-- <insert id="insertProduct" parameterType="NewProduct">
+	<insert id="insertProduct" parameterType="productA">
 		INSERT INTO PRODUCT VALUES
 		 (SEQ_PNO.NEXTVAL, #{pName}, #{pThumb},
 				#{pOriginalPrice}, #{pFinalPrice}, #{pAmount}, #{pInfoImage},
 				#{pInfoText}, #{cgCode}, SYSDATE, DEFAULT, #{lCode}, DEFAULT,
 				#{pOrigin}, #{pTitle}, #{pBoard}, #{cNo}, #{pVolume}, #{pProductDate},
-				#{pTreatment}, DEFAULT, DEFAULT) 
-	</insert> -->
+				#{pTreatment}, DEFAULT, DEFAULT, #{pStartDate}, #{pEndDate}) 
+	</insert> 
 	
 	
 	

@@ -37,18 +37,31 @@ public class applicationController {
 	private Logger logger = LoggerFactory.getLogger(applicationController.class);
 	
 	 
-	/*// 이벤트&광고 페이지 연결
+	// 이벤트&광고 페이지 연결
 	@RequestMapping("advertisementForm.do")
 	public String advertisement() {
 		return "application/advertisementForm";
-	}*/
+	}
 	
 	
 	// 상품 등록 페이지 연결
-	@RequestMapping("insertProductForm.do")
+	@RequestMapping("insertProductType.do")
 	public String insertProductForm() {
-		return "application/insertProductForm";
+		return "application/insertProductType";
 	}
+	
+	// 상품 등록 페이지 연결
+	@RequestMapping("insertHotDeal.do")
+	public String insertHotDeal() {
+		return "application/insertHotDeal";
+	}
+	
+	// 상품 등록 페이지 연결
+	@RequestMapping("insertTtang.do")
+	public String insertTtang() {
+		return "application/insertTtang";
+	}
+	
 	
 	
 	// 상품등록 폼 제출하기
@@ -58,7 +71,8 @@ public class applicationController {
 								@RequestParam(value="pInfoImage", required=false) MultipartFile iFile) {
 		
 		System.out.println("controller 지나는 중 ");
-		// 썸네일 (nullPointerException)
+		
+		// 썸네일 (NullPointerException)
 		/*if(!tFile.getOriginalFilename().equals("")) {
 			String pThumb = saveThumbFile(tFile, request);
 			
@@ -100,6 +114,8 @@ public class applicationController {
 	// 썸네일 - SaveFile
 	public String saveThumbFile(MultipartFile tFile, HttpServletRequest request) {
 		String thumbRoot = request.getSession().getServletContext().getRealPath("resources");
+		
+		System.out.println(thumbRoot);
 		
 		String saveThumbPath = thumbRoot + "\\pThumb";
 		

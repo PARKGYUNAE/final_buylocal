@@ -104,7 +104,7 @@ public class HotDealController {
 					optionArray = "가격순(low to high)";
 					break;
 				case "4":
-					optionArray = "가격순(high to l0ow)";
+					optionArray = "가격순(high to low)";
 					break;
 				}
 				int currentPage = page != null ? page : 1;
@@ -185,10 +185,10 @@ public class HotDealController {
 		
 	}
 
-	@RequestMapping("insertHotDeal.do")
+	/*@RequestMapping("insertHotDeal.do")
 	public String insertHotDeal() {
 		return "hotDeal/insertHotDealForm";
-	}
+	}*/
 
 
 	@RequestMapping("hotDealQnA.do")

@@ -98,6 +98,7 @@
                                                     	<c:param name="pNo" value="${ttang.pNo}"/>
                                                     </c:url>
                                                     <a href="${ttangD}" class="product-overlay"></a>
+                                                    <!-- 비로그인 상태에서는  로그인 화면으로 넘어가기 -->
                                                     <c:choose>
 														<c:when test="${ empty sessionScope.loginUser }">
 															<c:url var="userLogin" value="userLogin.do" />
@@ -130,11 +131,14 @@
                                                     <h3 class="product-title"><a href="${ttangD}">${ttang.pName}</a></h3>
                                                     <div class="product-info-bottom">
                                                         <div class="product-price-wrapper">
-                                                            <span class="money" style="color:black; text-decoration:line-through;">
-                                                           ${ttang.pOriginalPrice}원</span>
+                                                            <span class="money"><sup><fmt:parseNumber
+																		value="${(ttang.pOriginalPrice-ttang.pFinalPrice)/ttang.pOriginalPrice*100 }"
+																		integerOnly="true" />%</sup> <s>${ttang.pOriginalPrice }</s>
+															</span>
                                                         </div>
                                                         <div class="product-price-wrapper">
-                                                            <span class="money">${ttang.pFinalPrice}원(~%)</span>
+                                                            <span class="money" style="color:black; /* text-decoration:line-through; */">
+                                                           ${ttang.pFinalPrice}원</span>
                                                         </div>
                                                         <c:choose>
 														<c:when test="${ empty sessionScope.loginUser }">
@@ -231,7 +235,7 @@
 							<div class="shop-widget">
 								<h3 class="widget-title mb--25">태그</h3>
 								<div class="tagcloud">
-									<!-- 클릭 시, 검색 가능하게 -->
+									클릭 시, 검색 가능하게
 									<a href="#">제철과일</a> 
 									<a href="#">단품식사</a> 
 									<a href="#">혼밥</a> 

@@ -20,18 +20,59 @@ public class Product {
 	private String bShopName; // 상호명 (20.01.15. 수정)
 	private String bShopAddress; // 사업장주소 (20.01.15. 수정)
 	private String cEmail; // 회원 이메일(20.01.16. 수정)
-	private String cPhone; 
+	private String cPhone; // 회원 전화번호(=담당자 연락처)
 	private String pVolumn; // 용량/크기 (20.01.15. 수정)
 	private String pProductDate; // 제조연월 (20.01.15. 수정)
 	private String pTreatment; // 취급방법  (20.01.15. 수정)
-	private String bPIC; // 담당자 연락처
+	private String bPIC; // 담당자 연락처 (=전화번호)
 	private int pStarRate; // 별점
 	private String pOrigin; // 원산지
 	private String pTitle; // 상품제목
 	private String pBoard; // 상품 게시판(땡/핫딜)
+	private Date pStartdate; // 판매시작일(20.01.25. 수정)
+	private Date pEndDate; // 판매종료일 (20.01.25. 수정)
 	
 	
 	public Product() {}
+
+	
+	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
+			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, String bOwner,
+			String bShopNo, String bShopName, String bShopAddress, String cEmail, String cPhone, String pVolumn,
+			String pProductDate, String pTreatment, String bPIC, int pStarRate, String pOrigin, String pTitle,
+			String pBoard, Date pStartdate, Date pEndDate) {
+		super();
+		this.pNo = pNo;
+		this.pName = pName;
+		this.pThumb = pThumb;
+		this.pOriginalPrice = pOriginalPrice;
+		this.pFinalPrice = pFinalPrice;
+		this.pAmount = pAmount;
+		this.pInfoImage = pInfoImage;
+		this.pInfoText = pInfoText;
+		this.cgName = cgName;
+		this.pDate = pDate;
+		this.pStatus = pStatus;
+		this.lName = lName;
+		this.bOwner = bOwner;
+		this.bShopNo = bShopNo;
+		this.bShopName = bShopName;
+		this.bShopAddress = bShopAddress;
+		this.cEmail = cEmail;
+		this.cPhone = cPhone;
+		this.pVolumn = pVolumn;
+		this.pProductDate = pProductDate;
+		this.pTreatment = pTreatment;
+		this.bPIC = bPIC;
+		this.pStarRate = pStarRate;
+		this.pOrigin = pOrigin;
+		this.pTitle = pTitle;
+		this.pBoard = pBoard;
+		this.pStartdate = pStartdate;
+		this.pEndDate = pEndDate;
+	}
+
+
 
 
 	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
@@ -352,6 +393,29 @@ public class Product {
 		this.pBoard = pBoard;
 	}
 
+	public Date getpStartdate() {
+		return pStartdate;
+	}
+
+
+	public void setpStartdate(Date pStartdate) {
+		this.pStartdate = pStartdate;
+	}
+
+
+	public Date getpEndDate() {
+		return pEndDate;
+	}
+
+
+
+
+	public void setpEndDate(Date pEndDate) {
+		this.pEndDate = pEndDate;
+	}
+
+
+
 
 	@Override
 	public String toString() {
@@ -362,12 +426,13 @@ public class Product {
 				+ ", bShopAddress=" + bShopAddress + ", cEmail=" + cEmail + ", cPhone=" + cPhone + ", pVolumn="
 				+ pVolumn + ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", bPIC=" + bPIC
 				+ ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard
-				+ "]";
+				+ ", pStartdate=" + pStartdate + ", pEndDate=" + pEndDate + "]";
 	}
 
 
 
 
+	
 
 	
 	}

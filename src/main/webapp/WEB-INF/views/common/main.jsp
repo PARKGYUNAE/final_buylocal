@@ -201,31 +201,13 @@
                                                 </li>
 						                       <li class="mainmenu__item menu-item-has-children">
                                                     <c:url var="advertisementForm" value="advertisementForm.do"/>
-                                                    <c:url var="insertProductForm" value="insertProductForm.do"/>
+                                                    <c:url var="insertProductForm" value="insertProductType.do"/>
                                                          <c:choose>
-                                	<c:when test="${ empty sessionScope.loginUser }">
-                                		<c:url var="userLogin" value="userLogin.do"/>	
-                                		 <a href="${userLogin}" class="mainmenu__link">
+                                                      
+                                	<c:when test="${loginUser.cLevel eq '사업자' }">
+                                		 <a href="${insertProductForm}" class="mainmenu__link">
                                                         <span class="mm-text">신청하기</span>
                                                     </a>
-                                		<ul class="sub-menu">
-                                      <li>
-                                          <a title="이벤트/광고 신청" href="${userLogin}">
-                                              <span class="mm-text">이벤트/광고 신청</span>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a title="상품 신청" href="${userLogin}">
-                                              <span class="mm-text">상품 신청</span>
-                                          </a>
-                                      </li>
-                                    </ul> 
-                                	</c:when>
-                                	<c:otherwise>
-                                	 <a href="${advertisementForm}" class="mainmenu__link">
-                                                        <span class="mm-text">신청하기</span>
-                                                    </a>
-                                                  
                                 		<ul class="sub-menu">
                                       <li>
                                           <a title="이벤트/광고 신청" href="${advertisementForm}">
@@ -234,6 +216,24 @@
                                       </li>
                                       <li>
                                           <a title="상품 신청" href="${insertProductForm}">
+                                              <span class="mm-text">상품 신청</span>
+                                          </a>
+                                      </li>
+                                    </ul> 
+                                	</c:when>
+                                	<c:otherwise>
+                                	 <a href="#" onclick="sellerOnly()"class="mainmenu__link">
+                                                        <span class="mm-text">신청하기</span>
+                                                    </a>
+                                                  
+                                		<ul class="sub-menu">
+                                      <li>
+                                          <a title="이벤트/광고 신청" href="#" onclick="sellerOnly()">
+                                              <span class="mm-text">이벤트/광고 신청</span>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a title="상품 신청" href="#" onclick="sellerOnly()">
                                               <span class="mm-text">상품 신청</span>
                                           </a>
                                       </li>
@@ -2544,36 +2544,41 @@
                                 <li class="menu-item-has-children">
                                     
                                           <c:choose>
-                                	<c:when test="${ empty sessionScope.loginUser }">
-                                		<c:url var="userLogin" value="userLogin.do"/>	
-                                		<a href="${userLogin }">신청하기</a>
+                                	<c:when test="${loginUser.cLevel eq '사업자' }">
+                                		<a href="${insertProductForm}">신청하기</a>
                                 			<ul class="sub-menu">
                                    				 <li>
-                                           <a title="이벤트/광고 신청" href="${userLogin}">
+                                           <a title="이벤트/광고 신청" href="${advertisementForm}">
                                                <span class="mm-text">이벤트/광고 신청</span>
                                            </a>
                                     			</li>
                                     			<li>
-                                           <a title="상품 신청" href="${userLogin}">
+                                           <a title="상품 신청" href="${insertProductForm}">
                                                <span class="mm-text">상품 신청</span>
                                            </a>
                                        </li>
                                  			 </ul> 
                                 	</c:when>
                                 	<c:otherwise>
-                                	<a href="${advertisement }">신청하기</a>
+                                	<a href="#" onclick="sellerOnly()" >신청하기</a>
                                 		<ul class="sub-menu">
                                       <li>
-                                          <a title="이벤트/광고 신청" href="${advertisementForm}">
+                                          <a title="이벤트/광고 신청" href="#" onclick="sellerOnly()">
                                               <span class="mm-text">이벤트/광고 신청</span>
                                           </a>
                                       </li>
                                       <li>
-                                          <a title="상품 신청" href="${insertProductForm}">
+                                          <a title="상품 신청" href="#" onclick="sellerOnly()">
                                               <span class="mm-text">상품 신청</span>
                                           </a>
                                       </li>
                                     </ul> 
+                                    <!--  '신청하기' : 사업자 회원 아닐 경우, alert창 뜨기  -->
+                                    <script>
+                                    	function sellerOnly(){
+                                    		alert('사업자 회원만 접근 가능합니다.');
+                                    	};
+                                    </script>
                                 	</c:otherwise>
                                 	</c:choose>
                                 </li>
