@@ -210,7 +210,7 @@
                                                 </li>
 						                       <li class="mainmenu__item menu-item-has-children">
                                                     <c:url var="advertisementForm" value="advertisementForm.do"/>
-                                                    <c:url var="insertProductForm" value="insertProductForm.do"/>
+                                                    <c:url var="insertProductForm" value="insertProductType.do"/>
                                                                    <c:choose>
                                 	<c:when test="${loginUser.cLevel eq '사업자' }">
                                 		 <a href="${insertProductForm}" class="mainmenu__link">

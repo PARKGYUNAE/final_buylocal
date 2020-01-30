@@ -129,7 +129,7 @@ public class ttangController {
 			HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) {
 		
-		System.out.println("pNo(컨트롤러) : " + pNo);
+		// System.out.println("pNo(컨트롤러) : " + pNo);
 		
 		int currentPage = page != null ? page : 1;
 		

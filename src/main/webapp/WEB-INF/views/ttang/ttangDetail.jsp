@@ -282,7 +282,8 @@
                                         	<p>* 땡처리 게시판은 별도의 상품문의 페이지가 제공되지 않습니다. <br>
                                         	기타 문의사항은 사업자 연락처를 통해 주시기 바랍니다.</p>
                                             <!-- 그림 삽입 -->
-                                           <p>${ttangDetail.pInfoImage }</p>
+                                            <p>${ttangDetail.pInfoText}</p>
+                                           <p><img src="resources/productInfo/${ttangDetail.pInfoImage}"></p>
                                            
                                         </div>
                                     </div>
@@ -296,19 +297,19 @@
                                                 <tbody>
                                                     <tr>
                                                         <th >용량/수량/크기</th>
-                                                        <td ><%-- ${ttangDetail.pVolumn} --%></td>
+                                                        <td >${ttangDetail.pVolume}</td>
                                                         <th >생산자(수입자)</th>
-                                                        <td ><%-- ${ttangDetail.bShopName} --%></td>
+                                                        <td >${ttangDetail.bShopName}</td>
                                                     </tr>
                                                     <tr>
                                                         <th >원산지</th>
                                                         <td >${ttangDetail.pOrigin}</td>
                                                         <th >제조연월일</th>
-                                                        <td ><%-- ${ttangDetail.pProductDate} --%></td>
+                                                        <td >${ttangDetail.pProductDate}</td>
                                                     </tr>
                                                     <tr>
                                                         <th colspan="1">취급방법</th>
-                                                        <td colspan="3"><%-- ${ttangDetail.pTreatment} --%></td>
+                                                        <td colspan="3">${ttangDetail.pTreatment}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -322,13 +323,13 @@
                                                 <tbody>
                                                     <tr>
                                                         <th >상호/대표자</th>
-                                                        <td ><%-- ${ttangDetail.bShopName} --%>/${ttangDetail.bOwner}</td>
+                                                        <td >${ttangDetail.bShopName}/${ttangDetail.bOwner}</td>
                                                         <th >사업자번호</th>
-                                                        <td ><%-- ${ttangDetail.bShopNo} --%></td>
+                                                        <td >${ttangDetail.bShopNo}</td>
                                                     </tr>
                                                     <tr>
                                                         <th >e-mail</th>
-                                                        <td ><%-- ${ttangDetail.cEmail} --%></td>
+                                                        <td >${ttangDetail.cEmail}</td>
                                                         <th >연락처</th>
                                                         <td >${ttangDetail.cPhone}</td>
                                                     </tr>
@@ -343,7 +344,7 @@
                                                 </tbody>
                                             </table>     
                                             
-                                          
+                                          <div id="map" style="width:500px;height:400px;"></div>
              
              
              
@@ -487,9 +488,28 @@
                               
         <!-- Main Content Wrapper End -->
 
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c56f421aa8df947305c86a5ace96deab"></script>
+	<script>
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = { 
+		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		         // draggable: false, // 지도를 생성할때 지도 이동 및 확대/축소를 막으려면 draggable: false 옵션을 추가하세요
+		        level: 3 // 지도의 확대 레벨
+		    };
+		
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+		// 버튼 클릭에 따라 지도 이동 기능을 막거나 풀고 싶은 경우에는 map.setDraggable 함수를 사용합니다
+		function setDraggable(draggable) {
+		    // 마우스 드래그로 지도 이동 가능여부를 설정합니다
+		    map.setDraggable(draggable);    
+		}
+	</script>
+
+
      <c:import url="../common/footer.jsp"/>
 
-<!-- 지도 API(추후 추가 예정....^^) -->
+
 
         <!-- Global Overlay Start -->
         <div class="global-overlay"></div>
@@ -498,7 +518,7 @@
         <!-- Global Overlay Start -->
         <a class="scroll-to-top" href=""><i class="la la-angle-double-up"></i></a>
         <!-- Global Overlay End -->
-    </div>
+    
     <!-- Main Wrapper End -->
  
 

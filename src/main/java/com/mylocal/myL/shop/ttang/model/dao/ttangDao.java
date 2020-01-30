@@ -34,8 +34,8 @@ public class ttangDao {
 	
 	public Product selectBoard(int pNo) {
 		
-		System.out.println("ttangDao Done");
-		System.out.println("pNo(Dao) : " + pNo);
+		// System.out.println("ttangDao Done");
+		// System.out.println("pNo(Dao) : " + pNo);
 		return sqlSession.selectOne("ttangMapper.selectBoard", pNo);
 	}
 

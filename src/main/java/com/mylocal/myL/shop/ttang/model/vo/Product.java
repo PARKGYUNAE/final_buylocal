@@ -21,7 +21,7 @@ public class Product {
 	private String bShopAddress; // 사업장주소 (20.01.15. 수정)
 	private String cEmail; // 회원 이메일(20.01.16. 수정)
 	private String cPhone; // 회원 전화번호(=담당자 연락처)
-	private String pVolumn; // 용량/크기 (20.01.15. 수정)
+	private String pVolume; // 용량/크기 (20.01.15. 수정)
 	private String pProductDate; // 제조연월 (20.01.15. 수정)
 	private String pTreatment; // 취급방법  (20.01.15. 수정)
 	private String bPIC; // 담당자 연락처 (=전화번호)
@@ -38,7 +38,7 @@ public class Product {
 	
 	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
 			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, String bOwner,
-			String bShopNo, String bShopName, String bShopAddress, String cEmail, String cPhone, String pVolumn,
+			String bShopNo, String bShopName, String bShopAddress, String cEmail, String cPhone, String pVolume,
 			String pProductDate, String pTreatment, String bPIC, int pStarRate, String pOrigin, String pTitle,
 			String pBoard, Date pStartdate, Date pEndDate) {
 		super();
@@ -60,7 +60,7 @@ public class Product {
 		this.bShopAddress = bShopAddress;
 		this.cEmail = cEmail;
 		this.cPhone = cPhone;
-		this.pVolumn = pVolumn;
+		this.pVolume = pVolume;
 		this.pProductDate = pProductDate;
 		this.pTreatment = pTreatment;
 		this.bPIC = bPIC;
@@ -101,7 +101,7 @@ public class Product {
 	
 	public Product(int pNo, String pName, String pThumb, int pOriginalPrice, int pFinalPrice, int pAmount,
 			String pInfoImage, String pInfoText, String cgName, Date pDate, String pStatus, String lName, String bOwner,
-			String bShopNo, String bShopName, String bShopAddress, String cEmail, String cPhone, String pVolumn,
+			String bShopNo, String bShopName, String bShopAddress, String cEmail, String cPhone, String pVolume,
 			String pProductDate, String pTreatment, String bPIC, int pStarRate, String pOrigin, String pTitle,
 			String pBoard) {
 		super();
@@ -123,7 +123,7 @@ public class Product {
 		this.bShopAddress = bShopAddress;
 		this.cEmail = cEmail;
 		this.cPhone = cPhone;
-		this.pVolumn = pVolumn;
+		this.pVolume = pVolume;
 		this.pProductDate = pProductDate;
 		this.pTreatment = pTreatment;
 		this.bPIC = bPIC;
@@ -314,13 +314,13 @@ public class Product {
 	}
 
 
-	public String getpVolumn() {
-		return pVolumn;
+	public String getpVolume() {
+		return pVolume;
 	}
 
 
-	public void setpVolumn(String pVolumn) {
-		this.pVolumn = pVolumn;
+	public void setpVolume(String pVolume) {
+		this.pVolume = pVolume;
 	}
 
 
@@ -423,8 +423,8 @@ public class Product {
 				+ ", pFinalPrice=" + pFinalPrice + ", pAmount=" + pAmount + ", pInfoImage=" + pInfoImage
 				+ ", pInfoText=" + pInfoText + ", cgName=" + cgName + ", pDate=" + pDate + ", pStatus=" + pStatus
 				+ ", lName=" + lName + ", bOwner=" + bOwner + ", bShopNo=" + bShopNo + ", bShopName=" + bShopName
-				+ ", bShopAddress=" + bShopAddress + ", cEmail=" + cEmail + ", cPhone=" + cPhone + ", pVolumn="
-				+ pVolumn + ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", bPIC=" + bPIC
+				+ ", bShopAddress=" + bShopAddress + ", cEmail=" + cEmail + ", cPhone=" + cPhone + ", pVolume="
+				+ pVolume + ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", bPIC=" + bPIC
 				+ ", pStarRate=" + pStarRate + ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard
 				+ ", pStartdate=" + pStartdate + ", pEndDate=" + pEndDate + "]";
 	}

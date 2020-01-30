@@ -31,8 +31,8 @@ public class ttangServiceImpl implements ttangService{
 	@Override
 	public Product selectBoard(int pNo, boolean flag) {
 		
-		System.out.println("ttangServiceImpl Done");
-		System.out.println("pNo(Impl) : " + pNo);
+		// System.out.println("ttangServiceImpl Done");
+		// System.out.println("pNo(Impl) : " + pNo);
 		return ttangDao.selectBoard(pNo);
 	}
 

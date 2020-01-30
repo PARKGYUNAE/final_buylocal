@@ -90,7 +90,7 @@ public class applicationController {
 		
 		// 상품정보
 		if(!file2.getOriginalFilename().equals("")) {
-			String pInfoImage = saveFile(file2, request);
+			String pInfoImage = saveFile2(file2, request);
 						
 			if(pInfoImage != null) {
 				p.setpOriginalInfoI(file2.getOriginalFilename());
@@ -142,7 +142,7 @@ public class applicationController {
 	}
 	
 	// 상품정보 - SaveFile
-	public String saveFile (HttpServletRequest request, MultipartFile file2) {
+	public String saveFile2 (MultipartFile file2, HttpServletRequest request) {
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		
 		String savePath = root + "\\productInfo";
