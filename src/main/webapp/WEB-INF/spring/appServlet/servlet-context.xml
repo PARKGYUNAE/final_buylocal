@@ -33,21 +33,16 @@
 	 	<beans:property name="order" value="0"/>
 	 </beans:bean>
 	
+	<!-- 상품 등록 : 업로드 파일 경로 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\Users\규내\git\final_buylocal\src\main\webapp\resources\insertProduct">
+		</beans:constructor-arg>
+	</beans:bean>
 	
-	
-	<!-- 멀티파트 리졸버 (20.01.17. 규내)
+	<!-- 멀티파트 리졸버 (20.01.17. 규내) -->
 
-	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    최대업로드 가능한 바이트크기
-    <property name="maxUploadSize" value="52428800" />
-
-    디스크에 임시 파일을 생성하기 전에 메모리에 보관할수있는 최대 바이트 크기
-    property name="maxInMemorySize" value="52428800" /
-
-    defaultEncoding
-    <property name="defaultEncoding" value="utf-8" /> </bean>-->
-
-
-	
+	<beans:bean id="multipartResolver"  
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <beans:property name="maxUploadSize" value="52428800"></beans:property></beans:bean>
 	
 </beans:beans>

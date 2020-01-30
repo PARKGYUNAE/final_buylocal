@@ -79,15 +79,15 @@
 									<h5>상품 정보 등록란</h5>
                                     <input type="text" name="pTitle" id="pTitle" class="form__input mb--30" placeholder="글 제목*" required>
                                     <div id="pOriginalThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
-									<label for="pOriginalThumb"></label><input type="file" id="pOriginalThumb" name="pOriginalThumb" >								
+									<input type="file" id="uploadFile" name="uploadFile" >								
                                     </div><br>
                                     <input type="text" name="pName" id="pName" class="form__input mb--30" placeholder="상품 이름*" required>
                                     <input type="number" name="pOriginalPrice" id="pOriginalPrice" min="5000" class="form__input mb--30" placeholder="할인 전 가격(원)*" required>
 								  	<input type="number" name="pFinalPrice" id="pFinalPrice" min="5000" class="form__input mb--30" placeholder="최종 판매 가격(원)*" required>
 								  	<input type="number" name="pAmount" id="pAmount" min="1" step="1" class="form__input mb--30" placeholder="판매 수량(개)*" required>
 								  	<textarea class="form__input form__input--textarea mb--30" id="pInfoText" name="pInfoText" placeholder="상품정보(텍스트)*" required></textarea>
-                                    <div id="pInfoImgaeArea">상품정보(이미지)을 선택하세요 : &nbsp;&nbsp;
-									<input type="file" id="pOriginalInfoImage" name="pOriginalInfoImage" ></div>
+                                    <div id="uploadFilePArea">상품정보(이미지)을 선택하세요 : &nbsp;&nbsp;
+									<input type="file" id="uploadFileP" name="uploadFileP" ></div>
 									<br><br>
 									<input type="hidden" name="pBoard" id="pBoard" value="핫딜"/>
 									<div id="cgName">카테고리를 선택하세요 : &nbsp;&nbsp;
@@ -214,12 +214,12 @@
 			// 오늘 날짜
 			var d = new Date();
 			var today = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
-			// console.log("오늘 날짜 : " + d); 
+			console.log("오늘 날짜 : " + d); 
 			console.log("오늘 날짜 : " + today)
 			
 			// 판매시작일에 오늘 날짜 적용
 			document.getElementById('pStartDate').valueAsDate = new Date();
-			// $("#pStartDate").datepicker(); // datepicker 어케 씀...
+			// $("#pStartDate").datepicker(); 
 			
 			// 판매종료일은 판매시작일에서 +30일 설정
 			d.setDate(d.getDate() + 30);

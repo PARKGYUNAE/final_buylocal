@@ -79,7 +79,7 @@
 									<h5>상품 정보 등록란</h5>
                                     <input type="text" name="pTitle" id="pTitle" class="form__input mb--30" placeholder="글 제목*" required>
                                     <div id="pOriginalThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
-									<label for="pOriginalThumb"></label><input type="file" id="pOriginalThumb" name="pOriginalThumb" >								
+									<input type="file" id="uploadFile" name="uploadFile" >								
                                     </div><br>
                                     <input type="text" name="pName" id="pName" class="form__input mb--30" placeholder="상품 이름*" required>
                                     <input type="number" name="pOriginalPrice" id="pOriginalPrice" min="5000" class="form__input mb--30" placeholder="할인 전 가격(원)*" required>
@@ -87,7 +87,7 @@
 								  	<input type="number" name="pAmount" id="pAmount" min="1" step="1" class="form__input mb--30" placeholder="판매 수량(개)*" required>
 								  	<textarea class="form__input form__input--textarea mb--30" id="pInfoText" name="pInfoText" placeholder="상품정보(텍스트)*" required></textarea>
                                     <div id="pInfoImgaeArea">상품정보(이미지)을 선택하세요 : &nbsp;&nbsp;
-									<input type="file" id="pOriginalInfoImage" name="pOriginalInfoImage" ></div>	
+									<input type="file" id="uploadFileP" name="uploadFileP" ></div>	
 									<br><br>
 									<input type="hidden" name="pBoard" id="pBoard" value="땡처리"/>
 									<div id="cgName">카테고리를 선택하세요 : &nbsp;&nbsp;
