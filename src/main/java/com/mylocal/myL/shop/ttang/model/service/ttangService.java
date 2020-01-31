@@ -37,6 +37,8 @@ public interface ttangService {
 
 	ArrayList<Product> selectListCategory(int currentPage, String category);
 
+	ArrayList<com.mylocal.myL.shop.hotDeal.model.vo.Product> searchList(String searchStr);
+
 
 
 }

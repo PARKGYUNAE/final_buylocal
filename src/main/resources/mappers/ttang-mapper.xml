@@ -245,6 +245,12 @@
 	</select>
 	
 	
+	<select id="searchList" resultMap="productSet" parameterType="string">
+	 SELECT *
+	 FROM PD_VIEW
+	 WHERE P_STATUS='Y' AND P_BOARD='땡처리' AND P_NAME LIKE '%'|| #{searchStr} || '%'OR P_TITLE LIKE '%' || #{searchStr} || '%' 
+	 </select>
+	
 	
 	<!-- =========== -->
 	

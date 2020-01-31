@@ -510,12 +510,12 @@
 											
 											<br>
                                             <form method="post" action="insertReport1.do" class="form pr--30">
-                                                    <input type="hidden" name="rtNum" value="${ttangDetail.pNo }"/>
+                                                    <input type="hidden" name="rtNum" value="${hotdealDetail.pNo }"/>
                                                     <input type="hidden" name="cNo" value="${loginUser.cNo }"/>
                                                     
                                                     <div class="form__group mb--10">
                                                         <label class="form__label d-block" for="title">상품명<span class="required">*</span></label>
-                                                        <input type="text" name="rtTitle" id="title" class="form__input" value="${ttangDetail.pName}" readonly>
+                                                        <input type="text" name="rtTitle" id="title" class="form__input" value="${hotdealDetail.pName}" readonly>
                                                     </div>
                                                     <div class="form__group mb--20">
                                                         <label class="form__label d-block" for="name">신고 유형<span class="required">*</span></label>

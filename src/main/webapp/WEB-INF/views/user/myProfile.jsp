@@ -5,30 +5,56 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 <title>마이 페이지</title>
 <style>
-.row1 {
-	display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height : 300px;
-    grid-gap: 20px;
-}
+	.row1 {
+		display: grid;
+	    grid-template-columns: repeat(3, 1fr);
+	    height : 300px;
+	    grid-gap: 20px;
+	}
 
-.bl-widget.quote {
-  padding: 20px; }
-  .bl-widget.quote .inner .post-quote .quote-info {
+	.bl-widget.quote1 {
+	  padding: 20px; 
+	  color: black;
+	  
+
+	 }
+	  .bl-widget.quote1:hover {
+	  cursor: pointer;
+	  
+	  }
+  .bl-widget.quote1 .inner .post-quote .quote-info1 {
     display: flex;
     height: 70px;
     align-items: center;
-    margin-bottom: 20px; }
-    .bl-widget.quote1 .inner .post-quote .quote-info i {
+    margin-bottom: 20px; 
+    
+    }
+    
+    .bl-widget.quote1 .inner .post-quote .quote-info1 i {
+      color: black;
+      padding-right: 15px;
+      font-size: 80px; }
+      
+       .bl-widget.quote1 .inner .post-quote .quote-info1 i:hover {
       color: #ff5151;
       padding-right: 15px;
-      font-size: 100px; }
+      font-size: 80px; 
+      transition: 0.5s;
+      }
+      
   .bl-widget.quote1 .inner .post-quote p {
     font-size: 15px;
-    line-height: 1.6; }
+    line-height: 1.6; 
+    text-align: center;
+    }
+    
+    .menuBtn {
+    	all: unset;
+    
+    }
+   
 </style>
 </head>
 <body>
@@ -61,14 +87,14 @@
 	                                <!-- <div class="col-12 mb--45"> -->
 	                                <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="bl-widget quote1">
 	                                    <div class="inner">
 	                                        <div class="post-quote">
-	                                            <div class="quote-info">
+	                                            <div class="quote-info1">
 	                                                <!-- <i class="las la-address-book"></i> -->
 	                                                <div class="info">
-	                                                <i class="las la-address-book"></i>
-	                                                    <span>Designer</span>
+	                                                <i class="la la-smile-o la-5x"></i>
+	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
 	                                            <p>내 정보 수정</p>
@@ -79,32 +105,36 @@
                                      <!-- 반복 끝 -->
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="bl-widget quote1">
+	                                    <c:url var="myCart" value="myCart.do"/>
 	                                    <div class="inner">
 	                                        <div class="post-quote">
-	                                            <div class="quote-info">
-	                                                <i class="fa fa-quote1-right"></i>
+	                                        <button class="menuBtn" onclick="location.href='${ myCart }'">
+	                                            <div class="quote-info1">
+	                                                <!-- <i class="las la-address-book"></i> -->
 	                                                <div class="info">
-	                                                    <h6 class="mb--0">CLEM OJAK</h6>
-	                                                    <span>Designer</span>
+	                                                <i class="la la-shopping-cart la-5x"></i>
+	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
+	                                            </button>
 	                                            <p>장바구니</p>
 	                                        </div>
+	                                         
 	                                    </div>
+	                                   
 	                                </div>
                                     </article>      
                                      <!-- 반복 끝 --> 
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="bl-widget quote1">
 	                                    <div class="inner">
 	                                        <div class="post-quote">
-	                                            <div class="quote-info">
-	                                                <i class="fa fa-quote1-right"></i>
+	                                            <div class="quote-info1">
 	                                                <div class="info">
-	                                                    <h6 class="mb--0">CLEM OJAK</h6>
-	                                                    <span>Designer</span>
+	                                                    <i class="la la-gratipay la-5x"></i>
+	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
 	                                            <p>위시 리스트</p>
@@ -115,17 +145,16 @@
                                      <!-- 반복 끝 --> 
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="bl-widget quote1 mt--50">
 	                                    <div class="inner">
 	                                        <div class="post-quote">
-	                                            <div class="quote-info">
-	                                                <i class="fa fa-quote1-right"></i>
+	                                            <div class="quote-info1">
 	                                                <div class="info">
-	                                                    <h6 class="mb--0">CLEM OJAK</h6>
-	                                                    <span>Designer</span>
+	                                                    <i class="la la-list la-5x"></i>
+	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
-	                                            <p>구매내역</p>
+	                                            <p>구매 내역</p>
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -133,17 +162,16 @@
                                      <!-- 반복 끝 --> 
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="bl-widget quote1 mt--50">
 	                                    <div class="inner">
 	                                        <div class="post-quote">
-	                                            <div class="quote-info">
-	                                                <i class="fa fa-quote1-right"></i>
+	                                            <div class="quote-info1">
 	                                                <div class="info">
-	                                                    <h6 class="mb--0">CLEM OJAK</h6>
-	                                                    <span>Designer</span>
+	                                                <i class="la la-whatsapp la-5x"></i>
+	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
-	                                            <p>미정</p>
+	                                            <p>문의 내역</p>
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -151,14 +179,13 @@
                                      <!-- 반복 끝 --> 
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote mt--50">
+	                                    <div class="bl-widget quote1 mt--50">
 	                                    <div class="inner">
 	                                        <div class="post-quote">
-	                                            <div class="quote-info">
-	                                                <i class="fa fa-quote1-right"></i>
+	                                            <div class="quote-info1">
 	                                                <div class="info">
-	                                                    <h6 class="mb--0">CLEM OJAK</h6>
-	                                                    <span>Designer</span>
+	                                                <i class="la la-key la-5x"></i>
+	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
 	                                            <p>비밀번호 변경</p>
@@ -182,8 +209,8 @@
                                             <h5 class="mb--5">
                                             	<c:out value="${ loginUser.cName }"/>님의 마이 페이지
                                             </h5>
-                                            <p class="degne">UI/ Web Designer</p>
-                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                            <p class="degne"><i class="la la-map-marker la-2x"></i></p>
+                                            <p class="mb--25"><c:out value="${ loginUser.cAddress }"/></p>
                                             <ul class="social mb--20">
                                                 <!-- <li class="social__item">
                                                     <a href="https://www.facebook.com" class="social__link">
@@ -232,11 +259,15 @@
                                             </li>
                                             <c:if test="${ loginUser.cLevel eq '일반' }">
                                             <li>
-                                            	<c:url var="myCart" value="myCart.do"/>
+                                            	<c:url var="myCart" value="myCart.do">
+                                            		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                            	</c:url>
                                                 <a href="${ myCart }">장바구니</a>
                                             </li>
                                             <li>
-                                            	<c:url var="myFavorite" value="myFavorite.do"/>
+                                            	<c:url var="myFavorite" value="hotDealWishList.do">
+                                            		<c:param name="cNo" value="${loginUser.cNo }"/>
+                                            	</c:url>
                                                 <a href="${ myFavorite }">위시 리스트</a>
                                             </li>
                                             </c:if>                                             
@@ -245,8 +276,8 @@
                                                 <a href="${ myQna }">문의 내역</a>
                                             </li>
                                             <li>
-                                            	<c:url var="myInfo" value="myInfo.do"/>
-                                                <a href="${ myInfo }">비밀번호 변경</a>
+                                            	<c:url var="myPassword" value="myPassword.do"/>
+                                                <a href="${ myPassword }">비밀번호 변경</a>
                                             </li>
                                         </ul>
                                     </div>

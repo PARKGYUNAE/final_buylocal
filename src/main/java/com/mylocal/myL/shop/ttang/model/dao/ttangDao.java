@@ -130,5 +130,9 @@ public class ttangDao {
 		
 		return (ArrayList)sqlSession.selectList("ttangMapper.selectListC2", category, rowbounds);
 	}
+
+	public ArrayList<com.mylocal.myL.shop.hotDeal.model.vo.Product> searchList(String searchStr) {
+		return (ArrayList)sqlSession.selectList("ttangMapper.searchList", searchStr);
+	}
 	
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
  
@@ -25,7 +27,12 @@
 
 <body>
 
-	
+	<script>
+      <c:if test="${!empty msg}">
+         alert('${msg}');
+         <c:remove var="msg"/>
+      </c:if>
+   </script> 
 
  <!-- Preloader Start -->   
     <div class="ft-preloader active">
@@ -54,8 +61,8 @@
                                 <div class="header__main-inner">
                                     <div class="header__main-left">
                                         <div class="logo">
-                                            <a href="<%=request.getContextPath() %>" class="logo--normal">
-                                                <img src="resources/assets/img/logo/buylocal.png" alt="Logo">
+                                           <a href="<%=request.getContextPath() %>" class="logo--normal">
+                                                <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
                                     </div>
@@ -243,7 +250,7 @@
                                                    
                                                    
                                                  </li>
-                                                 <!-- FAQ는 로그인 안해도 열람가능하게 수정 할 예정! -->
+                                                 
                                                   <li class="mainmenu__item menu-item-has-children">
                                                     <c:url var="FAQ" value="FAQ.do"/>
                                                     <c:url var="QNAform" value="QNAform.do"/>
@@ -251,13 +258,13 @@
                                                                   <c:choose>
                                 	<c:when test="${ empty sessionScope.loginUser }">
                                 		<c:url var="userLogin" value="userLogin.do"/>	
-                                		<a href="${userLogin}" class="mainmenu__link">
+                                		<a href="${FAQ}" class="mainmenu__link">
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
                                                   <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="FAQ" href="${userLogin}">
+                                                                <a title="FAQ" href="${FAQ}">
                                                                     <span class="mm-text">FAQ</span>
                                                                 </a>
                                                             </li>
@@ -322,7 +329,9 @@
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                 	<c:if test="${ !empty sessionScope.loginUser }">
-                                                	<c:url var="myFavorite" value="myFavorite.do"/>
+                                                	<c:url var="myFavorite" value="myFavorite.do">
+                                                		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                                	</c:url>
                                                     <a href="${ myFavorite }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
@@ -350,7 +359,7 @@
 		                                                    </a>
 		                                                </c:otherwise>
 	                                              	</c:choose>
-	                                               </div>                                                </div>
+	                                               </div>                                                  </div>
                                                 <div class="header-toolbar__item d-block d-lg-none">
                                                     <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                         <div class="hamburger-icon">
@@ -414,23 +423,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="single-slide d-flex align-items-center bg-color" data-bg-color="#dbf3f2">
+                                
+                                     <div class="item">
+                                	<!-- 슬라이드 색 변경 -->
+                                    <div class="single-slide d-flex align-items-center bg-color" data-bg-color="#ffebcd">
                                         <div class="row align-items-center no-gutters w-100">
-                                            <div class="col-xl-6 col-md-6 mb-sm--50 order-md-2">
-                                                <figure data-animation="fadeInUp" data-duration=".3s" data-delay=".3s" class="pl-15 pr--60">
-                                                    <img src="resources/assets/img/slider/slider-02-img-01.png" alt="Slider O1 image" class="mx-auto">
+                                            <div class="col-xl-7 col-md-6 mb-sm--50">
+                                                <figure data-animation="fadeInUp" data-duration=".3s" data-delay=".3s" class="plr--15">
+                                                    <img src="resources/assets/img/slider/slider-01-img-01.png" alt="Slider O1 image" class="mx-auto">
                                                 </figure>
                                             </div>
-                                            <div class="col-md-5 col-lg-5 offset-md-1 order-md-1">
+                                            <div class="col-md-6 col-lg-5 offset-lg-1 offset-xl-0">
                                                 <div class="slider-content">
-                                                    <div class="slider-content__text border-color-2 mb--40 mb-md--30">
+                                                    <div class="slider-content__text mb--40 mb-md--30">
                                                         <p class="mb--15" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">#New Treand</p>
                                                         <p class="mb--20" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">Enlight your world. Make yourself more bright.</p>
                                                         <h1 class="heading__primary lh-pt7" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">Abotar Lighting</h1>
                                                     </div>
                                                     <div class="slider-content__btn">
-                                                        <a href="#" class="btn btn-outline btn-brw-2 btn-brc-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s">Shop Now</a>
+                                                        <a href="#" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s">Shop Now</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -444,1996 +455,296 @@
             </section>
             <!-- Slider area End -->
             
-           <!-- 
-            <div class="container-fluid" style="border:1px solid red; height: 400px; width: 500px">
-                <div class="container">
-                  	실시간 검색어
+           <!-- 범석 20.01.31. -->
+            <div class="container-fluid" style="height: 600px; width: 1000px">
+                <div>
+                  	<h2>실시간 인기 검색어</h2>
                 </div>
+                <hr>
+                <table style="width: 100%">
+                	<c:forEach var="searchList" items="${searchList }" end="9" varStatus="status">
+                		<tr onclick="location.href='totalSearch.do?popup-search=${searchList.searchStr}'">
+                			<td><h4>(${status.count })</h4></td>
+                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                			<td><h4>${searchList.searchStr }</h4></td>
+                		</tr>
+                	</c:forEach>
+                </table>
+                <hr>
             </div>
-            Top Sale Area End -->
+            <!-- Top Sale Area End --> <!-- Product Tab Area Start -->
+	<section class="product-tab-area mb--30 mb-md--10">
+		<div class="container">
+			<div class="row mb--28 mb-md--18 mb-sm--33">
+				<div class="col-md-3 text-md-left text-center">
+					<h2>핫딜</h2>
+				</div>
+				<div class="col-md-9">
+					<div class="tab-style-1">
+						<div
+							class="nav nav-tabs justify-content-md-end justify-content-center"
+							id="product-tab" role="tablist">
+							<c:url var="hotDeal" value="hotDealMenu.do" />
+							<a class="nav-item nav-link active" id="new-all-tab"
+								 href="${hotDeal}"> <span
+								class="nav-text">더보기</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
-            <!-- Product Tab Area Start -->
-            <section class="product-tab-area mb--30 mb-md--10">
-                <div class="container">
-                    <div class="row mb--28 mb-md--18 mb-sm--33">
-                        <div class="col-md-3 text-md-left text-center">
-                            <h2>핫딜</h2>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="tab-style-1">
-                                <div class="nav nav-tabs justify-content-md-end justify-content-center" id="product-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="${hotDeal}" role="tab" aria-controls="new-all" aria-selected="true">
-                                        <span class="nav-text">더보기</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="tab-content" id="product-tab-content">
-                                <div class="tab-pane fade show active" id="new-all" role="tabpanel" aria-labelledby="new-all-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="new-price">
-                                                                    <span class="money">$150</span>
-                                                                </span>
-                                                                <span class="old-price">
-                                                                    <span class="money">$200</span>
-                                                                </span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-09-270x300.png" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="new-wooden-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-furnished" role="tabpanel" aria-labelledby="new-furnished-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-table" role="tabpanel" aria-labelledby="new-table-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-10-270x300.png" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Product Tab Area End -->
-            <!-- Product Tab Area Start -->
-            <section class="product-tab-area mb--30 mb-md--10">
-                <div class="container">
-                    <div class="row mb--28 mb-md--18 mb-sm--33">
-                        <div class="col-md-3 text-md-left text-center">
-                            <h2>땡처리</h2>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="tab-style-1">
-                                <div class="nav nav-tabs justify-content-md-end justify-content-center" id="product-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="${ttangM }" role="tab" aria-controls="new-all" aria-selected="true">
-                                        <span class="nav-text" >더보기</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="tab-content" id="product-tab-content">
-                                <div class="tab-pane fade show active" id="new-all" role="tabpanel" aria-labelledby="new-all-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="new-price">
-                                                                    <span class="money">$150</span>
-                                                                </span>
-                                                                <span class="old-price">
-                                                                    <span class="money">$200</span>
-                                                                </span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-09-270x300.png" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="new-wooden-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-furnished" role="tabpanel" aria-labelledby="new-furnished-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-table" role="tabpanel" aria-labelledby="new-table-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-10-270x300.png" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Product Tab Area End -->
-            <section class="product-tab-area mb--30 mb-md--10">
-                <div class="container">
-                    <div class="row mb--28 mb-md--18 mb-sm--33">
-                        <div class="col-md-3 text-md-left text-center">
-                            <h2>나눔게시판</h2>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="tab-style-1">
-                                <div class="nav nav-tabs justify-content-md-end justify-content-center" id="product-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="new-all-tab" data-toggle="tab" href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
-                                        <span class="nav-text">더보기</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="tab-content" id="product-tab-content">
-                                <div class="tab-pane fade show active" id="new-all" role="tabpanel" aria-labelledby="new-all-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="new-price">
-                                                                    <span class="money">$150</span>
-                                                                </span>
-                                                                <span class="old-price">
-                                                                    <span class="money">$200</span>
-                                                                </span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-09-270x300.png" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="new-wooden-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-06-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-furnished" role="tabpanel" aria-labelledby="new-furnished-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-02-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-01-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-05-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="new-table" role="tabpanel" aria-labelledby="new-table-tab">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-10-270x300.png" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 mb--45">
-                                            <div class="ft-product HTfadeInUp">
-                                                <div class="product-inner">
-                                                    <div class="product-image">
-                                                        <figure class="product-image--holder">
-                                                            <img src="resources/assets/img/products/prod-03-270x300.jpg" alt="Product">
-                                                        </figure>
-                                                        <a href="${hotDealDetail}" class="product-overlay"></a>
-                                                        <div class="product-action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="la la-eye"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-heart-o"></i>
-                                                            </a>
-                                                            <a href="${hotDealWishList}" class="action-btn">
-                                                                <i class="la la-repeat"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-category">
-                                                            <a href="${hotDealDetail}">Chair</a>
-                                                        </div>
-                                                        <h3 class="product-title"><a href="${hotDealDetail}">Golden Easy Spot Chair.</a></h3>
-                                                        <div class="product-info-bottom">
-                                                            <div class="product-price-wrapper">
-                                                                <span class="money">$150</span>
-                                                            </div>
-                                                            <a href="${hotDealBuyForm}" class="add-to-cart pr--15">
-                                                                <i class="la la-plus"></i>
-                                                                <span>Add To Cart</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Product Tab Area End -->
-			<div class="container-fluid" style="height: 400px;">
-                <div class="container" style="height:100%">
-                  	<div class="row" style="height:100%">
-                  		<div style="border:1px solid black; height:100%; width:50%">
-                  			공지사항
-                  		</div>
-                  		<div style="border:1px solid black; height:100%; width:50%">
-                  			QNA
-                  		</div>
-                  	</div>
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-12">
+
+
+					<div class="tab-content" id="product-tab-content">
+						<div class="tab-pane fade show active" id="new-all"
+							role="tabpanel" aria-labelledby="new-all-tab">
+							<div class="row">
+								<c:forEach var="listH" items="${list}" end="3">
+									<c:url var="hotDealDetail" value="hotDealDetail.do">
+										<c:param name="pNo" value="${listH.pNo}" />
+									</c:url>
+									<div class="col-lg-3 col-sm-6 mb--45">
+										<div class="ft-product HTfadeInUp">
+											<div class="product-inner">
+												<div class="product-image">
+													<figure class="product-image--holder">
+														<img
+															src="resources/assets/img/products/prod-04-270x300.jpg"
+															alt="Product">
+													</figure>
+													<a href="${hotDealDetail}" class="product-overlay"></a>
+													<div class="product-action">
+														<a data-toggle="modal" data-target="#productModal"
+															class="action-btn"> <i class="la la-eye"></i>
+														</a> <a href="${hotDealWishList}" class="action-btn"> <i
+															class="la la-heart-o"></i>
+														</a> <a href="${hotDealWishList}" class="action-btn"> <i
+															class="la la-repeat"></i>
+														</a>
+													</div>
+												</div>
+												<div class="product-info">
+													<div class="product-category">
+														<a href="${hotDealDetail}">Chair</a>
+													</div>
+													<h3 class="product-title">
+														<a href="${hotDealDetail}">${listH.pName }</a>
+													</h3>
+													<div class="product-price-wrapper">
+														<span class="money"> <sup><fmt:parseNumber
+																	value="${(listH.pOriginalPrice-listH.pFinalPrice)/listH.pOriginalPrice*100 }"
+																	integerOnly="true" />%</sup> <s>${listH.pOriginalPrice }</s>
+														</span>
+													</div>
+													<div class="product-price-wrapper">
+														<span class="money"><h3>${listH.pFinalPrice }원</h3></span>
+													</div>
+													<div class="product-info-bottom">
+														
+														<c:choose>
+															<c:when test="${ empty sessionScope.loginUser }">
+																<c:url var="userLogin" value="userLogin.do" />
+																<a href="${userLogin }" class="add-to-cart pr--15">
+																	<i class="la la-plus"></i> <span>장바구니</span>
+																</a>
+															</c:when>
+															<c:otherwise>
+																<c:url var="hotDealAddCart" value="hotDealAddCart.do">
+																	<c:param name="pNo" value="${hot.pNo }" />
+																	<c:param name="cNo" value="${loginUser.cNo }" />
+																</c:url>
+																<a href="${hotDealAddCart }" class="add-to-cart pr--15">
+																	<i class="la la-plus"></i> <span>장바구니</span>
+																</a>
+															</c:otherwise>
+														</c:choose>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</c:forEach>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Product Tab Area End --> <!-- Product Tab Area Start -->
+	<section class="product-tab-area mb--30 mb-md--10">
+		<div class="container">
+			<div class="row mb--28 mb-md--18 mb-sm--33">
+				<div class="col-md-3 text-md-left text-center">
+					<h2>땡처리</h2>
+				</div>
+				<div class="col-md-9">
+					<div class="tab-style-1">
+						<div
+							class="nav nav-tabs justify-content-md-end justify-content-center"
+							id="product-tab" role="tablist">
+							<a class="nav-item nav-link active" id="new-all-tab"
+								data-toggle="tab" href="${ttangM }" role="tab"
+								aria-controls="new-all" aria-selected="true"> <span
+								class="nav-text">더보기</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="tab-content" id="product-tab-content">
+						<div class="tab-pane fade show active" id="new-all"
+							role="tabpanel" aria-labelledby="new-all-tab">
+							<div class="row">
+								<c:forEach var="listT" items="${list2}" end="3">
+									<div class="col-lg-3 col-sm-6 mb--45">
+										<div class="ft-product HTfadeInUp">
+											<div class="product-inner">
+												<div class="product-image">
+													<figure class="product-image--holder">
+														<img
+															src="resources/assets/img/products/prod-04-270x300.jpg"
+															alt="Product">
+													</figure>
+													<a href="#" class="product-overlay"></a>
+													<div class="product-action">
+														<a data-toggle="modal" data-target="#productModal"
+															class="action-btn"> <i class="la la-eye"></i>
+														</a> <a href="#" class="action-btn"> <i
+															class="la la-heart-o"></i>
+														</a> <a href="#" class="action-btn"> <i
+															class="la la-repeat"></i>
+														</a>
+													</div>
+												</div>
+												<div class="product-info">
+													<div class="product-category">
+														<a href="#">${listT.pName }</a>
+													</div>
+													<h3 class="product-title">
+														<a href="#">${listT.pTitle }</a>
+													</h3>
+													<div class="product-price-wrapper">
+														<span class="money"> <sup><fmt:parseNumber
+																	value="${(listT.pOriginalPrice-listT.pFinalPrice)/listT.pOriginalPrice*100 }"
+																	integerOnly="true" />%</sup> <s>${listT.pOriginalPrice }</s>
+														</span>
+													</div>
+													<div class="product-price-wrapper">
+														<span class="money"><h3>${listT.pFinalPrice }원</h3></span>
+													</div>
+													<div class="product-info-bottom">
+														
+														<c:choose>
+															<c:when test="${ empty sessionScope.loginUser }">
+																<c:url var="userLogin" value="userLogin.do" />
+																<a href="${userLogin }" class="add-to-cart pr--15">
+																	<i class="la la-plus"></i> <span>장바구니</span>
+																</a>
+															</c:when>
+															<c:otherwise>
+																<c:url var="hotDealAddCart" value="hotDealAddCart.do">
+																	<c:param name="pNo" value="#" />
+																	<c:param name="cNo" value="#" />
+																</c:url>
+																<a href="#" class="add-to-cart pr--15">
+																	<i class="la la-plus"></i> <span>장바구니</span>
+																</a>
+															</c:otherwise>
+														</c:choose>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Product Tab Area End -->
+	<section class="product-tab-area mb--30 mb-md--10">
+		<div class="container">
+			<div class="row mb--28 mb-md--18 mb-sm--33">
+				<div class="col-md-3 text-md-left text-center">
+					<h2>나눔게시판</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<table>
+						<c:if test="${fn:length(list3) <= 0}">
+                            <tr><td colspan="6">게시글이 존재하지 않습니다.</td></tr>
+                        </c:if>
+					
+						<c:forEach var="listN" items="${list3 }" varStatus="status">
+							<tr>
+								<td>${status.count }</td>
+								<td>${listN.sbTitle }</td>
+								<td>${listN.sbContent }</td>
+								<td>${listN.cName }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Product Tab Area End -->
+	<div class="container-fluid" style="height: 400px;">
+		<div class="container" style="height: 100%;">
+			<div class="row" style="height: 100%;">
+				<div style="height:100%; width:50%;">
+					<h3>공지사항</h3>
+					<table>
+					<c:if test="${fn:length(listS) <= 0}">
+                        <tr><td colspan="6">게시글이 존재하지 않습니다.</td></tr>
+                    </c:if>
+                    <c:forEach var="listS" items="${listS }" end="9" varStatus="status">
+                    	<tr style="border: 1px solid black">
+                    		<td>${status.count }</td>
+                    		<td>${listS.nTitle }</td>
+                    		<td>${listS.nDate }</td>
+                    		<td>${listS.nView }</td>
+                    	</tr>
+                    </c:forEach>
+                    </table>
+				</div>
+				<div style="height: 100%; width: 50%">
+					<h3>QNA</h3>
+					<table>
+					<c:if test="${fn:length(listQ) <= 0}">
+                        <tr><td colspan="6">게시글이 존재하지 않습니다.</td></tr>
+                    </c:if>
+                    <c:forEach var="listS" items="${listQ }" end="9" varStatus="status">
+                    	<tr style="border:1px solid black">
+                    		<td>${status.count }</td>
+                    		<td>${listQ.qTitle }</td>
+                    		<td>${listQ.qEnrollDate }</td>
+                    		<td>${listQ.cName }</td>
+                    	</tr>
+                    </c:forEach>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	</main>
             
-        
-        </main>
-        <!-- Main Content Wrapper End -->
-
 
    
         <!-- OffCanvas Menu Start -->
@@ -2590,7 +901,7 @@
                                 		<a href="${userLogin }">고객센터</a>	
                                 			<ul class="sub-menu">
 			                                    <li>
-			                                        <a title="FAQ" href="${userLogin}">
+			                                        <a title="FAQ" href="${FAQ}">
 			                                            FAQ
 			                                        </a>
 			                                    </li>
@@ -2691,17 +1002,21 @@
 
         <!-- Searchform Popup Start -->
         <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-            <div class="searchform__body">
-                <p>검색어를 입력하세요</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="지역, 상품, 업체 등 을 검색해보세요">
-                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
-                </form>
-            </div>
-        </div>
-        <!-- Searchform Popup End -->
+	<c:url var="totalSearch" value="totalSearch.do"/>
+	<div class="searchform__popup" id="searchForm">
+		<a href="#" class="btn-close"><i class="la la-remove"></i></a>
+		<div class="searchform__body">
+			<p>검색어를 입력하세요</p>
+			<form class="searchform" method="get" action="totalSearch.do">
+				<input type="text" name="popup-search" id="popup-search"
+					class="searchform__input" placeholder="지역, 상품, 업체 등 을 검색해보세요">
+				<button type="submit" class="searchform__submit">
+					<i class="la la-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+	<!-- Searchform Popup End -->
 
       
 

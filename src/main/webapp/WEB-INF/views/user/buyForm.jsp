@@ -68,7 +68,7 @@
                                                 	<c:forEach var="buylist" items="${list }">
                                                 	<tr>
 	                                                	<c:url var="deleteCart" value="deleteCart.do">
-	                                        				<c:param name="pNo" value="${buylist.pNo }"/>
+	                                        				<c:param name="cartNo" value="${buylist.cartNo }"/>
 	                                        				<c:param name="cNo" value="${buylist.cNo }"/>
 	                                        			</c:url>
                                                         <td class="product-remove text-left"><a href="${ deleteCart}"><i class="la la-remove"></i></a></td>

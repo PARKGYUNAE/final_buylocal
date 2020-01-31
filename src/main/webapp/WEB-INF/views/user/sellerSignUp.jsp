@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>사업자 회원 가입</title>
 <style>
 	h5>a{
@@ -181,7 +183,7 @@
                                         </div>
                                     </div> -->
                                     
-                                    <h3 align="center">회원가입</h3>
+                                    <h3 align="center">회원 가입</h3>
                                     <hr><br>
                                     
                                     
@@ -257,7 +259,7 @@
                                         		</td>
 								               <td>
 								                  <input type="text" id="post" name="post" class="postcodify_postcode5" value="" size="15" required/>
-								                  <button type="button" id="postcodify_search_button" class="btn btn-size-sm">검색</button>
+								                  <input type="button" onclick="sample66_execDaumPostcode()" value="우편번호 찾기" class="btn btn-size-sm"><br>
 								               </td>
 								            </tr>
 								            <tr>
@@ -353,7 +355,7 @@
                                         		</td>
 								               <td>
 								                  <input type="text" id="bPost" name="bPost" class="postcodify_postcode5" value="" size="15" required/>
-								                  <button type="button" id="postcodify_search_button" class="btn btn-size-sm">검색</button>
+								                  <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-size-sm"><br>
 								               </td>
 								            </tr>
 								            <tr>
@@ -380,78 +382,10 @@
 									            </td>
 								            </tr>
                                				 </table>
-                                            <!-- <div class="row mb--20">
-                                                <div class="col-md-6 mb-sm--20">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="f_name">아이디 <span class="required">*</span></label>
-                                                        <input type="text" name="userId" id="userId" class="form__input" placeholder="영소문자/숫자포함 5글자 이상">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="l_name">Last name <span class="required">*</span></label>
-                                                        <input type="text" name="l_name" id="l_name" class="form__input">
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                            <div class="row mb--20">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="d_name">Display name <span class="required">*</span></label>
-                                                        <input type="text" name="d_name" id="d_name" class="form__input">
-                                                        <span class="form__notes"><em>This will be how your name will be displayed in the account section and in reviews</em></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb--20">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="email">Email Address <span class="required">*</span></label>
-                                                        <input type="email" name="email" id="email" class="form__input">
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            
-                                            
-                                            <!-- 비밀번호 찾기 부분 -->
-                                            <!-- <fieldset class="form__fieldset mb--20">
-                                                <legend class="form__legend">Password change</legend>
-                                                <div class="row mb--20">
-                                                    <div class="col-12">
-                                                        <div class="form__group">
-                                                            <label class="form__label" for="cur_pass">Current password (leave blank to leave unchanged)</label>
-                                                            <input type="password" name="cur_pass" id="cur_pass" class="form__input">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb--20">
-                                                    <div class="col-12">
-                                                        <div class="form__group">
-                                                            <label class="form__label" for="new_pass">New password (leave blank to leave unchanged)</label>
-                                                            <input type="password" name="new_pass" id="new_pass" class="form__input">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="form__group">
-                                                            <label class="form__label" for="conf_new_pass">Confirm new password</label>
-                                                            <input type="password" name="conf_new_pass" id="conf_new_pass" class="form__input">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </fieldset> -->
-                                            
-                                            
-                                            <!-- <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <input type="submit" value="회원가입" class="btn btn-size-md">
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                               				 
+									
+								 
                                          
-                                       		<!-- /테이블 끝 -->
                                         </form>
                                     </div>
                                 </div>
@@ -787,77 +721,11 @@
         <!-- OffCanvas Menu End -->
 
         <!-- Mini Cart Start -->
-        <aside class="mini-cart" id="miniCart">
-            <div class="mini-cart-wrapper">
-                <div class="mini-cart__close">
-                    <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-                </div>
-                <div class="mini-cart-inner">
-                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
-                    <div class="mini-cart__content">
-                        <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
-                        </div>
-                        <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        
         <!-- Mini Cart End -->
 
         <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-            <div class="searchform__body">
-                <p>Start typing and press Enter to search</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
-                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
-                </form>
-            </div>
-        </div>
+        
         <!-- Searchform Popup End -->
 
         <!-- Qicuk View Modal Start -->
@@ -1023,6 +891,109 @@
          $("#postcodify_search_button").postcodifyPopUp(); 
       }); 
     </script>
+    
+    <!-- 회원 주소 검색용 카카오 api 스크립트 -->
+	<script>
+	    function sample66_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+	                var extraAddr = ''; // 참고항목 변수
+	
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+	
+	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있고, 공동주택일 경우 추가한다.
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    // 조합된 참고항목을 해당 필드에 넣는다.
+	                    document.getElementById("address2").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("address2").value = '';
+	                }
+	
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('post').value = data.zonecode;
+	                document.getElementById("address1").value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementById("address2").focus();
+	            }
+	        }).open();
+	    }
+	</script>
+    
+    <!-- 사업자 주소 검색용 카카오 api 스크립트 -->
+	<script>
+	    function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+	                var extraAddr = ''; // 참고항목 변수
+	
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+	
+	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있고, 공동주택일 경우 추가한다.
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    // 조합된 참고항목을 해당 필드에 넣는다.
+	                    document.getElementById("bAddress2").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("bAddress2").value = '';
+	                }
+	
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('bPost').value = data.zonecode;
+	                document.getElementById("bAddress1").value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementById("bAddress2").focus();
+	            }
+	        }).open();
+	    }
+	</script>
+       
     
     <!-- <script>
 		

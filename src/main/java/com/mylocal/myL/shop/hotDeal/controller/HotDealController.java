@@ -60,10 +60,10 @@ public class HotDealController {
 			}else {
 				switch(optionArray) {
 				case "1":
-					optionArray = "이름순(A-Z)";
+					optionArray = "별점순(high to low)";
 					break;
 				case "2":
-					optionArray = "이름순(Z-A)";
+					optionArray = "신상품순";
 					break;
 				case "3":
 					optionArray = "가격순(low to high)";
@@ -72,7 +72,6 @@ public class HotDealController {
 					optionArray = "가격순(high to low)";
 					break;
 				}
-				
 				String location = (loginUser.getcAddress().split(",")[1]).split(" ")[1];
 				ArrayList<Product> list = hotdealService.selectList(currentPage, location, optionArray);
 				
@@ -95,10 +94,10 @@ public class HotDealController {
 			}else {
 				switch(optionArray) {
 				case "1":
-					optionArray = "이름순(A-Z)";
+					optionArray = "별점순(high to low)";
 					break;
 				case "2":
-					optionArray = "이름순(Z-A)";
+					optionArray = "신상품순";
 					break;
 				case "3":
 					optionArray = "가격순(low to high)";
@@ -185,10 +184,10 @@ public class HotDealController {
 		
 	}
 
-	/*@RequestMapping("insertHotDeal.do")
+	@RequestMapping("insertHotDeal.do")
 	public String insertHotDeal() {
 		return "hotDeal/insertHotDealForm";
-	}*/
+	}
 
 
 	@RequestMapping("hotDealQnA.do")
@@ -268,12 +267,12 @@ public class HotDealController {
 	}
 	
 	@RequestMapping("hotDealBuyProduct.do")
-	public String hotDealBuyProduct(RedirectAttributes redirectAttributes, int cNo, String uId) {
+	public String hotDealBuyProduct(RedirectAttributes redirectAttributes, int cNo, String uId, String method) {
 		ArrayList<Cart> list = hotdealService.getMyCart(cNo);
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("cNo", cNo);
-		map.put("method", "카드");
+		map.put("method", method);
 		map.put("pageInfo", "핫딜");
 		map.put("uId", uId);
 		System.out.println("UID: " + uId);
@@ -340,9 +339,9 @@ public class HotDealController {
 		}
 	}
 	@RequestMapping("deleteCart.do")
-	public String deleteCart(RedirectAttributes redirectAttributes, int pNo, int cNo) {
+	public String deleteCart(RedirectAttributes redirectAttributes, int cartNo, int cNo) {
 		Cart c = new Cart();
-		c.setcNo(cNo); c.setpNo(pNo);
+		c.setcNo(cNo); c.setCartNo(cartNo);
 		int result = hotdealService.deleteCart(c);
 		if(result > 0) {
 			redirectAttributes.addAttribute("cNo", cNo);

@@ -211,6 +211,8 @@
 								location.href="${ttang}?optionArray=" + $(this).val();
 							});
 						</script>
+						
+					<!-- sidebar -->	
 					<div class="col-xl-3 col-lg-4 order-lg-1">
 						<aside class="shop-sidebar">
 							<div class="shop-widget mb--40">

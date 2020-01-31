@@ -64,7 +64,7 @@
                                     <div class="header__main-left">
                                         <div class="logo">
                                             <a href="<%=request.getContextPath() %>" class="logo--normal">
-                                                <img src="resources/assets/img/logo/buylocal.png" alt="Logo">
+                                                <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
                                     </div>
@@ -250,20 +250,20 @@
                                 	</c:choose>
                                                  </li>
                                                  
-                                                                                                  <!-- FAQ는 로그인 안해도 열람가능하게 수정 할 예정! -->
+                                                                                                  
                                                	   <li class="mainmenu__item menu-item-has-children">
                                                     <c:url var="FAQ" value="FAQ.do"/>
                                                     <c:url var="QNAform" value="QNAform.do"/>
                                                            <c:choose>
                                 	<c:when test="${ empty sessionScope.loginUser }">
                                 		<c:url var="userLogin" value="userLogin.do"/>	
-                                		<a href="${userLogin}" class="mainmenu__link">
+                                		<a href="${FAQ}" class="mainmenu__link">
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
                                                   <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="FAQ" href="${userLogin}">
+                                                                <a title="FAQ" href="${FAQ}">
                                                                     <span class="mm-text">FAQ</span>
                                                                 </a>
                                                             </li>
@@ -324,7 +324,9 @@
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                 	<c:if test="${ !empty sessionScope.loginUser }">
-                                                	<c:url var="myFavorite" value="myFavorite.do"/>
+                                                	<c:url var="myFavorite" value="myFavorite.do">
+                                                		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                                	</c:url>
                                                     <a href="${ myFavorite }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
@@ -352,7 +354,7 @@
 		                                                    </a>
 		                                                </c:otherwise>
 	                                              	</c:choose>
-	                                               </div>                                                </div>
+	                                               </div>                                                   </div>
                                                 <div class="header-toolbar__item d-block d-lg-none">
                                                     <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                         <div class="hamburger-icon">
@@ -532,7 +534,7 @@
                                 		<a href="${userLogin }">고객센터</a>	
                                 			<ul class="sub-menu">
 			                                    <li>
-			                                        <a title="FAQ" href="${userLogin}">
+			                                        <a title="FAQ" href="${FAQ}">
 			                                            FAQ
 			                                        </a>
 			                                    </li>

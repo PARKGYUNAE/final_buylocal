@@ -47,7 +47,7 @@
 	
 	<update id="deleteCustomer" parameterType="Customer">
 		UPDATE CUSTOMER
-		SET C_STATUS=#{cStatus}
+		SET C_STATUS='N'
 		WHERE C_ID=#{cId}
 	</update>
 	
@@ -57,6 +57,12 @@
 		SET C_PWD=#{cPwd}
 		WHERE C_ID=#{cId}
 	</update>
+	
+	<select id="checkPwd" parameterType="string" resultType="_int">
+		SELECT COUNT(*) 
+		FROM CUSTOMER 
+		WHERE C_PWD=#{encodePwd}
+	</select>
 	
 	
 	<!-- BusinessInfo -->

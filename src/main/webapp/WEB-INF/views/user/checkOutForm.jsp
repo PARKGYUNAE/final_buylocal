@@ -37,13 +37,17 @@
 	<form method="post" action="hotDealBuyProduct.do" id="buyformm">
 		<input type="hidden" value="${loginUser.cNo }" name="cNo">
 		<input type="hidden" name="uId" id="uId">
+		<input type="hidden" name="method" id="method">
+	</form>
+	<form method="post" action="hotDealBuyForm.do" id="buyformm2">
+		<input type="hidden" value="${loginUser.cNo }" name="cNo">
 	</form>
 	<script>
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp23257133'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 		
 		IMP.request_pay({
-		    pg : 'kakao', // version 1.1.0부터 지원.
+		    pg : 'kakaopay', // version 1.1.0부터 지원.
 		    pay_method : 'card',
 		    merchant_uid : 'merchant_' + new Date().getTime(),
 		    name : '주문명:결제테스트',
@@ -61,15 +65,20 @@
 		        //msg += '상점 거래ID : ' + rsp.merchant_uid;
 		        msg += '주문자 : ' + rsp.buyer_name + "\n";
 		        msg += '결제 금액 : ' + rsp.paid_amount + "원";
+		        msg += '결제 방법 : ' + rsp.pay_method + "\n";
 		        //msg += '카드 승인번호 : ' + rsp.apply_num;
 		    } else {
 		        var msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
 		    }
 		    alert(msg);
-		    $("#uId").val(rsp.imp_uid);
-		    $("#buyformm").submit();
-		    //location.href='${successBuy}';
+		    if(rsp.success){
+		    	$("#method").val(rsp.pay_method);
+		    	$("#uId").val(rsp.imp_uid);
+		    	$("#buyformm").submit();
+		    }else{
+		    	$("#buyformm2").submit();	
+		    }
 		});
 	</script>
 

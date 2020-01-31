@@ -3,6 +3,7 @@ package com.mylocal.myL.admin.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,6 +74,23 @@ public class AdminServiceImpl implements AdminService{
 		return adDao.selectDeal(a);
 	}
 
+	@Override
+	public ArrayList<Deal> selectDeal(int cNo) {
+		return adDao.selectDeal(cNo);
+	}
+
+	// 거래량 가져오기
+	@Override
+	public LinkedHashMap<String, Integer> selectDeal2(int cNo) {
+	
+		return adDao.selectDeal2(cNo);
+	}
+
+	// 총합 거래량 가져오기
+	@Override
+	public LinkedHashMap<String, Integer> selectDeal3(String a) {
+		return adDao.selectDeal3(a);	
+		}
 
 
 

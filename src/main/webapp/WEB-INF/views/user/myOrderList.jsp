@@ -70,7 +70,7 @@ $(document).ready(function () {
 										      </th>
 										      <th class="th-sm">수령인
 										      </th>
-										      <th class="th-sm">주문번호
+										      <th class="th-sm">결제방법
 										      </th>
 										      <th class="th-sm">수량
 										      </th>
@@ -87,7 +87,7 @@ $(document).ready(function () {
                                                   <td>${list.dDate }</td>
                                                   <td>${list.dPrice }</td>
                                                   <td>${list.dReceiver }</td>
-                                                  <td>${list.dUid }</td>
+                                                  <td>${list.dMethod }</td>
                                                   <td>${list.dAmount }</td>
                                                   <c:url var="hotDealReview" value="hotDealReview.do">
                                                   	<c:param name="dNo" value="${list.dNo }"/>
@@ -117,8 +117,6 @@ $(document).ready(function () {
 										      <th>수량
 										      </th>
 										      <th>리뷰등록
-										      </th>
-										      <th>주문번호
 										      </th>
 										  </tfoot>
 										</table>

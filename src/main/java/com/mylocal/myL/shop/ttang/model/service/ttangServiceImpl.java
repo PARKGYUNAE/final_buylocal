@@ -137,5 +137,11 @@ public class ttangServiceImpl implements ttangService{
 	}
 
 
+	@Override
+	public ArrayList<com.mylocal.myL.shop.hotDeal.model.vo.Product> searchList(String searchStr) {
+		return ttangDao.searchList(searchStr);
+	}
+
+
 
 }

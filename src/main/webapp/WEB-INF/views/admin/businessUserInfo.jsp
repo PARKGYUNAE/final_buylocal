@@ -95,8 +95,8 @@
 										<th>사업자명</th>
 										<th>상호명</th>
 										<th>업종</th>
-										<th>거래건수</th>
-										<th>거래액</th>
+										<th>사업장 위치</th>
+										<th>가입일</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -104,13 +104,13 @@
 										<th>사업자명</th>
 										<th>상호명</th>
 										<th>업종</th>
-										<th>거래건수</th>
-										<th>거래액</th>
+										<th>사업장 위치</th>
+										<th>가입일</th>
 									</tr>
 								</tfoot>
 								<tbody>
 				<c:forEach var="business" items="${ list }">
-                  <c:url var="register" value="register.do">
+                  <c:url var="register" value="adminChartSeller.do">
                   <c:param name="cNo" value="${ business.cNo }"/>
                   </c:url>
                   
@@ -119,8 +119,8 @@
              			<th>${ business.bOwner }</th>
              			<th>${ business.bShopName} </th>
              			<th>${ business.bClass}</th>
+             			<th>${ business.cAddress }</th>
              			<th>${ business.cEnrollDate }</th>
-             			<th>${ business.cLevel }</th>
              		</tr>
                   
                   </c:forEach>
@@ -147,8 +147,8 @@
 										<th>사업자명</th>
 										<th>상호명</th>
 										<th>업종</th>
-										<th>거래건수</th>
-										<th>거래액</th>
+										<th>사업장 위치</th>
+										<th>가입일</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -156,8 +156,8 @@
 										<th>사업자명</th>
 										<th>상호명</th>
 										<th>업종</th>
-										<th>거래건수</th>
-										<th>거래액</th>
+										<th>사업장 위치</th>
+										<th>가입일</th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -171,8 +171,8 @@
              			<th>${ business2.bOwner }</th>
              			<th>${ business2.bShopName} </th>
              			<th>${ business2.bClass}</th>
+             			<th>${ business2.cAddress }</th>
              			<th>${ business2.cEnrollDate }</th>
-             			<th>${ business2.cLevel }</th>
              		</tr>
                   
                   </c:forEach>

@@ -11,8 +11,7 @@
 <body id="page-top">
 
   <div id="wrapper">
-
-   <!-- Sidebar -->
+ <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="main.jsp" id="personDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,7 +71,6 @@
       </li>
     </ul>
 
-
     <div id="content-wrapper">
 
       <div class="container-fluid">
@@ -80,9 +78,9 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="#">${loginUser.cName }</a>
           </li>
-          <li class="breadcrumb-item active">통계</li>
+          <li class="breadcrumb-item active">님의 정보</li>
         </ol>
 
         <!-- Area Chart Example-->
@@ -115,7 +113,7 @@
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-chart-pie"></i>
-                	구매 이용 빈도</div>
+                	판매 이용 빈도</div>
               <div class="card-body">
                 <canvas id="myPieChart" width="100%" height="100"></canvas>
               </div>
@@ -193,20 +191,14 @@
   
   <script>
   var ctx = document.getElementById("myPieChart");
-  var arr = [];
-  var i = 0;
-  <c:forEach var="entry" items="${categorys}" varStatus="status">
-  	arr[i] = "${entry.value}";
-  	i++;
-  </c:forEach>
-  console.log("${categorys.value}");
+  
   var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
       labels: ["디지털/가전", "의류/패션잡화", "뷰티/미용", "스포츠/레저", "도서/티켓/음반", "가구/인테리어",
     	  "신선/가공식품", "게임/취미", "반려동물용품", "기타"],
       datasets: [{
-    	  data:[arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9]],
+    	  data:["${month[0]}", "${month[1]}", "${month[2]}", "${month[4]}", "${month[5]}", "${month[6]}", "${month[7]}", "${month[8]}", "${month[9]}", "${month[10]}", "${month[11]}"],
        /*  data: ["${categorys.get(0)}","${categorys.get(1)}","${categorys.get(2)}",
         	"${categorys.get(3)}","${categorys.get(4)}","${categorys.get(5)}",
         	"${categorys.get(6)}","${categorys.get(7)}","${categorys.get(8)}","${categorys.get(9)}"], */
@@ -221,12 +213,12 @@
   var ctx = document.getElementById("myAreaChart");
   var arr = [];
   var i = 0;
-  <c:forEach var="entry" items="${countMonth}" varStatus="status">
+  <c:forEach var="entry" items="${monthCount}" varStatus="status">
 	arr[i] = "${entry.value}";
 	i++;
 </c:forEach>
-  
-  
+
+
   var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -276,7 +268,7 @@
             padding: 10,
             // Include a dollar sign in the ticks
             callback: function(value, index, values) {
-              return  number_format(value) + '원일껄?!';
+              return  number_format(value) + '건';
             }
           },
           gridLines: {
@@ -317,12 +309,8 @@
   
   </script>
   
-  
-  
   <!-- 월별 수익 -->
  <script>
- console.log("${ max }");
- 
   var ctx = document.getElementById("myBarChart");
   var myLineChart = new Chart(ctx, {
     type: 'bar',
@@ -332,7 +320,7 @@
         label: "Revenue",
         backgroundColor: "rgba(2,117,216,1)",
         borderColor: "rgba(2,117,216,1)",
-        data: ["${month[0]*0.1}", "${month[1]*0.1}", "${month[2]*0.1}", "${month[3]*0.1}", "${month[4]*0.1}", "${month[5]*0.1}", "${month[6]*0.1}", "${month[7]*0.1}", "${month[8]*0.1}", "${month[9]*0.1}", "${month[10]*0.1}", "${month[11]*0.1}"],
+        data: ["${month[0]}", "${month[1]}", "${month[2]}", "${month[3]}", "${month[4]}", "${month[5]}", "${month[6]}", "${month[7]}", "${month[8]}", "${month[9]}", "${month[10]}", "${month[11]}"],
       }],
     },
     options: {
@@ -351,7 +339,7 @@
         yAxes: [{
           ticks: {
             min: 0,
-            max: ${max*0.1},
+            max: ${max},
             maxTicksLimit: 6
           },
           gridLines: {

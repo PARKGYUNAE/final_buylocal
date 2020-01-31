@@ -69,10 +69,12 @@ public class UserDao {
 	public int updatePwd(Customer c) {
 		return sqlSession.update("userMapper.updatePwd", c);
 	}
-
+	
+	// 구매 건수 조회
 	public int countDeal(int cNo) {
 		return sqlSession.selectOne("userMapper.countDeal", cNo);
 	}
+	
 
 	
 	// 범석
@@ -80,6 +82,8 @@ public class UserDao {
    public ArrayList<Deal> selectDealList2(int cNo) {
       return (ArrayList)sqlSession.selectList("userMapper.selectDealList2", cNo);
    }
+
+
 	
 
 }

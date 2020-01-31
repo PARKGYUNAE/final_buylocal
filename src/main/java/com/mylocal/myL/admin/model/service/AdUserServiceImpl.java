@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mylocal.myL.admin.model.dao.AdUserDao;
 import com.mylocal.myL.admin.model.vo.Customer;
-import com.mylocal.myL.admin.model.vo.Seller;
+import com.mylocal.myL.admin.model.vo.Deal;
 
 @Service("adUserService")
 public class AdUserServiceImpl implements AdUserService{
@@ -42,7 +42,7 @@ public class AdUserServiceImpl implements AdUserService{
 
 		// 일반 회원 구매 정보 리스트
 		@Override
-		public ArrayList<Customer> NormalUserBuyList() {
+		public ArrayList<Deal> NormalUserBuyList() {
 			return adUserDao.NormalUserBuyList();
 		}
 
@@ -57,6 +57,12 @@ public class AdUserServiceImpl implements AdUserService{
 		@Override
 		public int updateBusiness(Customer cu) {
 			return adUserDao.UpdateBusinessGrade(cu);
+		}
+		
+		// 사업자 등급 업데이트 businessinfo도
+		@Override
+		public int updateBusiness2(Customer cu) {
+			return adUserDao.UpdateBusinessGrade2(cu);
 		}
 
 		// 일반회원 블랙처리 업데이트
@@ -77,6 +83,14 @@ public class AdUserServiceImpl implements AdUserService{
 		public Customer selectNormalCustomer(int cNo) {
 			return adUserDao.selectNormalCustomer(cNo);
 		}
+
+		// 사업자 등록 인증 취소
+		@Override
+		public int deleteGrade(int cNo) {
+			return adUserDao.UpdateGradeCancel(cNo);
+		}
+
+
 
 	
 

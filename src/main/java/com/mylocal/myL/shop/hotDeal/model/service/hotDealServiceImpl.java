@@ -10,6 +10,7 @@ import com.mylocal.myL.common.Deal;
 import com.mylocal.myL.common.Favorite;
 import com.mylocal.myL.common.PageInfo;
 import com.mylocal.myL.common.Pagination;
+import com.mylocal.myL.common.SearchList;
 import com.mylocal.myL.shop.hotDeal.model.dao.hotDealDao;
 
 import com.mylocal.myL.shop.hotDeal.model.vo.Product;
@@ -36,7 +37,7 @@ public class hotDealServiceImpl implements hotDealService{
 		
 		int listCount = 0;
 		
-		if(location.equals("이름순(A-Z)") || location.equals("이름순(Z-A)") || location.equals("가격순(low to high)")
+		if(location.equals("별점순(high to low)") || location.equals("신상품순") || location.equals("가격순(low to high)")
 				|| location.equals("가격순(high to low)")) {
 			listCount = hotdealDao.getListCount();
 		}else {
@@ -148,6 +149,16 @@ public class hotDealServiceImpl implements hotDealService{
 	@Override
 	public Deal selectDeal(int dNo) {
 		return hotdealDao.selectDeal(dNo);
+	}
+
+	@Override
+	public ArrayList<Product> searchList(String searchStr) {
+		return hotdealDao.searchList(searchStr);
+	}
+
+	@Override
+	public ArrayList<SearchList> selectSearchList() {
+		return hotdealDao.selectSearchList();
 	}
 
 

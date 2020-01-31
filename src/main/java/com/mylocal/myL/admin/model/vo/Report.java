@@ -17,11 +17,14 @@ public class Report {
 	private int rtNum; // 구분값 코드번호
 	private String rtDivide; // 신고 위치
 	private String pBoard; // 핫딜 땡처리 비교
+	private String cName2; // 신고대상
+	private String cStatus;
 	
 	public Report() {}
 
 	public Report(int rtNo, String rtTitle, String rtContent, Date rtDate, int cNo, String cName, String rtCategory,
-			String rtStatus, int sbNo, int hNo, int rtNum, String rtDivide, String pBoard) {
+			String rtStatus, int sbNo, int hNo, int rtNum, String rtDivide, String pBoard, String cName2,
+			String cStatus) {
 		super();
 		this.rtNo = rtNo;
 		this.rtTitle = rtTitle;
@@ -36,6 +39,8 @@ public class Report {
 		this.rtNum = rtNum;
 		this.rtDivide = rtDivide;
 		this.pBoard = pBoard;
+		this.cName2 = cName2;
+		this.cStatus = cStatus;
 	}
 
 	public int getRtNo() {
@@ -142,13 +147,32 @@ public class Report {
 		this.pBoard = pBoard;
 	}
 
+	public String getcName2() {
+		return cName2;
+	}
+
+	public void setcName2(String cName2) {
+		this.cName2 = cName2;
+	}
+
+	public String getcStatus() {
+		return cStatus;
+	}
+
+	public void setcStatus(String cStatus) {
+		this.cStatus = cStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Report [rtNo=" + rtNo + ", rtTitle=" + rtTitle + ", rtContent=" + rtContent + ", rtDate=" + rtDate
 				+ ", cNo=" + cNo + ", cName=" + cName + ", rtCategory=" + rtCategory + ", rtStatus=" + rtStatus
 				+ ", sbNo=" + sbNo + ", hNo=" + hNo + ", rtNum=" + rtNum + ", rtDivide=" + rtDivide + ", pBoard="
-				+ pBoard + "]";
+				+ pBoard + ", cName2=" + cName2 + ", cStatus=" + cStatus + "]";
 	}
+
+	
+	
 
 	
 	

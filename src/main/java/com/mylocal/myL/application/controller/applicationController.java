@@ -56,7 +56,7 @@ public class applicationController {
 		return "application/insertProductType";
 	}
 	
-	// 상품 등록 페이지 연결
+	/*// 상품 등록 페이지 연결
 	@RequestMapping("insertHotDeal.do")
 	public String insertHotDeal() {
 		return "application/insertHotDeal";
@@ -66,7 +66,7 @@ public class applicationController {
 	@RequestMapping("insertTtang.do")
 	public String insertTtang() {
 		return "application/insertTtang";
-	}
+	}*/
 	
 	
 	

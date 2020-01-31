@@ -1,12 +1,18 @@
 package com.mylocal.myL.share.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mylocal.myL.common.PageInfo;
+import com.mylocal.myL.share.model.vo.Category;
+import com.mylocal.myL.share.model.vo.Local;
 import com.mylocal.myL.share.model.vo.Reply;
+import com.mylocal.myL.share.model.vo.SearchCondition;
 import com.mylocal.myL.share.model.vo.ShareBoard;
 
 @Repository("shareDao")
@@ -15,9 +21,16 @@ public class ShareDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public ArrayList<ShareBoard> selectList() {
+	public int getListCount() {
 		
-		return (ArrayList)sqlSession.selectList("shareboardMapper.selectList");
+		return sqlSession.selectOne("shareboardMapper.getListCount"); 
+	}
+	
+	public ArrayList<ShareBoard> selectList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
+		HashMap<String, Object> hash = new HashMap<>();
+		return (ArrayList)sqlSession.selectList("shareboardMapper.selectList",null, rowbounds);
 	}
 
 	public ShareBoard detailBoard(ShareBoard sbno) {
@@ -30,14 +43,14 @@ public class ShareDao {
 		return sqlSession.insert("shareboardMapper.insertBoard",sb);
 	}
 
-	public int updateBoard(ShareBoard sb) {
+	public int updateBoard(ShareBoard sbNo) {
 		
-		return sqlSession.update("shareboardMapper.updateBoard", sb);
+		return sqlSession.update("shareboardMapper.updateShareBoard", sbNo);
 	}
 
-	public int deleteBoard(int shno) {
+	public int deleteBoard(ShareBoard sbNo) {
 		
-		return sqlSession.update("shareboardMapper.deleteBoard", shno);
+		return sqlSession.update("shareboardMapper.deleteShareBoard", sbNo);
 	}
 
 	public int addReadCount(ShareBoard sbno) {
@@ -71,5 +84,59 @@ public class ShareDao {
 		
 		return sqlSession.insert("replyMapper.insertReply2",r);
 	}*/
+
+	public ArrayList<ShareBoard> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		return (ArrayList)sqlSession.selectList("shareboardMapper.selectSearchResultList",sc, rowBounds);
+	}
+
+	public int getSearchResultListCount(SearchCondition sc) {
+		
+		return sqlSession.selectOne("shareboardMapper.selectSearchResultCount",sc);
+	}
+
+	public int getCGSearchResultListCount(Category cg) {
+		
+		return sqlSession.selectOne("shareboardMapper.selectCGSearchResultListCount",cg);
+	}
+
+	public ArrayList<ShareBoard> selectCGSearchResultList(Category cg, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());	
+		
+		return (ArrayList)sqlSession.selectList("shareboardMapper.selectCGSearchResultList",cg, rowBounds);
+	}
+
+	public ArrayList<Local> localSelectList(Local lc) {
+		
+		return (ArrayList)sqlSession.selectList("shareboardMapper.localSelectList", lc);
+	}
+
+	public ArrayList<ShareBoard> selectListAddress(PageInfo pi, String location) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		HashMap<String, Object> hash = new HashMap<>();
+		hash.put("location", location);
+		
+		return (ArrayList)sqlSession.selectList("shareboardMapper.selectListAddress",hash, rowbounds);
+	}
+
+	public ArrayList<String> selectTitleList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		return (ArrayList)sqlSession.selectList("shareboardMapper.selectTitleList",null,rowbounds);
+	}
+
+	public ArrayList<ShareBoard> searchList(String searchStr) {
+		return (ArrayList)sqlSession.selectList("shareboardMapper.searchList", searchStr);
+	}
+
 
 }

@@ -96,6 +96,13 @@
 		<result property="dUid" column="D_UID"/>
 	</resultMap>
 	
+	
+	<resultMap id="searchSet" type="SearchList">
+		<id property="searchNo" column="SEARCH_NO"/>
+		<result property="searchStr" column="SEARCHSTR"/>
+		<result property="searchCount" column="SEARCHCOUNT"/>
+	</resultMap>
+	
 	<!-- 로그인 x 일 경우 상품 갯수 조회 -->
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*)
@@ -207,6 +214,10 @@
 		
 	</select>
 	
+	
+	
+	
+	
 	<insert id="addCart" parameterType="Cart">
 		INSERT INTO CART
 		VALUES(SEQ_CART.NEXTVAL, #{cNo}, #{pNo}, #{quantity})
@@ -257,5 +268,29 @@
 		JOIN CUSTOMER ON(CUSTOMER.C_NO = PRODUCT.C_NO)
 		WHERE D_NO = #{dNo}
 	</select>
+	
+	<!--  1.31. -->
+	<select id="searchList" parameterType="string" resultMap="productSet">
+		SELECT *
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND (P_NAME LIKE '%'|| #{searchStr} || '%' 
+		OR P_TITLE LIKE '%' || #{searchStr} || '%')
+	</select>
+	
+	<select id="selectSearchList" resultMap="searchSet">
+		SELECT *
+		FROM SEARCHLIST
+		ORDER BY SEARCHCOUNT DESC
+	</select>
+	
+	<update id="updateSearchList" parameterType="string">
+		UPDATE SEARCHLIST
+		SET SEARCHCOUNT = SEARCHCOUNT+1
+		WHERE SEARCHSTR = #{searchStr}
+	</update>
+	
+	<insert id="insertSearchList" parameterType="string">
+		INSERT INTO SEARCHLIST VALUES(SEQ_SEARCHLIST.NEXTVAL, #{searchStr}, 1)
+	</insert>
 	
 </mapper>
