@@ -1,6 +1,7 @@
 package com.mylocal.myL.admin.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -17,22 +18,26 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mylocal.myL.admin.model.exception.AdContentException;
 import com.mylocal.myL.admin.model.exception.AdUserException;
 import com.mylocal.myL.admin.model.service.AdContentService;
-import com.mylocal.myL.admin.model.vo.HotDeal;
+import com.mylocal.myL.admin.model.vo.Notice;
 import com.mylocal.myL.admin.model.vo.Product;
 import com.mylocal.myL.admin.model.vo.QnA;
 import com.mylocal.myL.admin.model.vo.Report;
 import com.mylocal.myL.admin.model.vo.ShareBoard;
-import com.mylocal.myL.admin.model.vo.Ttang;
 
 @Controller
 public class AdContentController {
 	@Autowired
 	AdContentService adContentService;
+	
+
+	
 
 	@Autowired // 메일 전송을 위한
 	private JavaMailSender mailSender;
 
 	// QnA 신고 목록 불러오기
+	// @SuppressWarnings("deprecation")
+	
 	@RequestMapping("Count.do")
 	public ModelAndView qnaCount(ModelAndView mv, HttpServletRequest request) {
 
@@ -41,6 +46,21 @@ public class AdContentController {
 		int count = adContentService.CountQna();
 		
 		int count1 = adContentService.CountReport();
+		
+		// 통계 가져오기
+
+
+		 String a= null;
+		 LinkedHashMap<String, Integer> d2 = adContentService.selectDeal(a);
+		 
+		 System.out.println("궁금한 : " + d2);
+		 
+
+		 
+		 
+		
+		// 공지사항 리스트 불러오기
+		ArrayList<Notice> list = adContentService.NoticeSelectList();
 
 		// Count 세션 Name Qna갯수
 		int Number = count;
@@ -56,6 +76,8 @@ public class AdContentController {
 
 		mv.addObject("count", count);
 		mv.addObject("reportCount", Number1);
+		mv.addObject("list", list);
+		mv.addObject("todayCount", d2);
 
 		mv.setViewName("admin/main");
 		return mv;
@@ -119,13 +141,13 @@ public class AdContentController {
 	public ModelAndView ContentMenu(ModelAndView mv) {
 		ArrayList<Product> list1 = adContentService.HotDealSelectList(); // 핫딜
 		ArrayList<Product> list2 = adContentService.TtangSelectList(); // 땡처리
-		// ArrayList<ShareBoard> list3 = adContentService.ShareBoardSelectList(); //
+		ArrayList<ShareBoard> list3 = adContentService.ShareBoardSelectList(); //
 		// 나눔게시판
 
-		if (list1 != null || list2 != null /* || list3 !=null */) {
+		if (list1 != null || list2 != null  || list3 !=null ) {
 			mv.addObject("list1", list1); // 핫딜
 			mv.addObject("list2", list2); // 땡처리
-			// mv.addObject("list3", list3); // 나눔 게시판
+			mv.addObject("list3", list3); // 나눔 게시판
 			mv.setViewName("admin/content");
 
 		} else {
@@ -193,6 +215,11 @@ public class AdContentController {
 	public ModelAndView BlackMenu(ModelAndView mv,  HttpServletRequest request) {
 		ArrayList<Report> list = adContentService.ReportSelectList();
 		
+		
+		// 신고 처리 목록
+		ArrayList<Report> list2 = adContentService.ReportSelectList2();
+		
+		
 		HttpSession session = request.getSession();
 		
 		
@@ -206,6 +233,7 @@ public class AdContentController {
 		
 		if(list != null) {
 			mv.addObject("list", list);
+			mv.addObject("list2", list2);
 			mv.setViewName("admin/report");
 		}else {
 			throw new AdUserException("신고하기 조회 실패");
@@ -222,17 +250,23 @@ public class AdContentController {
 		Report r = null;
 		
 		r = adContentService.selectReport(rtNo);
+
+		System.out.println("잘나옴?" + r);
 		
+		System.out.println("rt값은?" + r.getRtDivide());
 		
 		if(r.getRtDivide().equals("1") && r.getpBoard().equals("핫딜")){
 			redirectAttributes.addAttribute("pNo", r.getRtNum());
 			return "redirect:hotDealDetail.do";
 			
 		}else if(r.getRtDivide().equals("1") && r.getpBoard().equals("땡처리")) {
-			System.out.println("땡처리이지롱");
-			return "redirect:hotDealDetail.do";
+			redirectAttributes.addAttribute("pNo", r.getRtNum());
+			return "redirect:ttangDetail.do";
+		}else if(r.getRtDivide().equals("2")) {
+			redirectAttributes.addAttribute("sbNo", r.getRtNum());
+			return "redirect:sbdetail.do";
 		}else {
-			return "redirect:hotDealDetail.do";
+			return null;
 		}
 		
 
@@ -263,6 +297,7 @@ public class AdContentController {
 	
 
 	
+	// 핫딜 게시판 신고
 	@RequestMapping("insertReport.do")
 	public String report(HttpServletRequest request, Report r) {
 		
@@ -282,6 +317,50 @@ public class AdContentController {
 		
 		
 	}
+	
+	// 땡처리 게시판 신고 
+	@RequestMapping("insertReport1.do")
+	public String report1(HttpServletRequest request, Report r) {
+		
+		
+		r.setRtContent(r.getRtContent().replace("\n", "<br>"));
+		
+		int result = adContentService.ReportInsert(r);
+		
+		if(result > 0) {
+			return "redirect:ttangMain.do";
+		} 
+		
+		else {
+			throw new AdUserException("신고하기 실패");
+		}
+		
+		
+	}
+	
+	// 게시판 신고
+	@RequestMapping("insertReport2.do")
+	public String report2(HttpServletRequest request, Report r) {
+		
+		
+		System.out.println("잘 나옴" + r);
+		
+		
+		r.setRtContent(r.getRtContent().replace("\n", "<br>"));
+		
+		int result = adContentService.ReportInsert1(r);
+		
+		if(result > 0) {
+			return "redirect:shareboard.do";
+		} 
+		
+		else {
+			throw new AdUserException("신고하기 실패");
+		}
+		
+		
+	}
+	
 
 /*	// 신고하기 상세보기 (이안에서 업데이트할거임) 공통값을 꺼내와야함 각자 온 게시판이 다름
 	@RequestMapping("roportView.do")
@@ -320,6 +399,8 @@ public class AdContentController {
 
 	}
 	
+	
+	// 회원 정지 시키면서 신고목록 N 으로 바꿔주기
 	@RequestMapping("reportUpdate.do")
 	public String reportUpdate(ModelAndView mv, int rtNo) {
 		Report r = adContentService.selectReport(rtNo);
@@ -327,12 +408,42 @@ public class AdContentController {
 		Product p = adContentService.SelectProduct(r.getRtNum());
 		
 		
+		// 신고목록 N으로
 		int result = adContentService.deleteReport(rtNo);
 		
+		// 회원 정지
 		int result1 = adContentService.updateCustomer(p.getcNo());
 		
+		// 사업자 정지
+		int result2 = adContentService.updateBusinessInfo(p.getcNo());
 		
-		if(result > 0 || result1 > 0) {
+		int result3 = adContentService.updateProduct(p.getcNo());
+		
+		if(result > 0 || result1 > 0 || result2 >0 || result3 > 0) {
+			return "redirect:report.do";
+			
+		}else {
+			throw new AdUserException("신고처리 실패"); 
+		}
+		
+		
+		
+	}
+	
+	// 회원 정지만 해제
+	@RequestMapping("reportUpdate2.do")
+	public String reportUpdate2(ModelAndView mv, int rtNo) {
+		
+		Report r = adContentService.selectReport(rtNo);
+		
+		Product p = adContentService.SelectProduct(r.getRtNum());
+		
+		
+		int result = adContentService.updateCustomer2(p.getcNo());
+		
+
+		
+		if(result >  0) {
 			return "redirect:report.do";
 			
 		}else {

@@ -2,14 +2,8 @@ package com.mylocal.myL.admin.model.service;
 
 import java.util.ArrayList;
 
-import com.mylocal.myL.admin.model.vo.Advertise;
 import com.mylocal.myL.admin.model.vo.Customer;
-import com.mylocal.myL.admin.model.vo.HotDeal;
-import com.mylocal.myL.admin.model.vo.QnA;
-import com.mylocal.myL.admin.model.vo.Report;
-import com.mylocal.myL.admin.model.vo.Seller;
-import com.mylocal.myL.admin.model.vo.ShareBoard;
-import com.mylocal.myL.admin.model.vo.Ttang;
+import com.mylocal.myL.admin.model.vo.Deal;
 
 public interface AdUserService {
 
@@ -24,7 +18,7 @@ public interface AdUserService {
 		ArrayList<Customer> BusinessUserInfoSelectList2();
 
 		// 일반회원 구매 정보리스트
-		ArrayList<Customer> NormalUserBuyList();
+		ArrayList<Deal> NormalUserBuyList();
 
 	    // 일반 회원 정보 리스트(두명 다 쓸거같은뎅)
 		ArrayList<Customer> NormalUserInfoList();
@@ -34,6 +28,9 @@ public interface AdUserService {
 
 		// 사업자 등급 업데이트
 		int updateBusiness(Customer cu);
+		
+		// 사업자 등급 업데이트 b_permit
+		int updateBusiness2(Customer cu);
 
 		// 일반회원 신고/탈퇴 관련 처리
 		int UpdateNormalUser(Customer cu);
@@ -43,6 +40,11 @@ public interface AdUserService {
 
 		// 일반 회원 정보 상세보기
 		Customer selectNormalCustomer(int cNo);
+
+		// 등급 권한 취소하기
+		int deleteGrade(int cNo);
+
+		
 
 	
 		

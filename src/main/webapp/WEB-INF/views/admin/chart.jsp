@@ -16,49 +16,62 @@
     <ul class="sidebar navbar-nav">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="main.jsp" id="personDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>회원관리</span>
+         <i class="fa fa-cog fa-spin fa-fw"></i> 
+          <span>일반회원</span>
         </a>
          <div class="dropdown-menu" aria-labelledby="personDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <c:url var="normalUser" value="normalUser.do"/>
-          <c:url var="businessUser" value="businessUser.do"/>
-          <a class="dropdown-item" href="${ normalUser }">일반 회원</a>
-          <a class="dropdown-item" href="${ businessUser }">사업자 회원</a>
+          <c:url var="normalUserInfo" value="normalUserInfo.do"/>
+          <c:url var="normalUserBuy" value="adNormalUserBuy.do"/>
+          <a class="dropdown-item" href="${ normalUserInfo }">회원정보</a>
+          <a class="dropdown-item" href="${ normalUserBuy }">구매내역</a>
           </div>
       </li>
       
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>게시글관리</span>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="main.jsp" id="personDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-cog fa-spin fa-fw"></i> 
+          <span>사업자회원</span>
         </a>
-        
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <!-- 말이 게시글이지 핫딜, 팝니다삽니다 다 불러옵니다! -->
-          <c:url var="content" value="content.do"/>
-          <c:url var="qna" value="qna.do"/>
-          <c:url var="report" value="report.do"/>
-          <a class="dropdown-item" href="${ content }">게시글 관리</a>
-           <a class="dropdown-item" href="${ qna }">Q&A</a>
-          <a class="dropdown-item" href="${ report }">신고 리스트</a>
-          <div class="dropdown-divider"></div>
-        </div>
+         <div class="dropdown-menu" aria-labelledby="personDropdown">
+         <c:url var="businessUserInfo" value="businessUserInfo.do"/>
+          <c:url var="businessUserGrade" value="businessUserGrade.do"/>
+          <a class="dropdown-item" href="${ businessUserInfo }">사업자 정보</a>
+          <a class="dropdown-item" href="${ businessUserGrade }">등급 관리</a>
+          </div>
       </li>
-      <li class="nav-item">
-      		<c:url var="advertise" value="advertise.do"/>
-        <a class="nav-link" href="${ advertise }">
+      
+      
+      
+            <li class="nav-item">
+      		 <c:url var="content" value="content.do"/>
+        <a class="nav-link" href="${ content }">
+          <i class="fas fa-fw fa-tachometer-alt"></i> 
+          <span>게시글 관리</span></a>
+      </li>
+      
+            <li class="nav-item">
+      		<c:url var="qna" value="qna.do"/>
+        <a class="nav-link" href="${ qna }">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>지역광고</span></a>
+          <span>Q&A</span></a>
       </li>
+      
+            <li class="nav-item">
+      		<c:url var="report" value="report.do"/>
+        <a class="nav-link" href="${ report }">
+          <i class="fa fa-camera-retro fa-1x"></i>
+          <span>신고목록</span></a>
+      </li>
+      
+
       <li class="nav-item">
       		<c:url var="adminChart" value="adminChart.do"/>
         <a class="nav-link" href="${adminChart}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-chart-area"></i>
           <span>통계</span></a>
       </li>
     </ul>
+
 
     <div id="content-wrapper">
 
@@ -76,7 +89,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            	사이트 이용자수</div>
+            	월별 거래량</div>
           <div class="card-body">
           
              <div class="chart-area">
@@ -206,12 +219,20 @@
   
   <script>
   var ctx = document.getElementById("myAreaChart");
+  var arr = [];
+  var i = 0;
+  <c:forEach var="entry" items="${countMonth}" varStatus="status">
+	arr[i] = "${entry.value}";
+	i++;
+</c:forEach>
+  
+  
   var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
       datasets: [{
-        label: "총수입",
+        label: "거래량",
         lineTension: 0.3,
         backgroundColor: "rgba(78, 115, 223, 0.05)",
         borderColor: "rgba(78, 115, 223, 1)",
@@ -223,7 +244,7 @@
         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
         pointHitRadius: 10,
         pointBorderWidth: 2,
-        data: ["${month[0]}", "${month[1]}", "${month[2]}", "${month[3]}", "${month[4]}", "${month[5]}", "${month[6]}", "${month[7]}", "${month[8]}", "${month[9]}", "${month[10]}", "${month[11]}"],
+        data: [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9], arr[10], arr[11]],
       }],
     },
     options: {
@@ -287,7 +308,7 @@
         callbacks: {
           label: function(tooltipItem, chart) {
             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-            return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel);
           }
         }
       }
@@ -296,8 +317,12 @@
   
   </script>
   
+  
+  
   <!-- 월별 수익 -->
  <script>
+ console.log("${ max }");
+ 
   var ctx = document.getElementById("myBarChart");
   var myLineChart = new Chart(ctx, {
     type: 'bar',
@@ -307,7 +332,7 @@
         label: "Revenue",
         backgroundColor: "rgba(2,117,216,1)",
         borderColor: "rgba(2,117,216,1)",
-        data: ["${month[0]}", "${month[1]}", "${month[2]}", "${month[3]}", "${month[4]}", "${month[5]}", "${month[6]}", "${month[7]}", "${month[8]}", "${month[9]}", "${month[10]}", "${month[11]}"],
+        data: ["${month[0]*0.1}", "${month[1]*0.1}", "${month[2]*0.1}", "${month[3]*0.1}", "${month[4]*0.1}", "${month[5]*0.1}", "${month[6]*0.1}", "${month[7]*0.1}", "${month[8]*0.1}", "${month[9]*0.1}", "${month[10]*0.1}", "${month[11]*0.1}"],
       }],
     },
     options: {
@@ -326,7 +351,7 @@
         yAxes: [{
           ticks: {
             min: 0,
-            max: 30000,
+            max: ${max*0.1},
             maxTicksLimit: 6
           },
           gridLines: {

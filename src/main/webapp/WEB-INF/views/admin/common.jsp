@@ -40,6 +40,7 @@
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <div class="input-group" style= "color: white">
         ${ loginUser.cName } 님 환영합니다. 
+       
       </div>
     </form>
 
@@ -99,7 +100,8 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <c:url var="logout" value="logout.do"/>
-          <a class="dropdown-item" href="${ logout }">로그 아웃</a>
+          <a class="dropdown-item" href="<%=request.getContextPath() %>">메인으로</a>
+           <a class="dropdown-item" href="${ logout }">로그 아웃</a>
 <!--           <a class="dropdown-item" href="#">Activity Log</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a> -->

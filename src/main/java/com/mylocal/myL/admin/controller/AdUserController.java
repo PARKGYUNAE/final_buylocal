@@ -11,7 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mylocal.myL.admin.model.exception.AdUserException;
 import com.mylocal.myL.admin.model.service.AdUserService;
 import com.mylocal.myL.admin.model.vo.Customer;
-import com.mylocal.myL.admin.model.vo.Seller;
+import com.mylocal.myL.admin.model.vo.Deal;
+
 
 @Controller
 public class AdUserController {
@@ -50,7 +51,11 @@ public class AdUserController {
 	// 일반 회원 구매정보
 	@RequestMapping("adNormalUserBuy.do")
 	public ModelAndView adNormalUserBuy(ModelAndView mv) {
-		ArrayList<Customer> list = adUserService.NormalUserBuyList();
+		ArrayList<Deal> list = adUserService.NormalUserBuyList();
+		
+		System.out.println(list);
+		
+		mv.addObject("list", list);
 		mv.setViewName("admin/normalUserBuy");
 
 		return mv;
@@ -109,6 +114,8 @@ public class AdUserController {
 		
 		// 정상적인 사업자 리스트
 		ArrayList<Customer> list = adUserService.BusinessUserInfoSelectList();
+		
+		
 
 		// 신고된 사업자 리스트
 		ArrayList<Customer> list2 = adUserService.BusinessUserInfoSelectList2();
@@ -184,14 +191,33 @@ public class AdUserController {
 	public ModelAndView BusinessUserGradeUpdate(ModelAndView mv, Customer cu) {
 
 		int result = adUserService.updateBusiness(cu);
+		
+		int result2 = adUserService.updateBusiness2(cu);
 
-		if (result > 0) {
+		if (result > 0 || result2>0) {
 			mv.setViewName("admin/businessUserGrade");
 			mv.addObject("msg", "사업자 등록이 완료되었습니다.");
 		} else {
 			throw new AdUserException("사업자 등급 변경 실패!");
 		}
 		return mv;
+	}
+	
+	// 사업자 등록 취소
+	@RequestMapping("gradeCancel.do")
+	public String gradeCancel(ModelAndView mv, int cNo) {
+
+		
+		int result = adUserService.deleteGrade(cNo);
+		
+		
+		if(result > 0) {
+			return "redirect:businessUserGrade.do";
+		}else {
+			throw new AdUserException("허위 신고 처리 실패"); 
+		}
+		
+
 	}
 
 	// 사업자 블랙 취소 (업데이트)

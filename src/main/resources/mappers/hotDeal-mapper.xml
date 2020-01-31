@@ -4,7 +4,7 @@
 "http://mybatis.rog/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hotDealMapper">
 
-	<resultMap id="productSet" type="product">
+	<!-- <resultMap id="productSet" type="product">
 		<id property="pNo" column="P_NO"/>
 		<result property="pName" column="P_NAME"/>
 		<result property="pThumb" column="P_THUMB"/>
@@ -24,7 +24,36 @@
 		<result property="pOrigin" column="P_ORIGIN"/>
 		<result property="pTitle" column="P_TITLE"/>
 		<result property="pBoard" column="P_BOARD"/>
-	</resultMap>
+	</resultMap> -->
+	<resultMap id="productSet" type="product">
+		<id property="pNo" column="P_NO"/>
+		<result property="pName" column="P_NAME"/>
+		<result property="pThumb" column="P_THUMB"/>
+		<result property="pOriginalPrice" column="P_ORIGINALPRICE"/>
+		<result property="pFinalPrice" column="P_FINALPRICE"/>
+		<result property="pAmount" column="P_AMOUNT"/>
+		<result property="pInfoImage" column="P_INFO_IMAGE"/>
+		<result property="pInfoText" column="P_INFO_TEXT"/>
+		<result property="cgName" column="CG_NAME"/>
+		<result property="pDate" column="P_DATE"/>
+		<result property="pStatus" column="P_STATUS"/>
+		<result property="lName" column="L_NAME"/>
+		<result property="bOwner" column="B_OWNER"/>
+		<result property="bShopNo" column="B_SHOP_NO"/>
+		<result property="bShopName" column="B_SHOP_NAME"/>
+		<result property="bShopAddress" column="B_SHOP_ADDRESS"/>
+		<result property="cEmail" column="C_EMAIL"/>
+		<result property="cPhone" column="C_PHONE"/>
+		<result property="pVolume" column="P_VOLUME"/>
+		<result property="pProductDate" column="P_PRODUCT_DATE"/>
+		<result property="pTreatment" column="P_TREATMENT"/>
+		<result property="pStarRate" column="P_STARRATE"/>
+		<result property="pOrigin" column="P_ORIGIN"/>
+		<result property="pTitle" column="P_TITLE"/>
+		<result property="pBoard" column="P_BOARD"/>
+	</resultMap> 
+	
+	
 	<resultMap id="reviewSet" type="review">
 		<id property="rvNo" column="RV_NO"/>
 		<result property="rvStarRate" column="RV_STARRATE"/>
@@ -65,6 +94,13 @@
 		<result property="dRevCheck" column="D_REVCHECK"/>
 		<result property="dStatus" column="D_STATUS"/>
 		<result property="dUid" column="D_UID"/>
+	</resultMap>
+	
+	
+	<resultMap id="searchSet" type="SearchList">
+		<id property="searchNo" column="SEARCH_NO"/>
+		<result property="searchStr" column="SEARCHSTR"/>
+		<result property="searchCount" column="SEARCHCOUNT"/>
 	</resultMap>
 	
 	<!-- 로그인 x 일 경우 상품 갯수 조회 -->
@@ -154,7 +190,7 @@
 	
 	<select id="selectBoard" resultMap="productSet">
 		SELECT * 
-		FROM PD_VIEW
+		FROM PD_VIEW2
 		WHERE P_STATUS='Y' AND P_BOARD='핫딜'
 		AND P_NO = #{pNo}
 	</select>
@@ -177,6 +213,10 @@
 		WHERE CART.C_NO = #{cNo}
 		
 	</select>
+	
+	
+	
+	
 	
 	<insert id="addCart" parameterType="Cart">
 		INSERT INTO CART
@@ -228,5 +268,29 @@
 		JOIN CUSTOMER ON(CUSTOMER.C_NO = PRODUCT.C_NO)
 		WHERE D_NO = #{dNo}
 	</select>
+	
+	<!--  1.31. -->
+	<select id="searchList" parameterType="string" resultMap="productSet">
+		SELECT *
+		FROM PD_VIEW
+		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND (P_NAME LIKE '%'|| #{searchStr} || '%' 
+		OR P_TITLE LIKE '%' || #{searchStr} || '%')
+	</select>
+	
+	<select id="selectSearchList" resultMap="searchSet">
+		SELECT *
+		FROM SEARCHLIST
+		ORDER BY SEARCHCOUNT DESC
+	</select>
+	
+	<update id="updateSearchList" parameterType="string">
+		UPDATE SEARCHLIST
+		SET SEARCHCOUNT = SEARCHCOUNT+1
+		WHERE SEARCHSTR = #{searchStr}
+	</update>
+	
+	<insert id="insertSearchList" parameterType="string">
+		INSERT INTO SEARCHLIST VALUES(SEQ_SEARCHLIST.NEXTVAL, #{searchStr}, 1)
+	</insert>
 	
 </mapper>

@@ -24,6 +24,7 @@
 							<li><a href="<%=request.getContextPath() %>">Home</a></li>
 							<li class="current"><span>신청하기</span></li>
 							<li class="current"><span>상품 등록하기</span></li>
+							<li class="current"><span>땡처리 게시판</span></li>
                         </ul>
                     </div>
                 </div>
@@ -60,25 +61,40 @@
                                 <form action="insertProduct.do" method="post" enctype="multipart/form-data">
  									
  									<!-- cNo, lCode 보내기 -->
-                                   <c:set var="cAddress" value="${ loginUser.cAddress}"/>
-                                   <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}"/> 
-                                   <input type="hidden" id="cAddress" value="${cAddress}"/>
+                                   <div id="sellerInformation" style="border:4px double black; padding:10px;">
+ 									<h5>판매자 정보</h5>
+ 									<p style="font-size:14px;">*하단의 판매자 정보는 마이페이지에서 수정 가능합니다.</p>
+ 									
+                                   	판매자 이름 <input type="text" id="cName" value="${loginUser.cName}" class="form__input mb--30"/ readonly>
+       								업체 이름 <input type="text" value="#"class="form__input mb--30" readonly/>         
+               						 업체 주소 <input type="text" id="cAddress" value="${loginUser.cAddress}" class="form__input mb--30" readonly/>
+                					업체 연락처 <input type="text" id="cPhone" value="${loginUser.cPhone}" class="form__input mb--30" readonly/>
+                                   <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}" class="form__input mb--30"/> 
                                    <input type="hidden" id="lCode" name="lCode"/>
+									</div>
 
+									<br><br>
+									<hr class="delimeter">
+									<br>
+									<h5>상품 정보 등록란</h5>
                                     <input type="text" name="pTitle" id="pTitle" class="form__input mb--30" placeholder="글 제목*" required>
                                     <div id="pOriginalThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
-									<label for="pOriginalThumb"></label><input type="file" id="pOriginalThumb" name="pOriginalThumb" >								
-                                    </div><br>
+									<input type="file" id="uploadFile" name="uploadFile" >								
+                                    </div>
+                                    
+                                    
+                                    <br>
                                     <input type="text" name="pName" id="pName" class="form__input mb--30" placeholder="상품 이름*" required>
-									<div id="pBoardArea">게시 할 게시판 위치를 정해주세요 : &nbsp;&nbsp;
-									<label><input type="radio" id="pBoard_type1" name="pBoard" value="땡처리" onClick="updateList(this.value)">땡처리게시판</label> 
-									&nbsp;&nbsp;
-									<label><input type="radio" id="pBoard_type2" name="pBoard" value="핫딜" onClick="updateList(this.value)" checked>핫딜게시판</label>
-									</div><br>
-									<!-- 선택한 게시판 위치에 따라 제공되는 카테고리 선택지 다르게 -->
+                                    <input type="number" name="pOriginalPrice" id="pOriginalPrice" min="5000" class="form__input mb--30" placeholder="할인 전 가격(원)*" required>
+								  	<input type="number" name="pFinalPrice" id="pFinalPrice" min="5000" class="form__input mb--30" placeholder="최종 판매 가격(원)*" required>
+								  	<input type="number" name="pAmount" id="pAmount" min="1" step="1" class="form__input mb--30" placeholder="판매 수량(개)*" required>
+								  	<textarea class="form__input form__input--textarea mb--30" id="pInfoText" name="pInfoText" placeholder="상품정보(텍스트)*" required></textarea>
+                                    <div id="pInfoImgaeArea">상품정보(이미지)을 선택하세요 : &nbsp;&nbsp;
+									<input type="file" id="uploadFileP" name="uploadFileP" ></div>	
+									<br><br>
+									<input type="hidden" name="pBoard" id="pBoard" value="땡처리"/>
 									<div id="cgName">카테고리를 선택하세요 : &nbsp;&nbsp;
-									<select id="cgName1" name="cgCode">
-										<option value="">땡처리</option>
+									<select id="cgName" name="cgCode">
 										<option value="T1">한식</option>
 										<option value="T2">중식</option>
 										<option value="T3">일식</option>
@@ -86,45 +102,28 @@
 										<option value="T5">커피/제과</option>
 										<option value="T6">기타</option>
 									</select>
-									<select id="cgName2" name="cgCode">
-										<option value="">핫딜</option>
-										<option value="C1">디지털/가전</option>
-										<option value="C2">의류/패션잡화</option>
-										<option value="C3">뷰티/미용</option>
-										<option value="C4">스포츠/레저</option>
-										<option value="C5">도서/티켓/음반</option>
-										<option value="C6">가구/인테리어</option>
-										<option value="C7">신선/가공식품</option>
-										<option value="C8">게임/취미</option>
-										<option value="C9">반려동물용품</option>
-										<option value="C10">기타</option>
-									</select>
 									</div><br>
 								 	<div id="pStartDateArea"> 판매 시작일 : &nbsp;&nbsp;
-									<input type="date" name="pStartDate" id="pStartDate" min="&{currentDate};%">
+									<input type="date" name="pStartDate" id="pStartDate" readonly>
 									</div><br>
 									<div id="pEndDateArea"> 판매 종료일 : &nbsp;&nbsp;
-									<input type="date" name="pEndDate" id="pEndDate" min="&{currentDate};%">
-									<br>* 판매 종료일은 핫딜 게시판의 경우만 선택 가능합니다.
+									<input type="date" name="pEndDate" id="pEndDate" readonly>
+									
 									</div>
-									<br>
-								 	<input type="number" name="pOriginalPrice" id="pOriginalPrice" min="5000" class="form__input mb--30" placeholder="할인 전 가격(원)*" required>
-								  	<input type="number" name="pFinalPrice" id="pFinalPrice" min="5000" class="form__input mb--30" placeholder="최종 판매 가격(원)*" required>
-								  	<input type="number" name="pAmount" id="pAmount" min="1" step="1" class="form__input mb--30" placeholder="판매 수량(개)*" required>
-								  	<textarea class="form__input form__input--textarea mb--30" id="pInfoText" name="pInfoText" placeholder="상품정보(텍스트)*" required></textarea>
-                                    <div id="pInfoImgaeArea">상품정보(이미지)을 선택하세요 : &nbsp;&nbsp;
-									<label for="pOriginalInfoImage"></label><input type="file" id="pOriginalInfoImage" name="pOriginalInfoImage" >								
-                                    </div>
+									
                                     
                                     <br><hr><br>
                                     <h5>추가정보 입력란</h5>
-                                    <input type="text" name="pVolume" id="pVolume" class="form__input mb--30" placeholder="용량/크기(kg)">
-                                    <input type="date" name="pProductDate" id="pProductDate" class="form__input mb--30" placeholder="제조연월">
-                                    <input type="text" name="pOrigin" id="pOrigin" class="form__input mb--30" placeholder="원산지">
-                                    <input type="text" name="pTreatment" id="pTreatment" class="form__input mb--30" placeholder="취급방법">
-                                    
+                                    <div id="nProductDate"> 제조연월일 : &nbsp;&nbsp; 
+                                    	<input type="date" name="pProductDate" id="pProductDate"></div><br>
+                                    	<input type="text" name="pVolume" id="pVolume" class="form__input mb--30" placeholder="용량/크기(kg)">	
+                     					<input type="text" name="pOrigin" id="pOrigin" class="form__input mb--30" placeholder="원산지">
+                    					<input type="text" name="pTreatment" id="pTreatment" class="form__input mb--30" placeholder="취급방법">
+                                                            
                                     <br><br>
                                     <input type="submit" class="btn btn-shape-round form__submit">
+                                    
+                                    
                                 </form>
                             </div>
                         </div>
@@ -137,27 +136,7 @@
 	</div>
 
 	<script type="text/javascript">
-	
-	$("input[name='pBoard']:radio").change(function(){
-		var pBoard = this.value;
-		
-		if(pBoard == "땡처리"){
-			$("#cgName1").show();
-			$('#cgName2').hide();
-			$('#cgName2').prop("disabled", true); // 비워주기
-			$('#cgName2').val("");
-			$('#pEndDateArea').hide(); 
-		} else if (pBoard == "핫딜") {
-			$("#cgName1").hide();
-			$("#cgName1").prop("disabled", true); 
-			$("#cgName1").val(""); // 비워주기
-			$("#cgName2").show(); 
-			$('#pEndDateArea').show();
-		}
-		
-	});
-	
-	
+
 	// cNo 보내기  & cAddress를 lCode로 바꿔 보내기
 	$(function(){
 
@@ -219,7 +198,7 @@
 		} else if (cAddress.indexOf('강동구') != -1){
 			$("#lCode").val('L25');
 		} else {
-			alert("당신은 서울특별시민이 아니네요! 상품 등록이 어렵겠습니다. :)");
+			/* alert("당신은 서울특별시민이 아니네요!"); */
 		}
 		
 		var lCode = $('#lCode').val();
@@ -227,43 +206,45 @@
 		
 		
 	});	
-	
+		// 땡처리
 		$(function(){
 			
 			// 오늘 날짜
 			var d = new Date();
-			var currentDate = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			var currentDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
 			console.log("오늘 날짜 : " + currentDate);
 			
-			// 게시판 선택에 따라 카테고리, 판매종료일 변화(땡처리 선택시, 숨김)
-			$("#cgName1").hide();
+			// 땡처리 선택 시, 판매종료일은 판매시작일과 동일하게 설정(등록일과 동일하게)
+			 document.getElementById('pStartDate').valueAsDate = new Date;
+			 document.getElementById('pEndDate').valueAsDate = new Date();
 			
-			// 땡처리 선택
-			$(document).on('click', '#pBoard_type1', function(){
-					$("#cgName1").show();
-					$('#cgName2').hide();
-					$('#cgName2').val(""); // 비워주기
-					$('#pEndDateArea').hide(); 
-			});
+			/* $("#pStartDate").datepicker({
+                dateFormat: 'yy-mm-dd' //Input Display Format 변경
+                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+                ,changeYear: true //콤보박스에서 년 선택 가능
+                ,changeMonth: true //콤보박스에서 월 선택 가능                
+                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                
+            });  */
 			
-			$(document).on('click', '#pBoard_type2', function(){
-					$("#cgName1").hide();
-					$("#cgName1").val(""); // 비워주기
-					$('#cgName2').show(); 
-					$('#pEndDateArea').show();
-			});
+			// $("#pStartDate").datepicker('setDate', 'today');
+			// $("#pEndDate").datepicker('setDate', 'today');
 			
 			
-			// 땡처리 선택 시, 판매종료일은 판매시작일과 동일하게 설정
-			$("#pStartDate").change(function(){
-				var pStartDate = $("#pStartDate").val();
-				$('#pEndDate').val(pStartDate);
-				var pEndDate = $("#pEndDate").val();
-				console.log("판매종료일 : " + pEndDate);
-			});
 		});
 		
-		
+		var cgCode = $("#cgCode").val;
+		console.log(cgCode);
 		
 		
 	</script>
@@ -281,6 +262,10 @@
 	<!-- Global Overlay End -->
 	<!-- Main Wrapper End -->
 	
+	<!-- datepicker -->
+	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+ -->     
 	
 </body>
 </html>

@@ -12,7 +12,7 @@ import com.mylocal.myL.common.Cart;
 import com.mylocal.myL.common.Deal;
 import com.mylocal.myL.common.Favorite;
 import com.mylocal.myL.common.PageInfo;
-
+import com.mylocal.myL.common.SearchList;
 import com.mylocal.myL.shop.hotDeal.model.vo.Product;
 import com.mylocal.myL.shop.hotDeal.model.vo.Review;
 
@@ -48,7 +48,7 @@ public class hotDealDao {
 	public ArrayList<Product> selectList(PageInfo pi, String location) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowbounds = new RowBounds(offset, pi.getBoardLimit());
-		if(location.equals("이름순(A-Z)") || location.equals("이름순(Z-A)") || location.equals("가격순(low to high)")
+		if(location.equals("별점순(high to low)") || location.equals("신상품순") || location.equals("가격순(low to high)")
 				|| location.equals("가격순(high to low)")) {
 			HashMap<String, Object> h = new HashMap<>();
 			h.put("optionArray", location);
@@ -151,6 +151,33 @@ public class hotDealDao {
 
 	public Deal selectDeal(int dNo) {
 		return sqlSession.selectOne("hotDealMapper.selectDeal", dNo);
+	}
+
+	public ArrayList<Product> searchList(String searchStr) {
+		ArrayList<SearchList> list = (ArrayList)sqlSession.selectList("hotDealMapper.selectSearchList");
+		
+		if(list.isEmpty()) {
+			sqlSession.insert("hotDealMapper.insertSearchList", searchStr);
+		}else {
+			boolean tf = false;
+			for(int i = 0; i < list.size(); i++) {
+				if(searchStr.equals(list.get(i).getSearchStr())){
+					sqlSession.update("hotDealMapper.updateSearchList", searchStr);
+					tf = true;
+					break;
+				}
+			}
+			if(tf == false) {
+				sqlSession.insert("hotDealMapper.insertSearchList", searchStr);
+			}
+		}
+		
+		
+		return (ArrayList)sqlSession.selectList("hotDealMapper.searchList", searchStr);
+	}
+
+	public ArrayList<SearchList> selectSearchList() {
+		return (ArrayList)sqlSession.selectList("hotDealMapper.selectSearchList");
 	}
 
 	

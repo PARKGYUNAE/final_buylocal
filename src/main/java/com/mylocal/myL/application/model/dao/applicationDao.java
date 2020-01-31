@@ -13,14 +13,10 @@ public class applicationDao {
 
 	public int insertProduct(Product p) {
 		
-		System.out.println("dao지나가는중~");
+		// System.out.println("dao지나가는중~");
 		System.out.println("p : " + p);
 		return sqlSession.insert("productMapper.insertProduct", p);
 	}
  
-	/*public int insertAdvertisement(Advertisement a) {
-		return sqlSession.insert("applicationMapper.insertAdvertisement", a);
-	}*/
-	
 	
 }

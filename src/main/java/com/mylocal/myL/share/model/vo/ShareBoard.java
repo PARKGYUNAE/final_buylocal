@@ -10,14 +10,20 @@ public class ShareBoard {
 	private Date sbDate;
 	private String sbStatus;
 	private String cName;
+	private int cNo;
 	private String lName;
+	private String lCode;
 	private int sbView;
 	private String sbcgName;
+	private String sbcgCode;
+	private String originalFileName;
+	private String renameFileName;
 	
 	public ShareBoard() {}
 
-	public ShareBoard(int sbNo, String sbTitle, String sbContent, Date sbDate, String sbStatus, String cName,
-			String lName, int sbView, String sbcgName) {
+	public ShareBoard(int sbNo, String sbTitle, String sbContent, Date sbDate, String sbStatus, String cName, int cNo,
+			String lName, String lCode, int sbView, String sbcgName, String sbcgCode, String originalFileName,
+			String renameFileName) {
 		super();
 		this.sbNo = sbNo;
 		this.sbTitle = sbTitle;
@@ -25,9 +31,14 @@ public class ShareBoard {
 		this.sbDate = sbDate;
 		this.sbStatus = sbStatus;
 		this.cName = cName;
+		this.cNo = cNo;
 		this.lName = lName;
+		this.lCode = lCode;
 		this.sbView = sbView;
 		this.sbcgName = sbcgName;
+		this.sbcgCode = sbcgCode;
+		this.originalFileName = originalFileName;
+		this.renameFileName = renameFileName;
 	}
 
 	public int getSbNo() {
@@ -78,12 +89,28 @@ public class ShareBoard {
 		this.cName = cName;
 	}
 
+	public int getcNo() {
+		return cNo;
+	}
+
+	public void setcNo(int cNo) {
+		this.cNo = cNo;
+	}
+
 	public String getlName() {
 		return lName;
 	}
 
 	public void setlName(String lName) {
 		this.lName = lName;
+	}
+
+	public String getlCode() {
+		return lCode;
+	}
+
+	public void setlCode(String lCode) {
+		this.lCode = lCode;
 	}
 
 	public int getSbView() {
@@ -102,13 +129,35 @@ public class ShareBoard {
 		this.sbcgName = sbcgName;
 	}
 
+	public String getSbcgCode() {
+		return sbcgCode;
+	}
+
+	public void setSbcgCode(String sbcgCode) {
+		this.sbcgCode = sbcgCode;
+	}
+
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+
+	public String getRenameFileName() {
+		return renameFileName;
+	}
+
+	public void setRenameFileName(String renameFileName) {
+		this.renameFileName = renameFileName;
+	}
+
 	@Override
 	public String toString() {
 		return "ShareBoard [sbNo=" + sbNo + ", sbTitle=" + sbTitle + ", sbContent=" + sbContent + ", sbDate=" + sbDate
-				+ ", sbStatus=" + sbStatus + ", cName=" + cName + ", lName=" + lName + ", sbView=" + sbView
-				+ ", sbcgName=" + sbcgName + "]";
+				+ ", sbStatus=" + sbStatus + ", cName=" + cName + ", cNo=" + cNo + ", lName=" + lName + ", lCode="
+				+ lCode + ", sbView=" + sbView + ", sbcgName=" + sbcgName + ", sbcgCode=" + sbcgCode
+				+ ", originalFileName=" + originalFileName + ", renameFileName=" + renameFileName + "]";
 	}
-	
-	
-
 }

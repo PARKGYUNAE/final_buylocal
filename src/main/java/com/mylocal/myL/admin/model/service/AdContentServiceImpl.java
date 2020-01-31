@@ -2,17 +2,19 @@ package com.mylocal.myL.admin.model.service;
 
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mylocal.myL.admin.model.dao.AdContentDao;
-import com.mylocal.myL.admin.model.vo.HotDeal;
+import com.mylocal.myL.admin.model.vo.Notice;
 import com.mylocal.myL.admin.model.vo.Product;
 import com.mylocal.myL.admin.model.vo.QnA;
 import com.mylocal.myL.admin.model.vo.Report;
 import com.mylocal.myL.admin.model.vo.ShareBoard;
-import com.mylocal.myL.admin.model.vo.Ttang;
+import com.mylocal.myL.common.Deal;
+
 
 @Service("adContentService")
 public class AdContentServiceImpl implements AdContentService{
@@ -23,6 +25,12 @@ public class AdContentServiceImpl implements AdContentService{
 		@Override
 		public ArrayList<Report> ReportSelectList() {
 			return adContentDao.ReportSelectList();
+		}
+		
+		// 신고 목록(신고당한 사람들)
+		@Override
+		public ArrayList<Report> ReportSelectList2() {
+			return adContentDao.ReportSelectList2();
 		}
 
 		// QnA 미답변 목록
@@ -46,10 +54,10 @@ public class AdContentServiceImpl implements AdContentService{
 		public ArrayList<Product> HotDealSelectList() {
 			return adContentDao.HotDealSelectList();
 		}
-/*		@Override
+		@Override
 		public ArrayList<ShareBoard> ShareBoardSelectList() {
 			return adContentDao.ShareBoardSelectList();
-		}*/
+		}
 
 		
 		
@@ -93,6 +101,12 @@ public class AdContentServiceImpl implements AdContentService{
 		public int ReportInsert(Report r) {
 			return adContentDao.InsertReport(r);
 		}
+		
+		// 신고하기 게시판폼
+		@Override
+		public int ReportInsert1(Report r) {
+			return adContentDao.InsertReport1(r);
+		}
 
 		// 신고하기 상세보기
 		@Override
@@ -119,6 +133,48 @@ public class AdContentServiceImpl implements AdContentService{
 			// TODO Auto-generated method stub
 			return adContentDao.uptdateCustomer(getcNo);
 		}
+
+		// 신고처리 취소해주기
+		@Override
+		public int updateCustomer2(int getcNo) {
+			return adContentDao.uptdateCustomer2(getcNo);
+		}
+
+		// 공지사항 리스트 가져오기
+		@Override
+		public ArrayList<Notice> NoticeSelectList() {
+			return adContentDao.NoticeSelectList();
+		}
+
+		// 통계 가져오기
+		@Override
+		public ArrayList<Deal> selectDeal() {
+			return adContentDao.selectDeal();
+		}
+
+		// 원하는 통계값 가져오기
+		@Override
+		public LinkedHashMap<String, Integer> selectDeal(String a) {
+			return adContentDao.selectDeal(a);
+		}
+
+		// 신고처리할경우 businessInfo도 변경되게끔
+		@Override
+		public int updateBusinessInfo(int getcNo) {
+			return adContentDao.updateBusinessInfo(getcNo);
+		}
+
+		// 해당관련 상품들 모두 아웃
+		@Override
+		public int updateProduct(int getcNo) {
+			return adContentDao.updateProduct(getcNo);
+		}
+
+
+
+
+
+
 
 
 

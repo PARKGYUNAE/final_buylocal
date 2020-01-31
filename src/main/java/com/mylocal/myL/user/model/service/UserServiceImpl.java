@@ -45,12 +45,14 @@ public class UserServiceImpl implements UserService {
 	public int updateCustomer(Customer c) {
 		return userDao.updateCustomer(c);
 	}
-
-//	@Override
-//	public int deleteCustomer(String cId) {
-//		return userDao.deleteCustomer(cId);
-//	}
-
+	
+	// 회원 탈퇴
+	@Override
+	public int deleteCustomer(String cId) {
+		return userDao.deleteCustomer(cId);
+	}
+	
+	// 사업자 거래 내역 조회
 	@Override
 	public ArrayList<Deal> selectDealList(int cNo) {
 		return userDao.selectDealList(cNo);
@@ -85,7 +87,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	// 이메일 발송
-	public void sendMail(Customer c, String div) {
+	public void sendMail(Customer c, String div, String temPwd) {
 		// Mail Server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
@@ -98,13 +100,16 @@ public class UserServiceImpl implements UserService {
 		String subject = "";
 		String msg = "";
 		
+		// 비밀번호 처리
+		
+		
 		if(div.equals("findPwd")) {
 			subject = "[BUY LOCAL] 임시 비밀번호를 보내드립니다.";
 			msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
 			msg += "<h3 style='color: blue'>";
 			msg += c.getcId() + "님의 임시 비밀번호입니다. 비밀번호를 변경하여 사용하세요. </h3>";
 			msg += "<p>임시 비밀번호 : ";
-			msg += bcryptPasswordEncoder.encode(c.getcPwd()) + "</p></div>";
+			msg += temPwd + "</p></div>";
 		}
 		
 		// 받는 사람 Email 주소
@@ -129,6 +134,10 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
+	
+	// 비밀번호 찾기(수정 중)
+	/*@Override
+	public */
 	
 	// 비밀번호 찾기 
 	@Override
@@ -155,12 +164,13 @@ public class UserServiceImpl implements UserService {
 			// 비밀번호 변경 메일 발송
 			userDao.updatePwd(c);
 			
-			sendMail(c, "findPwd"); 
+			sendMail(c, "findPwd", temPwd); 
 			
 			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
 			out.close();
 		}
 	}
+	
 	
 	// 일반 회원 구매내역 건수 조회 
 	@Override
@@ -174,6 +184,12 @@ public class UserServiceImpl implements UserService {
 	public ArrayList<Deal> selectDealList2(int cNo) {
 		return userDao.selectDealList2(cNo);
 	}
+
+
+
+
+
+	
 	
 	
 

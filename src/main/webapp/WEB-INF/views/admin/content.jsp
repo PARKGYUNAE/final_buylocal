@@ -218,60 +218,21 @@
                   </tr>
                 </tfoot>
                 <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                  </tr>
-                  <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                  </tr>
-                  <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                  </tr>
-                  <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                  </tr>
-                  <tr>
-                    <td>Herrod Chandler</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                  </tr>
-                  <tr>
-                    <td>Rhona Davidson</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                  </tr>
-                  <tr>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                  </tr>
+                  <c:forEach var="ShareBoard" items="${ list3 }">
+                 <c:url var="sbdetail" value="sbdetail.do">
+                 <c:param name="sbNo" value="${ShareBoard.sbNo}"/>
+                 </c:url>
+                 
+                 
+                	<tr style="cursor:pointer" id="hello" onclick="window.open('${sbdetail}', 'regist1', 'width=1000,height=600, left=400 top=100')">
+                		<td>${ShareBoard.sbcgName}</td>
+                		<td>
+                			${ShareBoard.sbTitle}
+                		</td>
+                		<td>${ShareBoard.cName}</td>
+                		<td>${ShareBoard.sbCreateDate}</td>  
+                		</tr>
+                </c:forEach>
                 </tbody>
               </table>
             </div>

@@ -28,14 +28,16 @@ public interface UserService {
 	public int updateCustomer(Customer c);
 	
 	// 회원 탈퇴 서비스
-//	public int deleteCustomer(String cId);
-//	public int deleteSeller(String sId);
+	public int deleteCustomer(String cId);
 
 	//  사업자 거래내역 조회 서비스
 	public ArrayList<Deal> selectDealList(int cNo);
 	
 	// 사업자 수령 확인 서비스
 	public int checkRcv(Deal d);
+	
+	// 이메일 발송
+	public void sendMail(Customer c, String div, String temPwd);
 	
 	// 비밀번호 변경
 	public int updatePwd(Customer c);
@@ -48,6 +50,7 @@ public interface UserService {
 
 	// 범석
 	public ArrayList<Deal> selectDealList2(int cNo);
+	
 
 	
 

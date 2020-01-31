@@ -2,16 +2,9 @@ package com.mylocal.myL.admin.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
-import com.mylocal.myL.admin.model.vo.Advertise;
-import com.mylocal.myL.admin.model.vo.Customer;
-import com.mylocal.myL.admin.model.vo.HotDeal;
 import com.mylocal.myL.admin.model.vo.Notice;
-import com.mylocal.myL.admin.model.vo.QnA;
-import com.mylocal.myL.admin.model.vo.Report;
-import com.mylocal.myL.admin.model.vo.Seller;
-import com.mylocal.myL.admin.model.vo.ShareBoard;
-import com.mylocal.myL.admin.model.vo.Ttang;
 import com.mylocal.myL.common.Deal;
 
 public interface AdminService {
@@ -39,6 +32,15 @@ public interface AdminService {
 
 	// 범석
 	HashMap<String, Integer> selectDeal(String a);
+
+
+	ArrayList<Deal> selectDeal(int cNo);
+
+	// 거래량 가져오기
+	LinkedHashMap<String, Integer> selectDeal2(int cNo);
+
+
+	LinkedHashMap<String, Integer> selectDeal3(String a);
 
 
 	

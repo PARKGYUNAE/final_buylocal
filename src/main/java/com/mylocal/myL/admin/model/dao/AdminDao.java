@@ -2,6 +2,7 @@ package com.mylocal.myL.admin.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -56,6 +57,11 @@ public class AdminDao {
 		return sqlSession.update("AdminMapper.updateCount", nNo); 
 	}
 
+ 
+
+	
+	
+
 
 	public ArrayList<Deal> selectDeal() {
 	      return (ArrayList)sqlSession.selectList("AdminMapper.selectDeal");
@@ -87,7 +93,76 @@ public class AdminDao {
       return result;
    }
 
-	
+   public ArrayList<Deal> selectDeal(int cNo) {
+		return (ArrayList)sqlSession.selectList("AdminMapper.selectDealSeller", cNo);
+	}
+
+   // 거래량 가져오기
+public LinkedHashMap<String, Integer> selectDeal2(int cNo) {
+	LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+    
+    String category[] = {"C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C11","C12"};
+    int categoryR[] = {0,0,0,0,0,0,0,0,0,0,0,0};
+    for(int i = 0; i < categoryR.length; i++) {
+       HashMap<String, String> h = new HashMap<>();
+       h.put("str", category[i]);
+       h.put("cNo",  Integer.toString(cNo));
+       categoryR[i] = sqlSession.selectOne("AdminMapper.selectDeal3", h);
+
+  
+       
+    }
+    result.put("01", categoryR[0]);
+    result.put("02", categoryR[1]);
+    result.put("03", categoryR[2]);
+    result.put("04", categoryR[3]);
+    result.put("05", categoryR[4]);
+    result.put("06", categoryR[5]);
+    result.put("07", categoryR[6]);
+    result.put("08", categoryR[7]);
+    result.put("09", categoryR[8]);
+    result.put("10", categoryR[9]);
+    
+    result.put("11", categoryR[10]);
+    result.put("12", categoryR[11]);
+
+    
+    return result;
+}
+
+public LinkedHashMap<String, Integer> selectDeal3(String a) {
+LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+    
+    String category[] = {"C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C11","C12"};
+    int categoryR[] = {0,0,0,0,0,0,0,0,0,0,0,0};
+    for(int i = 0; i < categoryR.length; i++) {
+       HashMap<String, String> h = new HashMap<>();
+       h.put("str", category[i]);
+       categoryR[i] = sqlSession.selectOne("AdminMapper.selectDeal4", h);
+       
+       System.out.println(category[i] + " : " + categoryR[i]);
+  
+       
+    }
+    result.put("01", categoryR[0]);
+    result.put("02", categoryR[1]);
+    result.put("03", categoryR[2]);
+    result.put("04", categoryR[3]);
+    result.put("05", categoryR[4]);
+    result.put("06", categoryR[5]);
+    result.put("07", categoryR[6]);
+    result.put("08", categoryR[7]);
+    result.put("09", categoryR[8]);
+    result.put("10", categoryR[9]);
+    
+    result.put("11", categoryR[10]);
+    result.put("12", categoryR[11]);
+  
+
+    
+    return result;
+}
+
 	
 	
 }

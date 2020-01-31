@@ -6,14 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mylocal.myL.admin.model.vo.Advertise;
 import com.mylocal.myL.admin.model.vo.Customer;
-import com.mylocal.myL.admin.model.vo.HotDeal;
-import com.mylocal.myL.admin.model.vo.QnA;
-import com.mylocal.myL.admin.model.vo.Report;
-import com.mylocal.myL.admin.model.vo.Seller;
-import com.mylocal.myL.admin.model.vo.ShareBoard;
-import com.mylocal.myL.admin.model.vo.Ttang;
+import com.mylocal.myL.admin.model.vo.Deal;
 
 
 
@@ -45,7 +39,7 @@ public class AdUserDao {
 		}
 
 		// 일반 회원 구매 리스트
-		public ArrayList<Customer> NormalUserBuyList() {
+		public ArrayList<Deal> NormalUserBuyList() {
 			return (ArrayList)sqlSession.selectList("adUserMapper.NormalUserBuyList");
 		}
 
@@ -63,6 +57,12 @@ public class AdUserDao {
 		public int UpdateBusinessGrade(Customer cu) {
 			return sqlSession.update("adUserMapper.updateBusinessGrade", cu);
 		}
+		
+		// 사업자 등급 업데이트 business info도
+		public int UpdateBusinessGrade2(Customer cu) {
+			return sqlSession.update("adUserMapper.updateBusinessGrade2", cu);
+		}
+
 
 		// 일반 회원 블랙/정지 처리 취소
 		public int UpdateNormalUser(Customer cu) {
@@ -78,6 +78,12 @@ public class AdUserDao {
 		public Customer selectNormalCustomer(int cNo) {
 			return sqlSession.selectOne("adUserMapper.selectNormalCustomer", cNo);
 		}
+
+		// 등급 리스트 제외
+		public int UpdateGradeCancel(int cNo) {
+			return sqlSession.update("adUserMapper.updateGradeCancel", cNo);
+		}
+
 
 
 		

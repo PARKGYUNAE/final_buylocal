@@ -191,12 +191,38 @@ $('.dataTables_length').addClass('bs-select');
                                                 <a href="${ myInfo }">정보 수정</a>
                                             </li>
                                             <li>
-                                            	<c:url var="myBusiness" value="myBusiness.do"/>
-                                                <a href="${ myBusiness }">거래 내역</a>
+                                            	<c:choose>
+                                            	<c:when test="${ loginUser.cLevel eq '사업자' }">
+                                            		<c:url var="myBusiness" value="myBusiness.do"/>
+	                                                <a href="${ myBusiness }">거래 내역</a>
+                                                </c:when>
+                                                <c:otherwise>
+	                                                <c:url var="myOrderList" value="myOrderList.do"/>
+	                                                <a href="${ myOrderList }">구매 내역</a>
+                                                </c:otherwise>
+                                                </c:choose>
                                             </li>
-                                          	<li>
+                                            <c:if test="${ loginUser.cLevel eq '일반' }">
+                                            <li>
+                                            	<c:url var="myCart" value="myCart.do">
+                                            		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                            	</c:url>
+                                                <a href="${ myCart }">장바구니</a>
+                                            </li>
+                                            <li>
+                                            	<c:url var="myFavorite" value="myFavorite.do">
+                                                		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                                	</c:url>
+                                                <a href="${ myFavorite }">위시 리스트</a>
+                                            </li>
+                                            </c:if>                                             
+                                            <li>
                                             	<c:url var="myQna" value="myQna.do"/>
                                                 <a href="${ myQna }">문의 내역</a>
+                                            </li>
+                                            <li>
+                                            	<c:url var="myPassword" value="myPassword.do"/>
+                                                <a href="${ myPassword }">비밀번호 변경</a>
                                             </li>
                                         </ul>
                                     </div>

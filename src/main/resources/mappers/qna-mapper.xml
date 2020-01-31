@@ -11,12 +11,13 @@
 		<result property="cNo" column="C_NO"/>
 		<result property="qEnrollDate" column="Q_ENROLLDATE"/>
 		<result property="qStatus" column="Q_STATUS"/>
+		<result property="qReplyDate" column="Q_REPLYDATE"/>
 	</resultMap>
 		
 	<insert id="insertQNA" parameterType="QNA">
 		INSERT INTO QNA VALUES
-		 (SEQ_QNO.NEXTVAL, #{qTitle}, #{cNo},
-				SYSDATE, DEFAULT, #{qContent}) 
+		 (SEQ_QNO.NEXTVAL, #{qTitle}, #{qContent}, #{cNo},
+				SYSDATE, DEFAULT, null) 
 	</insert>
 	
 	

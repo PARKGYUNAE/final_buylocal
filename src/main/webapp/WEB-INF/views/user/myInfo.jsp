@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>마이 페이지</title>
 <style>
 #post, #address1, #address2 {
@@ -49,27 +51,6 @@
                                 <div class="col-12 mb--45">
                                     <article class="blog format-standard">
                                         <div class="blog__inner">
-                                            <!-- <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-06.jpg" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-image.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Read More</a>
-                                            </div> -->
-                                            
-                                            <!-- <div class="user-dashboard-tab flex-column flex-md-row">
-                                
-                               				 <div class="user-dashboard-tab__content tab-content"> -->
                                     
                                     <h3 align="center">회원 정보</h3>
                                     <hr><br>
@@ -89,25 +70,6 @@
                                                	</td>
                                                	<td></td>
                                             </tr>
-                                            <!-- <tr>
-                                                <td width="">
-                                                	<label class="form__label" for="userPwd">비밀번호 <span class="required">*</span></label>
-                                                </td>
-                                                <td>    
-                                                    <input type="password" name="cPwd" id="userPwd" class="form__input" placeholder="" required>
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                            	<td width="">
-                                                	<label class="form__label" for="userPwd2">비밀번호 확인 <span class="required">*</span></label>
-                                                </td>
-                                                <td>    
-                                                    <input type="password" name="cPwd2" id="userPwd2" class="form__input" placeholder="" required>
-                                                	<span class="form__notes"><em id="pwdResult"></em></span>
-                                                </td>
-                                                <td></td>
-                                            </tr> -->
                                             <tr>
                                         		<td width="">
                                         			<label class="form__label" for="userName">이름 <span class="required">*</span></label>
@@ -144,7 +106,7 @@
                                         		</td>
 								               <td>
 								                  <input type="text" id="post" name="post" class="postcodify_postcode5" size="15" value="${ addr }"/>
-								                  <button type="button" id="postcodify_search_button" class="btn btn-size-sm">검색</button>
+								                  <input type="button" onclick="sample66_execDaumPostcode()" value="우편번호 찾기" class="btn btn-size-sm"><br>
 								               </td>
 								            </tr>
 								            </c:if>
@@ -177,7 +139,7 @@
 									            	<c:url var="cdelete" value="cdelete.do">
 									            		<c:param name="cId" value="${ loginUser.cId }"></c:param>
 									            	</c:url>
-									            	<button type="button" class="btn btn-size-sm" onclick="location.href='${ cdelete }">회원탈퇴</button>
+									            	<button type="button" class="btn btn-size-sm" onclick="location.href='${ cdelete }'">회원탈퇴</button>
 									            </td>
 								            </tr>
 								            
@@ -185,145 +147,24 @@
                                        		<!-- /테이블 끝 -->
                                         	</form>
                                     	</div>
-                            
                                         </div>
                                     </article>                                
                                 </div>
-                                <!-- <div class="col-12 mb--45">
-                                    <article class="blog format-gallery">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="element-carousel" data-slick-options='{
-                                                    "slidesToShow": 1,
-                                                    "slidesToScroll": 1,
-                                                    "autoplay": true,
-                                                    "autoplaySpeed": 1500
-                                                }'>
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-07.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-08.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="assets/img/blog/blog-09.jpg" alt="Blog Image" class="w-100">
-                                                        <a href="blog-details-image.html" class="item-overlay"></a>
-                                                    </div>                 
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-gallery.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-gallery.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-gallery.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>                                   
-                                </div>
-                                <div class="col-12 mb--45">
-                                    <article class="blog format-audio">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/182537870&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-audio.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-audio.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-audio.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>                                
-                                </div>
-                                <div class="col-12 mb--45">
-                                    <article class="blog format-video">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-video.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-video.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-video.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>                                  
-                                </div>
-                                <div class="col-12 mb--45">
-                                    <article class="blog">
-                                        <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <figure class="image">
-                                                    <img src="assets/img/blog/blog-09.jpg" alt="Blog" class="w-100">
-                                                    <a href="blog-details-image.html" class="item-overlay"></a>
-                                                </figure>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-image.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-image.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-image.html" class="read-more-btn">Read More</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div> -->
-                            </div>
-                            <!-- 페이징 부분 -->
-                            <!-- <div class="row">
-                                <div class="col-12 text-center">
-                                    <ul class="pagination">
-                                        <li><span class="page-number current">1</span></li>
-                                        <li><a href="#" class="page-number">2</a></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><span class="dot"></span></li>
-                                        <li><a href="#" class="page-number">16</a></li>
-                                    </ul>
-                                </div>
-                            </div> -->
-                        </div>
+	                      </div>
+	                      </div>  
                         <div class="col-lg-3 order-lg-1">
                             <div class="blog-sidebar pr--15 pr-lg--0">
                                 <div class="bl-widget author">
                                     <div class="inner">
                                         <div class="thumb">
-                                            <!-- <img src="assets/img/others/team-04.jpg" alt="Author Images"> -->
                                         </div>
                                         <div class="info">
                                             <!-- 사이드 바 프로필 부분 -->
                                             <h5 class="mb--5">
                                             	<c:out value="${ loginUser.cName }"/>님의 마이 페이지
                                             </h5>
-                                            <p class="degne">UI/ Web Designer</p>
-                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                            <p class="degne"><i class="la la-map-marker la-2x"></i></p>
+                                            <p class="mb--25"><c:out value="${ loginUser.cAddress }"/></p>
                                             <ul class="social mb--20">
                                                 <!-- <li class="social__item">
                                                     <a href="https://www.facebook.com" class="social__link">
@@ -342,7 +183,7 @@
                                                 </li> -->
                                             </ul>
                                             <div class="autor-meta">
-                                                <span>내 구매내역 <strong>5</strong></span>
+                                                <span>내 구매내역 <strong>${ dCount }</strong></span>
                                                 <span>내 문의글 <strong>2</strong></span>
                                             </div>
                                         </div>
@@ -370,17 +211,25 @@
                                             </li>
                                             <c:if test="${ loginUser.cLevel eq '일반' }">
                                             <li>
-                                            	<c:url var="myCart" value="myCart.do"/>
+                                            	<c:url var="myCart" value="myCart.do">
+                                            		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                            	</c:url>
                                                 <a href="${ myCart }">장바구니</a>
                                             </li>
                                             <li>
-                                            	<c:url var="myFavorite" value="myFavorite.do"/>
+                                            	<c:url var="myFavorite" value="myFavorite.do">
+                                                		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                                	</c:url>
                                                 <a href="${ myFavorite }">위시 리스트</a>
                                             </li>
                                             </c:if>                                             
                                             <li>
                                             	<c:url var="myQna" value="myQna.do"/>
                                                 <a href="${ myQna }">문의 내역</a>
+                                            </li>
+                                            <li>
+                                            	<c:url var="myPassword" value="myPassword.do"/>
+                                                <a href="${ myPassword }">비밀번호 변경</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -396,7 +245,7 @@
                                                 </div>
                                             </div>
                                             <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete.</p>
-                                        </div>
+                                         </div>
                                     </div>
                                 </div>
                                 
@@ -597,77 +446,9 @@
         <!-- OffCanvas Menu End -->
 
         <!-- Mini Cart Start -->
-        <aside class="mini-cart" id="miniCart">
-            <div class="mini-cart-wrapper">
-                <div class="mini-cart__close">
-                    <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-                </div>
-                <div class="mini-cart-inner">
-                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
-                    <div class="mini-cart__content">
-                        <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
-                        </div>
-                        <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
         <!-- Mini Cart End -->
 
         <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-            <div class="searchform__body">
-                <p>Start typing and press Enter to search</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
-                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
-                </form>
-            </div>
-        </div>
         <!-- Searchform Popup End -->
 
         <!-- Qicuk View Modal Start -->
@@ -826,6 +607,58 @@
 		$(function() { 
 			$("#postcodify_search_button").postcodifyPopUp(); 
 		}); 
+	</script>
+	
+	
+	 <!-- 회원 주소 검색용 카카오 api 스크립트 -->
+	<script>
+	    function sample66_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+	                var extraAddr = ''; // 참고항목 변수
+	
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+	
+	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있고, 공동주택일 경우 추가한다.
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    // 조합된 참고항목을 해당 필드에 넣는다.
+	                    document.getElementById("address2").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("address2").value = '';
+	                }
+	
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('post').value = data.zonecode;
+	                document.getElementById("address1").value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementById("address2").focus();
+	            }
+	        }).open();
+	    }
 	</script>
     
     

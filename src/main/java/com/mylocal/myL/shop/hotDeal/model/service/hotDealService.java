@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.mylocal.myL.common.Cart;
 import com.mylocal.myL.common.Deal;
 import com.mylocal.myL.common.Favorite;
+import com.mylocal.myL.common.SearchList;
 import com.mylocal.myL.shop.hotDeal.model.vo.Product;
 import com.mylocal.myL.shop.hotDeal.model.vo.Review;
 
@@ -45,6 +46,10 @@ public interface hotDealService {
 	void insertDeal(Deal d);
 
 	Deal selectDeal(int dNo);
+
+	ArrayList<Product> searchList(String searchStr);
+
+	ArrayList<SearchList> selectSearchList();
 
 
 

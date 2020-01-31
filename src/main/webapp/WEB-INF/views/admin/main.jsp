@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page import="java.util.*, java.text.*"  %>
 <!DOCTYPE html>
 <html>
 
@@ -163,21 +165,37 @@
         <div class="card mb-5">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            월별 매출액</div>
+            당일 거래량</div>
 
           <div class="card-body">
              <div class="chart-area">
                     <canvas id="myAreaChart" style="display: block; height: 320px; width: 383px;" width="478" height="400" class="chartjs-render-monitor"></canvas></canvas>
              </div>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          <div class="card-footer small text-muted">
+          <%
+
+ 		java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("최종 업데이트시간 yyyy-MM-dd HH:mm:ss");
+ 		String today = formatter.format(new java.util.Date());
+
+ 		out.println(today);
+
+		%>
+          
+          
+          </div>
         </div>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
+          	<c:url var="noticeInsert" value="noticeInsertView.do"/>
+          	
             <i class="fas fa-table"></i>
-           		 회원별 거래내역
+           	
+           	<button  onclick="window.open('${noticeInsert}', 'regist', 'width=1000,height=600, left=400 top=100')">공지사항 작성</button>
+           	
+								
           </div>
           
           <div class="card-body">
@@ -185,436 +203,50 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>사업자명</th>
-                    <th>업체명</th>
-                    <th>등록날짜</th> 
-                    <th>???!</th>
-                    <th>??</th>
-                    <th>??</th>
+                    <th>No</th>
+                    <th>제목</th>
+                    <th>작성일</th> 
+                    <th>조회수</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                     <th>No</th>
+                    <th>제목</th>
+                    <th>작성일</th> 
+                    <th>조회수</th>
                   </tr>
                 </tfoot>
                 <tbody>
+                <c:forEach var="notice" items="${ list }">
+
                   <tr>
-                    <td>
-                     <c:url var="bdetail" value="bdetail.do"/>
-                 	 
-                     <a href="#">나오나요?</a>
-                    </td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
+                  	<td>${ notice.nNo }</td>
+                  	<td> 
+                  		<c:url var="noticeDetail" value="noticeDetail.do">
+								<c:param name="nNo" value="${ notice.nNo }"/>
+								</c:url>
+                  <a href="${noticeDetail}" style="color: black; text-decoration: none;">${ notice.nTitle }</a>
+                  	</td>
+                  	<td>${ notice.nDate }</td>  	
+                  	<td>${ notice.nView }</td>
                   </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                  </tr>
-                  <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                  </tr>
-                  <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                  </tr>
-                  <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2012/12/02</td>
-                    <td>$372,000</td>
-                  </tr>
-                  <tr>
-                    <td>Herrod Chandler</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                    <td>2012/08/06</td>
-                    <td>$137,500</td>
-                  </tr>
-                  <tr>
-                    <td>Rhona Davidson</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>2010/10/14</td>
-                    <td>$327,900</td>
-                  </tr>
-                  <tr>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>2009/09/15</td>
-                    <td>$205,500</td>
-                  </tr>
-                  <tr>
-                    <td>Sonya Frost</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>2008/12/13</td>
-                    <td>$103,600</td>
-                  </tr>
-                  <tr>
-                    <td>Jena Gaines</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>30</td>
-                    <td>2008/12/19</td>
-                    <td>$90,560</td>
-                  </tr>
-                  <tr>
-                    <td>Quinn Flynn</td>
-                    <td>Support Lead</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2013/03/03</td>
-                    <td>$342,000</td>
-                  </tr>
-                  <tr>
-                    <td>Charde Marshall</td>
-                    <td>Regional Director</td>
-                    <td>San Francisco</td>
-                    <td>36</td>
-                    <td>2008/10/16</td>
-                    <td>$470,600</td>
-                  </tr>
-                  <tr>
-                    <td>Haley Kennedy</td>
-                    <td>Senior Marketing Designer</td>
-                    <td>London</td>
-                    <td>43</td>
-                    <td>2012/12/18</td>
-                    <td>$313,500</td>
-                  </tr>
-                  <tr>
-                    <td>Tatyana Fitzpatrick</td>
-                    <td>Regional Director</td>
-                    <td>London</td>
-                    <td>19</td>
-                    <td>2010/03/17</td>
-                    <td>$385,750</td>
-                  </tr>
-                  <tr>
-                    <td>Michael Silva</td>
-                    <td>Marketing Designer</td>
-                    <td>London</td>
-                    <td>66</td>
-                    <td>2012/11/27</td>
-                    <td>$198,500</td>
-                  </tr>
-                  <tr>
-                    <td>Paul Byrd</td>
-                    <td>Chief Financial Officer (CFO)</td>
-                    <td>New York</td>
-                    <td>64</td>
-                    <td>2010/06/09</td>
-                    <td>$725,000</td>
-                  </tr>
-                  <tr>
-                    <td>Gloria Little</td>
-                    <td>Systems Administrator</td>
-                    <td>New York</td>
-                    <td>59</td>
-                    <td>2009/04/10</td>
-                    <td>$237,500</td>
-                  </tr>
-                  <tr>
-                    <td>Bradley Greer</td>
-                    <td>Software Engineer</td>
-                    <td>London</td>
-                    <td>41</td>
-                    <td>2012/10/13</td>
-                    <td>$132,000</td>
-                  </tr>
-                  <tr>
-                    <td>Dai Rios</td>
-                    <td>Personnel Lead</td>
-                    <td>Edinburgh</td>
-                    <td>35</td>
-                    <td>2012/09/26</td>
-                    <td>$217,500</td>
-                  </tr>
-                  <tr>
-                    <td>Jenette Caldwell</td>
-                    <td>Development Lead</td>
-                    <td>New York</td>
-                    <td>30</td>
-                    <td>2011/09/03</td>
-                    <td>$345,000</td>
-                  </tr>
-                  <tr>
-                    <td>Yuri Berry</td>
-                    <td>Chief Marketing Officer (CMO)</td>
-                    <td>New York</td>
-                    <td>40</td>
-                    <td>2009/06/25</td>
-                    <td>$675,000</td>
-                  </tr>
-                  <tr>
-                    <td>Caesar Vance</td>
-                    <td>Pre-Sales Support</td>
-                    <td>New York</td>
-                    <td>21</td>
-                    <td>2011/12/12</td>
-                    <td>$106,450</td>
-                  </tr>
-                  <tr>
-                    <td>Doris Wilder</td>
-                    <td>Sales Assistant</td>
-                    <td>Sidney</td>
-                    <td>23</td>
-                    <td>2010/09/20</td>
-                    <td>$85,600</td>
-                  </tr>
-                  <tr>
-                    <td>Angelica Ramos</td>
-                    <td>Chief Executive Officer (CEO)</td>
-                    <td>London</td>
-                    <td>47</td>
-                    <td>2009/10/09</td>
-                    <td>$1,200,000</td>
-                  </tr>
-                  <tr>
-                    <td>Gavin Joyce</td>
-                    <td>Developer</td>
-                    <td>Edinburgh</td>
-                    <td>42</td>
-                    <td>2010/12/22</td>
-                    <td>$92,575</td>
-                  </tr>
-                  <tr>
-                    <td>Jennifer Chang</td>
-                    <td>Regional Director</td>
-                    <td>Singapore</td>
-                    <td>28</td>
-                    <td>2010/11/14</td>
-                    <td>$357,650</td>
-                  </tr>
-                  <tr>
-                    <td>Brenden Wagner</td>
-                    <td>Software Engineer</td>
-                    <td>San Francisco</td>
-                    <td>28</td>
-                    <td>2011/06/07</td>
-                    <td>$206,850</td>
-                  </tr>
-                  <tr>
-                    <td>Fiona Green</td>
-                    <td>Chief Operating Officer (COO)</td>
-                    <td>San Francisco</td>
-                    <td>48</td>
-                    <td>2010/03/11</td>
-                    <td>$850,000</td>
-                  </tr>
-                  <tr>
-                    <td>Shou Itou</td>
-                    <td>Regional Marketing</td>
-                    <td>Tokyo</td>
-                    <td>20</td>
-                    <td>2011/08/14</td>
-                    <td>$163,000</td>
-                  </tr>
-                  <tr>
-                    <td>Michelle House</td>
-                    <td>Integration Specialist</td>
-                    <td>Sidney</td>
-                    <td>37</td>
-                    <td>2011/06/02</td>
-                    <td>$95,400</td>
-                  </tr>
-                  <tr>
-                    <td>Suki Burks</td>
-                    <td>Developer</td>
-                    <td>London</td>
-                    <td>53</td>
-                    <td>2009/10/22</td>
-                    <td>$114,500</td>
-                  </tr>
-                  <tr>
-                    <td>Prescott Bartlett</td>
-                    <td>Technical Author</td>
-                    <td>London</td>
-                    <td>27</td>
-                    <td>2011/05/07</td>
-                    <td>$145,000</td>
-                  </tr>
-                  <tr>
-                    <td>Gavin Cortez</td>
-                    <td>Team Leader</td>
-                    <td>San Francisco</td>
-                    <td>22</td>
-                    <td>2008/10/26</td>
-                    <td>$235,500</td>
-                  </tr>
-                  <tr>
-                    <td>Martena Mccray</td>
-                    <td>Post-Sales support</td>
-                    <td>Edinburgh</td>
-                    <td>46</td>
-                    <td>2011/03/09</td>
-                    <td>$324,050</td>
-                  </tr>
-                  <tr>
-                    <td>Unity Butler</td>
-                    <td>Marketing Designer</td>
-                    <td>San Francisco</td>
-                    <td>47</td>
-                    <td>2009/12/09</td>
-                    <td>$85,675</td>
-                  </tr>
-                  <tr>
-                    <td>Howard Hatfield</td>
-                    <td>Office Manager</td>
-                    <td>San Francisco</td>
-                    <td>51</td>
-                    <td>2008/12/16</td>
-                    <td>$164,500</td>
-                  </tr>
-                  <tr>
-                    <td>Hope Fuentes</td>
-                    <td>Secretary</td>
-                    <td>San Francisco</td>
-                    <td>41</td>
-                    <td>2010/02/12</td>
-                    <td>$109,850</td>
-                  </tr>
-                  <tr>
-                    <td>Vivian Harrell</td>
-                    <td>Financial Controller</td>
-                    <td>San Francisco</td>
-                    <td>62</td>
-                    <td>2009/02/14</td>
-                    <td>$452,500</td>
-                  </tr>
-                  <tr>
-                    <td>Timothy Mooney</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>37</td>
-                    <td>2008/12/11</td>
-                    <td>$136,200</td>
-                  </tr>
-                  <tr>
-                    <td>Jackson Bradshaw</td>
-                    <td>Director</td>
-                    <td>New York</td>
-                    <td>65</td>
-                    <td>2008/09/26</td>
-                    <td>$645,750</td>
-                  </tr>
-                  <tr>
-                    <td>Olivia Liang</td>
-                    <td>Support Engineer</td>
-                    <td>Singapore</td>
-                    <td>64</td>
-                    <td>2011/02/03</td>
-                    <td>$234,500</td>
-                  </tr>
-                  <tr>
-                    <td>Bruno Nash</td>
-                    <td>Software Engineer</td>
-                    <td>London</td>
-                    <td>38</td>
-                    <td>2011/05/03</td>
-                    <td>$163,500</td>
-                  </tr>
-                  <tr>
-                    <td>Sakura Yamamoto</td>
-                    <td>Support Engineer</td>
-                    <td>Tokyo</td>
-                    <td>37</td>
-                    <td>2009/08/19</td>
-                    <td>$139,575</td>
-                  </tr>
-                  <tr>
-                    <td>Thor Walton</td>
-                    <td>Developer</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2013/08/11</td>
-                    <td>$98,540</td>
-                  </tr>
-                  <tr>
-                    <td>Finn Camacho</td>
-                    <td>Support Engineer</td>
-                    <td>San Francisco</td>
-                    <td>47</td>
-                    <td>2009/07/07</td>
-                    <td>$87,500</td>
-                  </tr>
+                </c:forEach>
                   
                   
         
                 </tbody>
               </table>
             </div>
+            
           </div>
-          <div class="card-footer small text-muted">시스데이트 쓸 예정!
-      <!--     
-          	 <h4>메일 보내기</h4>
-    <form action="mailSending.do" method="post">
-      <div>
-        <input type="text" name="tomail" size="120"
-        style="width: 100%" placeholder="상대의 이메일"
-        class="form-control">
-      </div>
-      <div align="center">
-        제목
-        <input type="text" name="title" size="120"
-        style="width: 100%" placeholder="제목을 입력해주세요"
-        class="form-control">
-      </div>
-        <p>
-          <div align="center">
-          내용
-            <textarea name="content" cols="120" rows="12"
-            style="width: 100%; resize: none" placeholder="내용#"
-            class="form-control"></textarea>
-          </div>
-        <p>
-      <div align="center">
-        <input type="submit" value="메일 보내기" class="btn btn-warning">
-      </div>
-    </form> -->
+          <div class="card-footer small text-muted">
+                    <%out.println(today);%>
+      
     
     <div id="kakao-talk-channel-chat-button" data-channel-public-id="_xcLqmC" data-title="question" 
     data-size="large" data-color="yellow" data-shape="pc" data-support-multiple-densities="true">
-    
-    <a href="https://open.kakao.com/o/sFPjmXSb">실시간 상담</a>
+
     </div>
           	
           
@@ -666,6 +298,7 @@
   </div>
   
   
+
  
 
   <!-- Bootstrap core JavaScript-->
@@ -689,12 +322,22 @@
   <script src="resources/admin/js/demo/chart-area-demo.js"></script>
   <script>
   var ctx = document.getElementById("myAreaChart");
+  var arr = [];
+  var i = 0;
+  <c:forEach var="entry" items="${todayCount}" varStatus="status">
+	arr[i] = "${entry.value}";
+	i++;
+</c:forEach>
+
+
+  
+  
   var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+      labels: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13","14","15","16","17","18","19","20","21","22","23","24"],
       datasets: [{
-        label: "총수입",
+        label: "총거래량",
         lineTension: 0.3,
         backgroundColor: "rgba(78, 115, 223, 0.05)",
         borderColor: "rgba(78, 115, 223, 1)",
@@ -706,7 +349,8 @@
         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
         pointHitRadius: 10,
         pointBorderWidth: 2,
-        data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+
+       data: [arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9], arr[10], arr[11], arr[12],arr[13],arr[14],arr[15],arr[16],arr[17],arr[18],arr[19],arr[20],arr[21],arr[22],arr[23],arr[24]],
       }],
     },
     options: {
@@ -738,7 +382,7 @@
             padding: 10,
             // Include a dollar sign in the ticks
             callback: function(value, index, values) {
-              return  number_format(value) + '원일껄?';
+              return  number_format(value) + '건';
             }
           },
           gridLines: {
@@ -770,30 +414,17 @@
         callbacks: {
           label: function(tooltipItem, chart) {
             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-            return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+            return datasetLabel + ': 건' + number_format(tooltipItem.yLabel);
           }
         }
       }
     }
   });
   </script>
+  
+
 
 </body>
 
-<script>
-  window.kakaoAsyncInit = function () {
-    Kakao.Channel.createChatButton({
-      container: '#kakao-talk-channel-chat-button'
-    });
-  };
-
-  (function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//developers.kakao.com/sdk/js/kakao.plusfriend.min.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'kakao-js-sdk'));
-</script>
 
 </html>

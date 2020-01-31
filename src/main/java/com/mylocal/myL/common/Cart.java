@@ -1,6 +1,7 @@
 package com.mylocal.myL.common;
 
 public class Cart {
+	private int cartNo;
 	private int cNo;
 	private int pNo;
 	private String pName;
@@ -10,8 +11,9 @@ public class Cart {
 	
 	public Cart() {}
 
-	public Cart(int cNo, int pNo, String pName, int quantity, int pFinalPrice, String pInfoText) {
+	public Cart(int cartNo, int cNo, int pNo, String pName, int quantity, int pFinalPrice, String pInfoText) {
 		super();
+		this.cartNo = cartNo;
 		this.cNo = cNo;
 		this.pNo = pNo;
 		this.pName = pName;
@@ -28,6 +30,14 @@ public class Cart {
 		this.pInfoText = pInfoText;
 	}
 	
+
+	public int getCartNo() {
+		return cartNo;
+	}
+
+	public void setCartNo(int cartNo) {
+		this.cartNo = cartNo;
+	}
 
 	public String getpInfoText() {
 		return pInfoText;

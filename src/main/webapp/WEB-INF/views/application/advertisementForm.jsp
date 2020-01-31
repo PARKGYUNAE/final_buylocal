@@ -96,8 +96,19 @@
 									<label for="aFile"></label><input type="file" id="aFile" name="aFile">								
                                     </div>
                                     <br><br>
-                                    <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
-                                  
+                                    
+                                    
+                                    <c:choose>
+                                      <c:when test="${ empty sessionScope.loginUser }">
+                                      	<c:url var="userLogin" value="userLogin.do"/>	 
+                                        <button type="submit" class="btn btn-shape-round form__submit" onclick="location.href='${userLogin}'">제출하기</button>
+                                      </c:when>
+                                      <c:otherwise>	
+                                      
+                                    <button type="submit" class="btn btn-shape-round form__submit" >제출하기</button>
+                                    	
+                                      </c:otherwise>
+                                   	</c:choose>
                                 </form>
                             </div>
                         </div>

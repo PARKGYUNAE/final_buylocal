@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
 <html> 
 <head>
@@ -33,7 +35,12 @@
                         <h1 class="page-title">땡처리게시판</h1>
                         <ul class="breadcrumb">
                             <li><a href="<%=request.getContextPath() %>">Home</a></li>
-                            <li class="current"><span>한식</span></li>
+                            <c:if test="${empty sessionScope.loginUser }">
+								<li class="current"><span>전체지역</span></li>
+							</c:if>
+							<c:if test="${!empty sessionScope.loginUser }">
+								<li class="current"><span>${fn:split(loginUser.cAddress, ',')[1] }</span></li>
+							</c:if>
                         </ul>
                     </div>
                 </div>
@@ -46,8 +53,9 @@
             <div class="shop-page-wrapper ptb--80">
                 <div class="container">
                     <div class="row">
-                    	<c:url var="wishList" value="ttangWishList.do"/> 
-						<c:url var="buyForm" value="ttangBuyForm.do"/> 
+                    
+                   
+						
                         <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
                             <div class="shop-toolbar mb--50">
                                 <div class="row align-items-center">
@@ -65,53 +73,90 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-7">
-                                        <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">
-                                            <div class="product-view-mode ml--50 ml-xs--0">
-                                        	</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                      </div>
                             </div>
+                                    <script>
+										$("#optionArray").on('change', function(){
+											location.href="${ttang}?optionArray=" + $(this).val();
+										});
+									</script>
+                              
                             
                             
                             <div class="shop-products">
                                 <div class="row">
                                 <!-- c:forEach start -->
-									<c:forEach var="productTtang" items="${list}">
+									<c:forEach var="ttang" items="${list}">
                                     <div class="col-xl-4 col-sm-6 mb--50">
                                         <div class="ft-product">
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="resources/assets/img/products/prod-04-700x778.png" alt="제주감귤">
+                                                        <img src="resources/pThumb/${ttang.pInfoImage}" alt="상품썸네일">
                                                     </figure>
                                                     <c:url var="ttangD" value="ttangDetail.do">
-                                                    	<c:param name="pNo" value="${productTtang.pNo}"/>
+                                                    	<c:param name="pNo" value="${ttang.pNo}"/>
                                                     </c:url>
                                                     <a href="${ttangD}" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a href="${wishList}" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                    </div>
+                                                    <!-- 비로그인 상태에서는  로그인 화면으로 넘어가기 -->
+                                                    <c:choose>
+														<c:when test="${ empty sessionScope.loginUser }">
+															<c:url var="userLogin" value="userLogin.do" />
+															<div class="product-action">
+																<a href="${userLogin }" class="action-btn"> <i
+																	class="la la-heart-o"></i>
+																</a>
+															</div>
+														</c:when>
+														<c:otherwise>
+
+															<c:url var="ttangWishList"
+																value="ttangAddWishList.do">
+																<c:param name="pNo" value="${ttang.pNo }" />
+																<c:param name="cNo" value="${loginUser.cNo }" />
+															</c:url>
+															<div class="product-action">
+																<a href="${ttangWishList }" class="action-btn"> <i
+																	class="la la-heart-o"></i>
+																</a>
+															</div>
+
+														</c:otherwise>
+													</c:choose>
                                                 </div>
                                                 <div class="product-info">
                                                     <div class="product-category">
-                                                        <a href="${ttangD}">${productTtang.pName}</a>
+                                                        <a href="${ttangD}">${ttang.pTitle}</a>
                                                     </div>
-                                                    <h3 class="product-title"><a href="${ttangD}">${productTtang.pTitle}</a></h3>
+                                                    <h3 class="product-title"><a href="${ttangD}">${ttang.pName}</a></h3>
                                                     <div class="product-info-bottom">
                                                         <div class="product-price-wrapper">
-                                                            <span class="money" style="color:black; text-decoration:line-through;">${productTtang.pOriginalPrice}원</span>
+                                                            <span class="money"><sup><fmt:parseNumber
+																		value="${(ttang.pOriginalPrice-ttang.pFinalPrice)/ttang.pOriginalPrice*100 }"
+																		integerOnly="true" />%</sup> <s>${ttang.pOriginalPrice }</s>
+															</span>
                                                         </div>
                                                         <div class="product-price-wrapper">
-                                                            <span class="money">${productTtang.pFinalPrice}원</span>
+                                                            <span class="money" style="color:black; /* text-decoration:line-through; */">
+                                                           ${ttang.pFinalPrice}원</span>
                                                         </div>
-                                                        <a href="${buyForm}" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>장바구니</span>
-                                                        </a>
+                                                        <c:choose>
+														<c:when test="${ empty sessionScope.loginUser }">
+															<c:url var="userLogin" value="userLogin.do" />
+																<a href="${userLogin }" class="add-to-cart pr--15">
+																	<i class="la la-plus"></i> <span>장바구니</span>
+																</a>
+														</c:when>
+														<c:otherwise>
+															<c:url var="ttangAddCart" value="ttangAddCart.do" >
+																<c:param name="pNo" value="${ttang.pNo }" />
+																<c:param name="cNo" value="${loginUser.cNo }" />
+															</c:url>
+															<a href="${ttangAddCart }" class="add-to-cart pr--15">
+																<i class="la la-plus"></i> <span>장바구니</span>
+															</a>
+														</c:otherwise>
+														</c:choose>
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +175,7 @@
 									<li><span class="page-number current">&lt;&lt;</span></li>
 								</c:if>
 								<c:if test="${pi.currentPage > 1 }">
-									<c:url var="before" value="${productTtang}">
+									<c:url var="before" value="${ttang}">
 										<c:param name="page" value="${pi.currentPage-1 }"/>
 									</c:url>
 									<li><a class="page-number" href="${before }">&lt;&lt;</a></li>
@@ -140,7 +185,7 @@
 										<li><span class="page-number current">${p }</span></li>
 									</c:if>
 									<c:if test="${p ne pi.currentPage }">
-										<c:url var="pagination" value="${productTtang}">
+										<c:url var="pagination" value="${ttang}">
 											<c:param name="page" value="${p }"/>
 										</c:url>
 										<li><a href="${pagination }" class="page-number">${p }</a></li>
@@ -151,7 +196,7 @@
 									<li><span class="page-number current">&gt;&gt;</span></li>
 								</c:if>
 								<c:if test="${pi.currentPage < pi.maxPage }">
-									<c:url var="after" value="${productTtang}">
+									<c:url var="after" value="${ttang}">
 										<c:param name="page" value="${pi.currentPage + 1 }"/>
 									</c:url>
 									<li><a class="page-number" href="${after }">&gt;&gt;</a></li>
@@ -161,23 +206,38 @@
 						<!-- pagination end -->
 					</div>
 					
+<script>
+							$("#optionArray").on('change', function(){
+								location.href="${ttang}?optionArray=" + $(this).val();
+							});
+						</script>
+						
+					<!-- sidebar -->	
 					<div class="col-xl-3 col-lg-4 order-lg-1">
 						<aside class="shop-sidebar">
 							<div class="shop-widget mb--40">
 								<h3 class="widget-title mb--25">카테고리</h3>
 								<ul class="widget-list category-list">
-									<li><a href="#"> <span class="category-title">한식</span> <i class="fa fa-angle-double-right"></i></a></li>
-									<li><a href="#"> <span class="category-title">중식</span> <i class="fa fa-angle-double-right"></i></a></li>
-									<li><a href="#"> <span class="category-title">일식</span> <i class="fa fa-angle-double-right"></i></a></li>
-									<li><a href="#"> <span class="category-title">양식</span> <i class="fa fa-angle-double-right"></i></a></li>
-									<li><a href="#"> <span class="category-title">커피/제과</span> <i class="fa fa-angle-double-right"></i></a></li>
-									<li><a href="#"> <span class="category-title">기타</span> <i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="ttangMain.do"> <span class="category-title">전체보기</span>
+											<i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="${ttang }?category=한식"> <span class="category-title">한식</span>
+											<i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="${ttang }?category=중식"> <span class="category-title">중식</span>
+											<i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="${ttang }?category=일식"> <span class="category-title">일식</span>
+											<i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="${ttang }?category=양식"> <span class="category-title">양식</span>
+											<i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="${ttang }?category=커피/제과"> <span class="category-title">커피/제과</span>
+											<i class="fa fa-angle-double-right"></i></a></li>
+									<li><a href="${ttang }?category=기타"> <span class="category-title">기타</span>
+											<i class="fa fa-angle-double-right"></i></a></li>
 								</ul>
 							</div>
 							<div class="shop-widget">
 								<h3 class="widget-title mb--25">태그</h3>
 								<div class="tagcloud">
-									<!-- 클릭 시, 검색 가능하게 -->
+									클릭 시, 검색 가능하게
 									<a href="#">제철과일</a> 
 									<a href="#">단품식사</a> 
 									<a href="#">혼밥</a> 

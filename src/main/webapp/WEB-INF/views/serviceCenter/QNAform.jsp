@@ -73,11 +73,11 @@
                                 </div>
                                 <form action="insertQNA.do" class="form" id="contact-form" method="post">
                                    <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}"/>
-                                    	작성자 : <input type="text" name="cName" id="cName" value="${loginUser.cName}"  class="form__input mb--30" readonly>
-                                    	연락 받을 이메일 : <input type="email" name="cEmail" id="cEmail" value="${loginUser.cEmail}" class="form__input mb--30" readonly>
-                                    <input type="text" name="qTitle" id="qTitle" class="form__input mb--30" placeholder="제목*" required>
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요*" id="qContent" name="qContent" required></textarea>
-                                    <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
+                                    		작성자 : <input type="text" name="cName" id="cName" value="${loginUser.cName}"  class="form__input mb--30" readonly>
+                                    		연락 받을 이메일 : <input type="email" name="cEmail" id="cEmail" value="${loginUser.cEmail}" class="form__input mb--30" readonly>
+                                    		 <input type="text" name="qTitle" id="qTitle" class="form__input mb--30" placeholder="제목*" required>
+                                    		<textarea class="form__input form__input--textarea mb--30" placeholder="내용을 입력하세요*" id="qContent" name="qContent" required></textarea>
+                                    		 <button type="submit" class="btn btn-shape-round form__submit">제출하기</button>
                                 </form>
                             </div>
                         </div>

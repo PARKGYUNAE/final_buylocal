@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page import="java.util.*, java.text.*"  %>
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +10,7 @@
 <c:import url="common.jsp"/>
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <body id="page-top">
 
   <div id="wrapper">
@@ -97,7 +100,8 @@
                     <th>상호명</th>
                     <th>업종</th>
                     <th>신청일자</th>
-                    <th>승인여부</th>
+                    <th>등급</th>
+                    <th>취소처리</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -106,7 +110,8 @@
                     <th>상호명</th>
                     <th>업종</th>
                     <th>신청일자</th>
-                    <th>승인여부</th>
+                    <th>등급</th>
+                    <th>취소처리</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -114,14 +119,20 @@
                   <c:url var="register" value="register.do">
                   <c:param name="cNo" value="${ business.cNo }"/>
                   </c:url>
+                  
+                  <c:url var="reportCancel" value="registerCancel.do">
+                         <c:param name="rtNo" value="${ business.cNo }"/>
+                      </c:url>
 
-                   <tr style="cursor:pointer" id="trtrtr" onclick="window.open('${register}', 'regist', 'width=430,height=500, left=500 top=170')">
-             		<%-- <tr onclick="location.href='${register}'" style="cursor:pointer" id="trtrtr"> --%>
-             			<th>${ business.bOwner }</th>
-             			<th>${ business.bShopName} </th>
-             			<th>${ business.bClass}</th>
-             			<th>${ business.cEnrollDate }</th>
-             			<th>${ business.cLevel }</th>
+                   <tr>
+                   
+             			<td  style="cursor:pointer" id="trtrtr" onclick="window.open('${register}', 'regist', 'width=430,height=500, left=500 top=170')">${ business.bOwner }</td>
+             			<td>${ business.bShopName} </td>
+             			<td>${ business.bClass}</td>
+             			<td>${ business.cEnrollDate }</td>
+             			<td>${ business.cLevel }</td>
+             			<td class="cancel">취소처리</td>
+             			 <input type="hidden" value="${business.cNo }">
              		</tr>
                   
                   </c:forEach>
@@ -131,6 +142,31 @@
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
+        
+        
+        <script>
+        $(function(){
+            $(".cancel").click(function(){
+               var result = confirm('해당 등급 처리를 취소하시겠습니까?');
+
+               if(result){
+                  var str = ""
+                       var tdArr = new Array();    // 배열 선언
+                       var checkBtn = $(this); 
+                       var result = checkBtn.parent().children().eq(6).val();
+
+
+                     location.href="gradeCancel.do?cNo=" + result;
+                  
+               }else{
+                  
+               }
+               
+            });
+         });
+        
+        
+        </script>
 
         <p class="small text-center text-muted my-5">
           <em>More table examples coming soon...</em>

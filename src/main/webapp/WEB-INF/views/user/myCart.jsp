@@ -248,27 +248,40 @@
                                             <li>
                                             	<c:url var="myInfo" value="myInfo.do"/>
                                                 <a href="${ myInfo }">정보 수정</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 3 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myOrderList" value="myOrderList.do"/>
-                                                <a href="${ myOrderList }">구매 내역</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 8 Days Ago</span> -->
+                                            	<c:choose>
+                                            	<c:when test="${ loginUser.cLevel eq '사업자' }">
+                                            		<c:url var="myBusiness" value="myBusiness.do"/>
+	                                                <a href="${ myBusiness }">거래 내역</a>
+                                                </c:when>
+                                                <c:otherwise>
+	                                                <c:url var="myOrderList" value="myOrderList.do"/>
+	                                                <a href="${ myOrderList }">구매 내역</a>
+                                                </c:otherwise>
+                                                </c:choose>
                                             </li>
+                                            <c:if test="${ loginUser.cLevel eq '일반' }">
                                             <li>
-                                            	<c:url var="myCart" value="myCart.do"/>
+                                            	<c:url var="myCart" value="myCart.do">
+                                            		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                            	</c:url>
                                                 <a href="${ myCart }">장바구니</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 4 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myFavorite" value="myFavorite.do"/>
+                                            	<c:url var="myFavorite" value="myFavorite.do">
+                                                		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                                	</c:url>
                                                 <a href="${ myFavorite }">위시 리스트</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 6 Days Ago</span> -->
                                             </li>
+                                            </c:if>                                             
                                             <li>
                                             	<c:url var="myQna" value="myQna.do"/>
                                                 <a href="${ myQna }">문의 내역</a>
-                                                <!-- <span><i class="fa fa-clock-o"></i> 5 Days Ago</span> -->
+                                            </li>
+                                            <li>
+                                            	<c:url var="myPassword" value="myPassword.do"/>
+                                                <a href="${ myPassword }">비밀번호 변경</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -485,77 +498,11 @@
         <!-- OffCanvas Menu End -->
 
         <!-- Mini Cart Start -->
-        <aside class="mini-cart" id="miniCart">
-            <div class="mini-cart-wrapper">
-                <div class="mini-cart__close">
-                    <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-                </div>
-                <div class="mini-cart-inner">
-                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
-                    <div class="mini-cart__content">
-                        <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-01-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-02-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="la la-remove"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/prod-03-100x100.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Golden Easy Spot Chair.</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
-                        </div>
-                        <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        
         <!-- Mini Cart End -->
 
         <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-            <div class="searchform__body">
-                <p>Start typing and press Enter to search</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
-                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
-                </form>
-            </div>
-        </div>
+        
         <!-- Searchform Popup End -->
 
         <!-- Qicuk View Modal Start -->

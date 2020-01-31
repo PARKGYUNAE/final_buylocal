@@ -64,7 +64,7 @@
                                     <div class="header__main-left">
                                         <div class="logo">
                                             <a href="<%=request.getContextPath() %>" class="logo--normal">
-                                                <img src="resources/assets/img/logo/buylocal.png" alt="Logo">
+                                                <img src="resources/assets/img/logo/logo.png" alt="Logo">
                                             </a>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                                 <li class="mainmenu__item menu-item-has-children">
                                                 	<c:url var="introduction" value="introduction.do"/>
                                                 	<c:url var="holymoly" value="holymoly.do"/>
-                                                 	<c:url var="noticeM" value="noticeMain.do"/>
+                                                 	<c:url var="noticeM" value="noticeList.do"/>
                                                     <a href="${introduction}" class="mainmenu__link">
                                                         <span class="mm-text">바이로컬</span>
                                                     </a>
@@ -210,28 +210,72 @@
                                                 </li>
 						                       <li class="mainmenu__item menu-item-has-children">
                                                     <c:url var="advertisementForm" value="advertisementForm.do"/>
-                                                    <c:url var="insertProductForm" value="insertProductForm.do"/>
-                                                    <a href="${advertisement}" class="mainmenu__link">
+                                                    <c:url var="insertProductForm" value="insertProductType.do"/>
+                                                                   <c:choose>
+                                	<c:when test="${loginUser.cLevel eq '사업자' }">
+                                		 <a href="${insertProductForm}" class="mainmenu__link">
                                                         <span class="mm-text">신청하기</span>
+                                                    </a>
+                                		<ul class="sub-menu">
+                                      <li>
+                                          <a title="이벤트/광고 신청" href="${advertisementForm}">
+                                              <span class="mm-text">이벤트/광고 신청</span>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a title="상품 신청" href="${insertProductForm}">
+                                              <span class="mm-text">상품 신청</span>
+                                          </a>
+                                      </li>
+                                    </ul> 
+                                	</c:when>
+                                	<c:otherwise>
+                                	 <a href="#" onclick="sellerOnly()" class="mainmenu__link">
+                                                        <span class="mm-text">신청하기</span>
+                                                    </a>
+                                                  
+                                		<ul class="sub-menu">
+                                      <li>
+                                          <a title="이벤트/광고 신청" href="#" onclick="sellerOnly()">
+                                              <span class="mm-text">이벤트/광고 신청</span>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a title="상품 신청" href="#" onclick="sellerOnly()">
+                                              <span class="mm-text">상품 신청</span>
+                                          </a>
+                                      </li>
+                                    </ul> 
+                                	</c:otherwise>
+                                	</c:choose>
+                                                 </li>
+                                                 
+                                                                                                  
+                                               	   <li class="mainmenu__item menu-item-has-children">
+                                                    <c:url var="FAQ" value="FAQ.do"/>
+                                                    <c:url var="QNAform" value="QNAform.do"/>
+                                                           <c:choose>
+                                	<c:when test="${ empty sessionScope.loginUser }">
+                                		<c:url var="userLogin" value="userLogin.do"/>	
+                                		<a href="${FAQ}" class="mainmenu__link">
+                                                        <span class="mm-text">고객센터</span>
                                                     </a>
                                                   <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="한식" href="${advertisementForm}">
-                                                                    <span class="mm-text">이벤트/광고 신청</span>
+                                                                <a title="FAQ" href="${FAQ}">
+                                                                    <span class="mm-text">FAQ</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="중식" href="${insertProductForm}">
-                                                                    <span class="mm-text">상품 신청</span>
+                                                                <a title="QNA" href="${userLogin}">
+                                                                    <span class="mm-text">QNA</span>
                                                                 </a>
                                                             </li>
-                                                   </ul>
-                                                 </li>
-                                               	   <li class="mainmenu__item menu-item-has-children">
-                                                    <c:url var="FAQ" value="FAQ.do"/>
-                                                    <c:url var="QNAform" value="QNAform.do"/>
-                                                    <a href="${FAQ}" class="mainmenu__link">
+                                                   </ul> 
+                                	</c:when>
+                                	<c:otherwise>
+                                	 <a href="${FAQ}" class="mainmenu__link">
                                                         <span class="mm-text">고객센터</span>
                                                     </a>
                                                   <ul class="sub-menu">
@@ -247,6 +291,8 @@
                                                                 </a>
                                                             </li>
                                                    </ul>
+                                	</c:otherwise>
+                                	</c:choose>
                                                  </li>
                                             </ul>
                                         </nav>
@@ -262,8 +308,8 @@
                                                 <!-- 메뉴바 아이콘 추가 (소망) -->
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                 	<c:if test="${ loginUser.cId eq 'admin' }">
-                                                     <c:url var="qnaCount" value="qnaCount.do"/>
-                                                    <a href="${ qnaCount }" class="header-toolbar__btn toolbar-btn1">
+                                                     <c:url var="Count" value="Count.do"/>
+                                                    <a href="${ Count }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-wrench"></i>
                                                     </a>
                                                     </c:if>
@@ -278,7 +324,9 @@
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
                                                 	<c:if test="${ !empty sessionScope.loginUser }">
-                                                	<c:url var="myFavorite" value="myFavorite.do"/>
+                                                	<c:url var="myFavorite" value="myFavorite.do">
+                                                		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                                	</c:url>
                                                     <a href="${ myFavorite }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
@@ -306,7 +354,7 @@
 		                                                    </a>
 		                                                </c:otherwise>
 	                                              	</c:choose>
-	                                               </div>                                                </div>
+	                                               </div>                                                   </div>
                                                 <div class="header-toolbar__item d-block d-lg-none">
                                                     <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                         <div class="hamburger-icon">
@@ -438,24 +486,68 @@
                                 <li>
 		                            <a href="${shareboard }">나눔게시판</a>
 		                        </li>
-                                <li class="menu-item-has-children">
-                                    <a href="${advertisementForm }">신청하기</a>
-                                     <ul class="sub-menu">
-                                        <li>
-                                            <a title="이벤트/광고 신청" href="${advertisementForm}">
-                                                <span class="mm-text">이벤트/광고 신청</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a title="상품 신청" href="${insertProductForm}">
-                                                <span class="mm-text">상품 신청</span>
-                                            </a>
-                                        </li>
-                                     </ul>
+                               <li class="menu-item-has-children">
+                                    
+                                          <c:choose>
+                                	<c:when test="${loginUser.cLevel eq '사업자' }">
+                                		<a href="${insertProductForm}">신청하기</a>
+                                			<ul class="sub-menu">
+                                   				 <li>
+                                           <a title="이벤트/광고 신청" href="${advertisementForm}">
+                                               <span class="mm-text">이벤트/광고 신청</span>
+                                           </a>
+                                    			</li>
+                                    			<li>
+                                           <a title="상품 신청" href="${insertProductForm}">
+                                               <span class="mm-text">상품 신청</span>
+                                           </a>
+                                       </li>
+                                 			 </ul> 
+                                	</c:when>
+                                	<c:otherwise>
+                                	<a href="sellerOnly()">신청하기</a>
+                                		<ul class="sub-menu">
+                                      <li>
+                                          <a title="이벤트/광고 신청" href="#" onclick="sellerOnly()">
+                                              <span class="mm-text">이벤트/광고 신청</span>
+                                          </a>
+                                      </li>
+                                      <li>
+                                          <a title="상품 신청" href="#" onclick="sellerOnly()">
+                                              <span class="mm-text">상품 신청</span>
+                                          </a>
+                                      </li>
+                                    </ul> 
+                                    <!--  '신청하기' : 사업자 회원 아닐 경우, alert창 뜨기  -->
+                                    <script>
+                                    	function sellerOnly(){
+                                    		alert('사업자 회원만 접근 가능합니다.');
+                                    	};
+                                    </script>
+                                	</c:otherwise>
+                                	</c:choose>
                                 </li>
                         <li class="menu-item-has-children active">
-                            <a href="${FAQ }">고객센터</a>
-                            <ul class="sub-menu">
+                             <c:choose>
+                                	<c:when test="${ empty sessionScope.loginUser }">
+                                		<c:url var="userLogin" value="userLogin.do"/>
+                                		<a href="${userLogin }">고객센터</a>	
+                                			<ul class="sub-menu">
+			                                    <li>
+			                                        <a title="FAQ" href="${FAQ}">
+			                                            FAQ
+			                                        </a>
+			                                    </li>
+			                                    <li>
+			                                        <a title="QNA" href="${userLogin}">
+			                                            QNA
+			                                        </a>
+			                                    </li>
+			                           </ul>
+                                	</c:when>
+                                	<c:otherwise>
+                                	<a href="${FAQ }">고객센터</a>
+                                		<ul class="sub-menu">
                                     <li>
                                         <a title="FAQ" href="${FAQ}">
                                             FAQ
@@ -466,7 +558,14 @@
                                             QNA
                                         </a>
                                     </li>
-                           </ul>
+                           			</ul> 
+                                	</c:otherwise>
+                                	</c:choose>
+                           
+                           
+                           
+                           
+                           
                                 </li>
                     </ul>
                     <div class="site-info vertical">

@@ -89,7 +89,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-                  신고 리스트</div>
+                  접수된 신고</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -98,6 +98,7 @@
                     <th>신고 분류</th>
                     <th>신고 제목</th>
                     <th>신고자</th>
+                    <th>신고대상</th>
                     <th>신고 일자</th>
                     <th>신고 처리</th>
                     <th>취소 처리</th>
@@ -108,6 +109,7 @@
                     <th>신고 분류</th>
                     <th>신고 제목</th>
                     <th>신고자</th>
+                    <th>신고대상</th>
                     <th>신고 일자</th>
                     <th>신고 처리</th>
                     <th>취소 처리</th>
@@ -129,8 +131,9 @@
                       
                          <tr>
                             <td  style="cursor:pointer" id="hello"  onclick="window.open('${reportDetail}', 'report', 'width=1000,height=600, left=400 top=100')">${ report.rtCategory }</td>
-                            <td>${ report.rtTitle }</td>
-                            <td>${ report.cName }</td>
+                            <td>${ report.rtContent }</td>
+    						<td>${ report.cName }</td>
+                            <td>${ report.cName2 }</td>
                             <td>${ report.rtDate }</td>
                             <td class="check">신고처리</td>
                             <td class="cancel">신고취소</td>
@@ -139,6 +142,8 @@
                    
                    
                    </c:forEach>
+   
+                   
               <script>
    
       $(function(){
@@ -150,7 +155,9 @@
                  var tdArr = new Array();    // 배열 선언
                  var checkBtn = $(this); 
 
-                 var result = checkBtn.parent().children().eq(6).val();
+                 
+                 
+                 var result = checkBtn.parent().children().eq(7).val();
 
 
 
@@ -171,7 +178,7 @@
                var str = ""
                     var tdArr = new Array();    // 배열 선언
                     var checkBtn = $(this); 
-                    var result = checkBtn.parent().children().eq(6).val();
+                    var result = checkBtn.parent().children().eq(7).val();
 
 
                   location.href="reportCancel.do?rtNo=" + result;
@@ -188,8 +195,107 @@
               </table>
             </div>
           </div>
+             
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
+        
+        
+        
+                <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+                  신고 리스트</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>신고 분류</th>
+                    <th>신고 제목</th>
+                    <th>신고자</th>
+                    <th>신고대상</th>
+                    <th>신고 일자</th>
+                    <th>복구 신청</th>
+
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>신고 분류</th>
+                    <th>신고 제목</th>
+                    <th>신고자</th>
+                    <th>신고대상</th>
+                    <th>신고 일자</th>
+                    <th>복구 신청</th>
+
+                  </tr>
+                </tfoot>
+                <tbody>
+                  
+                   <c:forEach var="report2" items="${ list2 }">
+                      <c:url var="reportDetail" value="reportDetail.do">
+                      	<c:param name="rtNo" value="${ report2.rtNo }"/>
+                      </c:url>
+                      
+                      <!-- 신고된 회원 복구해주기! -->
+                      <c:url var="reportUpdate2" value="reportUpdate2.do">
+                         <c:param name="rtNo" value="${ report2.rtNo }"/>
+                      </c:url>
+                      
+                         <tr>
+                            <td>${ report2.rtCategory }</td>
+                            <td>${ report2.rtContent }</td>
+                            <td>${ report2.cName }</td>
+                            <td>${ report2.cName2 }</td>
+                            <td>${ report2.rtDate }</td>
+                            <td class="rollback">회원복구</td>
+                            <input type="hidden" value="${report2.rtNo }">
+                         </tr>
+                   
+                   
+                   </c:forEach>
+   
+                   
+    <script>
+   
+      $(function(){
+         $(".rollback").click(function(){
+            var result = confirm('해당 회원 정지를 취소하시겠습니까?');
+
+            if(result){
+               var str = ""
+                 var tdArr = new Array();    // 배열 선언
+                 var checkBtn = $(this); 
+
+                 
+                 
+                 var result = checkBtn.parent().children().eq(6).val();
+
+
+
+               location.href="reportUpdate2.do?rtNo=" + result;
+            }else{
+               
+            }
+            
+         });
+      });
+      
+
+   </script>
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+             
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        
+        
+        
+        
+        
         
         
         

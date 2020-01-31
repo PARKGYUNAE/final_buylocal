@@ -2,6 +2,7 @@ package com.mylocal.myL.admin.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mylocal.myL.admin.model.exception.AdminException;
@@ -65,6 +65,11 @@ public class AdminController {
 	 */
 
 	// 접속자수 들고 오기 (예정)
+	
+	
+	
+	
+	
 
 	// 공지사항 작성
 	@RequestMapping("noticeInsert.do")
@@ -84,7 +89,7 @@ public class AdminController {
 
 	// 공지사항 상세보기
 	@RequestMapping("noticeDetail.do")
-	public ModelAndView NoticeDetail(ModelAndView mv, int nNo, @RequestParam("page") Integer page,
+	public ModelAndView NoticeDetail(ModelAndView mv, int nNo, @RequestParam(value = "page", required=false) Integer page,
 			HttpServletRequest request, HttpServletResponse response) {
 
 		int currentPage = page != null ? page : 1;
@@ -182,8 +187,10 @@ public class AdminController {
 	      HashMap<String, Integer> d2 = adService.selectDeal(a);
 	      
 	      int month[] = {0,0,0,0,0,0,0,0,0,0,0,0};
+	      
+	      int max = 0;
 	      for(int i = 0; i < d.size(); i++) {
-	         switch(d.get(i).getdDate().getMonth()+1) {
+	    	 switch(d.get(i).getdDate().getMonth()+1) {
 	         case 1:
 	            month[0]+=d.get(i).getdPrice();
 	            break;
@@ -222,10 +229,97 @@ public class AdminController {
 	            break;
 	         }
 	      }
+	      for(int i = 0; i<12; i++) {
+	    	  if(max <= month[i]) {
+	    		  max = month[i];
+	    	  }
+	    	  
+	    	  
+	      }
+	      
+	      
+	      // 하나 추가 거래량
+		   
+
+		   LinkedHashMap<String, Integer> d3 = adService.selectDeal3(a);
+		   
+		   
+		   
 	      model.addAttribute("month", month);
 	      model.addAttribute("categorys", d2);
+	      model.addAttribute("countMonth", d3);
+	      model.addAttribute("max", max);
 	      
 	      return "admin/chart";
+	   }
+	   
+	   @RequestMapping("adminChartSeller.do")
+	   public String adminChartSeller(Model model, int cNo) { 
+		   ArrayList<Deal> d = adService.selectDeal(cNo);
+		   
+		   int month[] = {0,0,0,0,0,0,0,0,0,0,0,0};
+		   
+		   int max = 0;
+		   for(int i = 0; i < d.size(); i++) {
+		   switch(d.get(i).getdDate().getMonth()+1) {
+	         case 1:
+	            month[0]+=d.get(i).getdPrice();
+	            break;
+	         case 2:
+	            month[1]+=d.get(i).getdPrice();
+	            break;
+	         case 3:
+	            month[2]+=d.get(i).getdPrice();
+	            break;
+	         case 4:
+	            month[3]+=d.get(i).getdPrice();
+	            break;
+	         case 5:
+	            month[4]+=d.get(i).getdPrice();
+	            break;
+	         case 6:
+	            month[5]+=d.get(i).getdPrice();
+	            break;
+	         case 7:
+	            month[6]+=d.get(i).getdPrice();
+	            break;
+	         case 8:
+	            month[7]+=d.get(i).getdPrice();
+	            break;
+	         case 9:
+	            month[8]+=d.get(i).getdPrice();
+	            break;
+	         case 10:
+	            month[9]+=d.get(i).getdPrice();
+	            break;
+	         case 11:
+	            month[10]+=d.get(i).getdPrice();
+	            break;
+	         case 12:
+	            month[11]+=d.get(i).getdPrice();
+	            break;
+	         }
+		      }
+		   
+		   for(int i = 0; i<12; i++) {
+		    	  if(max <= month[i]) {
+		    		  max = month[i];
+		    	  }
+		   }
+		   
+		   
+		   
+		   // 하나 추가 거래량
+		   
+		   LinkedHashMap<String, Integer> d2 = adService.selectDeal2(cNo);
+
+		   
+		   
+		   model.addAttribute("month", month);
+		   model.addAttribute("max", max);
+		   model.addAttribute("monthCount", d2);
+		   
+		   return "admin/chartForSeller";
 	   }
 
 }

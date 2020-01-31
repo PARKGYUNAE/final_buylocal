@@ -19,7 +19,7 @@ public class applicationServiceImpl implements applicationService{
 	// 상품 등록
 	@Override
 	public int insertProduct(Product p) {
-		System.out.println("serviceImpl 지나가는 중!");
+		// System.out.println("serviceImpl 지나가는 중!");
 		System.out.println("p : " + p);
 		return appDao.insertProduct(p);
 	} 
