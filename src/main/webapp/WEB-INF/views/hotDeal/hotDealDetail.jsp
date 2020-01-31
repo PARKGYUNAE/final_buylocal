@@ -37,6 +37,34 @@
 		<script src="lang/summernote-ko-KR.js"></script>
 
     
+     <style>
+    
+    table.type04 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+	  margin : 20px 10px;
+	}
+	table.type04 th {
+	    width: 150px;
+	    padding: 10px;
+	    font-weight: bold;
+	    vertical-align: top;
+	    border-bottom: 1px solid #ccc;
+	}
+	table.type04 td {
+	    width: 350px;
+	    padding: 10px;
+	    vertical-align: top;
+	    border-bottom: 1px solid #ccc;
+	}
+    
+    </style>
+    
+    
+    
 </head>
 
 <body>
@@ -249,7 +277,7 @@
                                 <div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
                                     <a class="nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true"> 
 
-                                        <span>상품 정보</span>
+                                        <span>상품 상세</span>
                                     </a>
                                     <a class="nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
                                         <span>추가 정보</span>
@@ -262,52 +290,74 @@
                                     	<span>신고하기</span>
                                     </a>
                                 </div>
+                                <!-- 상품상세 -->
                                 <div class="tab-content" id="product-tabContent">
                                     <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                         <div class="product-description">
-
+											<h5>상품 상세</h5>
                                             <p>${hotdealDetail.pInfoText }</p>
-											<p>${hotdealDetail.pInfoImage }
-                                            
-
+											<p><img src="resources/productInfo/${hotdealDetail.pInfoImage}"></p>
                                             
                                         </div>
                                     </div>
+                                    <!-- 추가 정보 -->
                                     <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
                                         <div class="table-content table-responsive">
-                                            <table class="table shop_attributes">
-
-                                            	<thead>
-                                            		<h3 align="center">판매자 정보</h3>
-                                            	</thead>
+                                           
+                                            <table class="type04" style="font-size:14px;">
+												<h5>기본 표기정보</h5>
                                                 <tbody>
                                                     <tr>
-                                                        <th>판매자</th>
-                                                        <td>${hotdealDetail.bOwner}</td>
+                                                        <th >용량/수량/크기</th>
+                                                        <td >${hotdealDetail.pVolume}</td>
+                                                        <th >생산자(수입자)</th>
+                                                        <td >${hotdealDetail.bShopName}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>연락처</th>
-                                                        <td>${hotdealDetail.cPhone }</td>
+                                                        <th >원산지</th>
+                                                        <td >${hotdealDetail.pOrigin}</td>
+                                                        <th >제조연월일</th>
+                                                        <td >${hotdealDetail.pProductDate}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>주소</th>
-                                                        <td>${hotdealDetail.bShopAddress }</td>
+                                                        <th colspan="1">취급방법</th>
+                                                        <td colspan="3">${hotdealDetail.pTreatment}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <br><br>
-                                            <table class="table shop_attributes">
-                                            	<thead>
-                                            		<h3 align="center">상세 정보</h3>
-                                            	</thead>
+
+											<br><br><br><br> 
+
+											<h5>판매자 정보</h5>
+											<table class="type04" style="font-size:14px;">
                                                 <tbody>
                                                     <tr>
-                                                        <th>원산지</th>
-                                                        <td>${hotdealDetail.pOrigin}</td>
-
+                                                        <th >상호/대표자</th>
+                                                        <td >${hotdealDetail.bShopName}/${hotdealDetail.bOwner}</td>
+                                                        <th >사업자번호</th>
+                                                        <td >${hotdealDetail.bShopNo}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th >e-mail</th>
+                                                        <td >${hotdealDetail.cEmail}</td>
+                                                        <th >연락처</th>
+                                                        <td >${hotdealDetail.cPhone}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="1">사업장 위치</th>
+                                                        <td colspan="3">${hotdealDetail.bShopAddress}</td>
+                                                    </tr>
+                                                    <tr>    
+                                                        <th colspan="1"></th>
+                                                        <td colspan="3"><div id="map" style="width:851px;height:400px;float:right;"></div></td>
                                                     </tr>
                                                 </tbody>
-                                            </table>
+                                            </table>   
+
+                                            <div id="map" style="width:500px;height:400px;"></div>
+             
+                                            
+                                            
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
@@ -451,44 +501,50 @@
                                     </div>
                                      <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-report-tab">
                                         <div class="table-content table-responsive">
-                                        	<form method="post" action="insertReport.do">
-	                                                <input type="hidden" name="rtNum" value="${ hotdealDetail.pNo }">
-	                                                <input type="hidden" name="cNo" value="${ loginUser.cNo }"/>
-	                                            <table class="table shop_attributes">
-	                                                <tbody>
-	                                                    <tr>
-	                                                        <th>글제목 : </th>
-	                                                        <td><input type="text" name="rtTitle"  value="${ hotdealDetail.pTitle }"></td>
-	                                                    </tr>
-	                                                
-	                                                    <tr>
-	                                                    	<th>신고 유형 : </th>
-	                                                    	<td>
-	                                                    		<select name="rtCategory">
-	                                                    			<option value="광고">광고</option>
-	                                                    			<option value="허위/과장">허위/과장</option>
-	                                                    		</select>
-	                                                    	</td>
-	                                                    </tr>
-	                                                    <tr>
-	                                                        <th>신고 내용 : </th>
-	                                                        <td><textarea cols="50" rows="7" name=rtContent></textarea></td>
-	                                                        
-	                                                    </tr>
-
-	                                                </tbody>
-	                                            </table>
-	    	
-<!-- 	    										<script>
-                                                 	$(document).ready(function() {
-                                                 	  $('#summernote').summernote({
-                                                 	    lang: 'ko-KR' // default: 'en-US'
-                                                 	  });
-                                                 	});
-                                                 </script> -->
-	                                            <input type="submit" value="신고하기"></button>
-                                            </form>
-                                            
+                                        
+                                        	<p>신고 절차     
+											지식재산권 침해 상품, 불법 혹은 부적격 상품, 부적절한 광고 내용 등 안전거래를 저해하는 상품이 확인될 경우, 신고하여 주시기 바랍니다. 신고 건은 아래의 절차에 따라 진행되며, 처리결과에 다소 시간이 걸릴 수 있습니다.
+											
+											<br><br>
+											신고 접수 > 내용 심사 > 판매자 소명 요청 > 처리</p>
+											
+											<br>
+                                            <form method="post" action="insertReport1.do" class="form pr--30">
+                                                    <input type="hidden" name="rtNum" value="${ttangDetail.pNo }"/>
+                                                    <input type="hidden" name="cNo" value="${loginUser.cNo }"/>
+                                                    
+                                                    <div class="form__group mb--10">
+                                                        <label class="form__label d-block" for="title">상품명<span class="required">*</span></label>
+                                                        <input type="text" name="rtTitle" id="title" class="form__input" value="${ttangDetail.pName}" readonly>
+                                                    </div>
+                                                    <div class="form__group mb--20">
+                                                        <label class="form__label d-block" for="name">신고 유형<span class="required">*</span></label>
+                                                        <select name="rtCategory">
+                                                        	<option value="지적재산권 침해">지적재산권 침해</option>
+                                                        	<option value="허위과장광고">허위과장광고</option>
+                                                        	<option value="미인증 등 관련법위반">미인증 등 관련법위반</option>
+                                                        	<option value="기타 불법물">기타 불법물</option>
+                                                        	<option value="중복 상품">중복 상품</option>
+                                                        	<option value="상품정보 오류">상품정보 오류</option>
+														</select>
+                                                    </div>
+                                                    <!-- <div class="form__group mb--10">
+                                                        <label class="form__label d-block" for="title">신고 제목<span class="required">*</span></label>
+                                                        <input type="text" name="title" id="title" class="form__input">
+                                                    </div> -->
+                                                    <div class="form__group mb--20">
+                                                        <label class="form__label d-block" for="content">신고 내용<span class="required">*</span></label>
+                                                        <input type="text" name="rtContent" id="content" class="form__input" name="rtContent">
+                                                    </div>
+                                   
+                                                    <div class="form__group">
+                                                        <div class="form-row">
+                                                            <div class="col-12">
+                                                                <input type="submit" value="제출하기" class="btn btn-size-md">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                           </form>
                                         </div>
                                     </div>
                                 </div>

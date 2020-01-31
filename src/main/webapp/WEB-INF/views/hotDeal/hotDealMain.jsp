@@ -81,7 +81,7 @@
 												<div class="product-image">
 													<figure class="product-image--holder">
 														<img
-															src="resources/assets/img/products/prod-02-270x300.jpg"
+															src="resources/pThumb/${hot.pInfoImage }"
 															alt="Product">
 													</figure>
 
@@ -207,7 +207,7 @@
 											<div class="product-inner">
 												<figure class="product-image">
 													<a href="product-details.html"> <img
-														src="resources/assets/img/products/prod-02-270x300.jpg"
+														src="#"
 														alt="Products">
 													</a>
 													<div class="product-thumbnail-action">

@@ -27,6 +27,14 @@ public class Product {
 	private String lCode; // 지역코드(20.01.20. 추가)
 	private Date pStartDate; // 판매시작일(20.01.25. 수정)
 	private Date pEndDate; // 판매종료일 (20.01.25. 수정)
+	private String pOriginalImage1; // 추가(20.01.30. 수정)
+	private String pImage1;
+	private String pOriginalImage2;
+	private String pImage2;
+	private String pOriginalImage3;
+	private String pImage3;
+	
+	
 	
 	
 	public Product() {}
@@ -35,7 +43,8 @@ public class Product {
 	public Product(int pNo, String pName, String pThumb, String pOriginalT, int pOriginalPrice, int pFinalPrice,
 			int pAmount, String pInfoImage, String pOriginalInfoI, String pInfoText, String cgCode, Date pDate,
 			String pStatus, String pVolume, String pProductDate, String pTreatment, String pStarRate, String pOrigin,
-			String pTitle, String pBoard, int cNo, String lCode, Date pStartDate, Date pEndDate) {
+			String pTitle, String pBoard, int cNo, String lCode, Date pStartDate, Date pEndDate, String pOriginalImage1,
+			String pImage1, String pOriginalImage2, String pImage2, String pOriginalImage3, String pImage3) {
 		super();
 		this.pNo = pNo;
 		this.pName = pName;
@@ -61,6 +70,12 @@ public class Product {
 		this.lCode = lCode;
 		this.pStartDate = pStartDate;
 		this.pEndDate = pEndDate;
+		this.pOriginalImage1 = pOriginalImage1;
+		this.pImage1 = pImage1;
+		this.pOriginalImage2 = pOriginalImage2;
+		this.pImage2 = pImage2;
+		this.pOriginalImage3 = pOriginalImage3;
+		this.pImage3 = pImage3;
 	}
 
 
@@ -304,6 +319,66 @@ public class Product {
 	}
 
 
+	public String getpOriginalImage1() {
+		return pOriginalImage1;
+	}
+
+
+	public void setpOriginalImage1(String pOriginalImage1) {
+		this.pOriginalImage1 = pOriginalImage1;
+	}
+
+
+	public String getpImage1() {
+		return pImage1;
+	}
+
+
+	public void setpImage1(String pImage1) {
+		this.pImage1 = pImage1;
+	}
+
+
+	public String getpOriginalImage2() {
+		return pOriginalImage2;
+	}
+
+
+	public void setpOriginalImage2(String pOriginalImage2) {
+		this.pOriginalImage2 = pOriginalImage2;
+	}
+
+
+	public String getpImage2() {
+		return pImage2;
+	}
+
+
+	public void setpImage2(String pImage2) {
+		this.pImage2 = pImage2;
+	}
+
+
+	public String getpOriginalImage3() {
+		return pOriginalImage3;
+	}
+
+
+	public void setpOriginalImage3(String pOriginalImage3) {
+		this.pOriginalImage3 = pOriginalImage3;
+	}
+
+
+	public String getpImage3() {
+		return pImage3;
+	}
+
+
+	public void setpImage3(String pImage3) {
+		this.pImage3 = pImage3;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Product [pNo=" + pNo + ", pName=" + pName + ", pThumb=" + pThumb + ", pOriginalT=" + pOriginalT
@@ -312,11 +387,12 @@ public class Product {
 				+ ", cgCode=" + cgCode + ", pDate=" + pDate + ", pStatus=" + pStatus + ", pVolume=" + pVolume
 				+ ", pProductDate=" + pProductDate + ", pTreatment=" + pTreatment + ", pStarRate=" + pStarRate
 				+ ", pOrigin=" + pOrigin + ", pTitle=" + pTitle + ", pBoard=" + pBoard + ", cNo=" + cNo + ", lCode="
-				+ lCode + ", pStartDate=" + pStartDate + ", pEndDate=" + pEndDate + "]";
+				+ lCode + ", pStartDate=" + pStartDate + ", pEndDate=" + pEndDate + ", pOriginalImage1="
+				+ pOriginalImage1 + ", pImage1=" + pImage1 + ", pOriginalImage2=" + pOriginalImage2 + ", pImage2="
+				+ pImage2 + ", pOriginalImage3=" + pOriginalImage3 + ", pImage3=" + pImage3 + "]";
 	}
 
 	
-
 	
 
 

@@ -93,28 +93,28 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
@@ -122,7 +122,7 @@
                                                 </figure>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                          
                                     
                                     <div class="product-gallery__nav-image">
@@ -177,19 +177,19 @@
                                             }
                                         ]'>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
                                             </figure>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
                         </div>
@@ -265,10 +265,10 @@
                             <div class="tab-style-2">
                                 <div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
                                     <a class="nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true"> 
-                                        <span>상품상세</span>
+                                        <span>상품 상세</span>
                                     </a>
                                     <a class="nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
-                                        <span>추가정보</span>
+                                        <span>추가 정보</span>
                                     </a>
                                     <a class="nav-link" id="nav-report-tab" data-toggle="tab" href="#nav-report" role="tab" aria-selected="true">
                                     	<span>신고하기</span>

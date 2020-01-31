@@ -80,7 +80,10 @@
                                     <input type="text" name="pTitle" id="pTitle" class="form__input mb--30" placeholder="글 제목*" required>
                                     <div id="pOriginalThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
 									<input type="file" id="uploadFile" name="uploadFile" >								
-                                    </div><br>
+                                    </div>
+                                    
+                                    
+                                    <br>
                                     <input type="text" name="pName" id="pName" class="form__input mb--30" placeholder="상품 이름*" required>
                                     <input type="number" name="pOriginalPrice" id="pOriginalPrice" min="5000" class="form__input mb--30" placeholder="할인 전 가격(원)*" required>
 								  	<input type="number" name="pFinalPrice" id="pFinalPrice" min="5000" class="form__input mb--30" placeholder="최종 판매 가격(원)*" required>

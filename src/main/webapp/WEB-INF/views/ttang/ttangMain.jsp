@@ -92,7 +92,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="resources/assets/img/products/prod-04-700x778.png" alt="제주감귤">
+                                                        <img src="resources/pThumb/${ttang.pInfoImage}" alt="상품썸네일">
                                                     </figure>
                                                     <c:url var="ttangD" value="ttangDetail.do">
                                                     	<c:param name="pNo" value="${ttang.pNo}"/>
