@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>핫딜게시판</title>
 <link rel="shortcut icon" href="resources/assets/img/favicon.ico"
 	type="image/x-icon">
 <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
@@ -81,7 +81,7 @@
 												<div class="product-image">
 													<figure class="product-image--holder">
 														<img
-															src="resources/pThumb/${hot.pInfoImage }"
+															src="resources/pThumb/${hot.pThumb }"
 															alt="Product">
 													</figure>
 

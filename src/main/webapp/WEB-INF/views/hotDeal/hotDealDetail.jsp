@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Beck - Furniture eCommerce Bootstrap 4 Template</title>
+    <title>핫딜게시판 - 상세</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -75,7 +75,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Product Details</h1>
+                        <h1 class="page-title">핫딜게시판</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
                             <li class="current"><span>Product Details</span></li>
@@ -105,35 +105,31 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-08-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                        <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-09-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                        <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-10-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                        <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/assets/img/products/prod-04-700x778.png" alt="Product">
+                                                    <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
-                                                        <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM" class="action-btn video-popup"><i class="la la-play"></i></a>
                                                     </div>
                                                 </figure>
                                             </div>
@@ -191,16 +187,16 @@
                                             }
                                         ]'>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-08-170x195.png" alt="Products">
+                                                <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-09-170x195.png" alt="Products">
+                                                <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-10-170x195.png" alt="Products">
+                                                <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/assets/img/products/prod-04-170x195.jpg" alt="Products">
+                                                <img src="resources/pThumb/${hotdealDetail.pThumb}" alt="Products">
                                             </figure>
                                         </div>
                                     </div>

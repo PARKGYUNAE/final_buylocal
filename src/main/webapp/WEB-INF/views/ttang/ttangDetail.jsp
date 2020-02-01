@@ -93,28 +93,28 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
                                                     </div>
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Product">
+                                                    <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Product">
                                                     <span class="product-badge sale">Sale</span>
                                                     <div class="product-gallery__actions">
                                                         <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
@@ -177,16 +177,16 @@
                                             }
                                         ]'>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="resources/pThumb/${ttangDetail.pInfoImage}" alt="Products">
+                                                <img src="resources/pThumb/${ttangDetail.pThumb}" alt="Products">
                                             </figure>
                                         </div>
                                     </div> 
@@ -434,9 +434,9 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                    <img src="resources/pThumb/${list.pThumb}" alt="Product">
                                                 </figure>
-                                                <a href="${ttangDetail }" class="product-overlay"></a>
+                                                <a href="${ttangDetail}" class="product-overlay"></a>
                                                 <div class="product-action">
                                                     <a data-toggle="modal" data-target="#productModal" class="action-btn">
                                                         <i class="la la-eye"></i>
@@ -447,7 +447,7 @@
                                                 <div class="product-category">
                                                     <a href="${ttangDetail}">${list.pTitle}</a>
                                                 </div>
-                                                <h3 class="product-title"><a href="${ttangDetail }">${list.pName }</a></h3>
+                                                <h3 class="product-title"><a href="${ttangDetail }">${list.pName}</a></h3>
                                                 
                                                 <div class="product-price-wrapper">
 														<span class="money"> <sup><fmt:parseNumber
