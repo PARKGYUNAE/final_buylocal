@@ -92,7 +92,7 @@
                                             <div class="product-inner">
                                                 <div class="product-image">
                                                     <figure class="product-image--holder">
-                                                        <img src="resources/pThumb/${ttang.pInfoImage}" alt="상품썸네일">
+                                                        <img src="resources/pThumb/${ttang.pThumb}" alt="상품썸네일">
                                                     </figure>
                                                     <c:url var="ttangD" value="ttangDetail.do">
                                                     	<c:param name="pNo" value="${ttang.pNo}"/>
@@ -128,7 +128,7 @@
                                                     <div class="product-category">
                                                         <a href="${ttangD}">${ttang.pTitle}</a>
                                                     </div>
-                                                    <h3 class="product-title"><a href="${ttangD}">${ttang.pName}</a></h3>
+                                                    	<div class="product-title" style="font-weight:bold"><a href="${ttangD}">${ttang.pName}</a></div>
                                                     <div class="product-info-bottom">
                                                         <div class="product-price-wrapper">
                                                             <span class="money"><sup><fmt:parseNumber
@@ -237,7 +237,6 @@
 							<div class="shop-widget">
 								<h3 class="widget-title mb--25">태그</h3>
 								<div class="tagcloud">
-									클릭 시, 검색 가능하게
 									<a href="#">제철과일</a> 
 									<a href="#">단품식사</a> 
 									<a href="#">혼밥</a> 
