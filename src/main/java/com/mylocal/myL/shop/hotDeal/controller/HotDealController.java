@@ -184,11 +184,12 @@ public class HotDealController {
 		
 	}
 
-	@RequestMapping("insertHotDeal.do")
+	// mapping 겹쳐서 주석처리함 
+/*	@RequestMapping("insertHotDeal.do")
 	public String insertHotDeal() {
 		return "hotDeal/insertHotDealForm";
 	}
-
+*/
 
 	@RequestMapping("hotDealQnA.do")
 	public String hotDealQnA() {

@@ -3,6 +3,7 @@ package com.mylocal.myL.admin.controller;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import javax.activation.FileDataSource;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -122,8 +123,10 @@ public class AdContentController {
 	public ModelAndView anser(ModelAndView mv, int qNo) {
 
 		QnA qna = adContentService.selctQna(qNo);
+		
+		System.out.println("리스트 :" + qna);
 
-		qna.setqTitle(qna.getqContent().replace("<br>", "\n"));
+		qna.setqContent(qna.getqContent().replace("<br>", "\n"));
 
 		mv.addObject("qna", qna).setViewName("admin/awnser");
 
@@ -197,8 +200,11 @@ public class AdContentController {
 		QnA qna = null;
 
 		qna = adContentService.selctQna(qNo);
+		
 
 		if (qna != null) {
+			qna.setqContent(qna.getqContent().replace("<br>", "\n"));
+			System.out.println(qna.getqContent().replace("<br>","\n"));
 			mv.addObject("qna", qna);
 			mv.setViewName("admin/qnaDetailForm");
 
@@ -343,8 +349,6 @@ public class AdContentController {
 	public String report2(HttpServletRequest request, Report r) {
 		
 		
-		System.out.println("잘 나옴" + r);
-		
 		
 		r.setRtContent(r.getRtContent().replace("\n", "<br>"));
 		
@@ -462,10 +466,14 @@ public class AdContentController {
 
 		int result = adContentService.updateQna(qNo);
 
-		String setfrom = "lko4400@naver.com";
+		String setfrom = "xotn4400@gmail.com";
 		String tomail = request.getParameter("tomail"); // 받는 사람 이메일
+
+		
 		String title = request.getParameter("title"); // 제목
 		String content = request.getParameter("content"); // 내용
+		
+	
 
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
@@ -474,9 +482,21 @@ public class AdContentController {
 			messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
 			messageHelper.setTo(tomail); // 받는사람 이메일
 			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
+			// messageHelper.setText(content); // 메일 내용
+			
+			
+			
+			messageHelper.setText("<html><body> "+content+" <br><br> "
+					+ "<a href='http://192.168.10.35:8800/myL'><img src='https://postfiles.pstatic.net/MjAyMDAyMDRfMTc1/MDAxNTgwNzk1Nzk5NTU3.ilwY0Q1Ib2EAJ9_dwZE5DnQ-8RYzvErH9oDM6kmBwhAg.Hwg63mxdjqBKpxQ2f33TDqJ6SlVJQR-jRQs2NBjOIgQg.PNG.hedystarr/slider-01-img-01.png?type=w580'></a></body></html>", true);
 
+			
+/*
+			FileSystemResource res = new FileSystemResource(new File("c:/Sample.jpg"));
+			helper.addInline("identifier1234", res);*/
+			
+			
 			mailSender.send(message);
+			
 			
 			
 		} catch (Exception e) {

@@ -46,9 +46,8 @@
                                 </div>
                                 <div class="contact-info mb--20">
                                     <p><i class="fa fa-map-marker"></i>- 썸네일 사진 권장 크기 : 700 * 778</p>
-                                    <p><i class="fa fa-phone"></i>- 상품정보(이미지) 권장 크기 : </p>
+                                    <p><i class="fa fa-phone"></i>- 상품정보(이미지) 권장 크기 : 800 * 1720</p>
                                     <p><i class="fa fa-fax"></i>- 땡처리게시판은 당일 판매 제품만 등록 가능합니다.  </p>
-                                    <p><i class="fa fa-fax"></i>- 최소 판매 가격은 5000원 입니다. </p>
                                     <p><i class="fa fa-clock-o"></i>- 자세한 설명은 FAQ를 참고하세요.</p>
                                 </div>
                             </div>
@@ -66,7 +65,6 @@
  									<p style="font-size:14px;">*하단의 판매자 정보는 마이페이지에서 수정 가능합니다.</p>
  									
                                    	판매자 이름 <input type="text" id="cName" value="${loginUser.cName}" class="form__input mb--30"/ readonly>
-       								업체 이름 <input type="text" value="#"class="form__input mb--30" readonly/>         
                						 업체 주소 <input type="text" id="cAddress" value="${loginUser.cAddress}" class="form__input mb--30" readonly/>
                 					업체 연락처 <input type="text" id="cPhone" value="${loginUser.cPhone}" class="form__input mb--30" readonly/>
                                    <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}" class="form__input mb--30"/> 
@@ -81,7 +79,6 @@
                                     <div id="pOriginalThumbArea">썸네일(판매상품 사진)을 선택하세요 : &nbsp;&nbsp;
 									<input type="file" id="uploadFile" name="uploadFile" >								
                                     </div>
-                                    
                                     
                                     <br>
                                     <input type="text" name="pName" id="pName" class="form__input mb--30" placeholder="상품 이름*" required>
@@ -217,30 +214,6 @@
 			// 땡처리 선택 시, 판매종료일은 판매시작일과 동일하게 설정(등록일과 동일하게)
 			 document.getElementById('pStartDate').valueAsDate = new Date;
 			 document.getElementById('pEndDate').valueAsDate = new Date();
-			
-			/* $("#pStartDate").datepicker({
-                dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-                ,changeYear: true //콤보박스에서 년 선택 가능
-                ,changeMonth: true //콤보박스에서 월 선택 가능                
-                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
-                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
-                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                
-            });  */
-			
-			// $("#pStartDate").datepicker('setDate', 'today');
-			// $("#pEndDate").datepicker('setDate', 'today');
-			
-			
 		});
 		
 		var cgCode = $("#cgCode").val;
@@ -262,10 +235,6 @@
 	<!-- Global Overlay End -->
 	<!-- Main Wrapper End -->
 	
-	<!-- datepicker -->
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
- -->     
 	
 </body>
 </html>

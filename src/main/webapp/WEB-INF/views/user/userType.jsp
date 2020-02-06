@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 유형 선택</title>
 <style>
 	h5>a{
 		cursor:pointer;
@@ -13,6 +13,11 @@
 	}
 	#wrapper {
 		margin-top: 6%;
+	}
+	
+	.col-sm-6 img {
+		border: 1px solid #e5e5e5;
+		box-size: border-box;
 	}
 </style>
 </head>
@@ -28,7 +33,8 @@
 			<div class="container-fluid no-left-padding no-right-padding page-content blog-single post-nosidebar">
 				<!-- Container -->
 				<div class="container" id="wrapper">
-					<h5 align="center">회원 유형을 선택해주세요.</h5>
+					<h5 align="center">가입하실 회원 유형을 선택해주세요.</h5>
+					<br><br><br>
 					<div class="row">
 						<!-- Content Area -->
 						<div class="col-xl-12 col-lg-12 col-md-12 col-12 content-area">

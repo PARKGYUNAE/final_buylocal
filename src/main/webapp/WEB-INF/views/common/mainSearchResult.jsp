@@ -327,7 +327,7 @@
 												<div class="product-image">
 													<figure class="product-image--holder">
 														<img
-															src="resources/assets/img/products/prod-04-270x300.jpg"
+															src="resources/pThumb/${listH.pThumb}"
 															alt="Product">
 													</figure>
 													<c:url var="hotDealDetail" value="hotDealDetail.do">
@@ -424,7 +424,7 @@
 											<div class="product-image">
 												<figure class="product-image--holder">
 													<img
-														src="resources/assets/img/products/prod-04-270x300.jpg"
+														src="resources/pThumb/${listT.pThumb }"
 														alt="Product">
 												</figure>
 												<a href="${hotDealDetail}" class="product-overlay"></a>
@@ -751,13 +751,14 @@
 	</aside>
 	<!-- Mini Cart End -->
 
-	<!-- Searchform Popup Start -->
-	<!-- Searchform Popup Start -->
+	
+        <!-- Searchform Popup Start -->
+	<c:url var="totalSearch" value="totalSearch.do"/>
 	<div class="searchform__popup" id="searchForm">
 		<a href="#" class="btn-close"><i class="la la-remove"></i></a>
 		<div class="searchform__body">
 			<p>검색어를 입력하세요</p>
-			<form class="searchform" method="get" action="search.do">
+			<form class="searchform" method="get" action="totalSearch.do">
 				<input type="text" name="popup-search" id="popup-search"
 					class="searchform__input" placeholder="지역, 상품, 업체 등 을 검색해보세요">
 				<button type="submit" class="searchform__submit">

@@ -36,7 +36,6 @@
 		<typeAlias type="com.mylocal.myL.admin.model.vo.Deal" alias="adDeal"/>
 		
 		
-		
 		<!-- 01.30 추가된 타입 -->
 		<typeAlias type="com.mylocal.myL.common.SearchList" alias="SearchList"/>
 		<!-- 끝 -->

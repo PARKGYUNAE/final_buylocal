@@ -199,19 +199,19 @@
   	arr[i] = "${entry.value}";
   	i++;
   </c:forEach>
-  console.log("${categorys.value}");
+
   var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
       labels: ["디지털/가전", "의류/패션잡화", "뷰티/미용", "스포츠/레저", "도서/티켓/음반", "가구/인테리어",
-    	  "신선/가공식품", "게임/취미", "반려동물용품", "기타"],
+    	  "신선/가공식품", "게임/취미", "반려동물용품", "핫딜기타","한식","중식","일식","양식","커피/제과","땡처리기타"],
       datasets: [{
-    	  data:[arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9]],
+    	  data:[arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9],arr[10],arr[11],arr[12],arr[13],arr[14],arr[15]],
        /*  data: ["${categorys.get(0)}","${categorys.get(1)}","${categorys.get(2)}",
         	"${categorys.get(3)}","${categorys.get(4)}","${categorys.get(5)}",
         	"${categorys.get(6)}","${categorys.get(7)}","${categorys.get(8)}","${categorys.get(9)}"], */
         //backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
-        backgroundColor:['red', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'purple', 'pink', 'black', 'gray'],
+        backgroundColor:['996633', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'purple', 'pink', 'black', 'gray','skyblue','magenta','lightgray','cyan','black','red'],
       }],
     },
   });
@@ -276,7 +276,7 @@
             padding: 10,
             // Include a dollar sign in the ticks
             callback: function(value, index, values) {
-              return  number_format(value) + '원일껄?!';
+              return  number_format(value) + '건';
             }
           },
           gridLines: {

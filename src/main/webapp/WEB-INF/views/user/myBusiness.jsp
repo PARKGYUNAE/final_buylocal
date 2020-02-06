@@ -36,6 +36,12 @@ $('#dtBasicExample').DataTable();
 $('.dataTables_length').addClass('bs-select');
 });
 </script>
+<script>
+     <c:if test="${!empty msg}">
+        alert('${msg}');
+        <c:remove var="msg"/>
+     </c:if>
+</script> 
 </head>
 <body>
 
@@ -156,8 +162,8 @@ $('.dataTables_length').addClass('bs-select');
                                             <h5 class="mb--5">
                                             	<c:out value="${ loginUser.cName }"/>님의 마이 페이지
                                             </h5>
-                                            <p class="degne">UI/ Web Designer</p>
-                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                            <p class="degne"><i class="la la-map-marker la-2x"></i></p>
+                                            <p class="mb--25"><c:out value="${ loginUser.cAddress }"/></p>
                                             <ul class="social mb--20">
                                                 <!-- <li class="social__item">
                                                     <a href="https://www.facebook.com" class="social__link">
@@ -176,8 +182,11 @@ $('.dataTables_length').addClass('bs-select');
                                                 </li> -->
                                             </ul>
                                             <div class="autor-meta">
-                                                <span>내 구매내역 <strong>5</strong></span>
+                                                <div class="autor-meta">
+                                                <span>내 거래내역 <strong>
+                                                <c:out value="${ dCount }"/></strong></span>
                                                 <span>내 문의글 <strong>2</strong></span>
+                                            </div>
                                             </div>
                                         </div>
                                     </div>

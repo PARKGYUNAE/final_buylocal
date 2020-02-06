@@ -329,8 +329,6 @@
 	i++;
 </c:forEach>
 
-
-  
   
   var myLineChart = new Chart(ctx, {
     type: 'line',

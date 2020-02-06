@@ -51,12 +51,12 @@
 		WHERE C_ID=#{cId}
 	</update>
 	
-	<!-- 비밀번호 변경 -->
-	<update id="updatePwd" parameterType="Customer">
-		UPDATE CUSTOMER 
-		SET C_PWD=#{cPwd}
-		WHERE C_ID=#{cId}
-	</update>
+   <!-- 비밀번호 변경 -->
+   <update id="updatePwd" parameterType="Customer">
+      UPDATE CUSTOMER 
+      SET C_PWD=#{cPwd}
+      WHERE C_NO=#{cNo}
+   </update>
 	
 	<select id="checkPwd" parameterType="string" resultType="_int">
 		SELECT COUNT(*) 
@@ -84,6 +84,12 @@
 		VALUES (#{bShopNo}, DEFAULT, #{bShopName}, #{bClass}, #{bDetailClass}, 
 				#{bOwner}, #{bPic}, #{bShopAddress}, SEQ_CNO.CURRVAL)
 	</insert>
+	
+	<select id="checkShopNo" parameterType="string" resultType="_int">
+		SELECT COUNT(*) 
+		FROM BUSINESS_INFO 
+		WHERE B_SHOP_NO=#{bShopNo}
+	</select>
 	
 	
 	<!-- Deal -->
@@ -118,6 +124,7 @@
       <result property="dRevCheck" column="D_REVCHECK"/>
       <result property="dStatus" column="D_STATUS"/>
       <result property="dUid" column="D_UID"/>
+      <result property="pBoard" column="P_BOARD"/>
    </resultMap>
 	<!-- 범석 -->
 	
@@ -144,13 +151,21 @@
 		WHERE C_NO=#{cNo}
 	</select>
 	
-	<!-- 범석 -->
+	<!-- 범석 02.05. selectList2 수정-->
 	<select id="selectDealList2" parameterType="_int" resultMap="DealSet">
-      SELECT D.D_NO, D.D_DATE, D.P_NO, D.C_NO, D.D_PRICE, D_AMOUNT, D_METHOD, D_RECEIVER, D_REV_DATE, D_REV_CHECK, D_STATUS, D_UID, PRODUCT.P_NAME, CUSTOMER.C_NAME
+      SELECT D.D_NO, D.D_DATE, D.P_NO, D.C_NO, D.D_PRICE, D_AMOUNT, D_METHOD, D_RECEIVER, D_REV_DATE, D_REV_CHECK, D_STATUS, D_UID, PRODUCT.P_NAME, CUSTOMER.C_NAME, PRODUCT.P_BOARD
       FROM DEAL D
       JOIN PRODUCT ON(D.P_NO = PRODUCT.P_NO)
       JOIN CUSTOMER ON(CUSTOMER.C_NO = D.C_NO)
       WHERE CUSTOMER.C_NO = #{cNo}
+   </select>
+ 
+   <select id="countBusiness" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM DEAL 
+		WHERE P_NO IN(
+		SELECT PRODUCT.P_NO
+		FROM CUSTOMER JOIN PRODUCT ON(CUSTOMER.C_NO = PRODUCT.C_NO)
+		WHERE CUSTOMER.C_NO = #{cNo})
    </select>
 	
 </mapper>

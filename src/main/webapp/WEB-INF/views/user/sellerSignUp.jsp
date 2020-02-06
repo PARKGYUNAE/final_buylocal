@@ -7,6 +7,117 @@
 <meta charset="UTF-8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	$(function(){
+		 $("#id").on("keyup", function(){
+	            var userId = $(this).val().trim();
+	            $("#idResult").text('');
+	            
+	            if(!(/^[a-z][a-z\d]{3,11}$/i.test($("#enrollForm input[name=cId]").val()))){
+					$("#idResult").text("아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)").css("color", "red");
+					/* alert('아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)'); */
+					//$("#enrollForm input[name=cId]").select();
+					return;
+				}
+		 });
+			
+		$("#pwd").on("keyup", function(){
+				
+				if ($("#pwd").val().length < 8) {
+					$("#pwdResult").text("비밀번호는 8자 이상으로 설정해야 합니다.").css("color", "red");
+					return;
+				} else {
+					$("#pwdResult").text("");
+					return;	
+				}
+			});	
+
+
+		$("#pwd2").on("keyup", function(){
+				if($("#pwd").val() !== $("#pwd2").val()) {
+					$("#pwd2Result").text("비밀번호 일치 여부를 다시 확인해주세요.").css("color", "red");
+					/* $("#pwd").val("").focus(); */
+					/* $("#pwd2").val(""); */
+					return;	
+				} else {
+					$("#pwd2Result").text("");
+					return;	
+				}
+		});
+		
+		// 아이디 중복 체크 
+		$("#id").keyup(function() {
+			$.ajax({
+				url : "checkId.do",
+				type : "POST",
+				data : {
+					cId : $("#id").val()
+				},
+				success : function(result) {
+					if (result == 1) {
+						alert('중복된 아이디가 있습니다. 다른 아이디를 입력해주세요.');
+						/* $("#idCheck").html("중복된 아이디가 있습니다.");
+						$("#joinBtn").attr("disabled", "disabled"); */
+					} else {
+					$("#idCheck").html("");
+					$("#joinBtn").removeAttr("disabled");
+					}
+				},
+			})
+		});
+		
+		// 이메일 중복 체크 
+		$("#email").keyup(function(){
+			$.ajax({
+				url : "checkEmail.do",
+				type : "POST",
+				data : {
+					cEmail : $("#email").val()
+				},
+				success : function(result) {
+					if (result >= 1) {
+						// 여기다가 alert 추가하자
+						alert('중복된 이메일 주소가 있습니다. 다른 이메일 주소를 입력해주세요.');
+						/* $("#emailCheck").html(""); */
+						/* $("#emailCheck").html("중복된 이메일이 있습니다."); */
+					} else {
+						$("#idCheck").html("");
+						$("#joinBtn").removeAttr("disabled");
+					}
+				},
+			})
+		});
+		
+		
+		// 사업자 번호 중복 체크
+		$("#bShopNo").keyup(function() {
+			$.ajax({
+				url : "checkShopNo.do",
+				type : "POST",
+				data : {
+					bShopNo : $("#bShopNo").val()
+				},
+				success : function(result) {
+					if (result == 1) {
+						alert('이미 등록된 사업자 번호입니다. 확인 후 다시 입력해주세요.');
+					} else {
+						$("#idCheck").html("");
+						$("#joinBtn").removeAttr("disabled");
+					}
+				},
+			})
+		})
+		
+	});
+
+</script>
+
+<script>
+     <c:if test="${!empty msg}">
+        alert('${msg}');
+        <c:remove var="msg"/>
+     </c:if>
+</script> 
 <title>사업자 회원 가입</title>
 <style>
 	h5>a{
@@ -14,21 +125,6 @@
 		float:left;
 	}
 	 
- 	#guideOk{
-      display:none;
-      font-soze:12px;
-      top:12px;
-      right:10px;
-      color:green;    
-   }
-
-   #guideError, #guideError2{
-	  display:none;
-      font-soze:12px;
-      top:12px;
-      right:10px;
-      color:red;
-   }  
    
    #post, #address1, #address2, #bPost, #bAddress1, #bAddress2 {
    	height: 40px;
@@ -48,14 +144,14 @@
 	
 
         <!-- Breadcrumb area Start -->
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="resources/assets/img/bg/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">My Account</h1>
+                        <h1 class="page-title">회원가입</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>My Account</span></li>
+                            <li class="current"><span>회원가입</span></li>
                         </ul>
                     </div>
                 </div>
@@ -65,9 +161,6 @@
 
 
 
-
-        
-
         <!-- Main Content Wrapper Start -->
         <div class="main-content-wrapper">
             <div class="page-content-inner ptb--80 ptb-md--60 pb-sm--55">
@@ -75,135 +168,22 @@
                     <div class="row">
                         <div class="col-12">
                            <div class="user-dashboard-tab flex-column flex-md-row">
-                                <!-- <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link" data-toggle="pill" role="tab" href="#dashboard" aria-controls="dashboard" aria-selected="true">Dashboard</a>
-                                    <a class="nav-link" data-toggle="pill" role="tab" href="#orders" aria-controls="orders" aria-selected="true">Orders</a>
-                                    <a class="nav-link" data-toggle="pill" role="tab" href="#downloads" aria-controls="downloads" aria-selected="true">Downloads</a>
-                                    <a class="nav-link" data-toggle="pill" role="tab" href="#addresses" aria-controls="addresses" aria-selected="true">Addresses</a>
-                                    <a class="nav-link active" data-toggle="pill" role="tab" href="#accountdetails" aria-controls="accountdetails" aria-selected="true">Account Details</a>
-                                    <a class="nav-link" href="login-register.html">Logout</a>
-                                </div> -->
                                 <div class="user-dashboard-tab__content tab-content">
-                                    <!-- <div class="tab-pane fade show active" id="dashboard">
-                                        <p>Hello <strong>John</strong> (not <strong>John</strong>? <a href="login-register.html">Log out</a>)</p>
-                                        <p>From your account dashboard. you can easily check &amp; view your <a href="">recent orders</a>, manage your <a href="">shipping and billing addresses</a> and <a href="">edit your password and account details</a>.</p>
-                                    </div> -->
-                                    
-                                    
-                                    <!-- <div class="tab-pane fade" id="orders">
-                                        <div class="message-box mb--30 d-none">
-                                            <p><i class="fa fa-check-circle"></i>No order has been made yet.</p>
-                                            <a href="shop.html">Go Shop</a>
-                                        </div>
-                                        <div class="table-content table-responsive">
-                                            <table class="table text-center">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Order</th>
-                                                        <th>Date</th>
-                                                        <th>Status</th>
-                                                        <th>Total</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td class="wide-column">September 19, 2018</td>
-                                                        <td>Processing</td>
-                                                        <td class="wide-column">$49.00 for 1 item</td>
-                                                        <td><a href="product-details.html" class="btn btn-size-md">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td class="wide-column">September 19, 2018</td>
-                                                        <td>Processing</td>
-                                                        <td class="wide-column">$49.00 for 1 item</td>
-                                                        <td><a href="product-details.html" class="btn btn-size-md">View</a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div> -->
-                                    
-                                    
-                                    
-                                    <!-- <div class="tab-pane fade" id="downloads">
-                                        <div class="message-box mb--30 d-none">
-                                            <p><i class="fa fa-exclamation-circle"></i>No downloads available yet.</p>
-                                            <a href="shop.html">Go Shop</a>
-                                        </div>
-                                        <div class="table-content table-responsive">
-                                            <table class="table text-center">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Product</th>
-                                                        <th>Downloads</th>
-                                                        <th>Expires</th>
-                                                        <th>Download</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="wide-column">Furtrate</td>
-                                                        <td>August 10, 2018 </td>
-                                                        <td class="wide-column">Never</td>
-                                                        <td><a href="#" class="btn btn-size-md">Download File</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="wide-column">Furtrate</td>
-                                                        <td>August 10, 2018 </td>
-                                                        <td class="wide-column">Never</td>
-                                                        <td><a href="#" class="btn btn-size-md">Download File</a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div> -->
-                                    
-                                    
-                                    
-                                    <!-- <div class="tab-pane fade" id="addresses">
-                                        <p class="mb--20">The following addresses will be used on the checkout page by default.</p>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-sm--20">
-                                                <div class="text-block">
-                                                    <h4 class="mb--20">Billing address</h4>
-                                                    <a href="">Edit</a>
-                                                    <p>You have not set up this type of address yet.</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="text-block">
-                                                    <h4 class="mb--20">Shopping address</h4>
-                                                    <a href="">Edit</a>
-                                                    <p>You have not set up this type of address yet.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    
-                                    <h3 align="center">회원 가입</h3>
-                                    <hr><br>
-                                    
-                                    
-                                    <div class="tab-pane fade show active" id="accountdetails">
+                                    <div class="tab-pane fade show active" id="accountdetails" style="margin-left: 260px">
+                                    	<h3 align="center">사업자 회원 가입</h3>
+                                    	<hr><br>
                                     	
                                         <form action="binsert.do" method="post" 
-                                        class="form form--account" id="enrollForm" name="enrollForm" onsubmit="return joinValidate();">
+                                        class="form form--account" id="enrollForm" name="enrollForm">
                                         <!-- 테이블로 다시 짜기 -->
-                                        <table class="customerErollForm" width="70%" align="center" cellspacing="5">
+                                        <table class="customerErollForm" width="700px" align="center" style="table-layout: fixed">
                                         	<tr>
-                                        		<td width="">
+                                        		<td>
                                         			<label class="form__label" for="userId">아이디 <span class="required">*</span></label>
                                         		</td>
-                                        		<td>
-                                                    <input type="text" name="cId" id="userId" class="form__input" placeholder="영소문자/숫자포함 4글자 이상" required>
-                                                    <!-- 아이디 중복 확인 추가 부분 -->
-                                                    <span class="form__notes" id="guideOk"><em>이 아이디는 사용 가능합니다.</em></span>
-                                                    <span class="form__notes" id="guideError"><em>이 아이디는 사용할 수 없습니다.</em></span>
-                                                    <span class="form__notes"><em id="idResult"></em></span>
-                                               		<input type="hidden" name="idDuplicateCheck" id="idDuplicateCheck" value="0">
+                                        		<td width="400px">
+                                                    <input type="text" name="cId" id="id" class="form__input" placeholder="영소문자로 시작하는 4~12자를 입력해주세요." required>
+                                               		<span class="form__notes"><em id="idResult"></em></span>
                                                	</td>
                                                	<td></td>
                                             </tr>
@@ -212,17 +192,18 @@
                                                 	<label class="form__label" for="userPwd">비밀번호 <span class="required">*</span></label>
                                                 </td>
                                                 <td>    
-                                                    <input type="password" name="cPwd" id="userPwd" class="form__input" placeholder="" required>
+                                                    <input type="password" name="cPwd" id="pwd" class="form__input" placeholder="" required>
+                                                	<span class="form__notes"><em id="pwdResult"></em></span>
                                                 </td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                             	<td width="">
-                                                	<label class="form__label" for="userPwd2">비밀번호 확인 <span class="required">*</span></label>
+                                                	<label class="form__label" for="pwd2">비밀번호 확인 <span class="required">*</span></label>
                                                 </td>
                                                 <td>    
-                                                    <input type="password" name="cPwd2" id="userPwd2" class="form__input" placeholder="" required>
-                                                	<span class="form__notes"><em id="pwdResult"></em></span>
+                                                    <input type="password" name="cPwd2" id="pwd2" class="form__input" placeholder="" required>
+                                                	<span class="form__notes"><em id="pwd2Result"></em></span>
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -231,16 +212,17 @@
                                         			<label class="form__label" for="userName">이름 <span class="required">*</span></label>
                                         		</td>
                                         		<td>
-                                                    <input type="text" name="cName" id="userName" class="form__input" placeholder="한글 2글자 이상" required>
+                                                    <input type="text" name="cName" id="userName" class="form__input" required>
                                                	</td>
                                                	<td></td>
                                             </tr>
                                             <tr>
-                                        		<td width="">
+                                        		<td>
                                         			<label class="form__label" for="email">이메일 주소 <span class="required">*</span></label>
                                         		</td>
                                         		<td>
                                                     <input type="email" name="cEmail" id="email" class="form__input" required>
+                                                    <span id="emailCheck" class="form__notes"></span>
                                                	</td>
                                                	<td></td>
                                             </tr>
@@ -280,26 +262,20 @@
 								               </td>
 								               <td></td>
 								            </tr>
-								            <!-- 뭐여 굳이 안써도 되는 거였음ㅋㅋ -->
-								            <!-- <tr>
-									            <td colspan="3" align="center">
-									            	<input type="hidden" value="일반" id="cLevel" name="cLevel">
-									            </td>
-								            </tr> -->
 								             </table>
 								             
 								             <!-- 사업자 정보 입력 폼 시작 -->
 								          	<hr>  
 								          
-								            <table class="sellerErollForm" width="70%" align="center" cellspacing="5">
+								            <table class="sellerErollForm" width="700px" align="center" style="table-layout: fixed">
                                         	<tr>
                                         		<td width="">
                                         			<label class="form__label" for="bShopNo">사업자 번호<span class="required">*</span></label>
                                         		</td>
-                                        		<td>
+                                        		<td width="400px">
                                                     <input type="text" name="bShopNo" id="bShopNo" class="form__input" placeholder="-없이 입력해주세요." required>
                                                     <!-- 중복 확인 추가 부분 -->
-                                                    <span class="form__notes" id="guideError2"><em>이 사업자 번호는 사용할 수 없습니다.</em></span>
+                                                    <!-- <span class="form__notes" id="guideError2"><em>이 사업자 번호는 사용할 수 없습니다.</em></span> -->
                                                		<!-- <input type="hidden" name="idDuplicateCheck" id="idDuplicateCheck" value="0"> -->
                                                	</td>
                                                	<td></td>
@@ -993,94 +969,6 @@
 	        }).open();
 	    }
 	</script>
-       
-    
-    <!-- <script>
-		
-		// 유효성 검사
-		function joinValidate(){
-			if(!(/^[a-z][a-z\d]{3,11}$/i.test($("#enrollForm input[name=cId]").val()))){
-				$("#idResult").text("아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)").css("color", "red");
-				/* alert('아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)'); */
-				$("#enrollForm input[name=cId]").select();
-				return false;
-			}
-			
-			if($("#enrollForm input[name=cPwd]").val() != $("#enrollForm input[name=cPwd2]").val()){
-				$("#pwdResult").text("비밀번호 불일치").css("color", "red");
-				return false;
-			}
-			
-			if(!(/^[가-힣]{2,}$/.test($("#enrollForm input[name=cName]").val()))){
-				alert('이름은 한글로 2글자 이상 입력');
-				$("#enrollForm input[name=cName]").select();
-				return false;
-			}
-			
-			return true;
-			
-			
-		}
-	
-		
-	</script> -->
-    
-	<!-- 아이디 중복체크  -->
-   <script>
-      $(function(){
-         $("#userId").on("keyup", function(){
-            var userId = $(this).val().trim();
-            $("#idResult").text('');
-            $("#guideOk").hide();
-            $("#guideError").hide();
-            
-            if(!(/^[a-z][a-z\d]{3,11}$/i.test($("#enrollForm input[name=cId]").val()))){
-				$("#idResult").text("아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)").css("color", "red");
-				/* alert('아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)'); */
-				//$("#enrollForm input[name=cId]").select();
-				return;
-			}
-            
-       
-   
-			
-            $.ajax({
-            	url:"dupid.do",
-            	data:{cId:userId},
-            	success:function(data){
-            		// console.log(data);
-            		// if(data == "true") { // 아이디를 사용할 수 있을 때
-            		if(data.isUsable == true) { // 3번 JsonView 방식
-            			$("#guideError").hide();
-            			$("#guideOk").show();
-            			$("#isDuplicateCheck").val(1);
-            		} else { // 아이디를 사용할 수 없을 때 
-            			$("#guideOk").hide();
-            			$("#guideError").show();
-            			$("#isDuplicateCheck").val(0);
-            		}
-            	},
-            	error:function(){
-            		console.log("ajax 통신 실패!");
-            	}
-            });
-         });
-      });
-      
-      function validate(){
-          // 아이디 중복체크 여부에 따라 submit true, false 리턴
-          if($("#idDuplicateCheck").val() == 0){
-             alert('사용 가능한 아이디를 입력해주세요.');
-             $("#userId").focus();
-             return false;
-          }
-          return true;
-       }
-       
-    </script>
-    
-   </body> 
-    
-    
-
+          
+</body> 
 </html>

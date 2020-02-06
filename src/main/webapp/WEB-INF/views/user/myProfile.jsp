@@ -58,7 +58,14 @@
 </style>
 </head>
 <body>
-
+		
+<script>
+     <c:if test="${!empty msg}">
+        alert('${msg}');
+        <c:remove var="msg"/>
+     </c:if>
+</script> 
+		
     	<c:import url="../common/menubar.jsp"/>
 
          <!-- Breadcrumb area Start -->
@@ -88,8 +95,10 @@
 	                                <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
 	                                    <div class="bl-widget quote1">
+	                                    <c:url var="myInfo" value="myInfo.do"/>
 	                                    <div class="inner">
 	                                        <div class="post-quote">
+	                                        	<button class="menuBtn" onclick="location.href='${ myInfo }'">
 	                                            <div class="quote-info1">
 	                                                <!-- <i class="las la-address-book"></i> -->
 	                                                <div class="info">
@@ -97,16 +106,20 @@
 	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
+	                                            </button>
 	                                            <p>내 정보 수정</p>
 	                                        </div>
 	                                    </div>
 	                                </div>
                                     </article>      
                                      <!-- 반복 끝 -->
+                                     <c:if test="${ loginUser.cLevel eq '일반' }">
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
 	                                    <div class="bl-widget quote1">
-	                                    <c:url var="myCart" value="myCart.do"/>
+	                                    <c:url var="myCart" value="myCart.do">
+	                                    	<c:param name="cNo" value="${ loginUser.cNo }"/>
+	                                    </c:url>
 	                                    <div class="inner">
 	                                        <div class="post-quote">
 	                                        <button class="menuBtn" onclick="location.href='${ myCart }'">
@@ -126,43 +139,83 @@
 	                                </div>
                                     </article>      
                                      <!-- 반복 끝 --> 
+                                     </c:if>
+                                     
+                                     <c:if test="${ loginUser.cLevel eq '일반' }">
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
 	                                    <div class="bl-widget quote1">
+	                                    <c:url var="myFavorite" value="hotDealWishList.do">
+                                            		<c:param name="cNo" value="${ loginUser.cNo }"/>
+                                            	</c:url>
 	                                    <div class="inner">
 	                                        <div class="post-quote">
+	                                        	<button class="menuBtn" onclick="location.href='${ myFavorite }'">
 	                                            <div class="quote-info1">
 	                                                <div class="info">
 	                                                    <i class="la la-gratipay la-5x"></i>
 	                                                    <!-- <span>Designer</span> -->
 	                                                </div>
 	                                            </div>
+	                                            </button>
 	                                            <p>위시 리스트</p>
 	                                        </div>
 	                                    </div>
 	                                </div>
                                     </article>      
-                                     <!-- 반복 끝 --> 
+                                     <!-- 반복 끝 -->
+                                     </c:if> 
+                                     
+                                     <c:choose>
+                                         	<c:when test="${ loginUser.cLevel eq '사업자' }">
+                                              <!-- 반복 시작 -->
+			                                    <article class="blog format-standard">
+				                                    <div class="bl-widget quote1">
+				                                    <c:url var="myBusiness" value="myBusiness.do"/>
+					                                    <div class="inner">
+					                                        <div class="post-quote">
+					                                        	<button class="menuBtn" onclick="location.href='${ myBusiness }'">
+					                                            <div class="quote-info1">
+					                                                <div class="info">
+					                                                    <i class="la la-list la-5x"></i>
+					                                                    <!-- <span>Designer</span> -->
+					                                                </div>
+					                                            </div>
+					                                            </button>
+					                                            <p>거래 내역</p>
+					                                        </div>
+						                                 </div>
+						                             </div>
+			                                    </article>      
+		                                     <!-- 반복 끝 -->
+                                             </c:when>
+                                             <c:otherwise>
+                                              <!-- 반복 시작 -->
+			                                    <article class="blog format-standard">
+				                                    <div class="bl-widget quote1">
+				                                    	<c:url var="myOrderList" value="myOrderList.do"/>
+					                                    <div class="inner">
+					                                        <div class="post-quote">
+					                                        	<button class="menuBtn" onclick="location.href='${ myOrderList }'">
+					                                            <div class="quote-info1">
+					                                                <div class="info">
+					                                                    <i class="la la-list la-5x"></i>
+					                                                    <!-- <span>Designer</span> -->
+					                                                </div>
+					                                            </div>
+					                                            </button>
+					                                            <p>구매 내역</p>
+					                                        </div>
+						                                 </div>
+						                             </div>
+			                                    </article>      
+		                                     <!-- 반복 끝 --> 
+                                             </c:otherwise>
+                                      </c:choose>
+                                     
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote1 mt--50">
-	                                    <div class="inner">
-	                                        <div class="post-quote">
-	                                            <div class="quote-info1">
-	                                                <div class="info">
-	                                                    <i class="la la-list la-5x"></i>
-	                                                    <!-- <span>Designer</span> -->
-	                                                </div>
-	                                            </div>
-	                                            <p>구매 내역</p>
-	                                        </div>
-	                                    </div>
-	                                </div>
-                                    </article>      
-                                     <!-- 반복 끝 --> 
-                                     <!-- 반복 시작 -->
-	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote1 mt--50">
+	                                    <div class="bl-widget quote1">
 	                                    <div class="inner">
 	                                        <div class="post-quote">
 	                                            <div class="quote-info1">
@@ -177,9 +230,10 @@
 	                                </div>
                                     </article>      
                                      <!-- 반복 끝 --> 
+                                     
                                      <!-- 반복 시작 -->
 	                                    <article class="blog format-standard">
-	                                    <div class="bl-widget quote1 mt--50">
+	                                    <div class="bl-widget quote1">
 	                                    <div class="inner">
 	                                        <div class="post-quote">
 	                                            <div class="quote-info1">
@@ -229,9 +283,16 @@
                                                 </li> -->
                                             </ul>
                                             <div class="autor-meta">
-                                            
+                                            	<c:choose>
+                                            	<c:when test="${ loginUser.cLevel eq '사업자' }">
+                                                <span>내 거래내역 <strong>
+                                                <c:out value="${ bCount }"/></strong></span>
+                                                </c:when>
+                                                <c:otherwise>
                                                 <span>내 구매내역 <strong>
                                                 <c:out value="${ dCount }"/></strong></span>
+                                                </c:otherwise>
+                                                </c:choose>
                                                 <span>내 문의글 <strong>2</strong></span>
                                             </div>
                                         </div>

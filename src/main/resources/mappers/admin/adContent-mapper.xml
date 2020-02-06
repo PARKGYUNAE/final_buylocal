@@ -268,14 +268,13 @@
 		RT_NO = #{rtNo}
 	</select>
 
-	<!-- 상품 가져오기 -->
+	<!-- 상품 가져오기 02.06. -->
 	<select id="selectProduct" resultMap="ProductResultSet">
 		SELECT *
-		FROM PRODUCT
-		JOIN
-		CUSTOMER USING(C_NO)
-		WHERE P_STATUS='Y'
-		AND P_NO = #{rtNum}
+      FROM PRODUCT
+      JOIN
+      CUSTOMER USING(C_NO)
+      AND P_NO = #{rtNum}
 	</select>
 
 	<update id="updateQna" parameterType="_int">

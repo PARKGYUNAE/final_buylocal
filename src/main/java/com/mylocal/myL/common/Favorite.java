@@ -6,6 +6,7 @@ public class Favorite {
 	private String pName;
 	private int pFinalPrice;
 	private String cgName;
+	private String pThumb; // 추가 
 	
 	public Favorite() {}
 
@@ -16,6 +17,17 @@ public class Favorite {
 		this.pName = pName;
 		this.pFinalPrice = pFinalPrice;
 		this.cgName = cgName;
+	}
+
+	
+	public Favorite(int pNo, int cNo, String pName, int pFinalPrice, String cgName, String pThumb) {
+		super();
+		this.pNo = pNo;
+		this.cNo = cNo;
+		this.pName = pName;
+		this.pFinalPrice = pFinalPrice;
+		this.cgName = cgName;
+		this.pThumb = pThumb;
 	}
 
 	public int getpNo() {
@@ -56,6 +68,16 @@ public class Favorite {
 
 	public void setCgName(String cgName) {
 		this.cgName = cgName;
+	}
+
+	
+	
+	public String getpThumb() {
+		return pThumb;
+	}
+
+	public void setpThumb(String pThumb) {
+		this.pThumb = pThumb;
 	}
 
 	@Override

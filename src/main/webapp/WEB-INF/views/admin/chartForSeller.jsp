@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
  <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
@@ -78,9 +79,22 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">${loginUser.cName }</a>
+            
           </li>
-          <li class="breadcrumb-item active">님의 정보</li>
+          
+   
+          
+          <c:if test="${ not empty bShopName}" >
+          <li>
+          
+          ${ bShopName }</li>
+          </c:if>
+          <c:if test="${ empty bShopName }">
+           <li>
+          	거래된 내역이 없습니다.
+          	</li>
+          </c:if>
+          
         </ol>
 
         <!-- Area Chart Example-->
@@ -113,7 +127,7 @@
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-chart-pie"></i>
-                	판매 이용 빈도</div>
+                	상품 판매 비율</div>
               <div class="card-body">
                 <canvas id="myPieChart" width="100%" height="100"></canvas>
               </div>
@@ -191,19 +205,27 @@
   
   <script>
   var ctx = document.getElementById("myPieChart");
+  var arr1 = [];
+  var i = 0;
+  <c:forEach var="entry1" items="${category}" varStatus="status">
+  	arr1[i] = "${entry1.value}";
+  	i++;
+  </c:forEach>
+  
+  
   
   var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ["디지털/가전", "의류/패션잡화", "뷰티/미용", "스포츠/레저", "도서/티켓/음반", "가구/인테리어",
-    	  "신선/가공식품", "게임/취미", "반려동물용품", "기타"],
+    	 labels: ["디지털/가전", "의류/패션잡화", "뷰티/미용", "스포츠/레저", "도서/티켓/음반", "가구/인테리어",
+       	  "신선/가공식품", "게임/취미", "반려동물용품", "핫딜기타","한식","중식","일식","양식","커피/제과","땡처리기타"],
       datasets: [{
-    	  data:["${month[0]}", "${month[1]}", "${month[2]}", "${month[4]}", "${month[5]}", "${month[6]}", "${month[7]}", "${month[8]}", "${month[9]}", "${month[10]}", "${month[11]}"],
+    	  data:[arr1[0], arr1[1], arr1[2], arr1[3], arr1[4], arr1[5], arr1[6], arr1[7], arr1[8], arr1[9],arr1[10],arr1[11],arr1[12],arr1[13],arr1[14],arr1[15]],
        /*  data: ["${categorys.get(0)}","${categorys.get(1)}","${categorys.get(2)}",
         	"${categorys.get(3)}","${categorys.get(4)}","${categorys.get(5)}",
         	"${categorys.get(6)}","${categorys.get(7)}","${categorys.get(8)}","${categorys.get(9)}"], */
         //backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
-        backgroundColor:['red', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'purple', 'pink', 'black', 'gray'],
+        backgroundColor:['996633', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'purple', 'pink', 'black', 'gray','skyblue','magenta','lightgray','cyan','black','red'],
       }],
     },
   });

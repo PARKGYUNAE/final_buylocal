@@ -49,7 +49,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
-	}
+	} 
 	
 	@Autowired
 	private hotDealService hotdealService;
@@ -63,20 +63,22 @@ public class HomeController {
 	private AdContentService adContentService;
 	
 	
-	@RequestMapping("main.do")
-	public String main(Model model) {
-		ArrayList<Product> list = hotdealService.selectList(1);
-		ArrayList<com.mylocal.myL.shop.ttang.model.vo.Product> list2 = ttangService.selectList(1);
-		ArrayList<ShareBoard> list3 = shareService.selectList(1);
-		
-		ArrayList<SearchList> searchList = hotdealService.selectSearchList();
-		model.addAttribute("list", list);
-		model.addAttribute("list2", list2);
-		model.addAttribute("list3", list3);
-		model.addAttribute("searchList", searchList);
-		
-		return "common/main";
-	}
+   @RequestMapping("main.do")
+   public String main(Model model) {
+      ArrayList<Product> list = hotdealService.selectList(1);
+      ArrayList<com.mylocal.myL.shop.ttang.model.vo.Product> list2 = ttangService.selectList(1);
+      ArrayList<ShareBoard> list3 = shareService.selectList(1);
+      ArrayList<Notice> list4 = adService.NoticeSelectList(1);
+      
+      ArrayList<SearchList> searchList = hotdealService.selectSearchList();
+      model.addAttribute("list", list);
+      model.addAttribute("list2", list2);
+      model.addAttribute("list3", list3);
+      model.addAttribute("list4", list4);
+      model.addAttribute("searchList", searchList);
+      
+      return "common/main";
+   }
 	
 	@RequestMapping("totalSearch.do")
 	public String search(HttpServletRequest request, Model model) {

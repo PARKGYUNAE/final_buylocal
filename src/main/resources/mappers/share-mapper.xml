@@ -55,7 +55,11 @@
 	
 	<update id="updateShareBoard" parameterType="ShareBoard">
 	UPDATE SHAREBOARD
-	SET SB_TITLE=#{sbTitle}, SB_CONTENT=#{sbContent}, SB_CREATEDATE=SYSDATE, SB_CG_CODE=#{sbcgCode}
+	SET SB_TITLE=#{sbTitle}, SB_CONTENT=#{sbContent}, SB_CREATEDATE=SYSDATE, ORIGINAL_FILE=#{originalFileName},RENAME_FILENAME=#{renameFileName},
+	SB_CG_CODE=(SELECT SB_CG_CODE
+				 FROM SB_CATEGORY
+				 WHERE SB_CG_NAME=#{sbcgName})
+
 	WHERE SB_NO=#{sbNo}
 	AND SB_STATUS='Y'
 	</update>
@@ -172,12 +176,6 @@
 		<!-- ORDER BY SB_NO DESC -->
 	</select>
 	
-	<select id="selectTitleList" resultMap="ShareBoardResultSet">
-		SELECT SB_TITLE
-		FROM SHAREBOARD
-		WHERE SB_NO IN(ForEach문 #{sbNo})
-	</select>
-	
 	<select id="searchList" resultMap="ShareBoardResultSet" parameterType="string">
 		SELECT *
 		FROM SHAREBOARD
@@ -186,7 +184,15 @@
 		ORDER BY SB_NO DESC 
 		</select>
 	
-	
+		<select id="selectOne" parameterType="_int" resultMap="ShareBoardResultSet">
+		SELECT * 
+		FROM SHAREBOARD
+		JOIN Sb_Category SB USING(SB_CG_CODE)
+		JOIN CUSTOMER USING(C_NO)
+		JOIN LOCAL USING(L_CODE)
+		WHERE SB_NO=#{sbNo}
+		AND SB_STATUS='Y'
+	</select>
 
 
 </mapper>

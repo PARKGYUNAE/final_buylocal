@@ -9,22 +9,22 @@
 <title>마이 페이지</title>
 <style>
 #post, #address1, #address2 {
-   	height: 40px;
-	padding-left: 10px;
-	border: 1px solid #e5e5e5;
-	border-radius: 4px;
+      height: 40px;
+   padding-left: 10px;
+   border: 1px solid #e5e5e5;
+   border-radius: 4px;
    }
    
    #postcodify_search_button {
-   	align: left;
+      align: left;
    }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 <script>
 $(document).ready(function () {
-	$('#dtBasicExample').DataTable();
-	$('.dataTables_length').addClass('bs-select');
-	});
+   $('#dtBasicExample').DataTable();
+   $('.dataTables_length').addClass('bs-select');
+   });
 </script>
   
 </head>
@@ -58,29 +58,28 @@ $(document).ready(function () {
                                         <div class="blog__inner">
           
                                         <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-										  <thead>
-										    <tr>
-										      <th class="th-sm">&nbsp;번호
-										      </th>
-										      <th class="th-sm">상품명
-										      </th>
-										      <th class="th-sm">구매일자
-										      </th>
-										      <th class="th-sm">가격
-										      </th>
-										      <th class="th-sm">수령인
-										      </th>
-										      <th class="th-sm">결제방법
-										      </th>
-										      <th class="th-sm">수량
-										      </th>
-										      <th class="th-sm">리뷰등록
-										      </th>
-										      <th class="th-sm">환불
-										    </tr>
-										  </thead>
-										  <tbody>
-										    <c:forEach var="list" items="${list }" varStatus="status">
+                                <thead>
+                                  <tr>
+                                    <th class="th-sm">&nbsp;번호
+                                    </th>
+                                    <th class="th-sm">상품명
+                                    </th>
+                                    <th class="th-sm">구매일자
+                                    </th>
+                                    <th class="th-sm">가격
+                                    </th>
+                                    <th class="th-sm">수령인
+                                    </th>
+                                    <th class="th-sm">결제방법
+                                    </th>
+                                    <th class="th-sm">수량
+                                    </th>
+                                    <th class="th-sm">리뷰등록
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <c:forEach var="list" items="${list }" varStatus="status">
                                               <tr>
                                                   <td>${status.count }</td>
                                                   <td>${list.pName }</td>
@@ -90,46 +89,49 @@ $(document).ready(function () {
                                                   <td>${list.dMethod }</td>
                                                   <td>${list.dAmount }</td>
                                                   <c:url var="hotDealReview" value="hotDealReview.do">
-                                                  	<c:param name="dNo" value="${list.dNo }"/>
+                                                     <c:param name="dNo" value="${list.dNo }"/>
                                                   </c:url>
                                                   <c:url var="refund" value="refund.do">
-                                                  	<c:param name="dNo" value="${list.dNo }"/>
+                                                     <c:param name="dNo" value="${list.dNo }"/>
                                                   </c:url>
-                                                  <td><a href="${hotDealReview}" class="btn btn-size-sm">리뷰등록</a></td>
-                                                  <td><a href="${refund }" class="btn btn-size-sm">환불하기</a></td>
+                                                  <c:if test="${list.pBoard eq'핫딜'}">
+                                                     <td><a href="${hotDealReview}" class="btn btn-size-sm">리뷰등록</a></td>
+                                                  </c:if>
+                                                  
+                                                  
                                               </tr>
                                              </c:forEach>
-										    
-										  </tbody>
-										  <tfoot>
-										    <th>&nbsp;번호
-										      </th>
-										      <th>상품명
-										      </th>
-										      <th>구매일자
-										      </th>
-										      <th>가격
-										      </th>
-										      <th>수령인
-										      </th>
-										      <th>결제방법
-										      </th>
-										      <th>수량
-										      </th>
-										      <th>리뷰등록
-										      </th>
-										  </tfoot>
-										</table>
+                                  
+                                </tbody>
+                                <tfoot>
+                                  <th>&nbsp;번호
+                                    </th>
+                                    <th>상품명
+                                    </th>
+                                    <th>구매일자
+                                    </th>
+                                    <th>가격
+                                    </th>
+                                    <th>수령인
+                                    </th>
+                                    <th>결제방법
+                                    </th>
+                                    <th>수량
+                                    </th>
+                                    <th>리뷰등록
+                                    </th>
+                                </tfoot>
+                              </table>
                                        
                                         
                                    <!--  </div> -->
-                            		<!-- 여기 사이에 넣으면 됨 -->
-                            		
+                                  <!-- 여기 사이에 넣으면 됨 -->
+                                  
                                         </div>
                                     </article>                                
                                 </div>
                                 
-							           
+                                
                                 <!-- <div class="col-12 mb--45">
                                     <article class="blog format-gallery">
                                         <div class="blog__inner">
@@ -248,7 +250,7 @@ $(document).ready(function () {
                                         <div class="info">
                                             <!-- 사이드 바 프로필 부분 -->
                                             <h5 class="mb--5">
-                                            	<c:out value="${ loginUser.cName }"/>님의 마이 페이지
+                                               <c:out value="${ loginUser.cName }"/>님의 마이 페이지
                                             </h5>
                                             <p class="degne">UI/ Web Designer</p>
                                             <p class="mb--25">An Affrotable world wide business service It is</p>
@@ -281,27 +283,27 @@ $(document).ready(function () {
                                         <h5 class="title">MY PAGE</h5>
                                         <ul class="post-list">
                                             <li>
-                                            	<c:url var="myInfo" value="myInfo.do"/>
+                                               <c:url var="myInfo" value="myInfo.do"/>
                                                 <a href="${ myInfo }">정보 수정</a>
                                                 <!-- <span><i class="fa fa-clock-o"></i> 3 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myOrderList" value="myOrderList.do"/>
+                                               <c:url var="myOrderList" value="myOrderList.do"/>
                                                 <a href="${ myOrderList }">구매 내역</a>
                                                 <!-- <span><i class="fa fa-clock-o"></i> 8 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myCart" value="myCart.do"/>
+                                               <c:url var="myCart" value="myCart.do"/>
                                                 <a href="${ myCart }">장바구니</a>
                                                 <!-- <span><i class="fa fa-clock-o"></i> 4 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myFavorite" value="myFavorite.do"/>
+                                               <c:url var="myFavorite" value="myFavorite.do"/>
                                                 <a href="${ myFavorite }">위시 리스트</a>
                                                 <!-- <span><i class="fa fa-clock-o"></i> 6 Days Ago</span> -->
                                             </li>
                                             <li>
-                                            	<c:url var="myQna" value="myQna.do"/>
+                                               <c:url var="myQna" value="myQna.do"/>
                                                 <a href="${ myQna }">문의 내역</a>
                                                 <!-- <span><i class="fa fa-clock-o"></i> 5 Days Ago</span> -->
                                             </li>

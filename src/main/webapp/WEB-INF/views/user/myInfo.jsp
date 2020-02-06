@@ -183,7 +183,16 @@
                                                 </li> -->
                                             </ul>
                                             <div class="autor-meta">
-                                                <span>내 구매내역 <strong>${ dCount }</strong></span>
+                                            	<c:choose>
+                                            	<c:when test="${ loginUser.cLevel eq '사업자' }">
+                                                <span>내 거래내역 <strong>
+                                                <c:out value="${ dCount }"/></strong></span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                <span>내 구매내역 <strong>
+                                                <c:out value="${ dCount }"/></strong></span>
+                                                </c:otherwise>
+                                                </c:choose>
                                                 <span>내 문의글 <strong>2</strong></span>
                                             </div>
                                         </div>

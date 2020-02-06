@@ -92,6 +92,20 @@ public class AdminServiceImpl implements AdminService{
 		return adDao.selectDeal3(a);	
 		}
 
+	
+	// 종합 분류량 가져오기(가전/기타 등등)
+	@Override
+	public HashMap<String, Integer> selectDealAll(String a) {
+		return adDao.selectDealAll(a);
+	}
+
+	
+	// 선택한 사용자 카테고리 통계용
+	@Override
+	public HashMap<String, Integer> selectDealCategory(int cNo) {
+		return adDao.selectDealCategory(cNo);
+	}
+
 
 
 

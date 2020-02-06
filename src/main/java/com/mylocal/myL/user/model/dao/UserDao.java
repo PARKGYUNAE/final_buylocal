@@ -22,7 +22,10 @@ public class UserDao {
 	
 	// 이메일 중복 검사
 	public int checkEmail(String cEmail) {
-		return sqlSession.selectOne("userMapper.checkEmail", cEmail);
+		System.out.println("입력한 이메일 : " + cEmail);
+		int result = sqlSession.selectOne("userMapper.checkEmail", cEmail);
+		System.out.println("중복된 이메일 갯수 : " + result);
+		return result;
 	}
 	
 	// 일반 회원 가입
@@ -75,12 +78,23 @@ public class UserDao {
 		return sqlSession.selectOne("userMapper.countDeal", cNo);
 	}
 	
-
-	
 	// 범석
 	// 구매 내역 조회
    public ArrayList<Deal> selectDealList2(int cNo) {
       return (ArrayList)sqlSession.selectList("userMapper.selectDealList2", cNo);
+   }
+   
+   // 거래 건수 조회
+   public int countBusiness(int cNo) {
+		return sqlSession.selectOne("userMapper.countBusiness", cNo);
+	}
+
+   // 사업자 번호 중복 체크
+   public int checkShopNo(String bShopNo) {
+	   System.out.println("입력한 사업자 번호 : " + bShopNo);
+	   int result = sqlSession.selectOne("userMapper.checkShopNo", bShopNo);
+	   System.out.println("중복 값 갯수 : " + result);
+	   return result;
    }
 
 
