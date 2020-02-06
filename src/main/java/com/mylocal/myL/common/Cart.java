@@ -8,6 +8,7 @@ public class Cart {
 	private int quantity;
 	private int pFinalPrice;
 	private String pInfoText;
+	private String pThumb; // 추가 
 	
 	public Cart() {}
 
@@ -30,6 +31,27 @@ public class Cart {
 		this.pInfoText = pInfoText;
 	}
 	
+
+	public String getpThumb() {
+		return pThumb;
+	}
+
+	public void setpThumb(String pThumb) {
+		this.pThumb = pThumb;
+	}
+
+	public Cart(int cartNo, int cNo, int pNo, String pName, int quantity, int pFinalPrice, String pInfoText,
+			String pThumb) {
+		super();
+		this.cartNo = cartNo;
+		this.cNo = cNo;
+		this.pNo = pNo;
+		this.pName = pName;
+		this.quantity = quantity;
+		this.pFinalPrice = pFinalPrice;
+		this.pInfoText = pInfoText;
+		this.pThumb = pThumb;
+	}
 
 	public int getCartNo() {
 		return cartNo;

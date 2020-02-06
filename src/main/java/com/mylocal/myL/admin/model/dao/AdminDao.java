@@ -76,7 +76,7 @@ public class AdminDao {
          HashMap<String, String> h = new HashMap<>();
          h.put("str", category[i]);
          categoryR[i] = sqlSession.selectOne("AdminMapper.selectDeal2", h);
-         System.out.println(category[i] + " : " + categoryR[i]);
+        
       }
       result.put("디지털/가전", categoryR[0]);
       result.put("의류/패션잡화", categoryR[1]);
@@ -157,6 +157,85 @@ LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
     
     result.put("11", categoryR[10]);
     result.put("12", categoryR[11]);
+  
+
+    
+    return result;
+}
+
+//
+public HashMap<String, Integer> selectDealAll(String a) {
+LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+    
+    String category[] = {"C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","T1","T2","T3","T4","T5","T6"};
+    int categoryR[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    for(int i = 0; i < categoryR.length; i++) {
+       HashMap<String, String> h = new HashMap<>();
+       h.put("str", category[i]);
+       categoryR[i] = sqlSession.selectOne("AdminMapper.selectDealAll", h);
+       
+  
+  
+       
+    }
+    result.put("디지털/가전", categoryR[0]);
+    result.put("의류/패션잡화", categoryR[1]);
+    result.put("뷰티/미용", categoryR[2]);
+    result.put("스포츠/레저", categoryR[3]);
+    result.put("도서/티켓/음반", categoryR[4]);
+    result.put("가구/인테리어", categoryR[5]);
+    result.put("신선/가공식품", categoryR[6]);
+    result.put("게임/취미", categoryR[7]);
+    result.put("반려동물용품", categoryR[8]);
+    result.put("기타", categoryR[9]);
+    
+    result.put("한식", categoryR[10]);
+    result.put("중식", categoryR[11]);
+    result.put("일식", categoryR[12]);
+    result.put("양식", categoryR[13]);
+    result.put("커피/제과", categoryR[14]);
+    result.put("땡처리기타", categoryR[15]);
+
+  
+
+    
+    return result;
+}
+
+// 카테고리 확인용
+public HashMap<String, Integer> selectDealCategory(int cNo) {
+LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+    
+    String category[] = {"C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","T1","T2","T3","T4","T5","T6"};
+    int categoryR[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    for(int i = 0; i < categoryR.length; i++) {
+       HashMap<String, String> h = new HashMap<>();
+       h.put("str", category[i]);
+       h.put("cNo", Integer.toString(cNo));
+       categoryR[i] = sqlSession.selectOne("AdminMapper.selectDealCategory", h);
+       
+  
+  
+       
+    }
+    result.put("디지털/가전", categoryR[0]);
+    result.put("의류/패션잡화", categoryR[1]);
+    result.put("뷰티/미용", categoryR[2]);
+    result.put("스포츠/레저", categoryR[3]);
+    result.put("도서/티켓/음반", categoryR[4]);
+    result.put("가구/인테리어", categoryR[5]);
+    result.put("신선/가공식품", categoryR[6]);
+    result.put("게임/취미", categoryR[7]);
+    result.put("반려동물용품", categoryR[8]);
+    result.put("기타", categoryR[9]);
+    
+    result.put("한식", categoryR[10]);
+    result.put("중식", categoryR[11]);
+    result.put("일식", categoryR[12]);
+    result.put("양식", categoryR[13]);
+    result.put("커피/제과", categoryR[14]);
+    result.put("땡처리기타", categoryR[15]);
+
   
 
     

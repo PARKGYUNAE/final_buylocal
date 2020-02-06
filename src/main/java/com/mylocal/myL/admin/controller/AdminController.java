@@ -156,7 +156,7 @@ public class AdminController {
 
 			mv.addObject("page", page).addObject("nNo", n.getnNo()).setViewName("redirect:noticeDetail.do");
 		} else {
-			throw new AdminException("공지사항 수정 실패!!");
+			throw new AdminException("ins공지사항 수정 실패!!");
 		}
 
 		return mv;
@@ -184,7 +184,8 @@ public class AdminController {
 	      ArrayList<Deal> d = adService.selectDeal();
 	      
 	      String a = null;
-	      HashMap<String, Integer> d2 = adService.selectDeal(a);
+	      HashMap<String, Integer> d2 = adService.selectDealAll(a);
+
 	      
 	      int month[] = {0,0,0,0,0,0,0,0,0,0,0,0};
 	      
@@ -243,7 +244,7 @@ public class AdminController {
 
 		   LinkedHashMap<String, Integer> d3 = adService.selectDeal3(a);
 		   
-		   
+
 		   
 	      model.addAttribute("month", month);
 	      model.addAttribute("categorys", d2);
@@ -257,6 +258,9 @@ public class AdminController {
 	   public String adminChartSeller(Model model, int cNo) { 
 		   ArrayList<Deal> d = adService.selectDeal(cNo);
 		   
+		   
+		   HashMap<String, Integer> d3 = adService.selectDealCategory(cNo);
+
 		   int month[] = {0,0,0,0,0,0,0,0,0,0,0,0};
 		   
 		   int max = 0;
@@ -310,14 +314,26 @@ public class AdminController {
 		   
 		   
 		   // 하나 추가 거래량
-		   
 		   LinkedHashMap<String, Integer> d2 = adService.selectDeal2(cNo);
+		   
+		   String bShopName = "";
+		   
+		   
+		   if(d.size() != 0) {
+			   bShopName = d.get(0).getbShopName();
+			   model.addAttribute("bShopName", bShopName);
+			   
+		   }else {
+			  model.addAttribute("bShopName" , bShopName);
+		   }
+		   
 
 		   
-		   
 		   model.addAttribute("month", month);
+		   model.addAttribute("category", d3);
 		   model.addAttribute("max", max);
 		   model.addAttribute("monthCount", d2);
+	
 		   
 		   return "admin/chartForSeller";
 	   }

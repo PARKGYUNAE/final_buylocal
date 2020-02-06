@@ -10,10 +10,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
-      <c:if test="${!empty msg}">
-         alert('${msg}');
-         <c:remove var="msg"/>
-      </c:if>
+     <c:if test="${!empty msg}">
+        alert('${msg}');
+        <c:remove var="msg"/>
+     </c:if>
+</script>
+<script>
+	$(function(){
+		$("#id").keyup(function() {
+			$.ajax({
+				url : "findPwd.do",
+				type : "POST",
+				data : {
+					cId : $("#id").val()
+				},
+				success : function(result) {
+					if (result == 1) {
+						alert('중복된 아이디가 있습니다. 다른 아이디를 입력해주세요.');
+						/* $("#idCheck").html("중복된 아이디가 있습니다.");
+						$("#joinBtn").attr("disabled", "disabled"); */
+					} else {
+					$("#idCheck").html("");
+					$("#joinBtn").removeAttr("disabled");
+					}
+				},
+			})
+		});
+	})
 </script>
 <style>
 	@charset "UTF-8";
@@ -349,10 +372,10 @@
 	      	  
 		      <img class="socialLogin" src="resources/user/images/socialNaver.png"">
 		      <img class="socialLogin" src="resources/user/images/socialGoogle.png">
-		      <a id="kakao-login-btn" href="javascript:loginWithKakao()">
+		      <!-- <a id="kakao-login-btn" href="javascript:loginWithKakao()"> -->
 		      <img class="socialLogin" src="resources/user/images/socialKakao.png"></a>
-		      <button id="kakaologin">코드받기</button>
-		      <a href="${ naver_url }"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+		      <%-- <button id="kakaologin">코드받기</button>
+		      <a href="${ naver_url }"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a> --%>
 
 	      </div>
 	</section>

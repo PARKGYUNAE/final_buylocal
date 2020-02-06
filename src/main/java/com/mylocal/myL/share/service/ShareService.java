@@ -36,7 +36,7 @@ public interface ShareService {
 	public int updateReply(Reply r);
 
 	// 댓글 삭제
-	public int deleteReply(int rNo);
+	public int deleteReply(Reply r);
 
 	// 실제검색 result 
 	public ArrayList<ShareBoard> selectSearchResultList(SearchCondition sc, PageInfo pi);
@@ -61,6 +61,20 @@ public interface ShareService {
 
 
 	ArrayList<ShareBoard> searchList(String searchStr);
+
+	//게시글번호 히든값을 받기위함.
+	public int selectSbNo(int sbNo);
+
+	//히든값저장용
+	public ArrayList<ShareBoard> selectdetailValue(int sbNo);
+
+	//수정하기 들어갈떄
+	public ShareBoard selectOne(int sbNo);
+
+	//rNo를 select하기위함 1
+	public Reply selectReply(int rNo);
+
+
 
 	//대댓글 등록
 	//public int insertReply2(Reply r);

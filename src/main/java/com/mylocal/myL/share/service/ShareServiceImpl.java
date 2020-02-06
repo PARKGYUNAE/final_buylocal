@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mylocal.myL.common.PageInfo;
-import com.mylocal.myL.common.Pagination;
 import com.mylocal.myL.share.dao.ShareDao;
 import com.mylocal.myL.share.model.vo.Category;
 import com.mylocal.myL.share.model.vo.Local;
+import com.mylocal.myL.share.model.vo.Pagination;
 import com.mylocal.myL.share.model.vo.Reply;
 import com.mylocal.myL.share.model.vo.SearchCondition;
 import com.mylocal.myL.share.model.vo.ShareBoard;
@@ -75,9 +75,9 @@ public class ShareServiceImpl implements ShareService{
 	}
 
 	@Override
-	public int deleteReply(int rNo) {
+	public int deleteReply(Reply r) {
 		// TODO Auto-generated method stub
-		return shareDao.deleteReply(rNo);
+		return shareDao.deleteReply(r);
 	}
 
 	@Override
@@ -133,15 +133,28 @@ public class ShareServiceImpl implements ShareService{
 		return shareDao.searchList(searchStr);
 	}
 
-
-
-
-	/*@Override
-	public int insertReply2(Reply r) {
+	@Override
+	public int selectSbNo(int sbNo) {
 		
-		return shareDao.insertReply2(r);
-	}*/
+		return shareDao.selectSbNo(sbNo);
+	}
 
-	
+	@Override
+	public ArrayList<ShareBoard> selectdetailValue(int sbNo) {
+		// TODO Auto-generated method stub
+		return shareDao.selectdetailValue(sbNo);
+	}
+
+	@Override
+	public ShareBoard selectOne(int sbNo) {
+		
+		return shareDao.selectOne(sbNo);
+	}
+
+	@Override
+	public Reply selectReply(int rNo) {
+		
+		return shareDao.selectReply(rNo);
+	}
 
 }

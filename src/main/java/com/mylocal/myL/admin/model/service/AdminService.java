@@ -34,6 +34,7 @@ public interface AdminService {
 	HashMap<String, Integer> selectDeal(String a);
 
 
+	// 
 	ArrayList<Deal> selectDeal(int cNo);
 
 	// 거래량 가져오기
@@ -42,6 +43,14 @@ public interface AdminService {
 
 	LinkedHashMap<String, Integer> selectDeal3(String a);
 
+
+	// 모든 거래량 가져오기(관리자)
+	HashMap<String, Integer> selectDealAll(String a);
+
+	
+	// 선택한 사용자 카테고리 종류 가져오기
+	HashMap<String, Integer> selectDealCategory(int cNo);
+	
 
 	
 	

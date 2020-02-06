@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Beck - Furniture eCommerce Bootstrap 4 Template</title>
+    <title>찜 목록</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -69,10 +69,15 @@
                                         </c:if>
                                         <c:if test="${fn:length(list) > 0}">
                                         <c:forEach var="wishlist" items="${ list}">
-                                        	<tr>
-	                                            <td class="product-remove text-left"><a href=""><i class="la la-remove"></i></a></td>
+                                        	<tr>	
+												<c:url var="deleteWishlist" value="deleteWishlist.do">
+                                                   <c:param name="pNo" value="${wishlist.pNo }"/>
+                                                   <c:param name="cNo" value="${loginUser.cNo }"/>
+                                                </c:url>
+                                               <td class="product-remove text-left"><a href="${deleteWishlist }"><i class="la la-remove"></i></a></td>
+                                               
 	                                            <td class="product-thumbnail text-left">
-	                                                <img src="assets/img/products/prod-01-70x88.jpg" alt="Product Thumnail">
+	                                                <img src="resources/pThumb/${wishlist.pThumb}" alt="Product Thumnail">
 	                                            </td>
 	                                            <td class="product-name text-left wide-column">
 	                                                <h3>

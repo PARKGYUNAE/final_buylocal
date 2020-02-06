@@ -57,16 +57,15 @@
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <img src="resources/assets/img/blog/buylocal1.jpg" alt="로고" class="w-100">
+                                                    <img src="resources/assets/img/blog/holymoly1-800x561.jpg" class="w-100">
                                                     <a href="#" class="item-overlay"></a>
                                                 </figure>
                                             </div>
                                             <div class="blog__info">
-                                                <h2 class="blog__title"><a href="#">홀리몰리?</a></h2>
+                                                <h2 class="blog__title"><a href="#">HOLYMOLY?</a></h2>
                                                 <div class="blog__desc">
-                                                    <p>놀라움을나타내는 감탄사, (대충 좋은 뜻을 가졌단 얘기)</p>
+                                                    <p>놀라움을나타내는 감탄사 (대충 좋은 뜻)</p>
                                                 </div>
-                                                <!-- <a href="blog-details-image.html" class="read-more-btn">Read More</a> -->
                                             </div>
                                         </div>
                                     </article>                                
@@ -74,42 +73,69 @@
                                 <div class="col-12 mb--45">
                                     <article class="blog format-gallery">
                                         <div class="blog__inner">
-                                            <div class="blog__media">
-                                                <div class="element-carousel" data-slick-options='{
-                                                    "slidesToShow": 1,
-                                                    "slidesToScroll": 1,
-                                                    "autoplay": true,
-                                                    "autoplaySpeed": 1500
-                                                }'>
-                                                    <div class="item">
-                                                        <img src="#" alt="소개" class="w-100">
-                                                        <a href="#" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="#" alt="소개" class="w-100">
-                                                        <a href="#" class="item-overlay"></a>
-                                                    </div> 
-                                                    <div class="item">
-                                                        <img src="#" alt="소개" class="w-100">
-                                                        <a href="#" class="item-overlay"></a>
-                                                    </div>                 
-                                                </div>
-                                            </div>
-                                            <div class="blog__info">
-                                                <h2 class="blog__title"><a href="blog-details-gallery.html">There are many variations of passages of Lorem.</a></h2>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">13 April, 2019</span>
-                                                    <span class="posted-by"><span>By: </span><a href="blog-details-gallery.html">Robert Joe</a></span>
-                                                </div>
-                                                <div class="blog__desc">
-                                                    <p>Financial services must tie these three factors together – customer experience, best practices and reliability</p>
-                                                </div>
-                                                <a href="blog-details-gallery.html" class="read-more-btn">Read More</a>
-                                            </div>
+                                         <div class="inner" style="width:20%; height:100%;">
+                                        <div class="thumb">
+                                            <img src="resources/assets/img/others/규내.png" alt="Author Images">
+                                        </div>
+                                        <div class="info">
+                                            <h5 class="mb--5">박규내</h5>
+                                            <p class="degne">UI/ Web Designer</p>
+                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                            
+                                        </div>
+                                    </div>  
+                                    <div class="inner" style="width:20%; height:100%;">
+                                        <div class="thumb">
+                                            <img src="resources/assets/img/others/형우.png" alt="Author Images">
+                                        </div>
+                                        <div class="info">
+                                            <h5 class="mb--5">최형우</h5>
+                                            <p class="degne">UI/ Web Designer</p>
+                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                           
+                                            
+                                        </div>
+                                    </div>  
+                                    <div class="inner" style="width:20%; height:100%;">
+                                        <div class="thumb">
+                                            <img src="resources/assets/img/others/소망.png" alt="Author Images">
+                                        </div>
+                                        <div class="info">
+                                            <h5 class="mb--5">문소망</h5>
+                                            <p class="degne">UI/ Web Designer</p>
+                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                           
+                                        </div>
+                                    </div>  
+                                    <div class="inner" style="width:20%; height:100%;">
+                                        <div class="thumb">
+                                            <img src="resources/assets/img/others/태수.png" alt="Author Images">
+                                        </div>
+                                        <div class="info">
+                                            <h5 class="mb--5">이태수</h5>
+                                            <p class="degne">UI/ Web Designer</p>
+                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                           
+                                            
+                                        </div>
+                                    </div>  
+                                    <div class="inner" style="width:20%; height:100%;">
+                                        <div class="thumb">
+                                            <img src="resources/assets/img/others/범석.png" alt="Author Images">
+                                        </div>
+                                        <div class="info">
+                                            <h5 class="mb--5">장범석</h5>
+                                            <p class="degne">UI/ Web Designer</p>
+                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                           
+                                          
+                                        </div>
+                                    </div> 
+                                            
                                         </div>
                                     </article>                                   
                                 </div>
-                                <div class="col-12 mb--45">
+                                <!-- <div class="col-12 mb--45">
                                     <article class="blog">
                                         <div class="blog__inner">
                                             <div class="blog__media">
@@ -131,17 +157,17 @@
                                             </div>
                                         </div>
                                     </article>
-                                </div>
+                                </div> -->
                             </div>
                          
                             
                         </div>
-                        <div class="col-lg-3 order-lg-1">
+                        <!-- <div class="col-lg-3 order-lg-1">
                             <div class="blog-sidebar pr--15 pr-lg--0">
                                 <div class="bl-widget author">
-                                    <div class="inner">
+                                   <div class="inner">
                                         <div class="thumb">
-                                            <img src="resources/assets/img/others/team-04.jpg" alt="Author Images">
+                                            <img src="resources/assets/img/others/규내.png" alt="Author Images">
                                         </div>
                                         <div class="info">
                                             <h5 class="mb--5">Ayo Burion</h5>
@@ -169,9 +195,9 @@
                                                 <span>Comments <strong>490</strong></span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="bl-widget post mt--50">
+                                    </div> 
+                                </div> -->
+                                <!-- <div class="bl-widget post mt--50">
                                     <div class="inner">
                                         <h5 class="title">Top News</h5>
                                         <ul class="post-list">
@@ -196,9 +222,9 @@
                                                 <span><i class="fa fa-clock-o"></i> 5 Days Ago</span>
                                             </li>
                                         </ul>
-                                    </div>
-                                </div>
-                                <div class="bl-widget quote mt--50">
+                                    </div> 
+                                </div> -->
+                               <!--  <div class="bl-widget quote mt--50">
                                     <div class="inner">
                                         <div class="post-quote">
                                             <div class="quote-info">
@@ -211,7 +237,7 @@
                                             <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete.</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

@@ -210,9 +210,52 @@
                                     <a href="#" class="next"><i class="la la-angle-double-right"></i></a>
                                 </div>
                                 <div class="product-rating d-flex mb--20">
-                                    <div class="star-rating star-four">
-                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                    </div>
+                                    <c:choose>
+                                             <c:when test="${hotdealDetail.pStarRate == 5}">
+                                                <div class="star-rating star-five"
+                                                   style="margin-left: 0px">
+                                                   <span>Rated <strong class="rating">5.00</strong>
+                                                      out of 5
+                                                   </span>
+                                                </div>
+                                             </c:when>
+                                             <c:when test="${hotdealDetail.pStarRate == 4}">
+                                                <div class="star-rating star-four"
+                                                   style="margin-left: 0px">
+                                                   <span>Rated <strong class="rating">5.00</strong>
+                                                      out of 5
+                                                   </span>
+                                                </div>
+                                             </c:when>
+                                             <c:when test="${hotdealDetail.pStarRate == 3}">
+                                                <div class="star-rating star-three"
+                                                   style="margin-left: 0px">
+                                                   <span>Rated <strong class="rating">5.00</strong>
+                                                      out of 5
+                                                   </span>
+                                                </div>
+                                             </c:when>
+                                             <c:when test="${hotdealDetail.pStarRate == 2}">
+                                                <div class="star-rating star-two"
+                                                   style="margin-left: 0px">
+                                                   <span>Rated <strong class="rating">5.00</strong>
+                                                      out of 5
+                                                   </span>
+                                                </div>
+                                             </c:when>
+                                             <c:when test="${hotdealDetail.pStarRate == 1}">
+                                                <div class="star-rating star-one"
+                                                   style="margin-left: 0px">
+                                                   <span>Rated <strong class="rating">5.00</strong>
+                                                      out of 5
+                                                   </span>
+                                                </div>
+                                             </c:when>
+                                             <c:otherwise>
+                                                <div class="star-rating star-half"
+                                                   style="margin-left: 0px"></div>
+                                             </c:otherwise>
+                                          </c:choose>
                                 </div>
 
                                 
@@ -579,7 +622,7 @@
                                         <div class="product-inner">
                                             <div class="product-image">
                                                 <figure class="product-image--holder">
-                                                    <img src="resources/assets/img/products/prod-04-270x300.jpg" alt="Product">
+                                                    <img src="resources/pThumb/${list.pThumb}" alt="Product">
                                                 </figure>
                                                 <a href="${hotDealDetail}" class="product-overlay"></a>
                                                 <div class="product-action">

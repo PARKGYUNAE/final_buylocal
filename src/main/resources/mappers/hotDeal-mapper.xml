@@ -63,22 +63,28 @@
 		<result property="pNo" column="P_NO"/>
 		<result property="cNo" column="C_NO"/>
 	</resultMap>
+	
+	<!-- 수정 02.05. -->
 	<resultMap id="cartSet" type="Cart">
-		<id property="cNo" column="C_NO"/>
-		<id property="pNo" column="P_NO"/>
-		<result property="pName" column="P_NAME"/>
-		<result property="quantity" column="QUANTITY"/>
-		<result property="pFinalPrice" column="P_FINALPRICE"/>
-		<result property="pInfoText" column="P_INFO_TEXT"/>
-	</resultMap>
+      <id property="cartNo" column="CART_NO"/>
+      <result property="cNo" column="C_NO"/>
+      <result property="pNo" column="P_NO"/>
+      <result property="pName" column="P_NAME"/>
+      <result property="quantity" column="QUANTITY"/>
+      <result property="pFinalPrice" column="P_FINALPRICE"/>
+      <result property="pInfoText" column="P_INFO_TEXT"/>
+      <result property="pThumb" column="P_THUMB"/>
+   </resultMap>
 	
 	<resultMap id="FavoriteSet" type="Favorite">
-		<id property="pNo" column="P_NO"/>
-		<id property="cNo" column="C_NO"/>
-		<result property="pName" column="P_NAME"/>
-		<result property="pFinalPrice" column="P_FINALPRICE"/>
-		<result property="cgName" column="CG_NAME"/>
-	</resultMap>
+      <id property="pNo" column="P_NO"/>
+      <id property="cNo" column="C_NO"/>
+      <result property="pName" column="P_NAME"/>
+      <result property="pFinalPrice" column="P_FINALPRICE"/>
+      <result property="cgName" column="CG_NAME"/>
+      <result property="pThumb" column="P_THUMB"/>
+   </resultMap>
+	<!-- 수정 끝 -->
 	
 	<resultMap id="DealSet" type="Deal">
 		<id property="dNo" column="D_NO"/>
@@ -139,40 +145,41 @@
 		ORDER BY P_NO DESC
 	</select>
 	
+	<!-- 리스트3,4 수정  -->
 	<select id="selectList3" resultMap="productSet" parameterType="hashmap">
 		SELECT * 
 		FROM PD_VIEW
 		WHERE P_STATUS='Y' AND P_BOARD='핫딜' AND B_SHOP_ADDRESS LIKE '%'|| #{location} || '%'
-		<if test="optionArray == '이름순(A-Z)'">
-			ORDER BY P_NAME
-		</if>
-		<if test="optionArray == '이름순(Z-A)'">
-			ORDER BY P_NAME DESC
-		</if>
-		<if test="optionArray == '가격순(low to high)'">
-			ORDER BY P_ORIGINALPRICE
-		</if>
-		<if test="optionArray == '가격순(high to low)'">
-			ORDER BY P_ORIGINALPRICE DESC
-		</if>
+		<if test="optionArray == '별점순(high to low)'">
+         ORDER BY P_STARRATE DESC
+      </if>
+      <if test="optionArray == '신상품순'">
+         ORDER BY P_DATE DESC
+      </if>
+      <if test="optionArray == '가격순(low to high)'">
+         ORDER BY P_ORIGINALPRICE
+      </if>
+      <if test="optionArray == '가격순(high to low)'">
+         ORDER BY P_ORIGINALPRICE DESC
+      </if>
 	</select>
 	
 	<select id="selectList4" resultMap="productSet" parameterType="string">
 		SELECT * 
 		FROM PD_VIEW
 		WHERE P_STATUS='Y' AND P_BOARD='핫딜' 
-		<if test="optionArray == '이름순(A-Z)'">
-			ORDER BY P_NAME
-		</if>
-		<if test="optionArray == '이름순(Z-A)'">
-			ORDER BY P_NAME DESC
-		</if>
-		<if test="optionArray == '가격순(low to high)'">
-			ORDER BY P_ORIGINALPRICE
-		</if>
-		<if test="optionArray == '가격순(high to low)'">
-			ORDER BY P_ORIGINALPRICE DESC
-		</if>
+		<if test="optionArray == '별점순(high to low)'">
+         ORDER BY P_STARRATE DESC
+      </if>
+      <if test="optionArray == '신상품순'">
+         ORDER BY P_DATE DESC
+      </if>
+      <if test="optionArray == '가격순(low to high)'">
+         ORDER BY P_ORIGINALPRICE
+      </if>
+      <if test="optionArray == '가격순(high to low)'">
+         ORDER BY P_ORIGINALPRICE DESC
+      </if>
 	</select>
 	
 	<select id="selectListC" resultMap="productSet" parameterType="hashmap">
@@ -207,12 +214,13 @@
 		WHERE RV_STATUS='Y' AND P_NO = #{pNo}
 	</select>
 	
+	<!-- 수정 02.05.  -->
 	<select id="getMyCart" resultMap ="cartSet">
-		SELECT CART.C_NO, CART.P_NO, P_NAME, QUANTITY, P_FINALPRICE, P_INFO_TEXT
-		FROM PRODUCT JOIN CART ON (CART.P_NO = PRODUCT.P_NO) 
-		WHERE CART.C_NO = #{cNo}
-		
-	</select>
+      SELECT CART.CART_NO, CART.C_NO, CART.P_NO, P_NAME, QUANTITY, P_FINALPRICE, P_INFO_TEXT, PRODUCT.P_THUMB
+      FROM PRODUCT JOIN CART ON (CART.P_NO = PRODUCT.P_NO) 
+      WHERE CART.C_NO = #{cNo}
+      
+   </select>
 	
 	
 	
@@ -233,13 +241,14 @@
 		VALUES(#{pNo}, #{cNo})
 	</insert>
 	
+	<!-- 수정 02.05. -->
 	<select id="getMyWishList" resultMap="FavoriteSet">
-		SELECT PRODUCT.P_NO, CUSTOMER.C_NO, P_NAME, P_FINALPRICE, CG_NAME
-		FROM PRODUCT JOIN FAVORITE ON(PRODUCT.P_NO = FAVORITE.P_NO)
+      SELECT PRODUCT.P_NO, CUSTOMER.C_NO, P_NAME, P_FINALPRICE, CG_NAME, PRODUCT.P_THUMB
+      FROM PRODUCT JOIN FAVORITE ON(PRODUCT.P_NO = FAVORITE.P_NO)
         JOIN CATEGORY USING(CG_CODE)
         JOIN CUSTOMER ON(FAVORITE.C_NO = CUSTOMER.C_NO)
         WHERE FAVORITE.C_NO = #{cNo}
-	</select>
+   </select>
 	
 	<delete id="deleteWishList" parameterType="Favorite">
 		DELETE FROM FAVORITE
@@ -248,7 +257,7 @@
 	
 	<delete id="deleteCart" parameterType="Cart">
 		DELETE FROM CART
-		WHERE P_NO=#{pNo} AND C_NO=#{cNo}
+		WHERE CART_NO = #{cartNo} AND C_NO=#{cNo}
 	</delete>
 	
 	<insert id="addReview" parameterType="review">

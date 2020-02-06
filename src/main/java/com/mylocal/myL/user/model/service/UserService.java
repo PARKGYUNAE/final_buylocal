@@ -15,7 +15,7 @@ public interface UserService {
 	public void checkId(String cId, HttpServletResponse response) throws Exception;
 	
 	// 이메일 중복 체크 서비스 
-	public void checkEmail(String cEMail, HttpServletResponse response) throws Exception;
+	public void checkEmail(String cEmail, HttpServletResponse response) throws Exception;
 	
 	// 회원 가입 서비스
 	public int insertCustomer(Customer c);
@@ -37,13 +37,15 @@ public interface UserService {
 	public int checkRcv(Deal d);
 	
 	// 이메일 발송
-	public void sendMail(Customer c, String div, String temPwd);
+	/*public void sendMail(Customer c, String div, String temPwd);*/
+	public int sendMail(Customer c, String div, String temPwd);
+	
 	
 	// 비밀번호 변경
 	public int updatePwd(Customer c);
 	
 	// 비밀번호 찾기 
-	public void findPwd(HttpServletResponse response, Customer c) throws Exception;
+	/*public int findPwd(Customer c);*/
 	
 	// 일반회원 구매 건수 조회
 	public int countDeal(int cNo);
@@ -51,9 +53,11 @@ public interface UserService {
 	// 범석
 	public ArrayList<Deal> selectDealList2(int cNo);
 	
-
+	// 사업자 회원 거래 건수 조회
+	public int countBusiness(int cNo);
 	
-
+	// 사업자 번호 중복 체크
+	public void checkShopNo(String bShopNo, HttpServletResponse response) throws Exception;
 	
 	
 }

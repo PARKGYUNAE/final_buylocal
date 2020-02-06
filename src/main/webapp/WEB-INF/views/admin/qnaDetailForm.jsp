@@ -44,11 +44,19 @@
               <label for="inputPassword">문의제목</label> 
             </div>
           </div>
-          
+
                     <div class="form-group">
             <div class="form-label-group">
-              <input type="text" class="form-control" required="required" value="${ qna.qContent }"autofocus="autofocus"  style="height:300px"readonly>
-              <label for="inputPassword">문의내용</label> 
+          <div align="">
+        
+          <!-- 내용 -->
+              문의내용
+            <textarea name="content" cols="120" rows="12"
+            style="width: 100%; resize: none" placeholder="내용" readonly
+            class="form-control" >${ qna.qContent }</textarea>
+          </div>
+        <p>
+              
             </div>
           </div>
           

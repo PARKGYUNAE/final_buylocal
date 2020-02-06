@@ -17,14 +17,14 @@ public class Deal {
 	private String dRevCheck;
 	private String dStatus;
 	private String dUid;
+	private String bShopName;
+	private String pBoard; // 범석 추가 
 	
 	public Deal() {}
 
-	
-	
-
 	public Deal(int dNo, Date dDate, int pNo, String pName, int cNo, String cName, int dPrice, int dAmount,
-			String dMethod, String dReceiver, Date dRevDate, String dRevCheck, String dStatus, String dUid) {
+			String dMethod, String dReceiver, Date dRevDate, String dRevCheck, String dStatus, String dUid,
+			String bShopName) {
 		super();
 		this.dNo = dNo;
 		this.dDate = dDate;
@@ -40,58 +40,25 @@ public class Deal {
 		this.dRevCheck = dRevCheck;
 		this.dStatus = dStatus;
 		this.dUid = dUid;
+		this.bShopName = bShopName;
 	}
-
+	
 	
 
-
-
-	public String getdUid() {
-		return dUid;
+	public String getpBoard() {
+		return pBoard;
 	}
 
-
-
-
-	public void setdUid(String dUid) {
-		this.dUid = dUid;
+	public void setpBoard(String pBoard) {
+		this.pBoard = pBoard;
 	}
 
-
-
-
-	public String getpName() {
-		return pName;
-	}
-
-
-
-
-	public void setpName(String pName) {
-		this.pName = pName;
-	}
-
-
-
-
-	public String getcName() {
-		return cName;
-	}
-
-
-
-
-	public void setcName(String cName) {
-		this.cName = cName;
-	}
-
-
-
-
-	public Deal(int dNo, int pNo, String pName, int cNo, String cName, int dPrice, int dAmount, String dMethod,
-			String dReceiver, Date dRevDate, String dRevCheck) {
+	public Deal(int dNo, Date dDate, int pNo, String pName, int cNo, String cName, int dPrice, int dAmount,
+			String dMethod, String dReceiver, Date dRevDate, String dRevCheck, String dStatus, String dUid,
+			String bShopName, String pBoard) {
 		super();
 		this.dNo = dNo;
+		this.dDate = dDate;
 		this.pNo = pNo;
 		this.pName = pName;
 		this.cNo = cNo;
@@ -102,9 +69,11 @@ public class Deal {
 		this.dReceiver = dReceiver;
 		this.dRevDate = dRevDate;
 		this.dRevCheck = dRevCheck;
+		this.dStatus = dStatus;
+		this.dUid = dUid;
+		this.bShopName = bShopName;
+		this.pBoard = pBoard;
 	}
-
-
 
 	public int getdNo() {
 		return dNo;
@@ -130,12 +99,28 @@ public class Deal {
 		this.pNo = pNo;
 	}
 
+	public String getpName() {
+		return pName;
+	}
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
 	public int getcNo() {
 		return cNo;
 	}
 
 	public void setcNo(int cNo) {
 		this.cNo = cNo;
+	}
+
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
 	}
 
 	public int getdPrice() {
@@ -194,18 +179,35 @@ public class Deal {
 		this.dStatus = dStatus;
 	}
 
+	public String getdUid() {
+		return dUid;
+	}
 
+	public void setdUid(String dUid) {
+		this.dUid = dUid;
+	}
 
+	public String getbShopName() {
+		return bShopName;
+	}
+
+	public void setbShopName(String bShopName) {
+		this.bShopName = bShopName;
+	}
 
 	@Override
 	public String toString() {
 		return "Deal [dNo=" + dNo + ", dDate=" + dDate + ", pNo=" + pNo + ", pName=" + pName + ", cNo=" + cNo
 				+ ", cName=" + cName + ", dPrice=" + dPrice + ", dAmount=" + dAmount + ", dMethod=" + dMethod
 				+ ", dReceiver=" + dReceiver + ", dRevDate=" + dRevDate + ", dRevCheck=" + dRevCheck + ", dStatus="
-				+ dStatus + ", dUid=" + dUid + "]";
+				+ dStatus + ", dUid=" + dUid + ", bShopName=" + bShopName + ", pBoard=" + pBoard + "]";
 	}
 
 	
+	
+	
+
+
 	
 	
 }

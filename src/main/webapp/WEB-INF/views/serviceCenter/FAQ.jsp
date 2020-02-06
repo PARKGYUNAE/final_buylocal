@@ -72,21 +72,20 @@
                                             <div class="card-body">
 												* 핫딜 게시판 
                                                 <br>
-                                                - Fee – Fee for the engagement. This could be a flat fee or an hourly fee.<br>
-                                                - Fee arrangement – Management fee based upon your assets.<br>
-                                                - Commission 
+                                                - 단기간(약 한 달)동안 상품을 저렴하게 판매하는 게시판입니다.<br>
+                                                - 땡처리 게시판이 식품류를 주로 한다면, 핫딜 게시판은 식품 뿐 아니라 전자제품, 식물 등 보다 다양한 카테고리의 상품을<br>
+                                                	만나볼 수 있습니다.
                                                 <br>
                                                 * 땡처리 게시판 
                                                 <br>
-                                                - Fee – Fee for the engagement. This could be a flat fee or an hourly fee.<br>
-                                                - Fee arrangement – Management fee based upon your assets.<br>
-                                                - Commission
+                                                - 당일 재고를 소진해야 하는 식품류들을 주로 판매하는 게시판입니다.<br>
+                                                - 당일 판매를 목적으로 한 게시판이므로, 상품 관련 QNA는 판매자에게 직접 연락하셔야 합니다.<br>
                                                 <br>
                                                 * 나눔 게시판 
                                                 <br>
-                                                - Fee – Fee for the engagement. This could be a flat fee or an hourly fee.<br>
-                                                - Fee arrangement – Management fee based upon your assets.<br>
-                                                - Commission  
+                                                - 우리 지역의 이웃들을 만나보세요.<br>
+                                                - 사업자가 아닌 일반 회원들도 집에서 쓰지 않는 제품들을 사고 팔 수 있으며, 지역 정보에 대해서도 공유하며<br>
+                                                	이웃들과 자유롭게 소통 할 수 있습니다.
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +97,10 @@
                                         </div>
                                         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionTwo">
                                             <div class="card-body">
-                                                Financial Planning can be done on an “as needed” basis through various engagements that have a start and an end or on an ongoing basis through a financial planning retainer fee.
+                                                	상단의 메뉴 - 신청하기 탭에서 가능합니다.<br>
+                                                [신청하기] 탭은 사업자 로그인을 한 이용자만이 접근 가능합니다.<br>
+                                                	상품 신청 방법에 따라 상품 정보와 상품 이미지를 등록하면, 관리자가 상품 등록 문제여부 등을 면밀히 확인하고 상품 등록 허가를 내려줍니다.<br>
+                                               		등록된 상품은 [마이페이지]에서 관리 가능합니다.
                                             </div>
                                         </div>
                                     </div>
@@ -110,11 +112,10 @@
                                         </div>
                                         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionTwo">
                                             <div class="card-body">
-                                                It depends. <br>
-                                                * Some people seek financial planning when a material life changing event has occurred or is expected to occur. Such events could be: Marriage, retirement, college planning, a death in the family, divorce, or the birth or adoption of a child.<br>
-                                                * Sometimes, people need financial planning guidance when they are evaluating the financial merits of changing jobs, buying or selling a business, or purchasing a new home.<br>
-                                                * Financial Planning can be extended to business owners as they seek to evaluate their current or prospective retirement plans, executive compensation, succession planning, or employee education.<br>
-                                                * Others choose to create a retainer arrangement to have various financial planning services for their situation on an ongoing basis.
+                                               	상단의 메뉴 - 신청하기 탭에서 가능합니다.<br>
+                                                [신청하기] 탭은 사업자 로그인을 한 이용자만이 접근 가능합니다.<br>
+                                               	원하는 이벤트/광고 정보를 등록하면, 수일 안에 담당자를 통한 연락을 받으실 수 있습니다. 자세한 사항은 QNA에 직접 문의바랍니다. <br>
+                                               .
                                             </div>
                                         </div>
                                     </div>
@@ -131,47 +132,45 @@
     
                                         <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordionThree">
                                             <div class="card-body">
-                                                 A broker/dealer is a company that a registered investment professional is required to affiliate with in order to buy or sell investment products on behalf of investors. The broker/dealer holds responsibility for regulatory compliance and adherence to securities laws. The Securities and Exchange Commission (SEC) delegates the supervision of financial advisors to the Financial Industry Regulatory Authority (FINRA).
+                                                 	일반 회원, 사업자 회원 모두 땡처리 게시판, 핫딜 게시판, 나눔 게시판을 이용 할 수 있지만, 상품을 판매 할 수 있는 것은 오직 사업자 회원만이 가능합니다. <br>
+                                                 	사업자 회원은 회원가입 당시 사업자번호와 함께 사업장 정보를 기입하고, 관리자의 승인 이후 부터 판매 할 상품을 등록 할 수 있습니다.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-header" id="headingEight">
                                             <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                                	질문5
+                                                	신고하기?
                                             </a>
                                         </div>
                                         <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionThree">
                                             <div class="card-body">
-                                                A broker/dealer is a company that a registered investment professional is required to affiliate with in order to buy or sell investment products on behalf of investors. The broker/dealer holds responsibility for regulatory compliance and adherence to securities laws. The Securities and Exchange Commission (SEC) delegates the supervision of financial advisors to the Financial Industry Regulatory Authority (FINRA).
+                                              	등록된 상품에 문제가 있다고 판단된다면, 상품 상세 화면 아래 [신고하기]탭에서 신고가 가능합니다.
+                                              	신고 사유를 자세히 적어 제출해주시면, 검토 후 마땅한 조치를 취하겠습니다.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-header" id="headingNine">
                                             <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                                	질문6
+                                                	QNA
                                             </a>
                                         </div>
                                         <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionThree">
                                             <div class="card-body">
-                                                An independent financial professional is not an employee of an investment or financial services firm – they are an independent business owner. They have the freedom to structure their business in a manner that best serves their clients. The independent financial professional utilizes the services of the broker/dealer to process investment business, provide services such as practice management and education.
+                                               	로그인한 바이로컬 회원만이 이용 가능합니다. QNA 폼에 따라 제출된 내용에 대한 답변은 이메일을 통해 확인 하실 수 있습니다.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-header" id="headingTen">
                                             <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                                	질문7
+                                                	상품 환불/교환 처리
                                             </a>
                                         </div>
                                         <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionThree">
                                             <div class="card-body">
-                                                Client: Now, more than ever, a client wants ‘‘peace of mind’’ when it comes to the safety of financial assets. <br>
-                                                Financial Professional: A registered representative is an independent business owner who provides financial guidance to their clients and is typically paid a commission when you purchase a financial product. An Investment Advisor Representative (IAR) is an independent business owner who provides financial guidance to their clients and is generally paid a fee for either managing assets, giving advice, or both. <br>
-                                                Investment Firm: A broker-dealer processes the commission business of registered representatives licensed with the firm and holds responsibility for regulatory compliance and adherence to securities laws. A Registered Investment Adviser (RIA) processes the fee-based business of IARs licensed with the firm and holds responsibility for regulatory compliance and adherence to securities laws. <br>
-                                                Custodian: Pershing LLC, National Financial Services, LLC, and select firms provide the trade execution, clearing, custody, and other services for securities and related transactions. <br>
-                                                Your Investments: Mutual funds, managed accounts, stocks, bonds, etc.
+                                                	상품 환불/교환은 사유가 명확한 경우에만 판매한 판매자와의 협의 이 후 가능합니다.
                                             </div>
                                         </div>
                                     </div>

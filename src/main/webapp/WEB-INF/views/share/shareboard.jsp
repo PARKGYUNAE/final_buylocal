@@ -9,7 +9,7 @@
 <style>
     #container {
       width: 60%;
-      margin: 0 36%;     /*0, auto시  가운데정렬 ,임시배치*/
+      margin: 0 30%;     /*0, auto시  가운데정렬 ,임시배치*/
       margin-top:0px;
       padding-top: 80px;   /* 테두리와 내용 사이의 패딩 여백 */
     }
@@ -66,8 +66,8 @@
 	}
 	#cposition1 {
 		position:absolute;
-		 top:calc(60vh - 200px);
-         left:calc(24vw - 200px);
+		 top:calc(70vh - 200px);
+         left:calc(13vw - 200px);
          width:100px;
 		 color:black;
 	}
@@ -79,8 +79,8 @@
 
 	#cposition2 {
 		position:absolute;
-		 top:calc(65vh - 200px);
-         left:calc(24vw - 200px);
+		 top:calc(75vh - 200px);
+         left:calc(13vw - 200px);
 		 width:100px;
 		 background: rgba(255, 255, 255, 0.705);
 	}
@@ -92,8 +92,8 @@
 	}
 	#cposition3 {
 		position:absolute;
-		 top:calc(70vh - 200px);
-         left:calc(24vw - 200px);
+		 top:calc(80vh - 200px);
+         left:calc(13vw - 200px);
 		 background: rgba(255, 255, 255, 0.705);
 		
 	}
@@ -105,8 +105,8 @@
 	}
 	#cposition4 {
 		position:absolute;
-		 top:calc(75vh - 200px);
-         left:calc(24vw - 200px);
+		 top:calc(85vh - 200px);
+         left:calc(13vw - 200px);
 		 background: rgba(255, 255, 255, 0.705);
 		
 	}
@@ -117,8 +117,8 @@
 	}
 	#cposition5 {
 		position:absolute;
-		 top:calc(80vh - 200px);
-         left:calc(24vw - 200px);
+		 top:calc(90vh - 200px);
+         left:calc(13vw - 200px);
 		 background: rgba(255, 255, 255, 0.705);
 	}
 	#cposition5:hover {
@@ -129,8 +129,8 @@
 
 	#cposition6 {
 		position:absolute;
-		 top:calc(85vh - 200px);
-         left:calc(24vw - 200px);
+		 top:calc(95vh - 200px);
+         left:calc(13vw - 200px);
          width:100px;
 		 background: rgba(255, 255, 255, 0.705);
 	}
@@ -143,8 +143,8 @@
 	/* 카테고리 */
 	#position7 {
 		position:absolute;
-		 top:calc(70vh - 200px);
-         left:calc(10vw - 200px);
+		 top:calc(85vh - 200px);
+         left:calc(1vw - 200px);
 		width:250px;
 	}
 	
@@ -165,22 +165,33 @@
 		margin-left: 10%;
 		font-size: 1.2em;
 	}
-	#subwrap {
+	.subwrap {
 		background: rgba(192, 185, 185,0.2);
 		padding: 1%;
 	}
 	#reset {
-		margin-left: 60%;
+		margin-left: 10%;
+		padding:8px;
+		background: rgb(91, 185, 223);
+		color:white;
+		font-weight: bold;
+		border: 1px; 
+		width:20%;
+	}
+	#reset:hover {
+		background: blue;
+		color:white;
+		width:22%;
+		transition: 0.5s;
+		font-weight: bold;
+		font-size: 1.1em;
+	}
+	.today {
+		border: 3px solid rgba(192, 185, 185,0.2); 
 		padding:8px;
 		background: white;
 		color:black;
-		font-weight: bold;
-		border: 1px; 
-	}
-	#reset:hover {
-		color:white;
-		background: rgba(46, 45, 45, 0.8);
-		transition: 0.3s;
+		width:40%;
 	}
 
 
@@ -212,25 +223,21 @@
 					
 	<!-- 나눔게시판 form  -->
 	  <div id="container">
-		  <div id="subwrap">
+		  <div class="subwrap">
 			<span id="visit">최근방문한게시글
-
-
 					<c:url var="cookiesbdetail" value="sbdetail.do">
 						<c:param name="sbNo" value="${sb.sbNo }"/>
 						<c:param name="page" value="${pi.currentPage }"/>
 					</c:url>
-<c:if test="${todayCheckList != null}">
-	<c:forEach var="todayCheck" items="${todayCheckList}" >
-		제목 : <a href="${cookiesbdetail }">${todayCheck }</a> //
-	</c:forEach>
-					
-</c:if>					
+		<c:if test="${todayCheckList != null}">
+			<c:forEach var="todayCheck" items="${todayCheckList}" >
+				<div class="today">제목 : <a href="${cookiesbdetail }">${todayCheck }</a></div> 
+			</c:forEach>
+							
+		</c:if>					
 			</span>
-	
-  
-  
-  
+</div>
+<div class="subwrap">
 	<button id="reset" onclick="location.href='reset.do';">초기화</button>
 </div>
 <aside class="shop-sidebar">
@@ -296,7 +303,6 @@
 		</select>
 		<input id="searchValue" name="searchValue" type="search">
 		<button id="searchid" onclick="searchResult();">검색하기</button>
-		<img src="resources/assets/images/—Pngtree—magnifying glass for commercial elements_4095332.png" alt="그림없음" width="60" height="60">
 	</span>
 	
 	<script>

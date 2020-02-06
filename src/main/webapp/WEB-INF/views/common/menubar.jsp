@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -14,7 +16,6 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="resources/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="resources/assets/img/icon.png">
-
     <!-- ************************* CSS Files ************************* -->
 
 
@@ -105,27 +106,27 @@
                                                         <li>
                                                             <ul>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=디지털/가전">
                                                                         <span class="mm-text">디지털/가전</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=의류/패션잡화">
                                                                         <span class="mm-text">의류/패션잡화</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=뷰티/미용">
                                                                         <span class="mm-text">뷰티/미용</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=스포츠/레저">
                                                                         <span class="mm-text">스포츠/레저</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=도서/티켓/음반">
                                                                         <span class="mm-text">도서/티켓/음반</span>
                                                                     </a>
                                                                 </li>
@@ -134,27 +135,27 @@
                                                         <li>
                                                             <ul> 
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=가구/인테리어">
                                                                         <span class="mm-text">가구/인테리어</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=신선/가공식품">
                                                                         <span class="mm-text">신선/가공식품</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=게임/취미">
                                                                         <span class="mm-text">게임/취미</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=반려동물용품">
                                                                         <span class="mm-text">반려동물용품</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="${hotDeal }?category=기타">
                                                                         <span class="mm-text">기타</span>
                                                                     </a>
                                                                 </li>
@@ -170,32 +171,32 @@
                                                     <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="한식" href="${ttangM}">
+                                                                <a title="한식" href="${ttang }?category=한식">
                                                                     <span class="mm-text">한식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="중식" href="${ttangM}">
+                                                                <a title="중식" href="${ttang }?category=중식">
                                                                     <span class="mm-text">중식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="일식" href="${ttangM}">
+                                                                <a title="일식" href="${ttang }?category=일식">
                                                                     <span class="mm-text">일식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="양식" href="${ttangM}">
+                                                                <a title="양식" href="${ttang }?category=양식">
                                                                     <span class="mm-text">양식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="커피/제과" href="${ttangM}">
+                                                                <a title="커피/제과" href="${ttang }?category=커피/제과">
                                                                     <span class="mm-text">커피/제과</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="기타" href="${ttangM}">
+                                                                <a title="기타" href="${ttang }?category=기타">
                                                                     <span class="mm-text">기타</span>
                                                                 </a>
                                                             </li>
@@ -305,9 +306,9 @@
                                                         <i class="la la-search"></i>
                                                     </a>
                                                 </div>
-                                                <!-- 메뉴바 아이콘 추가 (소망) -->
+                                                     <!-- 메뉴바 아이콘 추가 (소망) -->
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
-                                                	<c:if test="${ loginUser.cId eq 'admin' }">
+                                                   <c:if test="${ loginUser.cId eq 'admin' }">
                                                      <c:url var="Count" value="Count.do"/>
                                                     <a href="${ Count }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-wrench"></i>
@@ -315,18 +316,18 @@
                                                     </c:if>
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
-                                                	<c:if test="${ !empty sessionScope.loginUser }">
-                                                	<c:url var="logout" value="logout.do"/>
+                                                   <c:if test="${ !empty sessionScope.loginUser }">
+                                                   <c:url var="logout" value="logout.do"/>
                                                     <a href="${ logout }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-power-off"></i>
                                                     </a>
                                                     </c:if>
                                                 </div>
                                                 <div class="header-toolbar__item header-toolbar--minicart-btn">
-                                                	<c:if test="${ !empty sessionScope.loginUser }">
-                                                	<c:url var="myFavorite" value="myFavorite.do">
-                                                		<c:param name="cNo" value="${ loginUser.cNo }"/>
-                                                	</c:url>
+                                                   <c:if test="${ !empty sessionScope.loginUser }">
+                                                   <c:url var="myFavorite" value="myFavorite.do">
+                                                      <c:param name="cNo" value="${ loginUser.cNo }"/>
+                                                   </c:url>
                                                     <a href="${ myFavorite }" class="header-toolbar__btn toolbar-btn1">
                                                         <i class="la la-heart-o"></i>
                                                     </a>
@@ -342,19 +343,19 @@
                                                     <!-- 로그인 유저가 있을 시 같은 버튼을 누르면 회원 프로필 페이지로 이동 -->
                                                     <c:choose>
                                                         <c:when test="${ empty sessionScope.loginUser }">
-                                                        	<c:url var="userLogin" value="userLogin.do"/>	                                                    <c:url var="userLogin" value="userLogin.do"/>
-		                                                    <a href="${ userLogin }" class="header-toolbar__btn toolbar-btn1">
-		                                                        <i class="la la-user"></i>
-		                                                    </a>	
-		                                                </c:when>
-		                                                <c:otherwise>
-		                                                	<c:url var="myProfile" value="myProfile.do"/>	
-		                                                	<a href="${ myProfile }" class="header-toolbar__btn toolbar-btn1">
-		                                                        <i class="la la-user"></i>
-		                                                    </a>
-		                                                </c:otherwise>
-	                                              	</c:choose>
-	                                               </div>                                                   </div>
+                                                           <c:url var="userLogin" value="userLogin.do"/>                                                       <c:url var="userLogin" value="userLogin.do"/>
+                                                          <a href="${ userLogin }" class="header-toolbar__btn toolbar-btn1">
+                                                              <i class="la la-user"></i>
+                                                          </a>   
+                                                      </c:when>
+                                                      <c:otherwise>
+                                                         <c:url var="myProfile" value="myProfile.do"/>   
+                                                         <a href="${ myProfile }" class="header-toolbar__btn toolbar-btn1">
+                                                              <i class="la la-user"></i>
+                                                          </a>
+                                                      </c:otherwise>
+                                                    </c:choose>
+                                                  </div>                              </div>
                                                 <div class="header-toolbar__item d-block d-lg-none">
                                                     <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                         <div class="hamburger-icon">
@@ -449,35 +450,35 @@
                       
                                 <li class="menu-item-has-children">
                                     <a href="${ttangM }" >땡처리</a>
-                                          <ul class="sub-menu">
+                                        <ul class="sub-menu">
                                                         <li class="menu-item-has-children">
                                                             <li>
-                                                                <a title="한식" href="${ttangM}">
+                                                                <a title="한식" href="${ttang }?category=한식">
                                                                     <span class="mm-text">한식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="중식" href="${ttangM}">
+                                                                <a title="중식" href="${ttang }?category=중식">
                                                                     <span class="mm-text">중식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="일식" href="${ttangM}">
+                                                                <a title="일식" href="${ttang }?category=일식">
                                                                     <span class="mm-text">일식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="양식" href="${ttangM}">
+                                                                <a title="양식" href="${ttang }?category=양식">
                                                                     <span class="mm-text">양식</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="커피/제과" href="${ttangM}">
+                                                                <a title="커피/제과" href="${ttang }?category=커피/제과">
                                                                     <span class="mm-text">커피/제과</span>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a title="기타" href="${ttangM}">
+                                                                <a title="기타" href="${ttang }?category=기타">
                                                                     <span class="mm-text">기타</span>
                                                                 </a>
                                                             </li>
@@ -626,16 +627,21 @@
         
         
         <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="la la-remove"></i></a>
-            <div class="searchform__body">
-                <p>검색어를 입력하세요</p>
-                <form class="searchform">
-                    <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="지역, 상품, 업체 등 을 검색해보세요">
-                    <button type="submit" class="searchform__submit"><i class="la la-search"></i></button>
-                </form>
-            </div>
-        </div>
+	<c:url var="totalSearch" value="totalSearch.do"/>
+	<div class="searchform__popup" id="searchForm">
+		<a href="#" class="btn-close"><i class="la la-remove"></i></a>
+		<div class="searchform__body">
+			<p>검색어를 입력하세요</p>
+			<form class="searchform" method="get" action="totalSearch.do">
+				<input type="text" name="popup-search" id="popup-search"
+					class="searchform__input" placeholder="지역, 상품, 업체 등 을 검색해보세요">
+				<button type="submit" class="searchform__submit">
+					<i class="la la-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+	<!-- Searchform Popup End -->
         
 	</div>
 	

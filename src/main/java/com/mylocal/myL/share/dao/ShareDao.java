@@ -59,31 +59,6 @@ public class ShareDao {
 		
 	}
 	
-	
-	public int insertReply(Reply r) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("replyMapper.insertReply", r);
-	}
-
-	public ArrayList<Reply> selectReplyList(int sbNo) {
-		// TODO Auto-generated method stub
-		return (ArrayList)sqlSession.selectList("replyMapper.selectList",sbNo);
-	}
-
-	public int updateReply(Reply r) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("replyMapper.updateReply", r);
-	}
-
-	public int deleteReply(int rNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("replyMapper.deleteReply", rNo);
-	}
-	/*//대댓글 등록
-	public int insertReply2(Reply r) {
-		
-		return sqlSession.insert("replyMapper.insertReply2",r);
-	}*/
 
 	public ArrayList<ShareBoard> selectSearchResultList(SearchCondition sc, PageInfo pi) {
 		
@@ -136,6 +111,48 @@ public class ShareDao {
 
 	public ArrayList<ShareBoard> searchList(String searchStr) {
 		return (ArrayList)sqlSession.selectList("shareboardMapper.searchList", searchStr);
+	}
+
+	public int selectSbNo(int sbNo) {
+		
+		return sqlSession.update("shareMapper.selectSbNo",sbNo);
+	}
+
+	public ArrayList<ShareBoard> selectdetailValue(int sbNo) {
+		
+		return (ArrayList)sqlSession.selectList("shareMapper.selectdetailValue",sbNo);
+	}
+
+	public ShareBoard selectOne(int sbNo) {
+		
+		return sqlSession.selectOne("shareboardMapper.selectOne",sbNo);
+	}
+
+	
+	public int insertReply(Reply r) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("replyMapper.insertReply", r);
+	}
+	
+	public ArrayList<Reply> selectReplyList(int sbNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("replyMapper.selectList",sbNo);
+	}
+	
+	public int updateReply(Reply r) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("replyMapper.updateReply", r);
+	}
+	
+	public int deleteReply(Reply r) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("replyMapper.deleteReply", r);
+	}
+	
+	
+	public Reply selectReply(int rNo) {
+		
+		return sqlSession.selectOne("replyMapper.selectrNo",rNo);
 	}
 
 

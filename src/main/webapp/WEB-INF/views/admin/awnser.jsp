@@ -37,14 +37,19 @@
         style="width: 100%" placeholder="제목을 입력해주세요" value="[답변] ${ qna.qTitle }"
         class="form-control">
       </div>
-        <p>
-          <div align="center">
-          <!-- 내용 -->
+   
+      <div align="center">
+          내용
             <textarea name="content" cols="120" rows="12"
-            style="width: 100%; resize: none" placeholder="내용#"
+            style="width: 100%; resize: none" placeholder="내용" 
             class="form-control"></textarea>
+          </div>  
+          
+
           </div>
-        <p>
+          
+          
+       
       <div align="center">
         <input id="submit" type="submit" value="메일 보내기" class="btn btn-warning">
       </div>

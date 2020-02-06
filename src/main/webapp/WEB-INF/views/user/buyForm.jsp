@@ -73,7 +73,7 @@
 	                                        			</c:url>
                                                         <td class="product-remove text-left"><a href="${ deleteCart}"><i class="la la-remove"></i></a></td>
                                                         <td class="product-thumbnail text-left">
-                                                            <img src="assets/img/products/prod-01-70x88.jpg" alt="Product Thumnail">
+                                                            <img src="resources/pThumb/${buylist.pThumb}" alt="Product Thumnail">
                                                         </td>
                                                         <td class="product-name text-left wide-column">
                                                             <h3>

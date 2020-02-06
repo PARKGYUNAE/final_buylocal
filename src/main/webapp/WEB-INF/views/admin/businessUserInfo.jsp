@@ -77,8 +77,8 @@
 
 				<!-- Breadcrumbs-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-					<li class="breadcrumb-item active">Tables</li>
+					
+					<li class="breadcrumb-item active"></li>
 				</ol>
 
 				<!-- DataTables Example -->
@@ -116,11 +116,11 @@
                   
                    <tr style="cursor:pointer" id="trtrtr" onclick="window.open('${register}', 30, 30)">
              		<%-- <tr onclick="location.href='${register}'" style="cursor:pointer" id="trtrtr"> --%>
-             			<th>${ business.bOwner }</th>
-             			<th>${ business.bShopName} </th>
-             			<th>${ business.bClass}</th>
-             			<th>${ business.cAddress }</th>
-             			<th>${ business.cEnrollDate }</th>
+             			<td>${ business.bOwner }</td>
+             			<td>${ business.bShopName} </td>
+             			<td>${ business.bClass}</td>
+             			<td>${ business.cAddress }</td>
+             			<td>${ business.cEnrollDate }</td>
              		</tr>
                   
                   </c:forEach>

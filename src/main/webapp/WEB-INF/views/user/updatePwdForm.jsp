@@ -287,8 +287,8 @@ $(function(){
                                             <h5 class="mb--5">
                                             	<c:out value="${ loginUser.cName }"/>님의 마이 페이지
                                             </h5>
-                                            <p class="degne">UI/ Web Designer</p>
-                                            <p class="mb--25">An Affrotable world wide business service It is</p>
+                                            <p class="degne"><i class="la la-map-marker la-2x"></i></p>
+                                            <p class="mb--25"><c:out value="${ loginUser.cAddress }"/></p>
                                             <ul class="social mb--20">
                                                 <!-- <li class="social__item">
                                                     <a href="https://www.facebook.com" class="social__link">
@@ -307,7 +307,16 @@ $(function(){
                                                 </li> -->
                                             </ul>
                                             <div class="autor-meta">
-                                                <span>내 구매내역 <strong>${ dCount }</strong></span>
+                                            	<c:choose>
+                                            	<c:when test="${ loginUser.cLevel eq '사업자' }">
+                                                <span>내 거래내역 <strong>
+                                                <c:out value="${ dCount }"/></strong></span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                <span>내 구매내역 <strong>
+                                                <c:out value="${ dCount }"/></strong></span>
+                                                </c:otherwise>
+                                                </c:choose>
                                                 <span>내 문의글 <strong>2</strong></span>
                                             </div>
                                         </div>

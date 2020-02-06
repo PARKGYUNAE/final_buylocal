@@ -52,6 +52,12 @@
 </head>
 
 <body>
+<script>
+      <c:if test="${!empty msg}">
+         alert('${msg}');
+         <c:remove var="msg"/>
+      </c:if>
+</script>
 	<c:import url="../common/menubar.jsp"/>	
 
         <!-- Breadcrumb area Start -->
@@ -195,16 +201,8 @@
                         </div>
                         <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
                             <div class="product-summary pl-lg--30 pl-md--0">
-                                <!-- <div class="product-navigation text-right mb--20">
-                                    <a href="#" class="prev"><i class="la la-angle-double-left"></i></a>
-                                    <a href="#" class="next"><i class="la la-angle-double-right"></i></a>
-                                </div> -->
-                                <div class="product-rating d-flex mb--20">
-                                    <div class="star-rating star-four">
-                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                    </div>
-                                </div>
-
+                             
+                                
                                 <h3 class="product-title mb--20">${ttangDetail.pTitle}</h3>
                                 <p class="product-short-description mb--20">${ttangDetail.pInfoText}</p>
                                 <div class="product-price-wrapper mb--25">
@@ -229,10 +227,7 @@
                                     <c:choose>
                                     <c:when test="${empty sessionScope.loginUser }">
                                     <c:url var="userLogin" value="userLogin.do"/>
-                                    <%-- <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='${userLogin}'">
-                                        	찜
-                                    </button> --%>
-			
+                  
                                     <button type="button" class="btn btn-shape-square btn-size-sm" onclick="location.href='${userLogin}'">
                                         	장바구니
                                     </button>
@@ -379,10 +374,6 @@
                                                         	<option value="상품정보 오류">상품정보 오류</option>
 														</select>
                                                     </div>
-                                                    <!-- <div class="form__group mb--10">
-                                                        <label class="form__label d-block" for="title">신고 제목<span class="required">*</span></label>
-                                                        <input type="text" name="title" id="title" class="form__input">
-                                                    </div> -->
                                                     <div class="form__group mb--20">
                                                         <label class="form__label d-block" for="content">신고 내용<span class="required">*</span></label>
                                                         <input type="text" name="rtContent" id="content" class="form__input" name="rtContent">
@@ -492,7 +483,7 @@
 	<script>
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = { 
-		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        center: new kakao.maps.LatLng(37.589911, 127.016721), // 지도의 중심좌표
 		         // draggable: false, // 지도를 생성할때 지도 이동 및 확대/축소를 막으려면 draggable: false 옵션을 추가하세요
 		        level: 3 // 지도의 확대 레벨
 		    };

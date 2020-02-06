@@ -76,6 +76,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void checkEmail(String cEmail, HttpServletResponse response) throws Exception {
 		PrintWriter out = response.getWriter();
+		System.out.println("서비스 단에 넘어온 email 값 : " + cEmail);
+		// 안넘어옴
 		out.println(userDao.checkEmail(cEmail));
 		out.close();
 	}
@@ -87,21 +89,18 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	// 이메일 발송
-	public void sendMail(Customer c, String div, String temPwd) {
+	public int sendMail(Customer c, String div, String temPwd) {
 		// Mail Server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
-		String hostSMTPid = "atdbm@naver.com";
-		String hostSMTPpwd = "zl2024711";
+		String hostSMTPid = "hedystarr@naver.com";
+		String hostSMTPpwd = "thakd0256";
 		
 		// 보내는 사람 Email, 제목, 내용
-		String fromEmail = "atdbm@naver.com";
+		String fromEmail = "hedystarr@naver.com";
 		String fromName = "BUY LOCAL";
 		String subject = "";
 		String msg = "";
-		
-		// 비밀번호 처리
-		
 		
 		if(div.equals("findPwd")) {
 			subject = "[BUY LOCAL] 임시 비밀번호를 보내드립니다.";
@@ -129,18 +128,15 @@ public class UserServiceImpl implements UserService {
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);
 			email.send();
+			return 1;
 		} catch (Exception e) {
-			System.out.println("메일 발송 실패 : " + e);
+			return 0;
 		}
 		
 	}
 	
-	// 비밀번호 찾기(수정 중)
-	/*@Override
-	public */
-	
 	// 비밀번호 찾기 
-	@Override
+	/*@Override
 	public void findPwd(HttpServletResponse response, Customer c) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -169,7 +165,7 @@ public class UserServiceImpl implements UserService {
 			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
 			out.close();
 		}
-	}
+	}*/
 	
 	
 	// 일반 회원 구매내역 건수 조회 
@@ -185,15 +181,20 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectDealList2(cNo);
 	}
 
-
-
-
-
 	
-	
-	
+	// 사업자 회원 거래내역 건수 조회
+	@Override
+	public int countBusiness(int cNo) {
+		return userDao.countBusiness(cNo);
+	}
 
+	// 사업자 번호 중복 체크
+	@Override
+	public void checkShopNo(String bShopNo, HttpServletResponse response) throws Exception {
+		PrintWriter out = response.getWriter();
+		out.println(userDao.checkShopNo(bShopNo));
+		out.close();
+	}
 
-	
 
 }

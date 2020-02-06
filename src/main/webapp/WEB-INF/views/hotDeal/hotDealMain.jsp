@@ -53,11 +53,12 @@
 									<div class="shop-toolbar__left">
 										<div class="product-ordering">
 											<select class="product-ordering__select nice-select" id="optionArray">
+												<!--  정렬 기준 수정 20.02.05.  -->
 												<option value="0">정렬 기준</option>
-												<option value="1">이름순(A-Z)</option>
-												<option value="2">이름순(Z-A)</option>
-												<option value="3">가격순(low to high)</option>
-												<option value="4">가격순(high to low)</option>
+												<option value="1">별점순(high to low)</option>
+			                                    <option value="2">신상품순</option>
+			                                    <option value="3">가격순(low to high)</option>
+			                                    <option value="4">가격순(high to low)</option>
 											</select>
 										</div>
 									</div>

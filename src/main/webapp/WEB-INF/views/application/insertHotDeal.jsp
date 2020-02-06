@@ -46,8 +46,7 @@
                                 </div>
                                 <div class="contact-info mb--20">
                                     <p><i class="fa fa-map-marker"></i>- 썸네일 사진 권장 크기 : 700 * 778</p>
-                                    <p><i class="fa fa-phone"></i>- 상품정보(이미지) 권장 크기 : </p>
-                                    <p><i class="fa fa-fax"></i>- 최소 판매 가격은 5000원 입니다.  </p>
+                                    <p><i class="fa fa-phone"></i>- 상품정보(이미지) 권장 크기 : 800 * 1720</p>
                                     <p><i class="fa fa-fax"></i>- 판매기간은 판매 시작일을 기준으로 30일 후 까지 입니다.</p>
                                     <p><i class="fa fa-clock-o"></i>- 자세한 설명은 FAQ를 참고하세요.</p>
                                 </div>
@@ -66,7 +65,6 @@
  									<p style="font-size:14px;">*하단의 판매자 정보는 마이페이지에서 수정 가능합니다.</p>
  									
                                    	판매자 이름 <input type="text" id="cName" value="${loginUser.cName}" class="form__input mb--30"/ readonly>
-       								업체 이름 <input type="text" value="#"class="form__input mb--30" readonly/>         
                						 업체 주소 <input type="text" id="cAddress" value="${loginUser.cAddress}" class="form__input mb--30" readonly/>
                 					업체 연락처 <input type="text" id="cPhone" value="${loginUser.cPhone}" class="form__input mb--30" readonly/>
                                    <input type="hidden" id="cNo" name="cNo" value="${loginUser.cNo}" class="form__input mb--30"/> 

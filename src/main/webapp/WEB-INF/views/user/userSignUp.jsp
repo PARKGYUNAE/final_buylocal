@@ -9,62 +9,96 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	$(function(){
-		$("#enrollForm").submit(function(){
-			if($("#pwd").val() !== $("#pwd2").val()) {
-				alert("비밀번호 일치 여부를 다시 확인해주세요.");
-				$("#pwd").val("").focus();
-				$("#pwd2").val("");
-				return false;
-			} else if ($("#pwd").val().length < 8) {
-				alert("비밀번호는 8자 이상으로 설정해야 합니다.");
-				$("#pwd").val("").focus();
-				return false;
-			} else if($.trim($("#pwd").val()) !== $("#pwd").val() || $.trim($("#email").val()) !== $("#email").val() || $.trim($("#id").val()) !== $("#id").val()){
-				alert("공백은 입력이 불가능합니다.");
-				return false;
+		 $("#id").on("keyup", function(){
+	            var userId = $(this).val().trim();
+	            $("#idResult").text('');
+	            
+	            if(!(/^[a-z][a-z\d]{3,11}$/i.test($("#enrollForm input[name=cId]").val()))){
+					$("#idResult").text("아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)").css("color", "red");
+					/* alert('아이디는 영소문자로 시작해서 4~12자 입력(숫자 포함 가능)'); */
+					//$("#enrollForm input[name=cId]").select();
+					return;
+				}
+		 });
+			
+		$("#pwd").on("keyup", function(){
 				
-			}
-		})
-		
-		$("#id").keyup(function() {
-			$.ajax({
-				url : "checkId.do",
-				type : "POST",
-				data : {
-					cId : $("#id").val()
-				},
-				success : function(result) {
-					if (result == 1) {
-						$("#idCheck").html("중복된 아이디가 있습니다.");
-						$("#joinBtn").attr("disabled", "disabled");
-					} else {
-						$("#idCheck").html("");
-						$("#joinBtn").removeAttr("disabled");
-					}
-				},
-			})
-		});
-		
-		// 안 먹고 있음 확인 해보자 ㅠㅠ 
-		$("#email").keyup(function(){
-			$.ajax({
-				url : "checkEmail.do",
-				type : "POST",
-				data : {
-					cEmail : $("#email").val()
-				},
-				success : function(result) {
-					if (result == 1) {
-						$("#emailCheck").html("중복된 이메일이 있습니다.");
-					} else {
-						$("#emailCheck").html("");
-					}
-				},
-			})
+				if ($("#pwd").val().length < 8) {
+					$("#pwdResult").text("비밀번호는 8자 이상으로 설정해야 합니다.").css("color", "red");
+					return;
+				} else {
+					$("#pwdResult").text("");
+					return;	
+				}
+			});	
+
+
+		$("#pwd2").on("keyup", function(){
+				if($("#pwd").val() !== $("#pwd2").val()) {
+					$("#pwd2Result").text("비밀번호 일치 여부를 다시 확인해주세요.").css("color", "red");
+					/* $("#pwd").val("").focus(); */
+					/* $("#pwd2").val(""); */
+					return;	
+				} else {
+					$("#pwd2Result").text("");
+					return;	
+				}
 		});
 	})
+	</script>
+	<script>
+		$(function(){
+			// 아이디 중복 체크 
+			$("#id").keyup(function() {
+				$.ajax({
+					url : "checkId.do",
+					type : "POST",
+					data : {
+						cId : $("#id").val()
+					},
+					success : function(result) {
+						if (result == 1) {
+							alert('중복된 아이디가 있습니다. 다른 아이디를 입력해주세요.');
+							/* $("#idCheck").html("중복된 아이디가 있습니다.");
+							$("#joinBtn").attr("disabled", "disabled"); */
+						} else {
+						$("#idCheck").html("");
+						$("#joinBtn").removeAttr("disabled");
+						}
+					},
+				})
+			});
+			
+			// 이메일 중복 체크 
+			$("#email").keyup(function(){
+				$.ajax({
+					url : "checkEmail.do",
+					type : "POST",
+					data : {
+						cEmail : $("#email").val()
+					},
+					success : function(result) {
+						if (result >= 1) {
+							// 여기다가 alert 추가하자
+							alert('중복된 이메일 주소가 있습니다. 다른 이메일 주소를 입력해주세요.');
+							/* $("#emailCheck").html(""); */
+							/* $("#emailCheck").html("중복된 이메일이 있습니다."); */
+						} else {
+							$("#idCheck").html("");
+							$("#joinBtn").removeAttr("disabled");
+						}
+					},
+				})
+			});
+		});
 
 </script>
+<script>
+     <c:if test="${!empty msg}">
+        alert('${msg}');
+        <c:remove var="msg"/>
+     </c:if>
+</script> 
 <title>일반 회원 가입</title>
 <style>
 	h5>a{
@@ -111,24 +145,19 @@
                         <div class="col-12">
                            <div class="user-dashboard-tab flex-column flex-md-row">
                                 <div class="user-dashboard-tab__content tab-content">
-                                    
-                                    <h3 align="center">회원 가입</h3>
-                                    <hr><br>
-                                    
-                                    <div class="tab-pane fade show active" id="accountdetails">
+                                    <div class="tab-pane fade show active" id="accountdetails" style="margin-left: 260px">
+                                    	<h3 align="center">회원 가입</h3>
+                                    	<hr><br>
                                     	
                                         <form id="enrollForm" class="form form--account" action="cinsert.do" method="post">
-                                        <table class="" width="70%" align="center" cellspacing="5">
+                                        <table class="" width="700px" align="center" style="table-layout: fixed">
                                         	<tr>
                                         		<td>
                                         			<label class="form__label" for="userId">아이디 <span class="required">*</span></label>
                                         		</td>
-                                        		<td>
-                                                    <input type="text" name="cId" id="id" class="form__input" required>
-                                                    <!-- 아이디 중복 확인 추가 부분 -->
-                                                    <span id="idCheck" class="form__notes"></span>
-                                                    <!-- <span class="form__notes" id="guideError"><em>이 아이디는 사용할 수 없습니다.</em></span> -->
-                                                    
+                                        		<td width="400px">
+                                                    <input type="text" name="cId" id="id" class="form__input" placeholder="영소문자로 시작하는 4~12자를 입력해주세요." required>
+                                               		<span class="form__notes"><em id="idResult"></em></span>
                                                	</td>
                                                	<td></td>
                                             </tr>
@@ -138,6 +167,7 @@
                                                 </td>
                                                 <td>    
                                                     <input type="password" name="cPwd" id="pwd" class="form__input" placeholder="" required>
+                                                	<span class="form__notes"><em id="pwdResult"></em></span>
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -147,6 +177,7 @@
                                                 </td>
                                                 <td>    
                                                     <input type="password" name="cPwd2" id="pwd2" class="form__input" placeholder="" required>
+                                                	<span class="form__notes"><em id="pwd2Result"></em></span>
                                                 </td>
                                                 <td></td>
                                             </tr>
